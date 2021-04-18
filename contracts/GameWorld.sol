@@ -1,15 +1,21 @@
 // SPDX-License-Identifier: Unlicensed
 pragma solidity ^0.8.3;
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "./libraries/FixedPoint.sol"; 
 
 contract GameWorld is Ownable {
 
-    enum EntityType { LAND, WALL, ARMY }
+    enum EntityType { 
+        TILE,       // q1: TileType     q2: Modifier
+        WALL, 
+        ARMY, 
+        FARM        // q1: BlockNumber  q2: FarmValue
+        }
     struct Entity {
         uint id;
         EntityType entityType;
         uint qualifier1;
-        uint qualifier2;
+        FixedPoint.uq112x112 qualifier2; // For handling fixed-point decimals
         uint16 locx;
         uint16 locy;
     }
@@ -17,17 +23,31 @@ contract GameWorld is Ownable {
     Entity[] allEntities;
 
     mapping (uint => address) entityToOwner; 
-    // Qualifier2 of land entites can be converted into a float in [yieldMin, yieldMax]
-    uint public yieldMin;
-    uint public yieldMax; 
+    mapping (uint => uint) tokensBurntAtBlock;
+    mapping (uint => FixedPoint.uq112x112) landValueAddedAtBlock;
 
-    constructor(uint _yieldMin, uint _yieldMax) {
-        yieldMin = _yieldMin;
-        yieldMax = _yieldMax; 
+    // Fixed point float numbers , with range [0, 2*112-1] and resolution of 1/2*112
+    FixedPoint.uq112x112 public yieldMin;
+    FixedPoint.uq112x112 public yieldRange; 
+    FixedPoint.uq112x112 public globalLandValue;
+
+    constructor(uint224 _yieldMin, uint224 _yieldRange) {
+        yieldMin = FixedPoint.uq112x112(_yieldMin);
+        yieldRange = FixedPoint.uq112x112(_yieldRange); 
+        globalLandValue = FixedPoint.uq112x112(0);
     }
 
     modifier onlyOwnerOf(uint _entityId, address owner) {
         require(entityToOwner[_entityId] == owner);
+        _;
+    }
+
+    modifier isEmpty(uint _locx, uint _locy) {
+        for (uint i = 0; i < allEntities.length; i++) {
+            if (allEntities[i].locx == _locx && allEntities[i].locy == _locy && allEntities[i].entityType != EntityType.TILE) {
+                require(false);
+            }
+        }
         _;
     }
 
@@ -45,12 +65,32 @@ contract GameWorld is Ownable {
             for (uint16 y = 0; y < _height; y++) {
 
                 // Currently only generates arable lands 
-                Entity memory newLand = Entity(allEntities.length, EntityType.LAND, 0, _randMod(_seed, nonce++, 2 ** 256 - 1), x, y);
+                Entity memory newLand = Entity(allEntities.length, EntityType.TILE, 0, 
+                FixedPoint.add(FixedPoint.muluq(yieldRange,FixedPoint.fraction(_randMod(_seed, nonce++, 100), 100)), yieldMin)  // Highly unoptimized
+                , x, y);
                 allEntities.push(newLand); 
-                entityToOwner[newLand.id] = address(0); //wilderness
+                entityToOwner[newLand.id] = address(0); // wilderness
 
             }
         }
+    }
+
+    // Returns total farm yield at current block number, in the UQ144x112 format. Assumes supply of tokens do not exceed 2**144 - 1 
+    function farmValue(uint _id) view public returns(uint) {
+        require(allEntities[_id].entityType == EntityType.FARM);
+        FixedPoint.uq112x112 memory landValueAtBlock = globalLandValue;
+        FixedPoint.uq144x112 memory cumulativeYield = FixedPoint.uq144x112(0); 
+        for (uint i = block.number; i > allEntities[_id].qualifier1; i--) {
+            cumulativeYield = FixedPoint.add144(cumulativeYield, FixedPoint.mul(FixedPoint.reciprocal(landValueAtBlock), tokensBurntAtBlock[i])); 
+            landValueAtBlock = FixedPoint.sub(landValueAtBlock,landValueAddedAtBlock[i]); 
+        }
+        return cumulativeYield._x;
+    }
+
+    // Requires implementation of ERC20 
+    function buildFarm(uint16 _locx, uint16 _locy, uint112 tokenStaked) public isEmpty(_locx, _locy) {
+        Entity memory newFarm = Entity(allEntities.length, EntityType.FARM, block.number, FixedPoint.encode(tokenStaked), _locx, _locy);
+        // Check if message sender approved for token to be staked in the smart contract  
     }
 
 
