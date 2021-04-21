@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Unlicensed
-pragma solidity ^0.8.3;
+pragma solidity ^0.8;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./libraries/FixedPoint.sol"; 
 
@@ -11,6 +11,7 @@ contract GameWorld is Ownable {
         ARMY, 
         FARM        // q1: BlockNumber  q2: FarmValue
         }
+
     struct Entity {
         uint id;
         EntityType entityType;
@@ -20,7 +21,9 @@ contract GameWorld is Ownable {
         uint16 locy;
     }
 
-    Entity[] allEntities;
+    mapping (uint => Entity) public allEntities;
+    uint public map_width;
+    uint public map_height;
 
     mapping (uint => address) entityToOwner; 
     mapping (uint => uint) tokensBurntAtBlock;
@@ -42,13 +45,9 @@ contract GameWorld is Ownable {
         _;
     }
 
-    modifier isEmpty(uint _locx, uint _locy) {
-        for (uint i = 0; i < allEntities.length; i++) {
-            if (allEntities[i].locx == _locx && allEntities[i].locy == _locy && allEntities[i].entityType != EntityType.TILE) {
-                require(false);
-            }
-        }
-        _;
+    modifier isEmpty(uint _locx, uint _locy, uint layer) {
+        require(entityToOwner[_locx  + _locy * map_width + layer * map_width * map_height] == address(0));
+        _; 
     }
 
     function _randMod(uint _seed, uint _nonce, uint _mod) internal pure returns(uint) {
@@ -58,40 +57,61 @@ contract GameWorld is Ownable {
     // This function can only be called by whoever deployed the contract 
     function populateLand(uint _width, uint _height, uint _seed) onlyOwner public {
 
+        map_width = _width;
+        map_height = _height; 
+
         // Declare a local nonce so that the same seed will generate the same map 
         uint nonce = 0;
 
-        for (uint16 x = 0; x < _width; x++) {
-            for (uint16 y = 0; y < _height; y++) {
-
+        for (uint16 y = 0; y < _width; y++) {
+            for (uint16 x = 0; x < _height; x++) {
+                uint index = x + y * map_width;
                 // Currently only generates arable lands 
-                Entity memory newLand = Entity(allEntities.length, EntityType.TILE, 0, 
+                Entity memory newLand = Entity(index, EntityType.TILE, 0, 
                 FixedPoint.add(FixedPoint.muluq(yieldRange,FixedPoint.fraction(_randMod(_seed, nonce++, 100), 100)), yieldMin)  // Highly unoptimized
                 , x, y);
-                allEntities.push(newLand); 
-                entityToOwner[newLand.id] = address(0); // wilderness
+                allEntities[index] = newLand; 
+                entityToOwner[index] = address(0); // wilderness
 
             }
         }
     }
 
     // Returns total farm yield at current block number, in the UQ144x112 format. Assumes supply of tokens do not exceed 2**144 - 1 
-    function farmValue(uint _id) view public returns(uint) {
-        require(allEntities[_id].entityType == EntityType.FARM);
+    function yieldValue(uint16 _locx, uint16 _locy) view public returns(uint) {
+        uint index = _locx + _locy * map_width + map_height * map_width; 
+        Entity storage thisFarm = allEntities[index];
+        require(thisFarm.entityType == EntityType.FARM);
         FixedPoint.uq112x112 memory landValueAtBlock = globalLandValue;
         FixedPoint.uq144x112 memory cumulativeYield = FixedPoint.uq144x112(0); 
-        for (uint i = block.number; i > allEntities[_id].qualifier1; i--) {
-            cumulativeYield = FixedPoint.add144(cumulativeYield, FixedPoint.mul(FixedPoint.reciprocal(landValueAtBlock), tokensBurntAtBlock[i])); 
+        for (uint i = block.number; i > allEntities[index].qualifier1; i--) {
+            cumulativeYield = FixedPoint.add144(cumulativeYield, FixedPoint.mul(FixedPoint.muluq(thisFarm.qualifier2, FixedPoint.reciprocal(landValueAtBlock)), tokensBurntAtBlock[i])); 
             landValueAtBlock = FixedPoint.sub(landValueAtBlock,landValueAddedAtBlock[i]); 
+            // Shouldn't be necessary, but added as a safe check 
+            if (landValueAtBlock._x == 0) break; 
         }
         return cumulativeYield._x;
     }
 
     // Requires implementation of ERC20 
-    function buildFarm(uint16 _locx, uint16 _locy, uint112 tokenStaked) public isEmpty(_locx, _locy) {
-        Entity memory newFarm = Entity(allEntities.length, EntityType.FARM, block.number, FixedPoint.encode(tokenStaked), _locx, _locy);
+    function buildFarm(uint16 _locx, uint16 _locy, uint112 tokenStaked) public isEmpty(_locx, _locy, 1) {
+        uint index = _locx + _locy * map_width + map_height * map_width;
+        
         // Check if message sender approved for token to be staked in the smart contract  
+        FixedPoint.uq112x112 memory landValue = FixedPoint.sqrt(FixedPoint.encode(tokenStaked));
+        allEntities[index] = Entity(index, EntityType.FARM, block.number, landValue, _locx, _locy);
+        landValueAddedAtBlock[block.number] = FixedPoint.add(landValueAddedAtBlock[block.number], landValue);
+        globalLandValue = FixedPoint.add(globalLandValue, landValue); 
     }
 
+    // Requires implementation of ERC20 
+    function buildWall(uint16 _locx, uint16 _locy, uint112 tokenStaked) public isEmpty(_locx, _locy, 1) {
+        uint index = _locx + _locy * map_width + map_height * map_width;
+        
+        // Check if message sender approved for token to be staked in the smart contract  
+        uint112 wallFortification = tokenStaked;
+        allEntities[index] = Entity(index, EntityType.WALL, block.number, FixedPoint.encode(wallFortification), _locx, _locy);
+        tokensBurntAtBlock[block.number] = tokensBurntAtBlock[block.number] + wallFortification;
+    }
 
 }
