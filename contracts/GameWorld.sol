@@ -98,6 +98,7 @@ contract GameWorld is Ownable {
         uint index = _locx + _locy * map_width + map_height * map_width;
         
         // Check if message sender approved for token to be staked in the smart contract  
+
         FixedPoint.uq112x112 memory landValue = FixedPoint.sqrt(FixedPoint.encode(tokenStaked));
         allEntities[index] = Entity(index, EntityType.FARM, block.number, landValue, _locx, _locy);
         landValueAddedAtBlock[block.number] = FixedPoint.add(landValueAddedAtBlock[block.number], landValue);
@@ -109,6 +110,7 @@ contract GameWorld is Ownable {
         uint index = _locx + _locy * map_width + map_height * map_width;
         
         // Check if message sender approved for token to be staked in the smart contract  
+        
         uint112 wallFortification = tokenStaked;
         allEntities[index] = Entity(index, EntityType.WALL, block.number, FixedPoint.encode(wallFortification), _locx, _locy);
         tokensBurntAtBlock[block.number] = tokensBurntAtBlock[block.number] + wallFortification;

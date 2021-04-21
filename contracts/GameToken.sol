@@ -1,20 +1,8 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.8.3;
 import "./libraries/SafeMath.sol";
+import "./interfaces/IERC20.sol";
 
-contract ERC20Interface {
-    function totalSupply() public view returns (uint);
-    function balanceOf(address tokenOwner) public view returns (uint balance);
-    function allowance(address tokenOwner, address spender) public view returns (uint remaining);
-    function transfer(address to, uint tokens) public returns (bool success);
-    function approve(address spender, uint tokens) public returns (bool success);
-    function transferFrom(address from, address to, uint tokens) public returns (bool success);
-
-    event Transfer(address indexed from, address indexed to, uint tokens);
-    event Approval(address indexed tokenOwner, address indexed spender, uint tokens);
-}
-
-
-contract GameToken is ERC20Interface, SafeMath {
+contract GameToken is ERC20Interface {
     string public name;
     string public symbol;
     uint8 public decimals; // 18 decimals is the strongly suggested default, avoid changing it
@@ -25,7 +13,7 @@ contract GameToken is ERC20Interface, SafeMath {
     mapping(address => mapping(address => uint)) allowed;
 
 
-    constructor() public {
+    constructor() {
         name = "ABCtoken";
         symbol = "ABC";
         decimals = 18;
@@ -35,32 +23,32 @@ contract GameToken is ERC20Interface, SafeMath {
         emit Transfer(address(0), msg.sender, _totalSupply);
     }
 
-    function totalSupply() public view returns (uint) {
+    function totalSupply() external override view returns (uint) {
         return _totalSupply - balances[address(0)];
     }
 
-    function balanceOf(address tokenOwner) public view returns (uint balance) {
+    function balanceOf(address tokenOwner) external override view returns (uint balance) {
         return balances[tokenOwner];
     }
 
-    function allowance(address tokenOwner, address spender) public view returns (uint remaining) {
+    function allowance(address tokenOwner, address spender) external override view returns (uint remaining) {
         return allowed[tokenOwner][spender];
     }
 
-    function approve(address spender, uint tokens) public returns (bool success) {
+    function approve(address spender, uint tokens) external override returns (bool success) {
         allowed[msg.sender][spender] = tokens;
         emit Approval(msg.sender, spender, tokens);
         return true;
     }
 
-    function transfer(address to, uint tokens) public returns (bool success) {
+    function transfer(address to, uint tokens) external override returns (bool success) {
         balances[msg.sender] = SafeMath.safeSub(balances[msg.sender], tokens);
         balances[to] = SafeMath.safeAdd(balances[to], tokens);
         emit Transfer(msg.sender, to, tokens);
         return true;
     }
 
-    function transferFrom(address from, address to, uint tokens) public returns (bool success) {
+    function transferFrom(address from, address to, uint tokens) external override returns (bool success) {
         balances[from] = SafeMath.safeSub(balances[from], tokens);
         allowed[from][msg.sender] = SafeMath.safeSub(allowed[from][msg.sender], tokens);
         balances[to] = SafeMath.safeAdd(balances[to], tokens);
