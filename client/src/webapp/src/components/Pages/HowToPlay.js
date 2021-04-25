@@ -1,5 +1,6 @@
 import React, { Component } from "react";
- 
+import "./Tutorial.css";
+
 class HowToPlay extends Component {
   render() {
     return (
@@ -9,5 +10,4 @@ class HowToPlay extends Component {
     );
   }
 }
- 
 export default HowToPlay;

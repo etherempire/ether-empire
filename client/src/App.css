@@ -1,15 +1,19 @@
+/*.app-container {
+  background-color: pink;
+}
+
+
 body {
-  background-color: #4a523e;
-  padding: 20px;
-  margin: 0;
+  background-color: black;
+  
 }
 h1, h2, p, ul, li {
   font-family: sans-serif;
 }
 ul.header li {
+  
   display: inline;
   list-style-type: none;
-  margin: 0;
 }
 ul.header {
   background-color: #111;
@@ -17,13 +21,14 @@ ul.header {
 }
 ul.header li a {
   color: #FFF;
+  
   font-weight: bold;
   text-decoration: none;
   padding: 20px;
   display: inline-block;
 }
 .content {
-  background-color: #FFF;
+  
   padding: 20px;
 }
 .content h2 {
@@ -35,4 +40,11 @@ ul.header li a {
 }
 .active {
   background-color: #0099FF;
+}*/
+
+
+
+.App{
+  height: 100vh;
+  background-color: black;
 }

@@ -6,10 +6,12 @@ class Game extends Component {
   render() {
     return (
       <div>
-        <GameMap/>
+        <GameMap />
       </div>
     );
   }
 }
- 
+
 export default Game;
+
+
