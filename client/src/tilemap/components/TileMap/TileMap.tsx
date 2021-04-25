@@ -21,11 +21,11 @@ export class TileMap extends React.PureComponent<Props, State> {
     initialX: 0,
     initialY: 0,
     size: 14,
+    zoom: .5,
+    minSize: 1,
+    maxSize: 100,
     width: 640,
     height: 480,
-    zoom: 1,
-    minSize: 7,
-    maxSize: 40,
     minX: -150,
     maxX: 150,
     minY: -150,
@@ -61,7 +61,9 @@ export class TileMap extends React.PureComponent<Props, State> {
       },
       size: zoom * size,
       zoom,
-      popup: null
+      popup: null,
+      windowWidth: 0,
+      windowHeight: 0
     }
     this.state = this.generateState(props, initialState)
     this.oldState = this.state
@@ -135,13 +137,15 @@ export class TileMap extends React.PureComponent<Props, State> {
 
     if (this.canvas) {
       if (isDraggable) {
-        this.destroy = panzoom(this.canvas, this.handlePanZoom)
+        this.destroy = panzoom(this.canvas, this.handlePanZoom, (e:MouseEvent) => e.shiftKey)
       }
       this.canvas.addEventListener('click', this.handleClick)
       this.canvas.addEventListener('mousedown', this.handleMouseDown)
       this.canvas.addEventListener('mousemove', this.handleMouseMove)
       this.canvas.addEventListener('mouseout', this.handleMouseOut)
+      window.addEventListener('resize', this.handleResize)
     }
+    
     this.mounted = true
   }
 
@@ -160,10 +164,10 @@ export class TileMap extends React.PureComponent<Props, State> {
 
   generateState(
     props: { width: number; height: number; padding: number },
-    state: { pan: Coord; center: Coord; zoom: number; size: number }
+    state: { pan: Coord; center: Coord; zoom: number; size: number, windowWidth: number, windowHeight: number}
   ): State {
     const { width, height, padding } = props
-    const { pan, zoom, center, size } = state
+    const { pan, zoom, center, size, windowWidth, windowHeight} = state
     const viewport = getViewport({
       width,
       height,
@@ -172,7 +176,15 @@ export class TileMap extends React.PureComponent<Props, State> {
       size,
       padding
     })
-    return { ...viewport, pan, zoom, center, size }
+    return { ...viewport, pan, zoom, center, size, windowWidth, windowHeight}
+  }
+
+  handleResize = () => {
+    console.log("here")
+    this.setState({width: .8*window.innerWidth})
+    this.debouncedHandleChange()
+    this.renderMap()
+    this.debouncedUpdateCenter()
   }
 
   handleChange() {
@@ -195,7 +207,7 @@ export class TileMap extends React.PureComponent<Props, State> {
     const newPan = { x: pan.x - dx, y: pan.y - dy }
     const newZoom = Math.max(
       minZoom,
-      Math.min(maxZoom, zoom - dz * this.getDzZoomModifier())
+      Math.min(maxZoom, zoom * Math.exp(-dz * this.getDzZoomModifier()))
     )
     const newSize = newZoom * size
 
@@ -241,24 +253,22 @@ export class TileMap extends React.PureComponent<Props, State> {
   }
 
   mouseToCoords(x: number, y: number) {
+    
     const { padding } = this.props
     const { size, pan, center, width, height } = this.state
-
     const panOffset = { x: (x + pan.x) / size, y: (y + pan.y) / size }
-
     const viewportOffset = {
       x: (width - padding - 0.5) / 2 - center.x,
       y: (height - padding) / 2 + center.y
     }
-
-    const coordX = Math.round(panOffset.x - viewportOffset.x)
-    const coordY = Math.round(viewportOffset.y - panOffset.y)
+    const coordX = Math.round(panOffset.x - viewportOffset.x -.3) //- .3 is temp fix for mysterious issue #hackathon
+    const coordY = Math.round(viewportOffset.y - panOffset.y -.3)
 
     return [coordX, coordY]
   }
 
   handleClick = (event: MouseEvent) => {
-    const [x, y] = this.mouseToCoords(event.clientX, event.clientY)
+    const [x, y] = this.mouseToCoords(event.offsetX, event.offsetY)
     if (!this.inBounds(x, y)) {
       return
     }
@@ -267,7 +277,7 @@ export class TileMap extends React.PureComponent<Props, State> {
     if (onClick) {
       const elapsed = Date.now() - this.mousedownTimestamp!
       if (elapsed < 200) {
-        onClick(x, y)
+        onClick(x, y, event.ctrlKey, event.shiftKey)
         this.renderMap()
       }
     }
@@ -281,7 +291,7 @@ export class TileMap extends React.PureComponent<Props, State> {
     const { onMouseDown } = this.props
     this.mousedownTimestamp = Date.now()
     if (onMouseDown) {
-      const [x, y] = this.mouseToCoords(event.clientX, event.clientY)
+      const [x, y] = this.mouseToCoords(event.offsetX, event.offsetY)
       if (!this.inBounds(x, y)) {
         return
       }
@@ -291,8 +301,8 @@ export class TileMap extends React.PureComponent<Props, State> {
   }
 
   handleMouseMove = (event: MouseEvent) => {
-    const { clientX, clientY } = event
-    const [x, y] = this.mouseToCoords(clientX, clientY)
+    const { pageX, pageY } = event
+    const [x, y] = this.mouseToCoords(pageX, pageY)
     if (!this.inBounds(x, y)) {
       this.hidePopup()
       return
@@ -300,7 +310,7 @@ export class TileMap extends React.PureComponent<Props, State> {
 
     if (!this.hover || this.hover.x !== x || this.hover.y !== y) {
       this.hover = { x, y }
-      this.showPopup(x, y, clientY, clientX)
+      this.showPopup(x, y, pageY, pageX)
     }
   }
 
@@ -413,7 +423,7 @@ export class TileMap extends React.PureComponent<Props, State> {
   }
 
   getDzZoomModifier() {
-    return this.isMobile() ? 0.005 : 0.01
+    return this.isMobile() ? 0.005 : 0.004
   }
 
   isMobile() {

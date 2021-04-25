@@ -42,7 +42,7 @@ export type Props = {
   /** callbacks */
   onMouseDown?: (x: number, y: number) => void
   onMouseUp?: (x: number, y: number) => void
-  onClick?: (x: number, y: number) => void
+  onClick?: (x: number, y: number, ctrlKey: boolean, shiftKey: boolean) => void
   onHover?: (x: number, y: number) => void
   onPopup?: (args: {
     x: number
@@ -62,6 +62,8 @@ export type State = Viewport & {
   zoom: number
   size: number
   popup?: Popup
+  windowWidth: number
+  windowHeight: number
 }
 
 export type Popup = {

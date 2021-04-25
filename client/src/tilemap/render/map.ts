@@ -1,5 +1,20 @@
 import { renderTile } from './tile'
 import { Coord, Layer } from '../lib/common'
+import { gameSize } from '../../webapp/src/constants/Constants'
+
+var hexToRgbaLookup = new Map()
+function hexToRgba(hex: string) {
+  if (hex in hexToRgbaLookup){
+    return hexToRgbaLookup.get(hex)
+  }else{
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    var rgba = result ? [parseInt(result[1], 16),parseInt(result[2], 16),parseInt(result[3], 16),255]: [0,0,0,0];
+    hexToRgbaLookup.set(hex,rgba)
+    return rgba
+  }
+}
+
+const miniMap = new Uint8ClampedArray(4*gameSize*gameSize);
 
 export function renderMap(args: {
   ctx: CanvasRenderingContext2D
@@ -14,14 +29,15 @@ export function renderMap(args: {
 }) {
   const { ctx, width, height, size, pan, nw, se, center, layers } = args
 
-  ctx.clearRect(0, 0, width, height)
+  ctx.fillStyle = "#000000" //black background
+  ctx.fillRect(0, 0, width, height)
 
   const halfWidth = width / 2
   const halfHeight = height / 2
 
   for (const layer of layers) {
-    for (let x = nw.x; x < se.x; x++) {
-      for (let y = se.y; y < nw.y; y++) {
+    for (let x = Math.max(nw.x,-gameSize/2); x < Math.min(se.x,gameSize/2); x++) {
+      for (let y = Math.max(se.y,-gameSize/2); y < Math.min(nw.y,gameSize/2); y++) {
         const offsetX = (center.x - x) * size + (pan ? pan.x : 0)
         const offsetY = (y - center.y) * size + (pan ? pan.y : 0)
 
@@ -31,22 +47,48 @@ export function renderMap(args: {
         }
         const { color, top, left, topLeft, scale } = tile
 
-        const halfSize = scale ? (size * scale) / 2 : size / 2
+        //update miniMap
+        const relX = x+gameSize/2
+        const relY = y+gameSize/2
+        const startIndex = 4*(relY*gameSize+relX)
+        const rgba = hexToRgba(color)
+        for(let i = 0; i<4; i++){
+          miniMap[startIndex+i]=rgba[i]
+        }
 
-        renderTile({
-          ctx,
-          x: halfWidth - offsetX + halfSize,
-          y: halfHeight - offsetY + halfSize,
-          size,
-          padding: size < 12 ? 0 : size < 18 ? .5 : 1,
-          offset: 1,
-          color,
-          left,
-          top,
-          topLeft,
-          scale
-        })
+        //do not render rects if size<=1
+        if (size>1){
+
+          const halfSize = scale ? (size * scale) / 2 : size / 2
+
+          renderTile({
+            ctx,
+            x: halfWidth - offsetX + halfSize,
+            y: halfHeight - offsetY + halfSize,
+            size,
+            padding: size<10?0 : size<15?.2 : size<20?.3 : size<25?.4 : size<30?.5 : 1,
+            offset: 1,
+            color,
+            left,
+            top,
+            topLeft,
+            scale: size<10? Math.max(1.1,scale ? scale : 1) : scale
+          })
+
+        }
       }
     }
   }
+
+  
+  //render saved miniMap if size <= 1
+  if (size<=1){
+      let imageData = new ImageData(miniMap, gameSize);
+      const offsetX = (center.x) + (pan ? pan.x : 0)
+      const offsetY = (-center.y) + (pan ? pan.y : 0)
+      ctx.putImageData(imageData, halfWidth - offsetX - gameSize/2, halfHeight - offsetY - gameSize/2);
+  }
+
+
+
 }

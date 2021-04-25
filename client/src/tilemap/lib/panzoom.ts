@@ -23,7 +23,9 @@ type PanZoomEvent = {
   y0: number
 }
 
-export function panzoom(target: HTMLElement, cb: (e: PanZoomEvent) => void) {
+export function panzoom(target: HTMLElement, 
+  cb: (e: PanZoomEvent) => void, 
+  beforeMouseDown: (e: MouseEvent) => boolean = (_) => false ) {
   //enable panning
   let pos = position.emitter({
     element: target
@@ -33,10 +35,13 @@ export function panzoom(target: HTMLElement, cb: (e: PanZoomEvent) => void) {
   let initY = 0
   let init = true
 
-  const initListener = () => (init = true)
+  let shouldPan = true
 
-  target.addEventListener('mousedown', initListener)
-  target.addEventListener('touchstart', initListener)
+  const touchInitListener = () => (init = true)
+  const mouseInitListener = (e: MouseEvent) => {init = true; shouldPan = !beforeMouseDown(e)}
+
+  target.addEventListener('mousedown', mouseInitListener)
+  target.addEventListener('touchstart', touchInitListener)
 
   let lastY = 0
   let lastX = 0
@@ -49,11 +54,18 @@ export function panzoom(target: HTMLElement, cb: (e: PanZoomEvent) => void) {
         initY = pos[1]
       }
 
+      var dx = 0
+      var dy = 0
+      if (shouldPan){
+        dx = x - lastX
+        dy = y - lastY
+      }
+
       let e: PanZoomEvent = {
         target,
         type: 'mouse',
-        dx: x - lastX,
-        dy: y - lastY,
+        dx: dx,
+        dy: dy,
         dz: 0,
         x: pos[0],
         y: pos[1],
@@ -63,6 +75,7 @@ export function panzoom(target: HTMLElement, cb: (e: PanZoomEvent) => void) {
 
       lastX = x
       lastY = y
+
       cb(e)
     },
     multiplier: 1,
@@ -128,7 +141,7 @@ export function panzoom(target: HTMLElement, cb: (e: PanZoomEvent) => void) {
     pos.dispose()
     pinch.removeAllListeners()
     target.removeEventListener('wheel', wheelListener)
-    target.removeEventListener('mousedown', initListener)
-    target.removeEventListener('touchstart', initListener)
+    target.removeEventListener('mousedown', mouseInitListener)
+    target.removeEventListener('touchstart', touchInitListener)
   }
 }
