@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import GameMap from "../../../../tilemap/components/GameMap/GameMap"
-<<<<<<< HEAD
-
-=======
 import Editor from "../GameUI/Editor"
 import { gameSize } from "../../constants/Constants"
 
@@ -10,7 +7,6 @@ import { gameSize } from "../../constants/Constants"
 function uniform(r,c,v) {
   return Array.from(Array(r), _ => Array(c).fill(v));
 }
->>>>>>> 44180aa (week 1 demo)
 
 class Game extends Component {
   state = {
@@ -45,16 +41,11 @@ class Game extends Component {
   render() {
     const { dimensions } = this.state;
     return (
-<<<<<<< HEAD
-      <div>
-        <GameMap />
-=======
       <div className='rowC'>
         <div className="item" ref={el => (this.container = el)}>
           <GameMap onClick={this.onClick} atlas={this.atlas} width={dimensions.width} height={725}/>
         </div>
         <Editor ref={this.editorElement} atlas={this.atlas} updateParent={()=>{this.forceUpdate()}}/>
->>>>>>> 44180aa (week 1 demo)
       </div>
     );
   }
