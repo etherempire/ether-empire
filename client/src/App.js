@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import getWeb3 from "./getWeb3";
+import Main from "./webapp/src/components/Pages/Main";
 
 import "./App.css";
 import "./contracts/GameWorld.json";
@@ -61,8 +62,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <h1>Good to Go!</h1>
-        <p>Your Truffle Box is installed and ready.</p>
+        <Main/>
       </div>
     );
   }
