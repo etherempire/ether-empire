@@ -35,6 +35,7 @@ contract GameToken is ERC20Interface {
         return allowed[tokenOwner][spender];
     }
 
+    // promise to pay 
     function approve(address spender, uint tokens) external override returns (bool success) {
         allowed[msg.sender][spender] = tokens;
         emit Approval(msg.sender, spender, tokens);
@@ -47,7 +48,8 @@ contract GameToken is ERC20Interface {
         emit Transfer(msg.sender, to, tokens);
         return true;
     }
-
+    
+    // take money from
     function transferFrom(address from, address to, uint tokens) external override returns (bool success) {
         balances[from] = SafeMath.safeSub(balances[from], tokens);
         allowed[from][msg.sender] = SafeMath.safeSub(allowed[from][msg.sender], tokens);
