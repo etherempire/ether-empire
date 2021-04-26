@@ -17,18 +17,14 @@ class App extends Component {
       const accounts = await web3.eth.getAccounts();
 
       // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
-      const deployedNetwork = SimpleStorageContract.networks[networkId];
+      // const networkId = await web3.eth.net.getId();
+      // const deployedNetwork = SimpleStorageContract.networks[networkId];
 
-      // This is a JS interface that makes it easy to talk to a smart contract 
-      const instance = new web3.eth.Contract(
-        GameWorld.abi,
-        deployedNetwork && deployedNetwork.address,
-      );
-
-      const val = await instance.allEntities.call(0); // readonly call - no gas involved 
-
-      instance.buildFarm(0,0,10).send({from: accounts[0]}); 
+      // // This is a JS interface that makes it easy to talk to a smart contract 
+      // const instance = new web3.eth.Contract(
+      //   GameWorld.abi,
+      //   deployedNetwork && deployedNetwork.address,
+      // );
       
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
