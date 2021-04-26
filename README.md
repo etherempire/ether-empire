@@ -11,12 +11,15 @@ This app can be hosted locally using Node.js, Truffle and Ganache. The installat
 4. Add Metamask extension to your browser of choice (Chrome, Brave, Edge, Firefox)
 
 ### Hosting a local server 
-1. To host a local blockchain, Run Ganache -> Create a new workspace -> Server -> change port to 8545 -> Save workspace.
-2. Navigate to project folder in console and deploy the smart contracts with the commands:
+1. Ensure that all npm packages are installed. 
+   navigate to [project folder]/, and run ```npm install``` 
+   navigate to [project folder]/client, and run ```npm install``` 
+2. To host a local blockchain, Run Ganache -> Create a new workspace -> Server -> change port to 8545 -> Save workspace.
+3. Navigate to project folder in console and deploy the smart contracts with the commands:
 ```truffle migrate --reset```
-3.  To host the web app locally, navigate to [project folder]/client/, and run the following commands:
+4.  To host the web app locally, navigate to [project folder]/client/, and run the following commands:
 ```npm run start```
-4. The web app should now be available at http://localhost:8080/ on your browser.
+5. The web app should now be available at http://localhost:8080/ on your browser.
 
 ### Interacting with local server
 To connect your simulated wallet on Ganache with the webapp, first run Ganache with the configured settings, then do the following:
