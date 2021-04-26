@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import getWeb3 from "./getWeb3";
 import Main from "./webapp/src/components/Pages/Main";
-
 import "./App.css";
 
 class App extends Component {
@@ -55,7 +54,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Main/>
+        <Main />
       </div>
     );
   }

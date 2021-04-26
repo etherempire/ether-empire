@@ -23,8 +23,10 @@ import Home from "./Home";
 import Game from "./Game";
 import HowToPlay from "./HowToPlay";
 import GetInvolved from "./GetInvolved";
-import logo from "./ether-empire-logo.png";
-import "./Main.css";
+import logo from "../Images/ether-empire-logo.png";
+import "../CSS/Main.css";
+
+/* Navigation bar */
 
 const Main = (props) => {
   const [isOpen, setIsOpen] = useState(false);

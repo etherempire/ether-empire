@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Tutorial.css";
+import "../CSS/Tutorial.css";
 
 class HowToPlay extends Component {
   render() {

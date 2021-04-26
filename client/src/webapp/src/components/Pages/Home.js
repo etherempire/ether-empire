@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./Home.css";
-import logoAnimation from "./ether-empire-logo.mp4";
+import "../CSS/Home.css";
+import logoAnimation from "../Images/ether-empire-logo.mp4";
 import { Button } from 'reactstrap';
 
 
