@@ -1,7 +1,23 @@
 # Ether Empire 
-Scaling Ethereum crypto game entry.
+> Ether Empire is an Ethereum native territorial conquest game that combines smart contract functionality with tokenomics to provide yield farming, complex diplomacy and strategic gameplay. 
 
-## Setup
+# Highlights 
+> The Stack
+- Reactjs (Frontedn)
+- Web3js 
+- SKALE (Layer 2 solution) 
+- Truffle (Smart contract testing and deployment) 
+
+> Completed 
+- Basic frontend 
+- Functional homepage
+- `WorldState.sol` World state smart contract 
+
+> In Progress
+- `Trading.sol` In-game transactions 
+- `WalletConnect` implementation 
+
+# Installation
 ### Pre-requisites 
 This app can be hosted locally using Node.js, Truffle and Ganache. The installation steps are as follows:
 1. Download and install Node.js https://nodejs.org/en/
@@ -13,6 +29,7 @@ This app can be hosted locally using Node.js, Truffle and Ganache. The installat
 ### Hosting a local server 
 1. Ensure that all npm packages are installed. 
    navigate to [project folder]/, and run ```npm install``` 
+   
    navigate to [project folder]/client, and run ```npm install``` 
 2. To host a local blockchain, Run Ganache -> Create a new workspace -> Server -> change port to 8545 -> Save workspace.
 3. Navigate to project folder in console and deploy the smart contracts with the commands:
