@@ -15,3 +15,7 @@
   padding: 0px;
   color: white;
 }
+.infoText {
+  word-wrap: break-word;
+  white-space: normal
+}

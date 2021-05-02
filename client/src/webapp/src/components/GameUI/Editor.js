@@ -32,8 +32,8 @@ class Editor extends Component {
 
         //button "Build" -> popup "Are you sure?" -> 
 
-        const posX = this.state.info.x+this.state.gameWidth/2
-        const posY = this.state.info.y+this.state.gameHeight/2
+        const posX = this.state.info.x
+        const posY = this.state.info.y
         console.log("creating wall at "+posX+","+posY)
         
         this.instance.methods.buildWall(posX,posY,userInputedStakeAmount).send({from: this.accounts[0], gasLimit: 100000})
@@ -54,8 +54,8 @@ class Editor extends Component {
         const userInputedStakeAmount = 100
 
         //button "Build" -> popup "Are you sure?" -> 
-        const posX = this.state.info.x+this.state.gameWidth/2
-        const posY = this.state.info.y+this.state.gameHeight/2
+        const posX = this.state.info.x
+        const posY = this.state.info.y
 
         this.instance.methods.buildFarm(posX,posY,userInputedStakeAmount).send({from: this.accounts[0], gasLimit: 100000})
             .on('error', (error)=> {console.log('Error Submitting Task: ',error)}) //error should be indicated to user
@@ -76,8 +76,8 @@ class Editor extends Component {
         const userInputedStakeAmount = 100
 
         //button "Build" -> popup "Are you sure?" -> 
-        const posX = this.state.info.x+this.state.gameWidth/2
-        const posY = this.state.info.y+this.state.gameHeight/2
+        const posX = this.state.info.x
+        const posY = this.state.info.y
 
         /*
         this.instance.methods.buildArmy(posX,posY,userInputedStakeAmount).send({from: this.accounts[0], gasLimit: 100000})
@@ -141,15 +141,15 @@ class Editor extends Component {
             Divest Farm
           </Button>
 
-          <div>
+          <div className="infoText">
               <p>Tile Coords: ({this.state.info.x},{this.state.info.y})</p>
               <p>Tile Type: {this.state.info.tileType()}</p>
               <p>{this.state.info.value ? "Tile Value: "+this.state.info.value : null}</p>
-              <p>{this.state.info.owner ? "Tile Owner: "+this.state.info.owner : null}</p>
+              <p align="left">{this.state.info.owner ? "Tile Owner: "+this.state.info.owner : null}</p>
 
 
               <p>{this.state.info.armyValue ? "Army Value: "+this.state.info.armyValue : null}</p>
-              <p>{this.state.info.armyOwner ? "Army Owner: "+this.state.info.armyOwner : null}</p>
+              <p align="left">{this.state.info.armyOwner ? "Army Owner: "+this.state.info.armyOwner : null}</p>
 
           </div>
 
