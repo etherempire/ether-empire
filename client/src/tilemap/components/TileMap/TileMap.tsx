@@ -21,9 +21,9 @@ export class TileMap extends React.PureComponent<Props, State> {
     initialX: 0,
     initialY: 0,
     size: 14,
-    zoom: .5,
+    zoom: 1,
     minSize: 1,
-    maxSize: 100,
+    maxSize: 1000,
     width: 640,
     height: 480,
     minX: -150,
@@ -32,7 +32,7 @@ export class TileMap extends React.PureComponent<Props, State> {
     maxY: 150,
     panX: 0,
     panY: 0,
-    padding: 4,
+    padding: 0,
     isDraggable: true,
     renderMap: renderMap
   }
@@ -253,16 +253,18 @@ export class TileMap extends React.PureComponent<Props, State> {
   }
 
   mouseToCoords(x: number, y: number) {
-    
     const { padding } = this.props
     const { size, pan, center, width, height } = this.state
+
     const panOffset = { x: (x + pan.x) / size, y: (y + pan.y) / size }
+
     const viewportOffset = {
       x: (width - padding - 0.5) / 2 - center.x,
-      y: (height - padding) / 2 + center.y
+      y: (height - padding - 0.5) / 2 + center.y
     }
-    const coordX = Math.round(panOffset.x - viewportOffset.x -.3) //- .3 is temp fix for mysterious issue #hackathon
-    const coordY = Math.round(viewportOffset.y - panOffset.y -.3)
+
+    const coordX = Math.round(panOffset.x - viewportOffset.x)
+    const coordY = Math.round(viewportOffset.y - panOffset.y)
 
     return [coordX, coordY]
   }
@@ -391,7 +393,7 @@ export class TileMap extends React.PureComponent<Props, State> {
       return
     }
 
-    const { width, height, layers, renderMap } = this.props
+    const { width, height, layers, gameWidth, gameHeight, renderMap } = this.props
     const { nw, se, pan, size, center } = this.state
     const ctx = this.canvas.getContext('2d')!
 
@@ -399,6 +401,8 @@ export class TileMap extends React.PureComponent<Props, State> {
       ctx,
       width,
       height,
+      gameWidth,
+      gameHeight,
       size,
       pan,
       nw,

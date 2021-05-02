@@ -20,6 +20,9 @@ export type Props = {
   width: number
   /** height of the canvas in pixels */
   height: number
+
+  gameWidth: number
+  gameHeight: number
   /** zoom level of the map, this changes in the end the size on which parcels are rendered, i.e: size=10 and zoom=0.5 makes each parcel of 5x5 pixels */
   zoom: number
   /** min and max values for x and y (ie. the map boundaries) */
@@ -78,6 +81,8 @@ export type MapRenderer = (args: {
   ctx: CanvasRenderingContext2D
   width: number
   height: number
+  gameWidth: number
+  gameHeight: number
   size: number
   pan: Coord
   nw: Coord

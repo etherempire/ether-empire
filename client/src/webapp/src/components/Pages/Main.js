@@ -69,10 +69,10 @@ const Main = (props) => {
             </Navbar>
           </div>
         </div>
-        <div>
+        <div  className="content">
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/game" component={Game} />
+            <Route path="/game" component={() => <Game web3={props.web3}/>} />
             <Route path="/how-to-play" component={HowToPlay} />
             <Route path="/get-involved" component={GetInvolved} />
           </Switch>

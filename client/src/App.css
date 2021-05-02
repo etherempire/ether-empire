@@ -11,3 +11,7 @@
 .item {
   flex-grow: 1;
 }
+.content {
+  padding: 0px;
+  color: white;
+}

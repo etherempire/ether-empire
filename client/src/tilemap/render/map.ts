@@ -1,6 +1,5 @@
 import { renderTile } from './tile'
 import { Coord, Layer } from '../lib/common'
-import { gameSize } from '../../webapp/src/constants/Constants'
 
 var hexToRgbaLookup = new Map()
 function hexToRgba(hex: string) {
@@ -14,12 +13,12 @@ function hexToRgba(hex: string) {
   }
 }
 
-const miniMap = new Uint8ClampedArray(4*gameSize*gameSize);
-
 export function renderMap(args: {
   ctx: CanvasRenderingContext2D
   width: number
   height: number
+  gameWidth: number
+  gameHeight: number
   size: number
   pan: Coord
   nw: Coord
@@ -27,7 +26,7 @@ export function renderMap(args: {
   center: Coord
   layers: Layer[]
 }) {
-  const { ctx, width, height, size, pan, nw, se, center, layers } = args
+  const { ctx, width, height, gameWidth, gameHeight, size, pan, nw, se, center, layers } = args
 
   ctx.fillStyle = "#000000" //black background
   ctx.fillRect(0, 0, width, height)
@@ -35,9 +34,11 @@ export function renderMap(args: {
   const halfWidth = width / 2
   const halfHeight = height / 2
 
+  const miniMap = new Uint8ClampedArray(4*gameWidth*gameHeight);
+
   for (const layer of layers) {
-    for (let x = Math.max(nw.x,-gameSize/2); x < Math.min(se.x,gameSize/2); x++) {
-      for (let y = Math.max(se.y,-gameSize/2); y < Math.min(nw.y,gameSize/2); y++) {
+    for (let x = Math.max(nw.x,-gameWidth/2); x < Math.min(se.x,gameWidth/2); x++) {
+      for (let y = Math.max(se.y,-gameHeight/2); y < Math.min(nw.y,gameHeight/2); y++) {
         const offsetX = (center.x - x) * size + (pan ? pan.x : 0)
         const offsetY = (y - center.y) * size + (pan ? pan.y : 0)
 
@@ -48,9 +49,9 @@ export function renderMap(args: {
         const { color, top, left, topLeft, scale } = tile
 
         //update miniMap
-        const relX = x+gameSize/2
-        const relY = y+gameSize/2
-        const startIndex = 4*(relY*gameSize+relX)
+        const relX = x+gameWidth/2
+        const relY = y+gameHeight/2
+        const startIndex = 4*(relY*gameWidth+relX)
         const rgba = hexToRgba(color)
         for(let i = 0; i<4; i++){
           miniMap[startIndex+i]=rgba[i]
@@ -80,15 +81,11 @@ export function renderMap(args: {
     }
   }
 
-  
   //render saved miniMap if size <= 1
   if (size<=1){
-      let imageData = new ImageData(miniMap, gameSize);
+      let imageData = new ImageData(miniMap, gameWidth, gameHeight);
       const offsetX = (center.x) + (pan ? pan.x : 0)
       const offsetY = (-center.y) + (pan ? pan.y : 0)
-      ctx.putImageData(imageData, halfWidth - offsetX - gameSize/2, halfHeight - offsetY - gameSize/2);
+      ctx.putImageData(imageData, halfWidth - offsetX - gameWidth/2, halfHeight - offsetY - gameHeight/2);
   }
-
-
-
 }

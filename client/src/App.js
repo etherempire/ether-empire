@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import getWeb3 from "./getWeb3";
 import Main from "./webapp/src/components/Pages/Main";
+import GameWorldContract from "./contracts/GameWorld.json"
+
 import "./App.css";
 
 class App extends Component {
-  state = { web3: null, accounts: null };
+  state = { web3: null, accounts: null, instance: null };
 
   componentDidMount = async () => {
     try {
@@ -16,15 +18,15 @@ class App extends Component {
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
-      // const deployedNetwork = SimpleStorageContract.networks[networkId];
-      // const instance = new web3.eth.Contract(
-      //   SimpleStorageContract.abi,
-      //   deployedNetwork && deployedNetwork.address,
-      // );
+      const deployedNetwork = GameWorldContract.networks[networkId];
+      const instance = new web3.eth.Contract(
+         GameWorldContract.abi,
+         deployedNetwork && deployedNetwork.address,
+      );
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts }, this.runExample);
+      this.setState({ web3, accounts, instance}, this.runExample);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -54,7 +56,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Main />
+        <Main web3={this.state}/>
       </div>
     );
   }

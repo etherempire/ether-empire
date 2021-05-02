@@ -4,7 +4,7 @@ import "../CSS/Tutorial.css";
 class HowToPlay extends Component {
   render() {
     return (
-      <div>
+      <div className="content">
         <h2>GETTING STARTED</h2>
       </div>
     );
