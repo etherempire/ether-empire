@@ -13,15 +13,15 @@ class Game extends Component {
     gameHeight: null
   };
 
-  
+
 
   constructor(props) {
     super(props);
 
     console.log("Starting game page construction")
-    
+
     this.editorElement = React.createRef();
-    
+
 
     this.accounts = props.web3.accounts
     this.instance = props.web3.instance
@@ -33,8 +33,8 @@ class Game extends Component {
     this.editorElement.current.setTileInfo(info)
   }
 
-  updateGameSize = (width,height) => {
-    this.editorElement.current.setGameSize(width,height)
+  updateGameSize = (width, height) => {
+    this.editorElement.current.setGameSize(width, height)
   }
 
   componentDidMount() {
@@ -46,24 +46,24 @@ class Game extends Component {
       },
     });
   }
-  
+
   render() {
     const { dimensions } = this.state;
     console.log("rendering game")
     return (
       <div className='rowC'>
         <div className="item" ref={el => (this.container = el)}>
-          <GameMap 
+          <GameMap
             updateInfo={this.updateInfo}
             updateGameSize={this.updateGameSize}
-            atlas={this.atlas} 
-            width={dimensions.width} 
-            web3={this.props.web3} 
+            atlas={this.atlas}
+            width={dimensions.width}
+            web3={this.props.web3}
             height={725}
-            updateParent={()=>{this.forceUpdate()}}
-            />
+            updateParent={() => { this.forceUpdate() }}
+          />
         </div>
-        <Editor ref={this.editorElement} updateParent={()=>{this.forceUpdate()}} web3={this.props.web3} />
+        <Editor ref={this.editorElement} updateParent={() => { this.forceUpdate() }} web3={this.props.web3} />
       </div>
     );
   }

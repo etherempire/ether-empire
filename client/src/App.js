@@ -15,18 +15,19 @@ class App extends Component {
 
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
+      console.log("app", accounts)
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = GameWorldContract.networks[networkId];
       const instance = new web3.eth.Contract(
-         GameWorldContract.abi,
-         deployedNetwork && deployedNetwork.address,
+        GameWorldContract.abi,
+        deployedNetwork && deployedNetwork.address,
       );
 
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, instance}, this.runExample);
+      this.setState({ web3, accounts, instance }, this.runExample);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -50,13 +51,15 @@ class App extends Component {
     // this.setState({ storageValue: response });
   };
 
+
   render() {
+    /*
     if (!this.state.web3) {
       return <div>Loading Web3, accounts, and contract...</div>;
-    }
+    }*/
     return (
       <div className="App">
-        <Main web3={this.state}/>
+        <Main web3={this.state} />
       </div>
     );
   }
