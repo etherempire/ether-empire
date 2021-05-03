@@ -1,0 +1,26 @@
+{
+  "name": "ether-empire",
+  "version": "1.0.0",
+  "description": "Scaling Ethereum crypto game entry.",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinhongkuan/ether-empire.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinhongkuan/ether-empire/issues"
+  },
+  "homepage": "https://github.com/jinhongkuan/ether-empire#readme"
+}

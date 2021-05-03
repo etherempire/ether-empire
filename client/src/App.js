@@ -3,6 +3,7 @@ import getWeb3 from "./getWeb3";
 import Main from "./webapp/src/components/Pages/Main";
 
 import "./App.css";
+import "./contracts/GameWorld.json";
 
 class App extends Component {
   state = { web3: null, accounts: null };
@@ -16,13 +17,15 @@ class App extends Component {
       const accounts = await web3.eth.getAccounts();
 
       // Get the contract instance.
-      const networkId = await web3.eth.net.getId();
+      // const networkId = await web3.eth.net.getId();
       // const deployedNetwork = SimpleStorageContract.networks[networkId];
+
+      // // This is a JS interface that makes it easy to talk to a smart contract 
       // const instance = new web3.eth.Contract(
-      //   SimpleStorageContract.abi,
+      //   GameWorld.abi,
       //   deployedNetwork && deployedNetwork.address,
       // );
-
+      
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
       this.setState({ web3, accounts }, this.runExample);

@@ -2,7 +2,7 @@ pragma solidity ^0.8.3;
 import "./libraries/SafeMath.sol";
 import "./interfaces/IERC20.sol";
 
-contract GameToken is ERC20Interface {
+contract EtherEmpireToken is ERC20Interface {
     string public name;
     string public symbol;
     uint8 public decimals; // 18 decimals is the strongly suggested default, avoid changing it
@@ -16,8 +16,8 @@ contract GameToken is ERC20Interface {
     constructor() {
         name = "ABCtoken";
         symbol = "ABC";
-        decimals = 18;
-        _totalSupply = 100000000000000000000000000;
+        decimals = 4; // needs further work
+        _totalSupply = 1000000000;
 
         balances[msg.sender] = _totalSupply;
         emit Transfer(address(0), msg.sender, _totalSupply);
@@ -35,6 +35,7 @@ contract GameToken is ERC20Interface {
         return allowed[tokenOwner][spender];
     }
 
+    // promise to pay 
     function approve(address spender, uint tokens) external override returns (bool success) {
         allowed[msg.sender][spender] = tokens;
         emit Approval(msg.sender, spender, tokens);
@@ -42,16 +43,17 @@ contract GameToken is ERC20Interface {
     }
 
     function transfer(address to, uint tokens) external override returns (bool success) {
-        balances[msg.sender] = SafeMath.safeSub(balances[msg.sender], tokens);
-        balances[to] = SafeMath.safeAdd(balances[to], tokens);
+        balances[msg.sender] -= tokens;
+        balances[to] += tokens;
         emit Transfer(msg.sender, to, tokens);
         return true;
     }
-
+    
+    // take money from
     function transferFrom(address from, address to, uint tokens) external override returns (bool success) {
-        balances[from] = SafeMath.safeSub(balances[from], tokens);
-        allowed[from][msg.sender] = SafeMath.safeSub(allowed[from][msg.sender], tokens);
-        balances[to] = SafeMath.safeAdd(balances[to], tokens);
+        balances[from] -= tokens;
+        allowed[from][msg.sender] -= tokens;
+        balances[to] += tokens;
         emit Transfer(from, to, tokens);
         return true;
     }
