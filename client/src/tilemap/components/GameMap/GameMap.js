@@ -6,8 +6,8 @@ import { Component } from 'react'
 
 import { Atlas } from "../../../webapp/src/components/TileInfo/Atlas"
 
-const selected = []
-const selectedColor = "#FFFFFF80" //white highlight
+var selected = new Set([]) // set of coords
+const selectedColor = "#FFFF00" //yellow
 const unloadedColor = "#FF00FF" //magneta
 const outOfBoundsColor = "#000000" //black
 
@@ -35,32 +35,89 @@ class GameMap extends Component {
 
   }
 
-  isSelected = (x, y) => {
-    return selected.some(coord => coord.x === x && coord.y === y)
-  }
-
-  selectedLayer = (x, y) => {
-    if (this.isSelected(x, y)) {
-      return { color: selectedColor, scale: 1.2 }
-    } else {
-      return null
-    }
-  }
-
-  isInBounds = (x, y) => {
-    return (x >= -(this.gameWidth / 2) && x < (this.gameWidth / 2) && y >= -(this.gameHeight / 2) && y < (this.gameHeight / 2))
-  }
-
   select = (x, y) => {
-    if (this.isInBounds(x, y)) {
-      selected.push({ x, y })
-
-      this.updateInfo(this.state.atlas.info(x + this.gameWidth / 2, y + this.gameHeight / 2))
+    if (this.isInBounds(x,y)){
+      selected.add(`${x}_${y}`);      
+      this.updateInfo(this.state.atlas.info(x+this.gameWidth/2,y+this.gameHeight/2))
     }
+  }
+
+  unselect = (x,y) => {
+    selected.delete(`${x}_${y}`)
   }
 
   unselectAll = () => {
-    selected.length = 0
+    selected.clear()
+  }
+
+  isSelected = (x, y) => {
+    return selected.has(`${x}_${y}`)
+  }
+
+  isInBounds = (x, y) => {
+    return (x >= -(this.gameWidth/2) && x<(this.gameWidth/2) && y >= -(this.gameHeight/2) && y<(this.gameHeight/2))
+  }
+
+  toggleSelection = (x, y) => {
+    if (this.isSelected(x,y)){
+      this.unselect(x,y)
+    }else{
+      this.select(x,y)
+    }
+  }
+
+  selectRange = (x1, y1, x2, y2) => {
+    if (this.isInBounds(x1,y1) && this.isInBounds(x2,y2)){
+
+      var x
+      var y
+      for(x=Math.min(x1,x2);x<=Math.max(x1,x2);x++){
+        for(y=Math.min(y1,y2);y<=Math.max(y1,y2);y++){
+          this.select(x,y)
+        }
+      }
+    }
+  }
+
+  
+
+  selectedLayer = (x, y) => {
+      const isSelected = this.isSelected(x,y)
+      return  {
+        color: isSelected ? "#ffffff30":"#00000000", //transparent
+        outlineLeft: isSelected && !this.isSelected(x-1,y),
+        outlineTop: isSelected && !this.isSelected(x,y+1),
+        outlineRight: isSelected && !this.isSelected(x+1,y),
+        outlineBottom: isSelected && !this.isSelected(x,y-1),
+        outlineTopLeft: isSelected && !this.isSelected(x-1,y+1),
+        outlineBottomLeft: isSelected && !this.isSelected(x-1,y-1),
+        outlineTopRight: isSelected && !this.isSelected(x+1,y+1),
+        outlineBottomRight: isSelected && !this.isSelected(x+1,y-1),
+        
+        outlineColor: selectedColor,
+        outlineWidth: .1 // 1/10 of tile size
+      }
+
+  }
+  
+  handleClick(x,y,ctrlKey,shiftKey){
+    if (shiftKey){
+
+    }else if(ctrlKey){
+      this.toggleSelection(x,y);
+    }else{
+      this.unselectAll();
+      this.select(x,y);
+    }
+  }
+
+  handleDrag(x1,y1,x2,y2,ctrlKey,shiftKey){
+    if (shiftKey){
+      if (!ctrlKey){
+        this.unselectAll()
+      }
+      this.selectRange(x1,y1,x2,y2)
+    }
   }
 
   simpleLayer = (x, y) => {
@@ -162,16 +219,19 @@ class GameMap extends Component {
 
         curTile = atlasInProgress.info(j, i)
         curTile.isTile = isTile
-
-        if (curTile.isTile) {
-          if (tileType.entityType == 1) {
-            //wall
-            curTile.isWall = true
-            curTile.isEmpty = false
-          } else if (tileType.entityType == 3) {
-            //farm
-            curTile.isFarm = true
-            curTile.isEmpty = false
+      
+        if(curTile.isTile){
+          curTile.modifier = isTile.qualifier2
+          if(tileType.entityType == 1){
+              //wall
+              curTile.isWall = true
+              curTile.isEmpty = false
+              curTile.value = tileType.qualifier2
+          }else if(tileType.entityType == 3){
+              //farm
+              curTile.isFarm = true
+              curTile.isEmpty = false
+              curTile.value = tileType.qualifier2
           }
         }
         this.setState({ atlas: atlasInProgress });
@@ -195,38 +255,27 @@ class GameMap extends Component {
 
   }
 
-  handleClick(x, y, ctrlKey, shiftKey) {
-    if (shiftKey) {
-
-    } else if (ctrlKey) {
-      this.select(x, y);
-    } else {
-      this.unselectAll();
-      this.select(x, y);
-    }
-  }
-
-  render(
-  ) {
-    if (this.state.atlas && this.accounts.length != 0) {
+  render() {
+    if (this.state.atlas){
       return (
         <div>
           <TileMap
             ref={this.tileMap}
-            layers={[this.simpleLayer, this.armyLayer, this.selectedLayer]}
-            onClick={(x, y, ctrlKey, shiftKey) => { this.handleClick(x, y, ctrlKey, shiftKey) }}
-            minX={-1.5 * this.gameWidth}
-            maxX={1.5 * this.gameWidth}
-            minY={-1.5 * this.gameHeight}
-            maxY={1.5 * this.gameHeight}
+            layers={[this.simpleLayer,this.armyLayer,this.selectedLayer]} 
+            onClick={(x,y,ctrlKey,shiftKey) => { this.handleClick(x,y,ctrlKey,shiftKey) } }
+            onMouseDrag={(x1,y1,x2,y2,ctrlKey,shiftKey) => {this.handleDrag(x1,y1,x2,y2,ctrlKey,shiftKey)}  }
+            minX={-1.5*this.gameWidth}
+            maxX={1.5*this.gameWidth}
+            minY={-1.5*this.gameHeight}
+            maxY={1.5*this.gameHeight}
             gameWidth={this.gameWidth}
             gameHeight={this.gameHeight}
-            width={this.props.width}
-            height={this.props.height}
-          />
+            width ={this.props.width}
+            height = {this.props.height}
+              />
         </div>
       );
-    } else {
+    }else{
       return (<div><p>Loading empires from blockchain...</p></div>)
     }
   }

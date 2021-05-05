@@ -45,6 +45,7 @@ export type Props = {
   /** callbacks */
   onMouseDown?: (x: number, y: number) => void
   onMouseUp?: (x: number, y: number) => void
+  onMouseDrag?: (x1: number, y1: number, x2: number, y2: number, ctrlKey: boolean, shiftKey: boolean) => void
   onClick?: (x: number, y: number, ctrlKey: boolean, shiftKey: boolean) => void
   onHover?: (x: number, y: number) => void
   onPopup?: (args: {

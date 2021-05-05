@@ -46,7 +46,17 @@ export function renderMap(args: {
         if (!tile) {
           continue
         }
-        const { color, top, left, topLeft, scale } = tile
+        const { color, top, left, topLeft, scale, 
+          outlineLeft,
+          outlineTop,
+          outlineRight,
+          outlineBottom,
+          outlineTopLeft,
+          outlineTopRight,
+          outlineBottomLeft,
+          outlineBottomRight,
+          outlineColor,
+          outlineWidth } = tile
 
         //update miniMap
         const relX = x+gameWidth/2
@@ -73,7 +83,18 @@ export function renderMap(args: {
             left,
             top,
             topLeft,
-            scale: size<10? Math.max(1.1,scale ? scale : 1) : scale
+            scale: size<10? Math.max(1.1,scale ? scale : 1) : scale,
+            outlineLeft,
+            outlineTop,
+            outlineRight,
+            outlineBottom,
+            outlineTopLeft,
+            outlineTopRight,
+            outlineBottomLeft,
+            outlineBottomRight,
+            outlineColor,
+            outlineWidth
+
           })
 
         }

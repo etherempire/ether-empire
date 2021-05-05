@@ -11,24 +11,26 @@ export const color = {
   SELECTED: "#FFFFFF80" //white highlight
 }
 
-export class TileInfo extends Component {
+export class TileInfo {
 
     constructor(x, y){
-        super()
         this.x = x
         this.y = y
 
-        this.isEmpty = true
+        this.isTile = false
+        this.modifier = 0
 
+        this.isEmpty = true
         this.isFarm = false
         this.isWall = false
-        this.isTile = false
+
         this.value = 0
         this.owner = null
 
         this.containsArmy = false
         this.armyOwner = null
         this.armyValue = 0
+
 
     }
 
@@ -60,15 +62,6 @@ export class TileInfo extends Component {
       }else{
         return "not a tile"
       }
-    }
-
-    render() {
-        return (
-          <div>
-              <p>Tile Coords: ({this.state.coordinate.x},{this.state.coordinate.y})</p>
-              <p>Tile Type: {this.tileType()}</p>
-          </div>
-        );
     }
 
 }

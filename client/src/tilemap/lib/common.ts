@@ -11,4 +11,15 @@ export type Coord = {
     left?: boolean
     topLeft?: boolean
     scale?: number
+    
+    outlineLeft?: boolean
+    outlineTop?: boolean
+    outlineRight?: boolean
+    outlineBottom?: boolean
+    outlineTopLeft?: boolean
+    outlineTopRight?: boolean
+    outlineBottomLeft?: boolean
+    outlineBottomRight?: boolean
+    outlineColor?: string
+    outlineWidth?: number
   }

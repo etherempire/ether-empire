@@ -22,8 +22,12 @@ class Editor extends Component {
       this.setState( {gameWidth: width, gameHeight: height} )
     }
 
-    setTileInfo = (info) => {
+    setTileInfo = (info) => { //info is a current tile to be focused on
         this.setState( {info: info} )
+    }
+
+    setSelectedTiles = (selected) => { //selected is an array of tileinfo
+      this.setState( {selected: selected} )
     }
 
     createWall = () => {
@@ -142,8 +146,12 @@ class Editor extends Component {
           </Button>
 
           <div className="infoText">
+
+
               <p>Tile Coords: ({this.state.info.x},{this.state.info.y})</p>
+              <p>Tile modifier: {this.state.info.modifier}</p>
               <p>Tile Type: {this.state.info.tileType()}</p>
+
               <p>{this.state.info.value ? "Tile Value: "+this.state.info.value : null}</p>
               <p align="left">{this.state.info.owner ? "Tile Owner: "+this.state.info.owner : null}</p>
 
