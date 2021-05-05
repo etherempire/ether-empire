@@ -25,4 +25,11 @@
   border-radius:50%;
 }
 
+.connectAccountButton{
+  white-space: nowrap;
+  overflow: hidden;
 
+}
+.checkmark {
+  color: green;
+}

@@ -14,14 +14,12 @@ class Game extends Component {
   };
 
 
-
   constructor(props) {
     super(props);
-
+    console.log("props in game page", props);
     console.log("Starting game page construction")
 
     this.editorElement = React.createRef();
-
 
     this.accounts = props.web3.accounts
     this.instance = props.web3.instance
@@ -50,6 +48,7 @@ class Game extends Component {
   render() {
     const { dimensions } = this.state;
     console.log("rendering game")
+
     return (
       <div className='rowC'>
         <div className="item" ref={el => (this.container = el)}>
