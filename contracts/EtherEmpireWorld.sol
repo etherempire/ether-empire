@@ -15,13 +15,17 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
     event ArmyRecruited(address _owner, uint32 _id, uint16 _locx, uint16 _locy);
     event ArmyMoved(address _owner, uint32 _id, uint16 _locx, uint16 _locy);
 
-    constructor(uint64 _yieldMin_32x32, uint64 _yieldRange_32x32, uint64 _armyToTokenRatio_32x32) {
+    constructor(uint64 _yieldMin_32x32, uint64 _yieldRange_32x32, uint64 _armyToWallTokenRatio_32x32, uint64 _farmOccupationBurnRate_32x32, address _tokenContractAddress) {
         yieldMin_32x32 = _yieldMin_32x32;
         yieldRange_32x32 = _yieldRange_32x32; 
-        armyToTokenRatio_32x32 = _armyToTokenRatio_32x32;
+        armyToWallTokenRatio_32x32 = _armyToWallTokenRatio_32x32;
+        farmOccupationBurnRate_32x32 = _farmOccupationBurnRate_32x32;
         globalLandValue_32x32 = 0;
         spawnedEntitiesCount = 0;
+        tokenContract = EtherEmpireToken(_tokenContractAddress);
+
     }
+
 
     modifier onlyOwnerOf(uint32 _id, address owner) {
         require(entityToOwner[_id] == owner);
@@ -29,7 +33,7 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
     }
 
     modifier isEmpty(uint16 _locx, uint16 _locy, uint8 layer) {
-        require(allEntities[_locx  + _locy * map_width + layer * map_width * map_height].entityType == EtherEmpireTypes.EntityType.EMPTY);
+        require(allEntities[_locx  + _locy * map_width + layer * map_width * map_height].entityType == EtherEmpireTypes.EntityType.EMPTY, "This needs to be an empty land!");
         _; 
     }
 
@@ -80,7 +84,8 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
     function buildFarm(uint16 _locx, uint16 _locy, uint32 tokenStaked) public isEmpty(_locx, _locy, 1) returns(uint32) {
         uint32 index = _locx + _locy * map_width + map_height * map_width;
         uint32 blockNumber = uint32(block.number);
-        // Check if message sender approved for token to be staked in the smart contract  
+        tokenContract.transferFrom(msg.sender, address(this), tokenStaked); 
+
         uint64 landValue_32x32 = uint64(FixedPoint.sqrt(uint64(tokenStaked) << 32, 32, 32)); // Added precision
         allEntities[index] = EtherEmpireTypes.Entity(index, EtherEmpireTypes.EntityType.FARM, blockNumber, landValue_32x32, _locx, _locy);
         landValueAddedAtBlock_32x32[blockNumber] = uint64(FixedPoint.add(landValueAddedAtBlock_32x32[blockNumber], landValue_32x32, 32, 32, 32));
@@ -94,7 +99,8 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
     function buildWall(uint16 _locx, uint16 _locy, uint32 tokenSpent) public isEmpty(_locx, _locy, 1) returns(uint32) {
         uint32 index = _locx + _locy * map_width + map_height * map_width;
         uint32 blockNumber = uint32(block.number);
-        // Check if message sender approved for token to be staked in the smart contract  
+        tokenContract.transferFrom(msg.sender, address(this), tokenSpent); 
+
         uint64 wallFortification_32x32 = uint64(tokenSpent) << 32;
         allEntities[index] = EtherEmpireTypes.Entity(index, EtherEmpireTypes.EntityType.WALL, blockNumber, wallFortification_32x32, _locx, _locy);
         tokensBurntAtBlock[blockNumber] = tokensBurntAtBlock[blockNumber] + tokenSpent;
@@ -109,8 +115,9 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
         require(entityToOwner[l2.id] == msg.sender, "Must be built on your farm!"); 
         uint32 index = spawnedEntitiesCount + 2 * map_width * map_height;
         uint32 blockNumber = uint32(block.number);
-        // Check if message sender approved for token to be staked in the smart contract  
-        uint64 armySize_32x32 = uint64(FixedPoint.divide(uint64(tokenSpent) << 32, armyToTokenRatio_32x32, 32, 32, 32, 32)); 
+        tokenContract.transferFrom(msg.sender, address(this), tokenSpent); 
+
+        uint64 armySize_32x32 = uint64(FixedPoint.divide(uint64(tokenSpent) << 32, armyToWallTokenRatio_32x32, 32, 32, 32, 32)); 
         allEntities[index] = EtherEmpireTypes.Entity(index, EtherEmpireTypes.EntityType.ARMY, blockNumber, armySize_32x32, _locx, _locy);
         tokensBurntAtBlock[blockNumber] = tokensBurntAtBlock[blockNumber] + tokenSpent;
         entityToOwner[index] = msg.sender;
@@ -119,10 +126,19 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
         return index;
     }
 
+    function executeSignedInstructions(bytes32 signature, bytes32 args) external returns(bool) {
+
+    }
+
+    function changeEntityOwner(uint32 _id, address _newOwner) public {
+        require(msg.sender == entityToOwner[_id] || msg.sender == address(this));
+        entityToOwner[_id] = _newOwner;
+    }
+
     // Relay external calls to specific libraries 
 
     function armyAttack(uint32 _self, uint32 _other) external onlyOwnerOf(_self, msg.sender) returns(bool) {
-        return EtherEmpireCombat.armyAttack(_self, _other, allEntities, entityToOwner, nonAggression);
+        return EtherEmpireCombat.armyAttack(_self, _other, allEntities, entityToOwner, nonAggression, farmOccupationBurnRate_32x32);
     }
 
     function armyMove(uint32 _id, uint16 _locx, uint16 _locy) external onlyOwnerOf(_id, msg.sender) returns(bool) {
