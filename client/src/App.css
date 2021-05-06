@@ -1,5 +1,5 @@
-.App{
-  height: 100vh;
+.App{  
+  height: 100vh;  
   background-color: black;
 }
 .rowC {
@@ -10,4 +10,12 @@
 }
 .item {
   flex-grow: 1;
+}
+.content {
+  padding: 0px;
+  color: white;
+}
+.infoText {
+  word-wrap: break-word;
+  white-space: normal
 }

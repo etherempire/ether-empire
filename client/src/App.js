@@ -1,34 +1,32 @@
 import React, { Component } from "react";
 import getWeb3 from "./getWeb3";
 import Main from "./webapp/src/components/Pages/Main";
+import EtherEmpireContract from "./contracts/EtherEmpireWorld.json"
 
 import "./App.css";
-import "./contracts/GameWorld.json";
 
 class App extends Component {
-  state = { web3: null, accounts: null };
+  state = { web3: null, accounts: null, instance: null };
 
   componentDidMount = async () => {
     try {
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
-
+      console.log(web3)
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
 
       // Get the contract instance.
-      // const networkId = await web3.eth.net.getId();
-      // const deployedNetwork = SimpleStorageContract.networks[networkId];
+      const networkId = await web3.eth.net.getId();
+      const deployedNetwork = EtherEmpireContract.networks[networkId];
+      const instance = new web3.eth.Contract(
+        EtherEmpireContract.abi,
+         deployedNetwork && deployedNetwork.address,
+      );
 
-      // // This is a JS interface that makes it easy to talk to a smart contract 
-      // const instance = new web3.eth.Contract(
-      //   GameWorld.abi,
-      //   deployedNetwork && deployedNetwork.address,
-      // );
-      
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts }, this.runExample);
+      this.setState({ web3, accounts, instance}, this.runExample);
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -58,7 +56,7 @@ class App extends Component {
     }
     return (
       <div className="App">
-        <Main/>
+        <Main web3={this.state}/>
       </div>
     );
   }

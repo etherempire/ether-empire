@@ -1,35 +1,42 @@
 import React, { Component } from "react";
 import GameMap from "../../../../tilemap/components/GameMap/GameMap"
 import Editor from "../GameUI/Editor"
-import { gameSize } from "../../constants/Constants"
-
-
-function uniform(r,c,v) {
-  return Array.from(Array(r), _ => Array(c).fill(v));
-}
 
 class Game extends Component {
+
   state = {
     dimensions: {
       width: 100,
       height: 100,
     },
+    gameWidth: null,
+    gameHeight: null
   };
+
+
   constructor(props) {
     super(props);
+    console.log("props in game page", props);
+    console.log("Starting game page construction")
+
     this.editorElement = React.createRef();
-    this.atlas = uniform(gameSize,gameSize,[6,0])
+
+    this.accounts = props.web3.accounts
+    this.instance = props.web3.instance
+
+    console.log("Game page constructed")
   }
 
-  onClick = (x,y) => {
-    const posX = x + (gameSize/2)
-    const posY = y + (gameSize/2)
-    if (posX >= 0 && posX<gameSize && posY >= 0 && posY<gameSize){
-      this.editorElement.current.setTileInfo(x,y,this.atlas[posX][posY])
-    }
-  };
+  updateInfo = (info) => {
+    this.editorElement.current.setTileInfo(info)
+  }
+
+  updateGameSize = (width, height) => {
+    this.editorElement.current.setGameSize(width, height)
+  }
 
   componentDidMount() {
+    console.log("Game page mounted")
     this.setState({
       dimensions: {
         width: this.container.offsetWidth,
@@ -37,15 +44,25 @@ class Game extends Component {
       },
     });
   }
-  
+
   render() {
     const { dimensions } = this.state;
+    console.log("rendering game")
+
     return (
       <div className='rowC'>
         <div className="item" ref={el => (this.container = el)}>
-          <GameMap onClick={this.onClick} atlas={this.atlas} width={dimensions.width} height={725}/>
+          <GameMap
+            updateInfo={this.updateInfo}
+            updateGameSize={this.updateGameSize}
+            atlas={this.atlas}
+            width={dimensions.width}
+            web3={this.props.web3}
+            height={725}
+            updateParent={() => { this.forceUpdate() }}
+          />
         </div>
-        <Editor ref={this.editorElement} atlas={this.atlas} updateParent={()=>{this.forceUpdate()}}/>
+        <Editor ref={this.editorElement} updateParent={() => { this.forceUpdate() }} web3={this.props.web3} />
       </div>
     );
   }

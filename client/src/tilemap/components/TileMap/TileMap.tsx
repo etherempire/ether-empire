@@ -21,9 +21,9 @@ export class TileMap extends React.PureComponent<Props, State> {
     initialX: 0,
     initialY: 0,
     size: 14,
-    zoom: .5,
+    zoom: 1,
     minSize: 1,
-    maxSize: 100,
+    maxSize: 1000,
     width: 640,
     height: 480,
     minX: -150,
@@ -43,6 +43,8 @@ export class TileMap extends React.PureComponent<Props, State> {
   private hover: Coord | null
   private popupTimeout: number | null
   private mousedownTimestamp?: number
+  private mouseupTimestamp?: number
+  private mousedownLocation?: Coord
   private destroy?: () => void
 
   debouncedRenderMap = debounce(this.renderMap.bind(this), 400)
@@ -141,6 +143,7 @@ export class TileMap extends React.PureComponent<Props, State> {
       }
       this.canvas.addEventListener('click', this.handleClick)
       this.canvas.addEventListener('mousedown', this.handleMouseDown)
+      this.canvas.addEventListener('mouseup', this.handleMouseUp)
       this.canvas.addEventListener('mousemove', this.handleMouseMove)
       this.canvas.addEventListener('mouseout', this.handleMouseOut)
       window.addEventListener('resize', this.handleResize)
@@ -253,16 +256,18 @@ export class TileMap extends React.PureComponent<Props, State> {
   }
 
   mouseToCoords(x: number, y: number) {
-    
     const { padding } = this.props
     const { size, pan, center, width, height } = this.state
+
     const panOffset = { x: (x + pan.x) / size, y: (y + pan.y) / size }
+
     const viewportOffset = {
       x: (width - padding - 0.5) / 2 - center.x,
-      y: (height - padding) / 2 + center.y
+      y: (height - padding - 0.5) / 2 + center.y
     }
-    const coordX = Math.round(panOffset.x - viewportOffset.x -.3) //- .3 is temp fix for mysterious issue #hackathon
-    const coordY = Math.round(viewportOffset.y - panOffset.y -.3)
+
+    const coordX = Math.round(panOffset.x - viewportOffset.x)
+    const coordY = Math.round(viewportOffset.y - panOffset.y)
 
     return [coordX, coordY]
   }
@@ -277,7 +282,7 @@ export class TileMap extends React.PureComponent<Props, State> {
     if (onClick) {
       const elapsed = Date.now() - this.mousedownTimestamp!
       if (elapsed < 200) {
-        onClick(x, y, event.ctrlKey, event.shiftKey)
+        onClick(x, y, (event.ctrlKey || event.metaKey), event.shiftKey)
         this.renderMap()
       }
     }
@@ -290,6 +295,7 @@ export class TileMap extends React.PureComponent<Props, State> {
   handleMouseDown = (event: MouseEvent) => {
     const { onMouseDown } = this.props
     this.mousedownTimestamp = Date.now()
+    this.mousedownLocation = {x: event.offsetX, y: event.offsetY}
     if (onMouseDown) {
       const [x, y] = this.mouseToCoords(event.offsetX, event.offsetY)
       if (!this.inBounds(x, y)) {
@@ -300,9 +306,39 @@ export class TileMap extends React.PureComponent<Props, State> {
     }
   }
 
+  handleMouseUp = (event: MouseEvent) => {
+    const { onMouseUp } = this.props
+    this.mouseupTimestamp = Date.now()
+    if (onMouseUp) {
+      const [x, y] = this.mouseToCoords(event.offsetX, event.offsetY)
+      if (!this.inBounds(x, y)) {
+        return
+      }
+      onMouseUp(x, y)
+      this.renderMap()
+    }
+  }
+
+  handleMouseDrag = (x1: number, y1: number, x2: number, y2: number, ctrlKey: boolean, shiftKey: boolean) => {
+    const { onMouseDrag } = this.props
+    if (onMouseDrag) {
+
+      const [cx1, cy1] = this.mouseToCoords(x1, y1)
+      const [cx2, cy2] = this.mouseToCoords(x2, y2)
+
+      if (!this.inBounds(cx1, cy1) || !this.inBounds(cx2, cy2)) {
+        return
+      }
+
+      onMouseDrag(cx1, cy1, cx2, cy2, ctrlKey, shiftKey)
+      this.renderMap()
+    }
+  }
+
   handleMouseMove = (event: MouseEvent) => {
-    const { pageX, pageY } = event
-    const [x, y] = this.mouseToCoords(pageX, pageY)
+    const { offsetX, offsetY } = event
+
+    const [x, y] = this.mouseToCoords(offsetX, offsetY)
     if (!this.inBounds(x, y)) {
       this.hidePopup()
       return
@@ -310,7 +346,11 @@ export class TileMap extends React.PureComponent<Props, State> {
 
     if (!this.hover || this.hover.x !== x || this.hover.y !== y) {
       this.hover = { x, y }
-      this.showPopup(x, y, pageY, pageX)
+      this.showPopup(x, y, offsetX, offsetY)
+    }
+
+    if (this.mousedownTimestamp && this.mousedownLocation && (!this.mouseupTimestamp || this.mousedownTimestamp > this.mouseupTimestamp)){
+      this.handleMouseDrag(this.mousedownLocation.x, this.mousedownLocation.y, offsetX, offsetY, (event.ctrlKey || event.metaKey), event.shiftKey)
     }
   }
 
@@ -391,7 +431,7 @@ export class TileMap extends React.PureComponent<Props, State> {
       return
     }
 
-    const { width, height, layers, renderMap } = this.props
+    const { width, height, layers, gameWidth, gameHeight, renderMap } = this.props
     const { nw, se, pan, size, center } = this.state
     const ctx = this.canvas.getContext('2d')!
 
@@ -399,6 +439,8 @@ export class TileMap extends React.PureComponent<Props, State> {
       ctx,
       width,
       height,
+      gameWidth,
+      gameHeight,
       size,
       pan,
       nw,
