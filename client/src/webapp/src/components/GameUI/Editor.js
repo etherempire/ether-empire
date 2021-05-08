@@ -111,6 +111,12 @@ class Editor extends Component {
 
   }
 
+  moveArmy = () => {
+    //highlight neighboors..
+    //select a neighboor
+    //move to neighboor
+  }
+
   divestFarm = () => {
 
     //button "Build" -> popup "Are you sure?" -> 
@@ -200,19 +206,24 @@ class Editor extends Component {
   render() {
     return (
       <div className="colC">
-        <Button variant="contained" disabled={!this.state.info.isEmpty} onClick={this.selectedWall}>
+        <Button variant="contained" disabled={!this.state.info.isEmpty || !this.state.info.isTile} onClick={this.selectedWall}>
           Create Wall
         </Button>
-        <Button variant="contained" disabled={!this.state.info.isEmpty} onClick={this.selectedFarm}>
+        <Button variant="contained" disabled={!this.state.info.isEmpty || !this.state.info.isTile} onClick={this.selectedFarm}>
           Create Farm
         </Button>
-        <Button variant="contained" disabled={!this.state.info.isEmpty} onClick={this.selectedArmy}>
+        <Button variant="contained" disabled={!this.state.info.isFarm || !this.state.info.isTile} onClick={this.selectedArmy}>
           Create Army
         </Button>
         <Button variant="contained"
-          disabled={!this.state.info.isFarm} //only divest farm for now
+          disabled={!this.state.info.isFarm}
           onClick={this.divestFarm}>
           Divest Farm
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.info.containsArmy}
+          onClick={this.moveArmy}>
+          Move Army
         </Button>
         {
           this.state.buttonSelected ? (
@@ -228,16 +239,30 @@ class Editor extends Component {
             <div></div>
         }
         <div className="infoText">
-          <p>Tile Coords: ({this.state.info.x},{this.state.info.y})</p>
-          <p>Tile modifier: {this.state.info.modifier}</p>
-          <p>Tile Type: {this.state.info.tileType()}</p>
+          <h1>{this.state.info.isTile ? "Tile "+ this.state.info.x+","+this.state.info.y : "Select a Tile"}</h1>
+          <p> {this.state.info.isTile ? "Yeild Modifier: x"+this.state.info.modifier : ""} </p>
 
-          <p>{this.state.info.value ? "Tile Value: " + this.state.info.value : null}</p>
+          {!this.state.info.isEmpty ? <div>
+            <h2> {this.state.info.tileType()}</h2>
+
+              {this.state.info.isFarm ? 
+                <ul><li>Value: {this.state.info.value}</li>
+                <li>Owner: {this.state.info.owner}</li></ul>
+                : 
+                <ul><li>Value: {this.state.info.value}</li></ul>}
+            </div> : <div/>
+          } 
+
+          {
+            this.state.info.containsArmy ?
+            <div><h2>Army</h2>
+            <ul><li>Value: {this.state.info.armyValue}</li>
+                <li>Owner: {this.state.info.armyOwner}</li></ul></div>
+                 : <div/>
+          }
+
           <p align="left">{this.state.info.owner ? "Tile Owner: " + this.state.info.owner : null}</p>
 
-
-          <p>{this.state.info.armyValue ? "Army Value: " + this.state.info.armyValue : null}</p>
-          <p align="left">{this.state.info.armyOwner ? "Army Owner: " + this.state.info.armyOwner : null}</p>
         </div>
       </div>
     )

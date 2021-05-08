@@ -33,6 +33,8 @@ export class TileInfo {
         this.armyOwner = null
         this.armyValue = 0
 
+        this.isPlayer = false
+        this.isPlayerArmy = false
 
     }
 
@@ -56,13 +58,13 @@ export class TileInfo {
 
     tileType() {
       if(this.isFarm){
-        return "farm"
+        return "Farm"
       }else if(this.isWall){
-        return "wall"
+        return "Wall"
       }else if(this.isTile){
-        return "empty"
+        return "Empty"
       }else{
-        return "not a tile"
+        return "Not a tile"
       }
     }
 
