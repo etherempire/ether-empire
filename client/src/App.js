@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {getWeb3, isMetaMaskInstalled, isMetaMaskConnected, isAddressConnected, getExistingWeb3} from "./getWeb3";
 import Main from "./webapp/src/components/Pages/Main";
 import EtherEmpireContract from "./contracts/EtherEmpireWorld.json"
+import EtherEmpireToken from "./contracts/EtherEmpireToken.json"
 
 import "./App.css";
 
@@ -26,7 +27,11 @@ class App extends Component {
         EtherEmpireContract.abi,
          deployedNetwork && deployedNetwork.address,
       );
-      this.setState({ web3, accounts, instance});
+      const tokenInstance = new web3.eth.Contract(
+        EtherEmpireToken.abi,
+         deployedNetwork && deployedNetwork.address,
+      );
+      this.setState({ web3, accounts, instance, tokenInstance});
     } catch (error) {
       console.error(error);
     }

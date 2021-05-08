@@ -17,13 +17,14 @@ class GameMap extends Component {
     this.state = {}
 
     console.log("constructing game map")
-    const { web3, accounts, instance } = props.web3
+    const { web3, accounts, instance, tokenInstance } = props.web3
     this.web3 = web3
     this.accounts = accounts
-    this.instance = instance //EtherEmpireWorld contract instance
+    this.instance = instance // EtherEmpireWorld contract instance
+    this.tokenInstance = tokenInstance // EtherEmpireToken contract instance
 
     this.updateInfo = this.props.updateInfo
-    if (this.accounts.length != 0) {
+    if (this.accounts.length != 0 && this.instance) {
       this.getWorldMapData();
     }
 
@@ -222,6 +223,8 @@ class GameMap extends Component {
         curTile = atlasInProgress.info(j, i)
         curTile.isTile = isTile.entityType != 0
 
+        var id = tileType.id
+
         if (curTile.isTile) {
           curTile.modifier = Math.round( (isTile.qualifier2_32x32/(2**32)) * 1000)/1000
           curTile.value = Math.round( (tileType.qualifier2_32x32/(2**32)) * 1000)/1000
@@ -234,6 +237,7 @@ class GameMap extends Component {
             //farm
             curTile.isFarm = true
             curTile.isEmpty = false
+            curTile.owner = await this.instance.methods.getEntityOwner(id).call({ from: this.accounts[0] })
             //curTile.value = tileType.qualifier2
           }
         }
@@ -242,6 +246,8 @@ class GameMap extends Component {
       }
     }
 
+    //TODO: get armies
+    /*
     var moreEntities = true // will change upon looking for more entities
     while (moreEntities) {
       
@@ -261,6 +267,7 @@ class GameMap extends Component {
         break;
       }
     }
+    */
     this.setState({ atlas: atlasInProgress });
     console.log("finished getting world map data")
 

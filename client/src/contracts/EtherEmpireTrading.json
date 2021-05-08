@@ -21,29 +21,29 @@
       "type": "event"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"_id\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_currentOwner\",\"type\":\"address\"}],\"name\":\"LandForSale\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/Users/Kuan/Documents/GitHub/ether-empire/contracts/EtherEmpireTrading.sol\":\"EtherEmpireTrading\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Kuan/Documents/GitHub/ether-empire/contracts/EtherEmpireTrading.sol\":{\"keccak256\":\"0x0003a10fc0875f334298900484b16f8982a89c9272879bcdc6ba9d77f082fd31\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://f4a5e0426271b44a5472b3bef1d39ce7a4824083ea4efa2204ac8c56a6330611\",\"dweb:/ipfs/QmX6t7KhbeMtgcsBq2HBna3z8g66jdMbdaMxcgzSeYU3ci\"]}},\"version\":1}",
-  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122042d7b72a91f4c895df524cffe0f301079968df0c70c99d4559ccc5674925526764736f6c63430008030033",
-  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122042d7b72a91f4c895df524cffe0f301079968df0c70c99d4559ccc5674925526764736f6c63430008030033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint32\",\"name\":\"_id\",\"type\":\"uint32\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"_currentOwner\",\"type\":\"address\"}],\"name\":\"LandForSale\",\"type\":\"event\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/Users/Daniel/Desktop/Coding Projects/ether-empire/contracts/EtherEmpireTrading.sol\":\"EtherEmpireTrading\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/Daniel/Desktop/Coding Projects/ether-empire/contracts/EtherEmpireTrading.sol\":{\"keccak256\":\"0x0003a10fc0875f334298900484b16f8982a89c9272879bcdc6ba9d77f082fd31\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://f4a5e0426271b44a5472b3bef1d39ce7a4824083ea4efa2204ac8c56a6330611\",\"dweb:/ipfs/QmX6t7KhbeMtgcsBq2HBna3z8g66jdMbdaMxcgzSeYU3ci\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122019f760ecc7a6d310f73b69f10f3bced980bb63acf241a3360decad67e12f0d9164736f6c63430008030033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122019f760ecc7a6d310f73b69f10f3bced980bb63acf241a3360decad67e12f0d9164736f6c63430008030033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
   "sourceMap": "67:96:4:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "67:96:4:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: Unlicensed\r\npragma solidity ^0.8.3;\r\n\r\nlibrary EtherEmpireTrading {\r\n    event LandForSale(uint32 _id, address _currentOwner);\r\n    \r\n}",
-  "sourcePath": "C:/Users/Kuan/Documents/GitHub/ether-empire/contracts/EtherEmpireTrading.sol",
+  "sourcePath": "C:/Users/Daniel/Desktop/Coding Projects/ether-empire/contracts/EtherEmpireTrading.sol",
   "ast": {
-    "absolutePath": "/C/Users/Kuan/Documents/GitHub/ether-empire/contracts/EtherEmpireTrading.sol",
+    "absolutePath": "/C/Users/Daniel/Desktop/Coding Projects/ether-empire/contracts/EtherEmpireTrading.sol",
     "exportedSymbols": {
       "EtherEmpireTrading": [
-        1150
+        1212
       ]
     },
-    "id": 1151,
+    "id": 1213,
     "license": "Unlicensed",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1143,
+        "id": 1205,
         "literals": [
           "solidity",
           "^",
@@ -59,9 +59,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1150,
+        "id": 1212,
         "linearizedBaseContracts": [
-          1150
+          1212
         ],
         "name": "EtherEmpireTrading",
         "nameLocation": "75:18:4",
@@ -69,23 +69,23 @@
         "nodes": [
           {
             "anonymous": false,
-            "id": 1149,
+            "id": 1211,
             "name": "LandForSale",
             "nameLocation": "107:11:4",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1148,
+              "id": 1210,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1145,
+                  "id": 1207,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_id",
                   "nameLocation": "126:3:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1149,
+                  "scope": 1211,
                   "src": "119:10:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -94,7 +94,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 1144,
+                    "id": 1206,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "119:6:4",
@@ -107,13 +107,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 1147,
+                  "id": 1209,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_currentOwner",
                   "nameLocation": "139:13:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1149,
+                  "scope": 1211,
                   "src": "131:21:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -122,7 +122,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1146,
+                    "id": 1208,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "131:7:4",
@@ -140,25 +140,25 @@
             "src": "101:53:4"
           }
         ],
-        "scope": 1151,
+        "scope": 1213,
         "src": "67:96:4"
       }
     ],
     "src": "40:123:4"
   },
   "legacyAST": {
-    "absolutePath": "/C/Users/Kuan/Documents/GitHub/ether-empire/contracts/EtherEmpireTrading.sol",
+    "absolutePath": "/C/Users/Daniel/Desktop/Coding Projects/ether-empire/contracts/EtherEmpireTrading.sol",
     "exportedSymbols": {
       "EtherEmpireTrading": [
-        1150
+        1212
       ]
     },
-    "id": 1151,
+    "id": 1213,
     "license": "Unlicensed",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1143,
+        "id": 1205,
         "literals": [
           "solidity",
           "^",
@@ -174,9 +174,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1150,
+        "id": 1212,
         "linearizedBaseContracts": [
-          1150
+          1212
         ],
         "name": "EtherEmpireTrading",
         "nameLocation": "75:18:4",
@@ -184,23 +184,23 @@
         "nodes": [
           {
             "anonymous": false,
-            "id": 1149,
+            "id": 1211,
             "name": "LandForSale",
             "nameLocation": "107:11:4",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1148,
+              "id": 1210,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1145,
+                  "id": 1207,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_id",
                   "nameLocation": "126:3:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1149,
+                  "scope": 1211,
                   "src": "119:10:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -209,7 +209,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 1144,
+                    "id": 1206,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "119:6:4",
@@ -222,13 +222,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 1147,
+                  "id": 1209,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_currentOwner",
                   "nameLocation": "139:13:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1149,
+                  "scope": 1211,
                   "src": "131:21:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -237,7 +237,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1146,
+                    "id": 1208,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "131:7:4",
@@ -255,7 +255,7 @@
             "src": "101:53:4"
           }
         ],
-        "scope": 1151,
+        "scope": 1213,
         "src": "67:96:4"
       }
     ],
@@ -267,7 +267,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-05-07T07:51:53.063Z",
+  "updatedAt": "2021-05-08T21:15:23.481Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
