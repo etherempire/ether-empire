@@ -194,15 +194,15 @@ class GameMap extends Component {
     console.log("Game map mounted")
   }
 
+  
   async getWorldMapData() {
     console.log("getting world map data")
     var i
     var j
-    var curIndex = 0
     var curTile
 
-    this.gameWidth = await this.instance.methods.map_width().call({ from: this.accounts[0], gasLimit: 1000000 })
-    this.gameHeight = await this.instance.methods.map_height().call({ from: this.accounts[0], gasLimit: 1000000 })
+    this.gameWidth = 50
+    this.gameHeight = 50
 
     this.props.updateGameSize(this.gameWidth, this.gameHeight)
 
@@ -217,61 +217,20 @@ class GameMap extends Component {
 
     for (i = 0; i < this.gameHeight; i++) {
       for (j = 0; j < this.gameWidth; j++) {
-        const isTile = await this.instance.methods.allEntities(curIndex).call({ from: this.accounts[0] })
-        const tileType = await this.instance.methods.allEntities(mapArea + curIndex).call({ from: this.accounts[0] })
 
         curTile = atlasInProgress.info(j, i)
-        curTile.isTile = isTile.entityType != 0
-
-        var id = tileType.id
-
-        if (curTile.isTile) {
-          curTile.modifier = Math.round( (isTile.qualifier2_32x32/(2**32)) * 1000)/1000
-          curTile.value = Math.round( (tileType.qualifier2_32x32/(2**32)) * 1000)/1000
-          if (tileType.entityType == 2) {
-            //wall
-            curTile.isWall = true
-            curTile.isEmpty = false
-            //curTile.value = tileType.qualifier2
-          } else if (tileType.entityType == 4) {
-            //farm
-            curTile.isFarm = true
-            curTile.isEmpty = false
-            curTile.owner = await this.instance.methods.getEntityOwner(id).call({ from: this.accounts[0] })
-            //curTile.value = tileType.qualifier2
-          }
-        }
-        curIndex += 1
+        curTile.isTile = true
+        curTile.modifier = Math.random()*2
 
       }
     }
 
-    //TODO: get armies
-    /*
-    var moreEntities = true // will change upon looking for more entities
-    while (moreEntities) {
-      
-      const curEntity = await this.instance.methods.allEntities(curIndex).call({ from: this.accounts[0] })
 
-      if (curEntity.entityType === 3){
-        //record entity data in atlas
-        //must complete this code to get army data
-        var armyTile = atlasInProgress.info(curEntity.locx, curEntity.locy)
-        armyTile.containsArmy = true
-
-
-        curIndex += 1
-      }else  {
-        console.log(curEntity.entityType)
-        moreEntities = false;
-        break;
-      }
-    }
-    */
-    this.setState({ atlas: atlasInProgress });
+    this.state = {atlas: atlasInProgress };
     console.log("finished getting world map data")
 
   }
+ 
 
   render() {
     if (this.state.atlas) {

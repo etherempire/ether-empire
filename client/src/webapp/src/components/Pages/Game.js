@@ -32,7 +32,9 @@ class Game extends Component {
   }
 
   updateGameSize = (width, height) => {
-    this.editorElement.current.setGameSize(width, height)
+    if(this.editorElement.current){
+      this.editorElement.current.setGameSize(width, height)
+    }
   }
 
   componentDidMount() {
