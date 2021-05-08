@@ -4,6 +4,12 @@ import { TileInfo } from '../TileInfo/TileInfo';
 import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
 import "./Editor.css"
 
+const direction = {
+  NORTH: 0,
+  SOUTH: 1,
+  EAST: 2,
+  WEST: 3
+}
 
 class Editor extends Component {
   constructor(props) {
@@ -26,18 +32,11 @@ class Editor extends Component {
     this.setState({ gameWidth: width, gameHeight: height })
   }
 
-  setTileInfo = (info) => { //info is a current tile to be focused on
-    this.setState({ info: info })
-  }
-
-  setSelectedTiles = (selected) => { //selected is an array of tileinfo
-    this.setState({ selected: selected })
+  setTileInfo = (info, neighbors) => { //info is a current tile to be focused on + up to 4 neighboors
+    this.setState({ info: info, neighbors: neighbors, buttonSelected: null, movingArmy: false})
   }
 
   createWall = () => {
-    //get stake value from user
-    //const userInputedStakeAmount = 100
-    //button "Build" -> popup "Are you sure?" -> 
 
     const posX = this.state.info.x
     const posY = this.state.info.y
@@ -50,19 +49,15 @@ class Editor extends Component {
 
         this.state.info.isWall = true
         this.state.info.value = this.state.userInputedStakeAmount
+        this.state.info.isEmpty = false
 
         this.updateParent()
       })
 
-    //specifiy construction in progress
-
   }
 
   createFarm = () => {
-    //get stake value from user
-    //const userInputedStakeAmount = 100
 
-    //button "Build" -> popup "Are you sure?" -> 
     const posX = this.state.info.x
     const posY = this.state.info.y
 
@@ -74,47 +69,26 @@ class Editor extends Component {
         this.state.info.isFarm = true
         this.state.info.value = this.state.userInputedStakeAmount
         this.state.info.owner = this.accounts[0]
+        this.state.info.isEmpty = false
 
         this.updateParent()
       })
-
-
-    //specifiy construction in progress
 
   }
 
   createArmy = () => {
     this.setState({ buttonSelected: "createArmy" });
-    //get stake value from user
-    //const userInputedStakeAmount = 100
-
-    //button "Build" -> popup "Are you sure?" -> 
     const posX = this.state.info.x
     const posY = this.state.info.y
 
-    /*
-    this.instance.methods.buildArmy(posX,posY,userInputedStakeAmount).send({from: this.accounts[0], gasLimit: 100000})
-        .on('error', (error)=> {console.log('Error Submitting Task: ',error)}) //error should be indicated to user
-        .then(() => {
-            console.log("Transaction successful");
-            this.state.info.containsArmy = true
-            this.state.info.armyValue = userInputedStakeAmount         
-            this.state.info.armyOwner = this.accounts[0]
-            this.updateParent()})
-    */
+    // access backend
+
     this.state.info.containsArmy = true
     this.state.info.armyValue = this.state.userInputedStakeAmount
     this.state.info.armyOwner = this.accounts[0]
 
     this.updateParent()
-    //specifiy construction in progress
 
-  }
-
-  moveArmy = () => {
-    //highlight neighboors..
-    //select a neighboor
-    //move to neighboor
   }
 
   divestFarm = () => {
@@ -129,7 +103,7 @@ class Editor extends Component {
         console.log("Transaction successful");
 
         this.state.info.isFarm = false
-
+        this.state.info.isEmpty = true
         this.state.info.value = 0
         this.state.info.owner = null
 
@@ -139,10 +113,52 @@ class Editor extends Component {
     //specifiy construction in progress
   }
 
+  selectedMoveArmy = () => {   // if user selects the create Wall button, initialize the state
+    const posX = this.state.info.x
+    const posY = this.state.info.y
+    if (posX == null || posY == null) {
+      alert("please select a title first building an army!")
+    }
+    else {
+      this.setState({ movingArmy: true, buttonSelected: null });
+    }
+  }
+
+  moveArmy = (dir) => {   // if user selects the create Wall button, initialize the state
+    const posX = this.state.info.x
+    const posY = this.state.info.y
+    var newPosX = posX
+    var newPosY = posY
+    console.log(dir)
+    if(dir == direction.NORTH){
+      newPosY+=1
+    }if(dir == direction.SOUTH){
+      newPosY-=1
+    }if(dir == direction.EAST){
+      newPosX+=1
+    }if(dir == direction.WEST){
+      newPosX-=1
+    }
+
+    for(var neighbor of this.state.neighbors){
+      if(neighbor != null && neighbor.x==newPosX && neighbor.y==newPosY && (neighbor.isEmpty || neighbor.isFarm) && !neighbor.containsArmy){
+        neighbor.containsArmy = true
+        neighbor.armyOwner = this.state.info.armyOwner
+        neighbor.armyValue = this.state.info.armyValue
+        this.state.info.containsArmy = false
+        this.state.info.armyOwner = null
+        this.state.info.armyValue = 0
+        this.updateParent()
+      }
+    }
+
+    this.setState({ movingArmy: false, buttonSelected: null })
+
+  }
+
   selectedWall = () => {   // if user selects the create Wall button, initialize the state
     const posX = this.state.info.x
     const posY = this.state.info.y
-    console.log(posX, posY);
     if (posX == null || posY == null) {
       alert("please select a title first building a wall!")
     }
@@ -154,7 +170,6 @@ class Editor extends Component {
   selectedFarm = () => {  // if user selects the create Farm button, initialize the state
     const posX = this.state.info.x
     const posY = this.state.info.y
-    console.log(posX, posY);
     if (posX == null || posY == null) {
       alert("please select a title first before building a farm!")
     }
@@ -166,7 +181,6 @@ class Editor extends Component {
   selectedArmy = () => {    // if user selects the create Army button, initialize the state
     const posX = this.state.info.x
     const posY = this.state.info.y
-    console.log(posX, posY);
     if (posX == null || posY == null) {
       alert("please select a title first before building an army!")
     }
@@ -178,6 +192,8 @@ class Editor extends Component {
   setUserStakeAmount = (e) => {
     this.setState({ userInputedStakeAmount: e.target.value });
   }
+
+
 
   confirmStake = async () => {
     if (this.state.userInputedStakeAmount == "" || this.state.userInputedStakeAmount <= 0) {  //invalid user input
@@ -222,9 +238,37 @@ class Editor extends Component {
         </Button>
         <Button variant="contained"
           disabled={!this.state.info.containsArmy}
-          onClick={this.moveArmy}>
+          onClick={this.selectedMoveArmy}>
           Move Army
         </Button>
+
+        { this.state.movingArmy ? 
+        <div className="rowC">
+          <Button variant="contained"
+          disabled={!this.state.movingArmy}
+          onClick={() => {this.moveArmy(direction.NORTH)}}>
+          North
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.movingArmy}
+          onClick={() => {this.moveArmy(direction.SOUTH)}}>
+          South
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.movingArmy}
+          onClick={() => {this.moveArmy(direction.EAST)}}>
+          East
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.movingArmy}
+          onClick={() => {this.moveArmy(direction.WEST)}}>
+          West
+        </Button>
+        </div>
+          : <div></div>}
+        
+        
+
         {
           this.state.buttonSelected ? (
             <div className="userInput">
@@ -238,6 +282,10 @@ class Editor extends Component {
           ) :
             <div></div>
         }
+
+{
+        }
+
         <div className="infoText">
           <h1>{this.state.info.isTile ? "Tile "+ this.state.info.x+","+this.state.info.y : "Select a Tile"}</h1>
           <p> {this.state.info.isTile ? "Yeild Modifier: x"+this.state.info.modifier : ""} </p>

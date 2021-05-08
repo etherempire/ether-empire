@@ -34,7 +34,16 @@ class GameMap extends Component {
   select = (x, y) => {
     if (this.isInBounds(x, y)) {
       selected.add(`${x}_${y}`);
-      this.updateInfo(this.state.atlas.info(x + this.gameWidth / 2, y + this.gameHeight / 2), this.state.atlas)
+      const posX = x + this.gameWidth / 2
+      const posY = y + this.gameHeight / 2
+      
+
+
+      this.updateInfo(this.state.atlas.info(posX,posY), [
+        this.state.atlas.info(posX+1,posY),
+        this.state.atlas.info(posX-1,posY),
+        this.state.atlas.info(posX,posY+1),
+        this.state.atlas.info(posX,posY-1)])
     }
   }
 
