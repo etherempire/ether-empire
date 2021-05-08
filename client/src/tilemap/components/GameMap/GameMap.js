@@ -38,7 +38,7 @@ class GameMap extends Component {
   select = (x, y) => {
     if (this.isInBounds(x,y)){
       selected.add(`${x}_${y}`);      
-      this.updateInfo(this.state.atlas.info(x+this.gameWidth/2,y+this.gameHeight/2))
+      this.updateInfo(this.state.atlas.info(x+this.gameWidth/2,y+this.gameHeight/2), this.state.atlas)
     }
   }
 
@@ -226,12 +226,12 @@ class GameMap extends Component {
               //wall
               curTile.isWall = true
               curTile.isEmpty = false
-              curTile.value = tileType.qualifier2
+              //curTile.value = tileType.qualifier2
           }else if(tileType.entityType == 4){
               //farm
               curTile.isFarm = true
               curTile.isEmpty = false
-              curTile.value = tileType.qualifier2
+              //curTile.value = tileType.qualifier2
           }
         }
         this.setState({ atlas: atlasInProgress });
@@ -244,9 +244,17 @@ class GameMap extends Component {
     var moreEntities = false // will change upon looking for more entities
     while (moreEntities) {
 
-      //const curEntity = await this.instance.methods.allEntities(curIndex).call({from: this.accounts[0]}).onError(moreEntities=false)
-
+      const curEntity = await this.instance.methods.allEntities(curIndex).call({from: this.accounts[0]})
+      
+      if (!curEntity){
+        moreEntities = false
+        break
+      }
       //record entity data in atlas
+
+      var armyTile = atlasInProgress.info(curEntity.locx, curEntity.locy)
+      armyTile.containsArmy = true
+
 
       curIndex += 1
     }

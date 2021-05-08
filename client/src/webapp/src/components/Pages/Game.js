@@ -27,8 +27,8 @@ class Game extends Component {
     console.log("Game page constructed")
   }
 
-  updateInfo = (info) => {
-    this.editorElement.current.setTileInfo(info)
+  updateInfo = (info, atlas) => {
+    this.editorElement.current.setTileInfo(info, atlas)
   }
 
   updateGameSize = (width, height) => {

@@ -3,11 +3,15 @@ import Button from '@material-ui/core/Button';
 import { TileInfo } from '../TileInfo/TileInfo'
 
 
+const direction = {
+  NORTH: 1, SOUTH: 2, EAST: 3, WEST: 4
+}
+
 class Editor extends Component {
     constructor(props){
         super(props)
         this.tileInfoElement = React.createRef();
-        this.state = { info: new TileInfo(null,null) };
+        this.state = { info: new TileInfo(null,null), atlas: null };
 
         this.web3 = props.web3.web3
         this.accounts = props.web3.accounts
@@ -22,8 +26,8 @@ class Editor extends Component {
       this.setState( {gameWidth: width, gameHeight: height} )
     }
 
-    setTileInfo = (info) => { //info is a current tile to be focused on
-        this.setState( {info: info} )
+    setTileInfo = (info, atlas) => { //info is a current tile to be focused on
+        this.setState( {info: info, atlas: atlas} )
     }
 
     setSelectedTiles = (selected) => { //selected is an array of tileinfo
@@ -75,6 +79,52 @@ class Editor extends Component {
         //specifiy construction in progress
     }
 
+    moveArmy = (dir) => {
+      if(this.state.atlas!=null){
+
+        const posX = this.state.info.x
+        const posY = this.state.info.y
+        var newPosX = posX
+        var newPosY = posY
+
+        if (dir == direction.NORTH){
+          newPosY += 1
+        }else if (dir == direction.SOUTH){
+          newPosY -= 1
+        }else if (dir == direction.EAST){
+          newPosX += 1
+        }else if (dir == direction.WEST){
+          newPosX -= 1
+        }else{
+          return
+        }
+
+        var newInfo = this.state.atlas.info(newPosX, newPosY)
+        newInfo.containsArmy = true
+        newInfo.armyId = this.state.info.armyId
+        newInfo.armyOwner = this.state.info.armyOwner
+        newInfo.armyValue = this.state.info.armyValue
+
+        this.state.info.containsArmy = false
+        this.state.info.armyValue = 0       
+        this.state.info.armyOwner = null
+
+        this.updateParent()
+        /*
+        this.instance.methods.armyMove(this.state.info.armyId, this.state.info.x, this.state.info.y+1).send()
+              .on('error', (error)=> {console.log('Error Submitting Task: ',error)}) //error should be indicated to user
+              .then(() => {
+                  console.log("Transaction successful");
+
+                  this.state.info.isArmy = false
+                  this.state.info.armyValue = 0       
+                  this.state.info.armyOwner = null
+
+                  this.updateParent()})
+        */
+      }
+    }
+
     createArmy = () => {
         //get stake value from user
         const userInputedStakeAmount = 100
@@ -83,7 +133,7 @@ class Editor extends Component {
         const posX = this.state.info.x
         const posY = this.state.info.y
 
-        /*
+        /*        
         this.instance.methods.buildArmy(posX,posY,userInputedStakeAmount).send({from: this.accounts[0], gasLimit: 100000})
             .on('error', (error)=> {console.log('Error Submitting Task: ',error)}) //error should be indicated to user
             .then(() => {
@@ -100,7 +150,6 @@ class Editor extends Component {
         this.state.info.armyOwner = this.accounts[0]
 
         this.updateParent()
-        //specifiy construction in progress
     }
 
     divestFarm = () => {
@@ -137,6 +186,10 @@ class Editor extends Component {
 
           <Button variant="contained" disabled={!this.state.info.isEmpty} onClick={this.createArmy}>
             Create Army
+          </Button>
+
+          <Button variant="contained" disabled={!this.state.info.containsArmy} onClick={this.moveArmy(direction.NORTH)}>
+            Move Army
           </Button>
 
           <Button variant="contained" 

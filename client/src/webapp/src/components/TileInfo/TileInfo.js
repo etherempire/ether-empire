@@ -24,6 +24,8 @@ export class TileInfo {
         this.isFarm = false
         this.isWall = false
 
+        this.armyId = null
+
         this.value = 0
         this.owner = null
 
