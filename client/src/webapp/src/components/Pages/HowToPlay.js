@@ -2,14 +2,34 @@ import React, { Component } from "react";
 import "../CSS/Tutorial.css";
 
 class HowToPlay extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="tutorial">
         <br />
         <h1>GETTING STARTED</h1><br /><br />
         <h2>Set Up</h2>
-        <p>1. Install MetaMask extension</p>
-        <p>2. Connect to MetaMask extension </p>
+
+        <p><b>Install MetaMask extension {this.props.installed ? "✔️" : "❌"}</b></p>
+        {!this.props.installed ? <ol>
+          <li>Visit <a target="_blank" href="https://metamask.io/download.html">MetaMask.io</a></li>
+          <li>Install MetaMask for your browser</li>
+          <li>Come on back to finish setup</li>
+        </ol> : <p/> }
+        
+        <p><b>Connect to MetaMask extension {this.props.connected ? "✔️" : "❌"}</b></p>
+        {!this.props.connected && this.props.installed ? <ol>
+          <li>Press "Connect MetaMask" button</li>
+          <li>Connect using MetaMask popup</li>
+        </ol> : <p/> }
+
+        {this.props.connected && this.props.installed ? <p><b>You are all set! ✔️</b></p> : <p/>}
+        
+
         <br />
 
         <h2>Ether Empire Game Idea</h2>
