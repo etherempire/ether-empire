@@ -23,8 +23,8 @@ import {
 import Home from "./Home";
 import Game from "./Game";
 import HowToPlay from "./HowToPlay";
-import GetInvolved from "./GetInvolved";
 import logo from "../Images/ether-empire-logo.png";
+import navLogo from "../Images/logo_64x64.png"
 import "../CSS/Main.css";
 import CheckIcon from '@material-ui/icons/Check';
 import getWeb3 from "../../../../getWeb3";
@@ -43,7 +43,7 @@ const Main = (props) => {
       <HashRouter>
         <div className="navigation-bar-container">
           <Navbar color="light" light expand="xl">
-            <NavLink exact to="/" activeClassName="active" tag={RRNavLink}><img className="navigation-logo" src={logo}></img></NavLink>
+            <NavLink exact to="/" activeClassName="active" tag={RRNavLink}><img className="navigation-logo" src={navLogo}></img></NavLink>
             <NavbarToggler onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
               <Nav className="mr-auto" navbar>
