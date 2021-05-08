@@ -134,7 +134,6 @@ contract EtherEmpireToken is ERC20, AccessControlEnumerable  {
         emit Approval(owner, spender, amount);
     }
 
-    // for sChain compatibility 
     function addMinter(address account) public {
         require(hasRole(MINTER_ROLE, msg.sender), "ERC20: only minter can add other users to the role");
         grantRole(MINTER_ROLE, account);
