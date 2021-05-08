@@ -4,7 +4,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 
 // THIS IS NOT INTENDED FOR PRODUCTION USE, ONLY FOR TESTING
-contract TokenCrowdSale {
+contract TokenAirDrop {
     address payable owner;
     ERC20 token;
     uint fixedRate;

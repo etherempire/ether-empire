@@ -16,7 +16,8 @@ contract EtherEmpireStorage {
 
     mapping (uint32 => address) entityToOwner; 
     mapping (uint64 => uint32) tokensBurntAtBlock; // In integer unit, of smallest decimal fungible
-    mapping (uint64 => uint64) landValueAddedAtBlock_32x32;
+    mapping (uint64 => int64) public landValueAddedAtBlock_32x32;
+    mapping (uint32 => uint64) harvestTimer; 
 
     uint64 public yieldMin_32x32; 
     uint64 public yieldRange_32x32; 

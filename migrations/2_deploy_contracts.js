@@ -21,7 +21,8 @@ module.exports = function(deployer) {
             new web3.utils.BN('1' + '0'.repeat(32), 2), // yield multiplayer - [0.5, 1.5]
             new web3.utils.BN('1' + '0'.repeat(33), 2), // Armies cost twice as much as wall 
             new web3.utils.BN('1' + '0'.repeat(31), 2), // Occupying farm burns half the token 
-            Token.address
+            Token.address,
+            0 // takes 0 blocks to divest farm 
             );
         }
       )

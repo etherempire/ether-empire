@@ -87,6 +87,25 @@ library FixedPoint {
         return SafeMath.safeAdd(num1, encode(num2, res1, res2), res1+range_out);
     }
 
+    function addSigned(int num1, int num2, uint res1, uint res2, uint range_out) internal pure returns (int) {
+        uint abs_num1 = uint(abs(num1));
+        uint abs_num2 = uint(abs(num2));
+
+        if (num1 >= 0 && num2 >= 0)
+        {
+            return int(SafeMath.safeAdd(abs_num1, encode(abs_num2, res1, res2), res1+range_out));
+        } else if ((num1 >= 0 && num2 <= 0) || (num1 <= 0 && num2 >= 0))
+        {
+            if (abs_num1 >= abs_num2) 
+            return int(SafeMath.safeSub(abs_num1, encode(abs_num2, res1, res2), res1+range_out));
+            else 
+            return -1 *  int(SafeMath.safeSub(abs_num2, encode(abs_num1, res1, res2), res1+range_out));
+        } else {
+            return -1 * int(SafeMath.safeAdd(abs_num1, encode(abs_num2, res1, res2), res1+range_out));
+        }
+        
+    }
+
     function sub(uint num1, uint num2, uint res1, uint res2, uint range_out) internal pure returns (uint) {
         return SafeMath.safeSub(num1, encode(num2, res1, res2), res1+range_out);
     }

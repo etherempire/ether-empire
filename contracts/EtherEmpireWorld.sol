@@ -15,6 +15,7 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
     event WallBuilt(address _owner, uint32 _id, uint16 _locx, uint16 _locy);
     event ArmyRecruited(address _owner, uint32 _id, uint16 _locx, uint16 _locy);
     event ArmyMoved(address _owner, uint32 _id, uint16 _locx, uint16 _locy);
+    event HarvestInitiated(address _owner, uint32 _id, uint16 _locx, uint16 _locy, uint64 _completionBlock);
 
     // , UniswapV2Pair _lpContractAddress
     constructor(uint64 _yieldMin_32x32, uint64 _yieldRange_32x32, uint64 _armyToWallTokenRatio_32x32, uint64 _farmOccupationBurnRate_32x32, EtherEmpireToken _tokenContractAddress, uint64 _blocksToDivest) {
@@ -29,14 +30,18 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
         // lpContract = _lpContractAddress; 
     }
 
-    modifier onlyOwnerOf(uint32 _id, address owner) {
-        require(entityToOwner[_id] == owner);
+    modifier onlyOwnerOf(uint32 _id, address _owner) {
+        requireIsOwner(_id, _owner); 
         _;
     }
 
-    modifier isEmpty(uint16 _locx, uint16 _locy, uint8 layer) {
+    modifier emptyAtLayer(uint16 _locx, uint16 _locy, uint8 layer) {
         require(allEntities[_locx  + _locy * map_width + layer * map_width * map_height].entityType == EtherEmpireTypes.EntityType.EMPTY, "This needs to be an empty land!");
         _; 
+    }
+
+    function requireIsOwner(uint32 _id, address _owner) internal view {
+        require(entityToOwner[_id] == _owner, "You may only call this function on an entity that you own");    
     }
 
     function _randMod(uint _seed, uint _nonce, uint _mod) internal pure returns(uint) {
@@ -66,30 +71,35 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
     }
 
     // Returns total farm yield at current block number, in the UQ144x112 format. Assumes supply of tokens do not exceed 2**144 - 1 
-    function yieldValue(uint16 _locx, uint16 _locy) view public returns(uint) {
+    function yieldValue(uint16 _locx, uint16 _locy) view public returns(uint64) {
         uint32 index = _locx + _locy * map_width + map_height * map_width; 
         EtherEmpireTypes.Entity storage thisFarm = allEntities[index];
         require(thisFarm.entityType == EtherEmpireTypes.EntityType.FARM, "No farm built here");        
         uint64 landValueAtBlock_32x32 = globalLandValue_32x32; 
         uint64 blockNumber = uint64(block.number);
         uint64 cumulativeYield_32x32 = 0; 
+        uint64 lastHarvestable = harvestTimer[index] == 0? blockNumber : (harvestTimer[index] - blocksToDivest - 1);
         for (uint64 i = blockNumber; i > allEntities[index].qualifier1_32x32; i--) {
-            cumulativeYield_32x32 += uint64(FixedPoint.multiply((FixedPoint.divide(thisFarm.qualifier2_32x32, landValueAtBlock_32x32, 32, 32, 32, 32)),
+            if (i <= lastHarvestable)
+            {
+                cumulativeYield_32x32 += uint64(FixedPoint.multiply((FixedPoint.divide(thisFarm.qualifier2_32x32, landValueAtBlock_32x32, 32, 32, 32, 32)),
                                                          tokensBurntAtBlock[i],
                                                          32, 0, 32, 32));
-            landValueAtBlock_32x32 -= landValueAddedAtBlock_32x32[i]; 
+            }
+            
+            landValueAtBlock_32x32 = uint64(uint(FixedPoint.addSigned(int64(landValueAtBlock_32x32), -1 * int64(landValueAddedAtBlock_32x32[i]), 32, 32, 32))); 
         }
         return cumulativeYield_32x32;
     }
 
     // Requires implementation of ERC20 
-    function buildFarm(uint16 _locx, uint16 _locy, uint32 tokenStaked) public isEmpty(_locx, _locy, 1) returns(uint32) {
+    function buildFarm(uint16 _locx, uint16 _locy, uint32 tokenStaked) public emptyAtLayer(_locx, _locy, 1) returns(uint32) {
         uint32 index = _locx + _locy * map_width + map_height * map_width;
         uint64 blockNumber = uint64(block.number);
         tokenContract.transferFrom(msg.sender, address(this), tokenStaked); 
         uint64 landValue_32x32 = uint64(FixedPoint.sqrt(uint64(tokenStaked) << 32, 32, 32)); // Added precision
-        allEntities[index] = EtherEmpireTypes.Entity(index, EtherEmpireTypes.EntityType.FARM, 2**32-1, landValue_32x32, _locx, _locy);
-        landValueAddedAtBlock_32x32[blockNumber] = uint64(FixedPoint.add(landValueAddedAtBlock_32x32[blockNumber], landValue_32x32, 32, 32, 32));
+        allEntities[index] = EtherEmpireTypes.Entity(index, EtherEmpireTypes.EntityType.FARM, blockNumber, landValue_32x32, _locx, _locy);
+        landValueAddedAtBlock_32x32[blockNumber] = int64(FixedPoint.addSigned(landValueAddedAtBlock_32x32[blockNumber], int64(landValue_32x32), 32, 32, 32));
         globalLandValue_32x32 = uint64(FixedPoint.add(globalLandValue_32x32, landValue_32x32, 32, 32, 32)); 
         entityToOwner[index] = msg.sender;
         emit FarmBuilt(msg.sender, index, _locx, _locy);
@@ -97,7 +107,7 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
     }
 
     // Requires implementation of ERC20 
-    function buildWall(uint16 _locx, uint16 _locy, uint32 tokenSpent) public isEmpty(_locx, _locy, 1) returns(uint32) {
+    function buildWall(uint16 _locx, uint16 _locy, uint32 tokenSpent) public emptyAtLayer(_locx, _locy, 1) returns(uint32) {
         uint32 index = _locx + _locy * map_width + map_height * map_width;
         uint64 blockNumber = uint64(block.number);
         tokenContract.transferFrom(msg.sender, address(this), tokenSpent); 
@@ -127,19 +137,24 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
         return index;
     }
 
-    function divest(uint16 _locx, uint16 _locy) public returns(bool) {
-        return _divest(_locx + _locy * map_width + map_width * map_height);
-    }
-
-    function _divest(uint32 _id) onlyOwnerOf(_id, msg.sender) internal returns(bool) {
-        uint64 landValue_32x32 = allEntities[_id].qualifier2_32x32;
-        uint64 divestMinBlock = allEntities[_id].qualifier1_32x32;
-        if (divestMinBlock == 2**32-1) {
-            divestMinBlock = uint64(block.number) + blocksToDivest;
+    function harvestFarm(uint16 _locx, uint16 _locy) public returns(bool) {
+        uint32 index = _locx + _locy * map_width + map_width * map_height;
+        requireIsOwner(index, msg.sender);
+        uint64 landValue_32x32 = allEntities[index].qualifier2_32x32;
+        uint64 blockNumber = uint64(block.number);
+        if (harvestTimer[index] == 0) {
+            harvestTimer[index] = blockNumber + blocksToDivest;
+            landValueAddedAtBlock_32x32[blockNumber] = int64(FixedPoint.addSigned(landValueAddedAtBlock_32x32[blockNumber], -1 * int64(landValue_32x32), 32, 32, 32));
+            globalLandValue_32x32 = uint64(uint(FixedPoint.addSigned(int64(globalLandValue_32x32), -1 * int64(landValue_32x32), 32, 32, 32)));
+            emit HarvestInitiated(msg.sender, index, _locx, _locy, harvestTimer[index]);
             return false; 
+        } else if (harvestTimer[index] > uint64(block.number)) {
+            return false;
         }
-        uint64 redeemable = uint64(FixedPoint.multiply(landValue_32x32, landValue_32x32, 32, 32, 32, 32)); 
+        uint64 redeemable = uint64(FixedPoint.multiply(landValue_32x32, landValue_32x32, 32, 32, 32, 32)) + yieldValue(_locx, _locy); 
         tokenContract.transfer(msg.sender, redeemable);
+        harvestTimer[index] = 0; 
+        EtherEmpireCombat.destroy(index, msg.sender, allEntities, entityToOwner);
         return true;
     }
 
