@@ -36,6 +36,8 @@ const Main = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
 
+  const notConnected = props.notConnected
+
   return (
     <div className="main">
       <HashRouter>
@@ -61,14 +63,14 @@ const Main = (props) => {
                     </DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem>
-                      <NavLink href="">Discord</NavLink>
+                      <NavLink href="https://discord.com">Discord</NavLink>
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </Nav>
               {
-                props.web3.accounts.length == 0 ?
-                  <Button color="warning" className="connectAccountButton" onClick={props.connectAccount}>Connect Account</Button>
+                notConnected ?
+                  <Button color="warning" className="connectAccountButton" onClick={props.connectWeb3}>Connect Account</Button>
                   : <Button color="warning" className="connectAccountButton"><span className="connected"><span>Connected</span> <CheckIcon className="checkmark" /></span> </Button>
               }
             </Collapse>
@@ -78,7 +80,7 @@ const Main = (props) => {
         <div className="content">
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/game" component={() => <Game web3={props.web3} />} />
+            <Route path="/game" component={() => notConnected ? <div><p>looks like you still need to connect metamask</p></div> : <Game web3={props.web3}/>} />
             <Route path="/how-to-play" component={HowToPlay} />
           </Switch>
         </div>
