@@ -237,30 +237,29 @@ class GameMap extends Component {
             //curTile.value = tileType.qualifier2
           }
         }
-        this.setState({ atlas: atlasInProgress });
-        //this.tileMap.current.setState({})
-        //this.props.updateParent()
         curIndex += 1
 
       }
     }
 
-    var moreEntities = false // will change upon looking for more entities
+    var moreEntities = true // will change upon looking for more entities
     while (moreEntities) {
-
+      
       const curEntity = await this.instance.methods.allEntities(curIndex).call({ from: this.accounts[0] })
 
-      if (!curEntity) {
-        moreEntities = false
-        break
+      if (curEntity.entityType === 3){
+        //record entity data in atlas
+        //must complete this code to get army data
+        var armyTile = atlasInProgress.info(curEntity.locx, curEntity.locy)
+        armyTile.containsArmy = true
+
+
+        curIndex += 1
+      }else  {
+        console.log(curEntity.entityType)
+        moreEntities = false;
+        break;
       }
-      //record entity data in atlas
-
-      var armyTile = atlasInProgress.info(curEntity.locx, curEntity.locy)
-      armyTile.containsArmy = true
-
-
-      curIndex += 1
     }
     this.setState({ atlas: atlasInProgress });
     console.log("finished getting world map data")

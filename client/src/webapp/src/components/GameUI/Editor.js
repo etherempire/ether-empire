@@ -149,7 +149,8 @@ class Editor extends Component {
     }
 
       if(this.canDestroy(dir)){
-        neighbor.containsWall = false
+        neighbor.isWall = false
+        neighbor.isEmpty = true
         neighbor.value = 0
         this.updateParent()
       }
