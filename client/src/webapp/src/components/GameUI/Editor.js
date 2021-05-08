@@ -81,7 +81,7 @@ class Editor extends Component {
     const posX = this.state.info.x
     const posY = this.state.info.y
 
-    // access backend
+    // TODO: access backend
 
     this.state.info.containsArmy = true
     this.state.info.armyValue = this.state.userInputedStakeAmount
@@ -92,36 +92,69 @@ class Editor extends Component {
   }
 
   divestFarm = () => {
-
-    //button "Build" -> popup "Are you sure?" -> 
     const posX = this.state.info.x + this.gameWidth / 2
     const posY = this.state.info.y + this.gameHeight / 2
 
-    this.instance.methods.divest(posX, posY).send({ from: this.accounts[0], gasLimit: 100000 })
-      .on('error', (error) => { console.log('Error Submitting Task: ', error) }) //error should be indicated to user
-      .then(() => {
-        console.log("Transaction successful");
+    // TODO: access backend
 
-        this.state.info.isFarm = false
-        this.state.info.isEmpty = true
-        this.state.info.value = 0
-        this.state.info.owner = null
+    this.state.info.isFarm = false
+    this.state.info.isEmpty = true
+    this.state.info.value = 0
+    this.state.info.owner = null
 
-        this.updateParent()
-      })
-
-    //specifiy construction in progress
+    this.updateParent()
+  }
+  
+  pillageFarm = () => {
+    // TODO: access backend
+    this.state.info.value = 0
+    this.state.info.isFarm = false
+    this.state.info.isEmpty = true
+    this.updateParent()
   }
 
-  selectedMoveArmy = () => {   // if user selects the create Wall button, initialize the state
-    const posX = this.state.info.x
-    const posY = this.state.info.y
-    if (posX == null || posY == null) {
-      alert("please select a title first building an army!")
+  attackDirection = (dir) => {
+    var neighbor
+    if(dir == direction.NORTH){
+      neighbor = this.state.neighbors.NORTH
+    }if(dir == direction.SOUTH){
+      neighbor = this.state.neighbors.SOUTH
+    }if(dir == direction.EAST){
+      neighbor = this.state.neighbors.EAST
+    }if(dir == direction.WEST){
+      neighbor = this.state.neighbors.WEST
     }
-    else {
-      this.setState({ movingArmy: true, buttonSelected: null });
+
+      if(this.canAttack(dir)){
+        // TODO: access backend
+        neighbor.containsArmy = false
+        neighbor.armyOwner = null
+        neighbor.armyValue = 0
+        this.updateParent()
+      }
+    
+    this.setState({ isAttacking: false });
+  }
+
+  destroyDirection = (dir) => {
+    var neighbor
+    if(dir == direction.NORTH){
+      neighbor = this.state.neighbors.NORTH
+    }if(dir == direction.SOUTH){
+      neighbor = this.state.neighbors.SOUTH
+    }if(dir == direction.EAST){
+      neighbor = this.state.neighbors.EAST
+    }if(dir == direction.WEST){
+      neighbor = this.state.neighbors.WEST
     }
+
+      if(this.canDestroy(dir)){
+        neighbor.containsWall = false
+        neighbor.value = 0
+        this.updateParent()
+      }
+    
+    this.setState({ isDestroying: false });
   }
 
   moveArmy = (dir) => {   // if user selects the create Wall button, initialize the state
@@ -138,6 +171,7 @@ class Editor extends Component {
     }
 
     if(this.canMove(dir)){
+      // TODO: access backend
       neighbor.containsArmy = true
       neighbor.armyOwner = this.state.info.armyOwner
       neighbor.armyValue = this.state.info.armyValue
@@ -147,9 +181,19 @@ class Editor extends Component {
       this.updateParent()
     }
     
-
     this.setState({ movingArmy: false, buttonSelected: null })
 
+  }
+
+  selectedMoveArmy = () => {   // if user selects the create Wall button, initialize the state
+    const posX = this.state.info.x
+    const posY = this.state.info.y
+    if (posX == null || posY == null) {
+      alert("please select a title first building an army!")
+    }
+    else {
+      this.setState({ movingArmy: true, buttonSelected: null });
+    }
   }
 
   selectedWall = () => {   // if user selects the create Wall button, initialize the state
@@ -216,13 +260,6 @@ class Editor extends Component {
     return false
   }
 
-  pillageFarm = () => {
-    this.state.info.value = 0
-    this.state.info.isFarm = false
-    this.state.info.isEmpty = true
-    this.updateParent()
-  }
-
   attack = () => {
     console.log("Attack!")
     this.setState({ isAttacking: true });
@@ -275,48 +312,7 @@ class Editor extends Component {
     return neighbor != null && neighbor.isWall
   }
 
-  attackDirection = (dir) => {
-    var neighbor
-    if(dir == direction.NORTH){
-      neighbor = this.state.neighbors.NORTH
-    }if(dir == direction.SOUTH){
-      neighbor = this.state.neighbors.SOUTH
-    }if(dir == direction.EAST){
-      neighbor = this.state.neighbors.EAST
-    }if(dir == direction.WEST){
-      neighbor = this.state.neighbors.WEST
-    }
-
-      if(this.canAttack(dir)){
-        neighbor.containsArmy = false
-        neighbor.armyOwner = null
-        neighbor.armyValue = 0
-        this.updateParent()
-      }
-    
-    this.setState({ isAttacking: false });
-  }
-
-  destroyDirection = (dir) => {
-    var neighbor
-    if(dir == direction.NORTH){
-      neighbor = this.state.neighbors.NORTH
-    }if(dir == direction.SOUTH){
-      neighbor = this.state.neighbors.SOUTH
-    }if(dir == direction.EAST){
-      neighbor = this.state.neighbors.EAST
-    }if(dir == direction.WEST){
-      neighbor = this.state.neighbors.WEST
-    }
-
-      if(this.canDestroy(dir)){
-        neighbor.containsWall = false
-        neighbor.value = 0
-        this.updateParent()
-      }
-    
-    this.setState({ isDestroying: false });
-  }
+  
 
   confirmStake = async () => {
     if (this.state.userInputedStakeAmount == "" || this.state.userInputedStakeAmount <= 0) {  //invalid user input
