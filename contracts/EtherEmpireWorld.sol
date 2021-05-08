@@ -40,6 +40,10 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
         _; 
     }
 
+    function _idAtXY(uint16 _locx, uint16 _locy, uint8 layer) public view returns(uint32) {
+        return _locx + _locy * map_width + map_width * map_height * layer;
+    }
+
     function requireIsOwner(uint32 _id, address _owner) internal view {
         require(entityToOwner[_id] == _owner, "You may only call this function on an entity that you own");    
     }
@@ -98,6 +102,8 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
         uint64 blockNumber = uint64(block.number);
         tokenContract.transferFrom(msg.sender, address(this), tokenStaked); 
         uint64 landValue_32x32 = uint64(FixedPoint.sqrt(uint64(tokenStaked) << 32, 32, 32)); // Added precision
+        uint64 modifier_32x32 = allEntities[_idAtXY(_locx, _locy, 0)].qualifier2_32x32;
+        landValue_32x32 = uint64(FixedPoint.multiply(landValue_32x32, modifier_32x32, 32, 32, 32, 32)); // Include land modifier
         allEntities[index] = EtherEmpireTypes.Entity(index, EtherEmpireTypes.EntityType.FARM, blockNumber, landValue_32x32, _locx, _locy);
         landValueAddedAtBlock_32x32[blockNumber] = int64(FixedPoint.addSigned(landValueAddedAtBlock_32x32[blockNumber], int64(landValue_32x32), 32, 32, 32));
         globalLandValue_32x32 = uint64(FixedPoint.add(globalLandValue_32x32, landValue_32x32, 32, 32, 32)); 
@@ -141,6 +147,7 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
         uint32 index = _locx + _locy * map_width + map_width * map_height;
         requireIsOwner(index, msg.sender);
         uint64 landValue_32x32 = allEntities[index].qualifier2_32x32;
+        uint64 modifier_32x32 = allEntities[_idAtXY(_locx, _locy, 0)].qualifier2_32x32;
         uint64 blockNumber = uint64(block.number);
         if (harvestTimer[index] == 0) {
             harvestTimer[index] = blockNumber + blocksToDivest;
@@ -151,28 +158,12 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
         } else if (harvestTimer[index] > uint64(block.number)) {
             return false;
         }
+        landValue_32x32 = uint64(FixedPoint.divide(landValue_32x32, modifier_32x32, 32, 32, 32, 32)); // Factor out land modifier
         uint64 redeemable = uint64(FixedPoint.multiply(landValue_32x32, landValue_32x32, 32, 32, 32, 32)) + yieldValue(_locx, _locy); 
         tokenContract.transfer(msg.sender, redeemable);
         harvestTimer[index] = 0; 
         EtherEmpireCombat.destroy(index, msg.sender, allEntities, entityToOwner);
         return true;
-    }
-
-    function executeSignedInstructions(bytes32 signature, bytes32 args) external returns(bool) {
-
-    }
-
-    function toString(bytes memory data) public pure returns(string memory) {
-        bytes memory alphabet = "0123456789abcdef";
-
-        bytes memory str = new bytes(2 + data.length * 2);
-        str[0] = "0";
-        str[1] = "x";
-        for (uint i = 0; i < data.length; i++) {
-            str[2+i*2] = alphabet[uint(uint8(data[i] >> 4))];
-            str[3+i*2] = alphabet[uint(uint8(data[i] & 0x0f))];
-        }
-        return string(str);
     }
 
 
@@ -185,17 +176,17 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
         return entityToOwner[_id];
     }
 
-    // To be implemented
-    function createTreaty(address ref) external {
-        address newTreaty = SmartTreaty(ref).duplicate();
-        authorizedTreaty[msg.sender][newTreaty] = true;
-        SmartTreaty(newTreaty).sign(msg.sender);
-    }
+    // // To be implemented
+    // function createTreaty(address ref) external {
+    //     address newTreaty = SmartTreaty(ref).duplicate();
+    //     authorizedTreaty[msg.sender][newTreaty] = true;
+    //     SmartTreaty(newTreaty).sign(msg.sender);
+    // }
 
-    function signTreaty(address ref) external {
-        authorizedTreaty[msg.sender][ref] = true;
-        SmartTreaty(ref).sign(msg.sender);
-    }
+    // function signTreaty(address ref) external {
+    //     authorizedTreaty[msg.sender][ref] = true;
+    //     SmartTreaty(ref).sign(msg.sender);
+    // }
 
     // Relay external calls to specific libraries 
 

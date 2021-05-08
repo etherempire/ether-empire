@@ -265,7 +265,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "validator_revert_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                      "name": "validator_revert_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                       "nodeType": "YulIdentifier",
                       "src": "584:71:24"
                     },
@@ -277,7 +277,7 @@
                 }
               ]
             },
-            "name": "abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+            "name": "abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -901,7 +901,7 @@
                           }
                         ],
                         "functionName": {
-                          "name": "abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                          "name": "abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                           "nodeType": "YulIdentifier",
                           "src": "1875:65:24"
                         },
@@ -1066,7 +1066,7 @@
                 }
               ]
             },
-            "name": "abi_decode_tuple_t_uint32t_uint16t_uint16t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$t_mapping$_t_uint32_$_t_address_$t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$",
+            "name": "abi_decode_tuple_t_uint32t_uint16t_uint16t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$t_mapping$_t_uint32_$_t_address_$t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -1407,7 +1407,7 @@
                           }
                         ],
                         "functionName": {
-                          "name": "abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                          "name": "abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                           "nodeType": "YulIdentifier",
                           "src": "2970:65:24"
                         },
@@ -1645,7 +1645,7 @@
                 }
               ]
             },
-            "name": "abi_decode_tuple_t_uint32t_uint32t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$t_mapping$_t_uint32_$_t_address_$t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$t_uint64",
+            "name": "abi_decode_tuple_t_uint32t_uint32t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$t_mapping$_t_uint32_$_t_address_$t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$t_uint64",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -4805,7 +4805,7 @@
                 }
               ]
             },
-            "name": "cleanup_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+            "name": "cleanup_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -5641,7 +5641,7 @@
                               }
                             ],
                             "functionName": {
-                              "name": "cleanup_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                              "name": "cleanup_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                               "nodeType": "YulIdentifier",
                               "src": "11152:62:24"
                             },
@@ -5671,7 +5671,7 @@
                 }
               ]
             },
-            "name": "validator_revert_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+            "name": "validator_revert_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -5988,7 +5988,7 @@
           }
         ]
       },
-      "contents": "{\n\n    function abi_decode_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(value)\n    }\n\n    function abi_decode_t_mapping$_t_uint32_$_t_address_$(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_mapping$_t_uint32_$_t_address_$(value)\n    }\n\n    function abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$(value)\n    }\n\n    function abi_decode_t_uint16(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint16(value)\n    }\n\n    function abi_decode_t_uint32(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint32(value)\n    }\n\n    function abi_decode_t_uint64(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint64(value)\n    }\n\n    function abi_decode_tuple_t_uint32t_uint16t_uint16t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$t_mapping$_t_uint32_$_t_address_$t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5 {\n        if slt(sub(dataEnd, headStart), 192) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_uint32(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_uint16(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_uint16(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 96\n\n            value3 := abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 128\n\n            value4 := abi_decode_t_mapping$_t_uint32_$_t_address_$(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 160\n\n            value5 := abi_decode_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_uint32t_uint32t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$t_mapping$_t_uint32_$_t_address_$t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$t_uint64(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5 {\n        if slt(sub(dataEnd, headStart), 192) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_uint32(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_uint32(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 96\n\n            value3 := abi_decode_t_mapping$_t_uint32_$_t_address_$(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 128\n\n            value4 := abi_decode_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 160\n\n            value5 := abi_decode_t_uint64(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_encode_t_address_to_t_address_fromStack(value, pos) {\n        mstore(pos, cleanup_t_address(value))\n    }\n\n    function abi_encode_t_bool_to_t_bool_fromStack_library(value, pos) {\n        mstore(pos, cleanup_t_bool(value))\n    }\n\n    function abi_encode_t_stringliteral_b52493e04417af33ef99b1a68ac11af8712869fc1c194d72e6b0646c5968b5de_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 33)\n        store_literal_in_memory_b52493e04417af33ef99b1a68ac11af8712869fc1c194d72e6b0646c5968b5de(pos)\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_uint32_to_t_uint32_fromStack(value, pos) {\n        mstore(pos, cleanup_t_uint32(value))\n    }\n\n    function abi_encode_tuple_t_bool__to_t_bool__fromStack_library_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_bool_to_t_bool_fromStack_library(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_b52493e04417af33ef99b1a68ac11af8712869fc1c194d72e6b0646c5968b5de__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_b52493e04417af33ef99b1a68ac11af8712869fc1c194d72e6b0646c5968b5de_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_uint32_t_address_t_address__to_t_uint32_t_address_t_address__fromStack_reversed(headStart , value2, value1, value0) -> tail {\n        tail := add(headStart, 96)\n\n        abi_encode_t_uint32_to_t_uint32_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_address_to_t_address_fromStack(value1,  add(headStart, 32))\n\n        abi_encode_t_address_to_t_address_fromStack(value2,  add(headStart, 64))\n\n    }\n\n    function array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, length) -> updated_pos {\n        mstore(pos, length)\n        updated_pos := add(pos, 0x20)\n    }\n\n    function checked_add_t_uint256(x, y) -> sum {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        // overflow, if x > (maxValue - y)\n        if gt(x, sub(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, y)) { panic_error_0x11() }\n\n        sum := add(x, y)\n    }\n\n    function checked_exp_helper(_power, _base, exponent, max) -> power, base {\n        power := _power\n        base  := _base\n        for { } gt(exponent, 1) {}\n        {\n            // overflow check for base * base\n            if gt(base, div(max, base)) { panic_error_0x11() }\n            if and(exponent, 1)\n            {\n                // No checks for power := mul(power, base) needed, because the check\n                // for base * base above is sufficient, since:\n                // |power| <= base (proof by induction) and thus:\n                // |power * base| <= base * base <= max <= |min| (for signed)\n                // (this is equally true for signed and unsigned exp)\n                power := mul(power, base)\n            }\n            base := mul(base, base)\n            exponent := shift_right_1_unsigned(exponent)\n        }\n    }\n\n    function checked_exp_t_uint256_t_uint256(base, exponent) -> power {\n        base := cleanup_t_uint256(base)\n        exponent := cleanup_t_uint256(exponent)\n\n        power := checked_exp_unsigned(base, exponent, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)\n\n    }\n\n    function checked_exp_unsigned(base, exponent, max) -> power {\n        // This function currently cannot be inlined because of the\n        // \"leave\" statements. We have to improve the optimizer.\n\n        // Note that 0**0 == 1\n        if iszero(exponent) { power := 1 leave }\n        if iszero(base) { power := 0 leave }\n\n        // Specializations for small bases\n        switch base\n        // 0 is handled above\n        case 1 { power := 1 leave }\n        case 2\n        {\n            if gt(exponent, 255) { panic_error_0x11() }\n            power := exp(2, exponent)\n            if gt(power, max) { panic_error_0x11() }\n            leave\n        }\n        if or(\n            and(lt(base, 11), lt(exponent, 78)),\n            and(lt(base, 307), lt(exponent, 32))\n        )\n        {\n            power := exp(base, exponent)\n            if gt(power, max) { panic_error_0x11() }\n            leave\n        }\n\n        power, base := checked_exp_helper(1, base, exponent, max)\n\n        if gt(power, div(max, base)) { panic_error_0x11() }\n        power := mul(power, base)\n    }\n\n    function checked_mul_t_uint256(x, y) -> product {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        // overflow, if x != 0 and y > (maxValue / x)\n        if and(iszero(iszero(x)), gt(y, div(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, x))) { panic_error_0x11() }\n\n        product := mul(x, y)\n    }\n\n    function checked_sub_t_uint16(x, y) -> diff {\n        x := cleanup_t_uint16(x)\n        y := cleanup_t_uint16(y)\n\n        if lt(x, y) { panic_error_0x11() }\n\n        diff := sub(x, y)\n    }\n\n    function checked_sub_t_uint256(x, y) -> diff {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        if lt(x, y) { panic_error_0x11() }\n\n        diff := sub(x, y)\n    }\n\n    function checked_sub_t_uint64(x, y) -> diff {\n        x := cleanup_t_uint64(x)\n        y := cleanup_t_uint64(y)\n\n        if lt(x, y) { panic_error_0x11() }\n\n        diff := sub(x, y)\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function cleanup_t_bool(value) -> cleaned {\n        cleaned := iszero(iszero(value))\n    }\n\n    function cleanup_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_mapping$_t_uint32_$_t_address_$(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_uint16(value) -> cleaned {\n        cleaned := and(value, 0xffff)\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_uint256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_uint32(value) -> cleaned {\n        cleaned := and(value, 0xffffffff)\n    }\n\n    function cleanup_t_uint64(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffff)\n    }\n\n    function panic_error_0x11() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n\n    function shift_right_1_unsigned(value) -> newValue {\n        newValue :=\n\n        shr(1, value)\n\n    }\n\n    function store_literal_in_memory_b52493e04417af33ef99b1a68ac11af8712869fc1c194d72e6b0646c5968b5de(memPtr) {\n\n        mstore(add(memPtr, 0), \"FixedPoint::muluq: upper overflo\")\n\n        mstore(add(memPtr, 32), \"w\")\n\n    }\n\n    function validator_revert_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(value) {\n        if iszero(eq(value, cleanup_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_mapping$_t_uint32_$_t_address_$(value) {\n        if iszero(eq(value, cleanup_t_mapping$_t_uint32_$_t_address_$(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$(value) {\n        if iszero(eq(value, cleanup_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint16(value) {\n        if iszero(eq(value, cleanup_t_uint16(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint32(value) {\n        if iszero(eq(value, cleanup_t_uint32(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint64(value) {\n        if iszero(eq(value, cleanup_t_uint64(value))) { revert(0, 0) }\n    }\n\n}\n",
+      "contents": "{\n\n    function abi_decode_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(value)\n    }\n\n    function abi_decode_t_mapping$_t_uint32_$_t_address_$(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_mapping$_t_uint32_$_t_address_$(value)\n    }\n\n    function abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$(value)\n    }\n\n    function abi_decode_t_uint16(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint16(value)\n    }\n\n    function abi_decode_t_uint32(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint32(value)\n    }\n\n    function abi_decode_t_uint64(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint64(value)\n    }\n\n    function abi_decode_tuple_t_uint32t_uint16t_uint16t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$t_mapping$_t_uint32_$_t_address_$t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5 {\n        if slt(sub(dataEnd, headStart), 192) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_uint32(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_uint16(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_uint16(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 96\n\n            value3 := abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 128\n\n            value4 := abi_decode_t_mapping$_t_uint32_$_t_address_$(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 160\n\n            value5 := abi_decode_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_uint32t_uint32t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$t_mapping$_t_uint32_$_t_address_$t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$t_uint64(headStart, dataEnd) -> value0, value1, value2, value3, value4, value5 {\n        if slt(sub(dataEnd, headStart), 192) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_uint32(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_uint32(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 96\n\n            value3 := abi_decode_t_mapping$_t_uint32_$_t_address_$(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 128\n\n            value4 := abi_decode_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 160\n\n            value5 := abi_decode_t_uint64(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_encode_t_address_to_t_address_fromStack(value, pos) {\n        mstore(pos, cleanup_t_address(value))\n    }\n\n    function abi_encode_t_bool_to_t_bool_fromStack_library(value, pos) {\n        mstore(pos, cleanup_t_bool(value))\n    }\n\n    function abi_encode_t_stringliteral_b52493e04417af33ef99b1a68ac11af8712869fc1c194d72e6b0646c5968b5de_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 33)\n        store_literal_in_memory_b52493e04417af33ef99b1a68ac11af8712869fc1c194d72e6b0646c5968b5de(pos)\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_uint32_to_t_uint32_fromStack(value, pos) {\n        mstore(pos, cleanup_t_uint32(value))\n    }\n\n    function abi_encode_tuple_t_bool__to_t_bool__fromStack_library_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_bool_to_t_bool_fromStack_library(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_b52493e04417af33ef99b1a68ac11af8712869fc1c194d72e6b0646c5968b5de__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_b52493e04417af33ef99b1a68ac11af8712869fc1c194d72e6b0646c5968b5de_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_uint32_t_address_t_address__to_t_uint32_t_address_t_address__fromStack_reversed(headStart , value2, value1, value0) -> tail {\n        tail := add(headStart, 96)\n\n        abi_encode_t_uint32_to_t_uint32_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_address_to_t_address_fromStack(value1,  add(headStart, 32))\n\n        abi_encode_t_address_to_t_address_fromStack(value2,  add(headStart, 64))\n\n    }\n\n    function array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, length) -> updated_pos {\n        mstore(pos, length)\n        updated_pos := add(pos, 0x20)\n    }\n\n    function checked_add_t_uint256(x, y) -> sum {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        // overflow, if x > (maxValue - y)\n        if gt(x, sub(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, y)) { panic_error_0x11() }\n\n        sum := add(x, y)\n    }\n\n    function checked_exp_helper(_power, _base, exponent, max) -> power, base {\n        power := _power\n        base  := _base\n        for { } gt(exponent, 1) {}\n        {\n            // overflow check for base * base\n            if gt(base, div(max, base)) { panic_error_0x11() }\n            if and(exponent, 1)\n            {\n                // No checks for power := mul(power, base) needed, because the check\n                // for base * base above is sufficient, since:\n                // |power| <= base (proof by induction) and thus:\n                // |power * base| <= base * base <= max <= |min| (for signed)\n                // (this is equally true for signed and unsigned exp)\n                power := mul(power, base)\n            }\n            base := mul(base, base)\n            exponent := shift_right_1_unsigned(exponent)\n        }\n    }\n\n    function checked_exp_t_uint256_t_uint256(base, exponent) -> power {\n        base := cleanup_t_uint256(base)\n        exponent := cleanup_t_uint256(exponent)\n\n        power := checked_exp_unsigned(base, exponent, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff)\n\n    }\n\n    function checked_exp_unsigned(base, exponent, max) -> power {\n        // This function currently cannot be inlined because of the\n        // \"leave\" statements. We have to improve the optimizer.\n\n        // Note that 0**0 == 1\n        if iszero(exponent) { power := 1 leave }\n        if iszero(base) { power := 0 leave }\n\n        // Specializations for small bases\n        switch base\n        // 0 is handled above\n        case 1 { power := 1 leave }\n        case 2\n        {\n            if gt(exponent, 255) { panic_error_0x11() }\n            power := exp(2, exponent)\n            if gt(power, max) { panic_error_0x11() }\n            leave\n        }\n        if or(\n            and(lt(base, 11), lt(exponent, 78)),\n            and(lt(base, 307), lt(exponent, 32))\n        )\n        {\n            power := exp(base, exponent)\n            if gt(power, max) { panic_error_0x11() }\n            leave\n        }\n\n        power, base := checked_exp_helper(1, base, exponent, max)\n\n        if gt(power, div(max, base)) { panic_error_0x11() }\n        power := mul(power, base)\n    }\n\n    function checked_mul_t_uint256(x, y) -> product {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        // overflow, if x != 0 and y > (maxValue / x)\n        if and(iszero(iszero(x)), gt(y, div(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, x))) { panic_error_0x11() }\n\n        product := mul(x, y)\n    }\n\n    function checked_sub_t_uint16(x, y) -> diff {\n        x := cleanup_t_uint16(x)\n        y := cleanup_t_uint16(y)\n\n        if lt(x, y) { panic_error_0x11() }\n\n        diff := sub(x, y)\n    }\n\n    function checked_sub_t_uint256(x, y) -> diff {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        if lt(x, y) { panic_error_0x11() }\n\n        diff := sub(x, y)\n    }\n\n    function checked_sub_t_uint64(x, y) -> diff {\n        x := cleanup_t_uint64(x)\n        y := cleanup_t_uint64(y)\n\n        if lt(x, y) { panic_error_0x11() }\n\n        diff := sub(x, y)\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function cleanup_t_bool(value) -> cleaned {\n        cleaned := iszero(iszero(value))\n    }\n\n    function cleanup_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_mapping$_t_uint32_$_t_address_$(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_uint16(value) -> cleaned {\n        cleaned := and(value, 0xffff)\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_uint256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_uint32(value) -> cleaned {\n        cleaned := and(value, 0xffffffff)\n    }\n\n    function cleanup_t_uint64(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffff)\n    }\n\n    function panic_error_0x11() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n\n    function shift_right_1_unsigned(value) -> newValue {\n        newValue :=\n\n        shr(1, value)\n\n    }\n\n    function store_literal_in_memory_b52493e04417af33ef99b1a68ac11af8712869fc1c194d72e6b0646c5968b5de(memPtr) {\n\n        mstore(add(memPtr, 0), \"FixedPoint::muluq: upper overflo\")\n\n        mstore(add(memPtr, 32), \"w\")\n\n    }\n\n    function validator_revert_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(value) {\n        if iszero(eq(value, cleanup_t_mapping$_t_address_$_t_mapping$_t_address_$_t_bool_$_$(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_mapping$_t_uint32_$_t_address_$(value) {\n        if iszero(eq(value, cleanup_t_mapping$_t_uint32_$_t_address_$(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$(value) {\n        if iszero(eq(value, cleanup_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint16(value) {\n        if iszero(eq(value, cleanup_t_uint16(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint32(value) {\n        if iszero(eq(value, cleanup_t_uint32(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint64(value) {\n        if iszero(eq(value, cleanup_t_uint64(value))) { revert(0, 0) }\n    }\n\n}\n",
       "id": 24,
       "language": "Yul",
       "name": "#utility.yul"
@@ -6002,13 +6002,13 @@
     "absolutePath": "/C/Users/Kuan/Documents/GitHub/ether-empire/contracts/EtherEmpireCombat.sol",
     "exportedSymbols": {
       "Babylonian": [
-        2649
+        2653
       ],
       "BitMath": [
-        2942
+        2946
       ],
       "Context": [
-        5092
+        5096
       ],
       "EtherEmpireCombat": [
         431
@@ -6017,16 +6017,16 @@
         584
       ],
       "EtherEmpireTypes": [
-        1222
+        1235
       ],
       "FixedPoint": [
-        3590
+        3594
       ],
       "Ownable": [
-        4459
+        4463
       ],
       "SafeMath": [
-        3649
+        3653
       ]
     },
     "id": 432,
@@ -6051,7 +6051,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 432,
-        "sourceUnit": 4460,
+        "sourceUnit": 4464,
         "src": "65:52:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -6063,7 +6063,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 432,
-        "sourceUnit": 3591,
+        "sourceUnit": 3595,
         "src": "119:36:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -6087,7 +6087,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 432,
-        "sourceUnit": 1223,
+        "sourceUnit": 1236,
         "src": "195:32:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -6331,7 +6331,7 @@
                           "referencedDeclaration": 30,
                           "src": "669:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -6355,7 +6355,7 @@
                         "nodeType": "IndexAccess",
                         "src": "669:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -6366,7 +6366,7 @@
                       "lValueRequested": true,
                       "memberName": "id",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1209,
+                      "referencedDeclaration": 1222,
                       "src": "669:19:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint32",
@@ -6418,7 +6418,7 @@
                           "referencedDeclaration": 30,
                           "src": "703:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -6442,7 +6442,7 @@
                         "nodeType": "IndexAccess",
                         "src": "703:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -6453,10 +6453,10 @@
                       "lValueRequested": true,
                       "memberName": "entityType",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1212,
+                      "referencedDeclaration": 1225,
                       "src": "703:27:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
@@ -6469,10 +6469,10 @@
                           "name": "EtherEmpireTypes",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1222,
+                          "referencedDeclaration": 1235,
                           "src": "733:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                             "typeString": "type(contract EtherEmpireTypes)"
                           }
                         },
@@ -6483,10 +6483,10 @@
                         "lValueRequested": false,
                         "memberName": "EntityType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1207,
+                        "referencedDeclaration": 1220,
                         "src": "733:27:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                           "typeString": "type(enum EtherEmpireTypes.EntityType)"
                         }
                       },
@@ -6497,16 +6497,16 @@
                       "lValueRequested": false,
                       "memberName": "EMPTY",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1202,
+                      "referencedDeclaration": 1215,
                       "src": "733:33:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
                     "src": "703:63:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_EntityType_$1207",
+                      "typeIdentifier": "t_enum$_EntityType_$1220",
                       "typeString": "enum EtherEmpireTypes.EntityType"
                     }
                   },
@@ -6531,7 +6531,7 @@
                           "referencedDeclaration": 30,
                           "src": "777:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -6555,7 +6555,7 @@
                         "nodeType": "IndexAccess",
                         "src": "777:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -6566,7 +6566,7 @@
                       "lValueRequested": true,
                       "memberName": "qualifier1_32x32",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1214,
+                      "referencedDeclaration": 1227,
                       "src": "777:33:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint64",
@@ -6618,7 +6618,7 @@
                           "referencedDeclaration": 30,
                           "src": "825:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -6642,7 +6642,7 @@
                         "nodeType": "IndexAccess",
                         "src": "825:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -6653,7 +6653,7 @@
                       "lValueRequested": true,
                       "memberName": "qualifier2_32x32",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1216,
+                      "referencedDeclaration": 1229,
                       "src": "825:33:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint64",
@@ -6705,7 +6705,7 @@
                           "referencedDeclaration": 30,
                           "src": "873:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -6729,7 +6729,7 @@
                         "nodeType": "IndexAccess",
                         "src": "873:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -6740,7 +6740,7 @@
                       "lValueRequested": true,
                       "memberName": "locx",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1218,
+                      "referencedDeclaration": 1231,
                       "src": "873:21:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -6792,7 +6792,7 @@
                           "referencedDeclaration": 30,
                           "src": "909:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -6816,7 +6816,7 @@
                         "nodeType": "IndexAccess",
                         "src": "909:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -6827,7 +6827,7 @@
                       "lValueRequested": true,
                       "memberName": "locy",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1220,
+                      "referencedDeclaration": 1233,
                       "src": "909:21:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -7168,7 +7168,7 @@
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                     "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                   },
                   "typeName": {
@@ -7186,7 +7186,7 @@
                     "nodeType": "Mapping",
                     "src": "510:43:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                     },
                     "valueType": {
@@ -7196,13 +7196,13 @@
                         "id": 27,
                         "name": "EtherEmpireTypes.Entity",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "529:23:0"
                       },
-                      "referencedDeclaration": 1221,
+                      "referencedDeclaration": 1234,
                       "src": "529:23:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       }
                     }
@@ -7444,7 +7444,7 @@
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       },
                       "typeName": {
@@ -7454,13 +7454,13 @@
                           "id": 139,
                           "name": "EtherEmpireTypes.Entity",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 1221,
+                          "referencedDeclaration": 1234,
                           "src": "1597:23:0"
                         },
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "1597:23:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity"
                         }
                       },
@@ -7477,7 +7477,7 @@
                       "referencedDeclaration": 108,
                       "src": "1648:11:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                       }
                     },
@@ -7501,7 +7501,7 @@
                     "nodeType": "IndexAccess",
                     "src": "1648:18:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                      "typeIdentifier": "t_struct$_Entity_$1234_storage",
                       "typeString": "struct EtherEmpireTypes.Entity storage ref"
                     }
                   },
@@ -7525,7 +7525,7 @@
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       },
                       "typeName": {
@@ -7535,13 +7535,13 @@
                           "id": 148,
                           "name": "EtherEmpireTypes.Entity",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 1221,
+                          "referencedDeclaration": 1234,
                           "src": "1677:23:0"
                         },
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "1677:23:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity"
                         }
                       },
@@ -7558,7 +7558,7 @@
                       "referencedDeclaration": 108,
                       "src": "1727:11:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                       }
                     },
@@ -7582,7 +7582,7 @@
                     "nodeType": "IndexAccess",
                     "src": "1727:19:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                      "typeIdentifier": "t_struct$_Entity_$1234_storage",
                       "typeString": "struct EtherEmpireTypes.Entity storage ref"
                     }
                   },
@@ -7619,7 +7619,7 @@
                           "referencedDeclaration": 141,
                           "src": "1841:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -7630,7 +7630,7 @@
                         "lValueRequested": false,
                         "memberName": "qualifier2_32x32",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1216,
+                        "referencedDeclaration": 1229,
                         "src": "1841:33:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint64",
@@ -7665,7 +7665,7 @@
                     "operator": "||",
                     "rightExpression": {
                       "commonType": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       },
                       "id": 164,
@@ -7682,7 +7682,7 @@
                           "referencedDeclaration": 141,
                           "src": "1896:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -7693,10 +7693,10 @@
                         "lValueRequested": false,
                         "memberName": "entityType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1212,
+                        "referencedDeclaration": 1225,
                         "src": "1896:27:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_EntityType_$1207",
+                          "typeIdentifier": "t_enum$_EntityType_$1220",
                           "typeString": "enum EtherEmpireTypes.EntityType"
                         }
                       },
@@ -7709,10 +7709,10 @@
                             "name": "EtherEmpireTypes",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1222,
+                            "referencedDeclaration": 1235,
                             "src": "1927:16:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                              "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                               "typeString": "type(contract EtherEmpireTypes)"
                             }
                           },
@@ -7723,10 +7723,10 @@
                           "lValueRequested": false,
                           "memberName": "EntityType",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1207,
+                          "referencedDeclaration": 1220,
                           "src": "1927:27:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                            "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                             "typeString": "type(enum EtherEmpireTypes.EntityType)"
                           }
                         },
@@ -7737,10 +7737,10 @@
                         "lValueRequested": false,
                         "memberName": "ARMY",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1205,
+                        "referencedDeclaration": 1218,
                         "src": "1927:32:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_EntityType_$1207",
+                          "typeIdentifier": "t_enum$_EntityType_$1220",
                           "typeString": "enum EtherEmpireTypes.EntityType"
                         }
                       },
@@ -7843,7 +7843,7 @@
                           "referencedDeclaration": 141,
                           "src": "2153:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -7854,7 +7854,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2153:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -7872,7 +7872,7 @@
                           "referencedDeclaration": 150,
                           "src": "2178:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -7883,7 +7883,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2178:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -7915,7 +7915,7 @@
                           "referencedDeclaration": 150,
                           "src": "2248:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -7926,7 +7926,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2248:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -7944,7 +7944,7 @@
                           "referencedDeclaration": 141,
                           "src": "2271:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -7955,7 +7955,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2271:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -7994,7 +7994,7 @@
                           "referencedDeclaration": 141,
                           "src": "2201:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -8005,7 +8005,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2201:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -8023,7 +8023,7 @@
                           "referencedDeclaration": 150,
                           "src": "2225:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -8034,7 +8034,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2225:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -8109,7 +8109,7 @@
                           "referencedDeclaration": 141,
                           "src": "2317:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -8120,7 +8120,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2317:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -8138,7 +8138,7 @@
                           "referencedDeclaration": 150,
                           "src": "2342:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -8149,7 +8149,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2342:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -8181,7 +8181,7 @@
                           "referencedDeclaration": 150,
                           "src": "2412:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -8192,7 +8192,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2412:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -8210,7 +8210,7 @@
                           "referencedDeclaration": 141,
                           "src": "2435:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -8221,7 +8221,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2435:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -8260,7 +8260,7 @@
                           "referencedDeclaration": 141,
                           "src": "2365:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -8271,7 +8271,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2365:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -8289,7 +8289,7 @@
                           "referencedDeclaration": 150,
                           "src": "2389:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -8300,7 +8300,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2389:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -8427,7 +8427,7 @@
                 {
                   "condition": {
                     "commonType": {
-                      "typeIdentifier": "t_enum$_EntityType_$1207",
+                      "typeIdentifier": "t_enum$_EntityType_$1220",
                       "typeString": "enum EtherEmpireTypes.EntityType"
                     },
                     "id": 221,
@@ -8444,7 +8444,7 @@
                         "referencedDeclaration": 150,
                         "src": "2577:15:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                         }
                       },
@@ -8455,10 +8455,10 @@
                       "lValueRequested": false,
                       "memberName": "entityType",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1212,
+                      "referencedDeclaration": 1225,
                       "src": "2577:26:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
@@ -8471,10 +8471,10 @@
                           "name": "EtherEmpireTypes",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1222,
+                          "referencedDeclaration": 1235,
                           "src": "2607:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                             "typeString": "type(contract EtherEmpireTypes)"
                           }
                         },
@@ -8485,10 +8485,10 @@
                         "lValueRequested": false,
                         "memberName": "EntityType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1207,
+                        "referencedDeclaration": 1220,
                         "src": "2607:27:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                           "typeString": "type(enum EtherEmpireTypes.EntityType)"
                         }
                       },
@@ -8499,10 +8499,10 @@
                       "lValueRequested": false,
                       "memberName": "WALL",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1204,
+                      "referencedDeclaration": 1217,
                       "src": "2607:32:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
@@ -8515,7 +8515,7 @@
                   "falseBody": {
                     "condition": {
                       "commonType": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       },
                       "id": 250,
@@ -8532,7 +8532,7 @@
                           "referencedDeclaration": 150,
                           "src": "2957:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -8543,10 +8543,10 @@
                         "lValueRequested": false,
                         "memberName": "entityType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1212,
+                        "referencedDeclaration": 1225,
                         "src": "2957:26:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_EntityType_$1207",
+                          "typeIdentifier": "t_enum$_EntityType_$1220",
                           "typeString": "enum EtherEmpireTypes.EntityType"
                         }
                       },
@@ -8559,10 +8559,10 @@
                             "name": "EtherEmpireTypes",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1222,
+                            "referencedDeclaration": 1235,
                             "src": "2987:16:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                              "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                               "typeString": "type(contract EtherEmpireTypes)"
                             }
                           },
@@ -8573,10 +8573,10 @@
                           "lValueRequested": false,
                           "memberName": "EntityType",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1207,
+                          "referencedDeclaration": 1220,
                           "src": "2987:27:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                            "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                             "typeString": "type(enum EtherEmpireTypes.EntityType)"
                           }
                         },
@@ -8587,10 +8587,10 @@
                         "lValueRequested": false,
                         "memberName": "ARMY",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1205,
+                        "referencedDeclaration": 1218,
                         "src": "2987:32:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_EntityType_$1207",
+                          "typeIdentifier": "t_enum$_EntityType_$1220",
                           "typeString": "enum EtherEmpireTypes.EntityType"
                         }
                       },
@@ -8603,7 +8603,7 @@
                     "falseBody": {
                       "condition": {
                         "commonType": {
-                          "typeIdentifier": "t_enum$_EntityType_$1207",
+                          "typeIdentifier": "t_enum$_EntityType_$1220",
                           "typeString": "enum EtherEmpireTypes.EntityType"
                         },
                         "id": 279,
@@ -8620,7 +8620,7 @@
                             "referencedDeclaration": 150,
                             "src": "3337:15:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                              "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                               "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                             }
                           },
@@ -8631,10 +8631,10 @@
                           "lValueRequested": false,
                           "memberName": "entityType",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1212,
+                          "referencedDeclaration": 1225,
                           "src": "3337:26:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_enum$_EntityType_$1207",
+                            "typeIdentifier": "t_enum$_EntityType_$1220",
                             "typeString": "enum EtherEmpireTypes.EntityType"
                           }
                         },
@@ -8647,10 +8647,10 @@
                               "name": "EtherEmpireTypes",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1222,
+                              "referencedDeclaration": 1235,
                               "src": "3367:16:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                                "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                                 "typeString": "type(contract EtherEmpireTypes)"
                               }
                             },
@@ -8661,10 +8661,10 @@
                             "lValueRequested": false,
                             "memberName": "EntityType",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 1207,
+                            "referencedDeclaration": 1220,
                             "src": "3367:27:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                              "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                               "typeString": "type(enum EtherEmpireTypes.EntityType)"
                             }
                           },
@@ -8675,10 +8675,10 @@
                           "lValueRequested": false,
                           "memberName": "FARM",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1206,
+                          "referencedDeclaration": 1219,
                           "src": "3367:32:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_enum$_EntityType_$1207",
+                            "typeIdentifier": "t_enum$_EntityType_$1220",
                             "typeString": "enum EtherEmpireTypes.EntityType"
                           }
                         },
@@ -8780,7 +8780,7 @@
                                   "referencedDeclaration": 150,
                                   "src": "3474:15:0",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                    "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                     "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                                   }
                                 },
@@ -8791,7 +8791,7 @@
                                 "lValueRequested": true,
                                 "memberName": "qualifier2_32x32",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 1216,
+                                "referencedDeclaration": 1229,
                                 "src": "3474:32:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint64",
@@ -8813,7 +8813,7 @@
                                           "referencedDeclaration": 150,
                                           "src": "3536:15:0",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                                           }
                                         },
@@ -8824,7 +8824,7 @@
                                         "lValueRequested": false,
                                         "memberName": "qualifier2_32x32",
                                         "nodeType": "MemberAccess",
-                                        "referencedDeclaration": 1216,
+                                        "referencedDeclaration": 1229,
                                         "src": "3536:32:0",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_uint64",
@@ -9052,10 +9052,10 @@
                                         "name": "FixedPoint",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 3590,
+                                        "referencedDeclaration": 3594,
                                         "src": "3516:10:0",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_type$_t_contract$_FixedPoint_$3590_$",
+                                          "typeIdentifier": "t_type$_t_contract$_FixedPoint_$3594_$",
                                           "typeString": "type(library FixedPoint)"
                                         }
                                       },
@@ -9066,7 +9066,7 @@
                                       "lValueRequested": false,
                                       "memberName": "multiply",
                                       "nodeType": "MemberAccess",
-                                      "referencedDeclaration": 3152,
+                                      "referencedDeclaration": 3156,
                                       "src": "3516:19:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -9256,7 +9256,7 @@
                                 "referencedDeclaration": 141,
                                 "src": "3050:16:0",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                   "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                                 }
                               },
@@ -9267,7 +9267,7 @@
                               "lValueRequested": false,
                               "memberName": "qualifier2_32x32",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 1216,
+                              "referencedDeclaration": 1229,
                               "src": "3050:33:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint64",
@@ -9285,7 +9285,7 @@
                                 "referencedDeclaration": 150,
                                 "src": "3086:15:0",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                   "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                                 }
                               },
@@ -9296,7 +9296,7 @@
                               "lValueRequested": false,
                               "memberName": "qualifier2_32x32",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 1216,
+                              "referencedDeclaration": 1229,
                               "src": "3086:32:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint64",
@@ -9349,7 +9349,7 @@
                                       "referencedDeclaration": 108,
                                       "src": "3273:11:0",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                       }
                                     },
@@ -9377,7 +9377,7 @@
                                         "typeString": "address"
                                       },
                                       {
-                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                       },
                                       {
@@ -9392,7 +9392,7 @@
                                     "referencedDeclaration": 99,
                                     "src": "3248:7:0",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
+                                      "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
                                       "typeString": "function (uint32,address,mapping(uint32 => struct EtherEmpireTypes.Entity storage ref),mapping(uint32 => address))"
                                     }
                                   },
@@ -9460,7 +9460,7 @@
                                       "referencedDeclaration": 108,
                                       "src": "3166:11:0",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                       }
                                     },
@@ -9488,7 +9488,7 @@
                                         "typeString": "address"
                                       },
                                       {
-                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                       },
                                       {
@@ -9503,7 +9503,7 @@
                                     "referencedDeclaration": 99,
                                     "src": "3139:7:0",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
+                                      "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
                                       "typeString": "function (uint32,address,mapping(uint32 => struct EtherEmpireTypes.Entity storage ref),mapping(uint32 => address))"
                                     }
                                   },
@@ -9560,7 +9560,7 @@
                               "referencedDeclaration": 141,
                               "src": "2670:16:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                 "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                               }
                             },
@@ -9571,7 +9571,7 @@
                             "lValueRequested": false,
                             "memberName": "qualifier2_32x32",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 1216,
+                            "referencedDeclaration": 1229,
                             "src": "2670:33:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint64",
@@ -9589,7 +9589,7 @@
                               "referencedDeclaration": 150,
                               "src": "2706:15:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                 "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                               }
                             },
@@ -9600,7 +9600,7 @@
                             "lValueRequested": false,
                             "memberName": "qualifier2_32x32",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 1216,
+                            "referencedDeclaration": 1229,
                             "src": "2706:32:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint64",
@@ -9653,7 +9653,7 @@
                                     "referencedDeclaration": 108,
                                     "src": "2893:11:0",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                     }
                                   },
@@ -9681,7 +9681,7 @@
                                       "typeString": "address"
                                     },
                                     {
-                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                     },
                                     {
@@ -9696,7 +9696,7 @@
                                   "referencedDeclaration": 99,
                                   "src": "2868:7:0",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
+                                    "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
                                     "typeString": "function (uint32,address,mapping(uint32 => struct EtherEmpireTypes.Entity storage ref),mapping(uint32 => address))"
                                   }
                                 },
@@ -9764,7 +9764,7 @@
                                     "referencedDeclaration": 108,
                                     "src": "2786:11:0",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                     }
                                   },
@@ -9792,7 +9792,7 @@
                                       "typeString": "address"
                                     },
                                     {
-                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                     },
                                     {
@@ -9807,7 +9807,7 @@
                                   "referencedDeclaration": 99,
                                   "src": "2759:7:0",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
+                                    "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
                                     "typeString": "function (uint32,address,mapping(uint32 => struct EtherEmpireTypes.Entity storage ref),mapping(uint32 => address))"
                                   }
                                 },
@@ -9938,7 +9938,7 @@
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                     "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                   },
                   "typeName": {
@@ -9956,7 +9956,7 @@
                     "nodeType": "Mapping",
                     "src": "1160:43:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                     },
                     "valueType": {
@@ -9966,13 +9966,13 @@
                         "id": 105,
                         "name": "EtherEmpireTypes.Entity",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "1179:23:0"
                       },
-                      "referencedDeclaration": 1221,
+                      "referencedDeclaration": 1234,
                       "src": "1179:23:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       }
                     }
@@ -10259,7 +10259,7 @@
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       },
                       "typeName": {
@@ -10269,13 +10269,13 @@
                           "id": 358,
                           "name": "EtherEmpireTypes.Entity",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 1221,
+                          "referencedDeclaration": 1234,
                           "src": "4186:23:0"
                         },
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "4186:23:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity"
                         }
                       },
@@ -10292,7 +10292,7 @@
                       "referencedDeclaration": 335,
                       "src": "4227:11:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                       }
                     },
@@ -10316,7 +10316,7 @@
                     "nodeType": "IndexAccess",
                     "src": "4227:18:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                      "typeIdentifier": "t_struct$_Entity_$1234_storage",
                       "typeString": "struct EtherEmpireTypes.Entity storage ref"
                     }
                   },
@@ -10326,7 +10326,7 @@
                 {
                   "condition": {
                     "commonType": {
-                      "typeIdentifier": "t_enum$_EntityType_$1207",
+                      "typeIdentifier": "t_enum$_EntityType_$1220",
                       "typeString": "enum EtherEmpireTypes.EntityType"
                     },
                     "id": 370,
@@ -10343,7 +10343,7 @@
                         "referencedDeclaration": 360,
                         "src": "4294:6:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                         }
                       },
@@ -10354,10 +10354,10 @@
                       "lValueRequested": false,
                       "memberName": "entityType",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1212,
+                      "referencedDeclaration": 1225,
                       "src": "4294:17:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
@@ -10370,10 +10370,10 @@
                           "name": "EtherEmpireTypes",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1222,
+                          "referencedDeclaration": 1235,
                           "src": "4315:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                             "typeString": "type(contract EtherEmpireTypes)"
                           }
                         },
@@ -10384,10 +10384,10 @@
                         "lValueRequested": false,
                         "memberName": "EntityType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1207,
+                        "referencedDeclaration": 1220,
                         "src": "4315:27:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                           "typeString": "type(enum EtherEmpireTypes.EntityType)"
                         }
                       },
@@ -10398,10 +10398,10 @@
                       "lValueRequested": false,
                       "memberName": "ARMY",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1205,
+                      "referencedDeclaration": 1218,
                       "src": "4315:32:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
@@ -10498,7 +10498,7 @@
                           "referencedDeclaration": 360,
                           "src": "4459:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -10509,7 +10509,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "4459:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -10569,7 +10569,7 @@
                           "referencedDeclaration": 360,
                           "src": "4512:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -10580,7 +10580,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "4512:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -10619,7 +10619,7 @@
                           "referencedDeclaration": 360,
                           "src": "4482:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -10630,7 +10630,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "4482:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -10719,7 +10719,7 @@
                           "referencedDeclaration": 360,
                           "src": "4548:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -10730,7 +10730,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "4548:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -10790,7 +10790,7 @@
                           "referencedDeclaration": 360,
                           "src": "4601:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -10801,7 +10801,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "4601:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -10840,7 +10840,7 @@
                           "referencedDeclaration": 360,
                           "src": "4571:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -10851,7 +10851,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "4571:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -11005,7 +11005,7 @@
                         "referencedDeclaration": 360,
                         "src": "4675:6:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                         }
                       },
@@ -11016,7 +11016,7 @@
                       "lValueRequested": true,
                       "memberName": "locx",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1218,
+                      "referencedDeclaration": 1231,
                       "src": "4675:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -11063,7 +11063,7 @@
                         "referencedDeclaration": 360,
                         "src": "4705:6:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                         }
                       },
@@ -11074,7 +11074,7 @@
                       "lValueRequested": true,
                       "memberName": "locy",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1220,
+                      "referencedDeclaration": 1233,
                       "src": "4705:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -11234,7 +11234,7 @@
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                     "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                   },
                   "typeName": {
@@ -11252,7 +11252,7 @@
                     "nodeType": "Mapping",
                     "src": "3877:43:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                     },
                     "valueType": {
@@ -11262,13 +11262,13 @@
                         "id": 332,
                         "name": "EtherEmpireTypes.Entity",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "3896:23:0"
                       },
-                      "referencedDeclaration": 1221,
+                      "referencedDeclaration": 1234,
                       "src": "3896:23:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       }
                     }
@@ -11441,13 +11441,13 @@
     "absolutePath": "/C/Users/Kuan/Documents/GitHub/ether-empire/contracts/EtherEmpireCombat.sol",
     "exportedSymbols": {
       "Babylonian": [
-        2649
+        2653
       ],
       "BitMath": [
-        2942
+        2946
       ],
       "Context": [
-        5092
+        5096
       ],
       "EtherEmpireCombat": [
         431
@@ -11456,16 +11456,16 @@
         584
       ],
       "EtherEmpireTypes": [
-        1222
+        1235
       ],
       "FixedPoint": [
-        3590
+        3594
       ],
       "Ownable": [
-        4459
+        4463
       ],
       "SafeMath": [
-        3649
+        3653
       ]
     },
     "id": 432,
@@ -11490,7 +11490,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 432,
-        "sourceUnit": 4460,
+        "sourceUnit": 4464,
         "src": "65:52:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11502,7 +11502,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 432,
-        "sourceUnit": 3591,
+        "sourceUnit": 3595,
         "src": "119:36:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11526,7 +11526,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 432,
-        "sourceUnit": 1223,
+        "sourceUnit": 1236,
         "src": "195:32:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -11770,7 +11770,7 @@
                           "referencedDeclaration": 30,
                           "src": "669:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -11794,7 +11794,7 @@
                         "nodeType": "IndexAccess",
                         "src": "669:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -11805,7 +11805,7 @@
                       "lValueRequested": true,
                       "memberName": "id",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1209,
+                      "referencedDeclaration": 1222,
                       "src": "669:19:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint32",
@@ -11857,7 +11857,7 @@
                           "referencedDeclaration": 30,
                           "src": "703:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -11881,7 +11881,7 @@
                         "nodeType": "IndexAccess",
                         "src": "703:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -11892,10 +11892,10 @@
                       "lValueRequested": true,
                       "memberName": "entityType",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1212,
+                      "referencedDeclaration": 1225,
                       "src": "703:27:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
@@ -11908,10 +11908,10 @@
                           "name": "EtherEmpireTypes",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1222,
+                          "referencedDeclaration": 1235,
                           "src": "733:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                             "typeString": "type(contract EtherEmpireTypes)"
                           }
                         },
@@ -11922,10 +11922,10 @@
                         "lValueRequested": false,
                         "memberName": "EntityType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1207,
+                        "referencedDeclaration": 1220,
                         "src": "733:27:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                           "typeString": "type(enum EtherEmpireTypes.EntityType)"
                         }
                       },
@@ -11936,16 +11936,16 @@
                       "lValueRequested": false,
                       "memberName": "EMPTY",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1202,
+                      "referencedDeclaration": 1215,
                       "src": "733:33:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
                     "src": "703:63:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_enum$_EntityType_$1207",
+                      "typeIdentifier": "t_enum$_EntityType_$1220",
                       "typeString": "enum EtherEmpireTypes.EntityType"
                     }
                   },
@@ -11970,7 +11970,7 @@
                           "referencedDeclaration": 30,
                           "src": "777:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -11994,7 +11994,7 @@
                         "nodeType": "IndexAccess",
                         "src": "777:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -12005,7 +12005,7 @@
                       "lValueRequested": true,
                       "memberName": "qualifier1_32x32",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1214,
+                      "referencedDeclaration": 1227,
                       "src": "777:33:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint64",
@@ -12057,7 +12057,7 @@
                           "referencedDeclaration": 30,
                           "src": "825:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -12081,7 +12081,7 @@
                         "nodeType": "IndexAccess",
                         "src": "825:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -12092,7 +12092,7 @@
                       "lValueRequested": true,
                       "memberName": "qualifier2_32x32",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1216,
+                      "referencedDeclaration": 1229,
                       "src": "825:33:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint64",
@@ -12144,7 +12144,7 @@
                           "referencedDeclaration": 30,
                           "src": "873:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -12168,7 +12168,7 @@
                         "nodeType": "IndexAccess",
                         "src": "873:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -12179,7 +12179,7 @@
                       "lValueRequested": true,
                       "memberName": "locx",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1218,
+                      "referencedDeclaration": 1231,
                       "src": "873:21:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -12231,7 +12231,7 @@
                           "referencedDeclaration": 30,
                           "src": "909:11:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                            "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                             "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                           }
                         },
@@ -12255,7 +12255,7 @@
                         "nodeType": "IndexAccess",
                         "src": "909:16:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage",
                           "typeString": "struct EtherEmpireTypes.Entity storage ref"
                         }
                       },
@@ -12266,7 +12266,7 @@
                       "lValueRequested": true,
                       "memberName": "locy",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1220,
+                      "referencedDeclaration": 1233,
                       "src": "909:21:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -12607,7 +12607,7 @@
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                     "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                   },
                   "typeName": {
@@ -12625,7 +12625,7 @@
                     "nodeType": "Mapping",
                     "src": "510:43:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                     },
                     "valueType": {
@@ -12635,13 +12635,13 @@
                         "id": 27,
                         "name": "EtherEmpireTypes.Entity",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "529:23:0"
                       },
-                      "referencedDeclaration": 1221,
+                      "referencedDeclaration": 1234,
                       "src": "529:23:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       }
                     }
@@ -12883,7 +12883,7 @@
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       },
                       "typeName": {
@@ -12893,13 +12893,13 @@
                           "id": 139,
                           "name": "EtherEmpireTypes.Entity",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 1221,
+                          "referencedDeclaration": 1234,
                           "src": "1597:23:0"
                         },
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "1597:23:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity"
                         }
                       },
@@ -12916,7 +12916,7 @@
                       "referencedDeclaration": 108,
                       "src": "1648:11:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                       }
                     },
@@ -12940,7 +12940,7 @@
                     "nodeType": "IndexAccess",
                     "src": "1648:18:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                      "typeIdentifier": "t_struct$_Entity_$1234_storage",
                       "typeString": "struct EtherEmpireTypes.Entity storage ref"
                     }
                   },
@@ -12964,7 +12964,7 @@
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       },
                       "typeName": {
@@ -12974,13 +12974,13 @@
                           "id": 148,
                           "name": "EtherEmpireTypes.Entity",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 1221,
+                          "referencedDeclaration": 1234,
                           "src": "1677:23:0"
                         },
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "1677:23:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity"
                         }
                       },
@@ -12997,7 +12997,7 @@
                       "referencedDeclaration": 108,
                       "src": "1727:11:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                       }
                     },
@@ -13021,7 +13021,7 @@
                     "nodeType": "IndexAccess",
                     "src": "1727:19:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                      "typeIdentifier": "t_struct$_Entity_$1234_storage",
                       "typeString": "struct EtherEmpireTypes.Entity storage ref"
                     }
                   },
@@ -13058,7 +13058,7 @@
                           "referencedDeclaration": 141,
                           "src": "1841:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13069,7 +13069,7 @@
                         "lValueRequested": false,
                         "memberName": "qualifier2_32x32",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1216,
+                        "referencedDeclaration": 1229,
                         "src": "1841:33:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint64",
@@ -13104,7 +13104,7 @@
                     "operator": "||",
                     "rightExpression": {
                       "commonType": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       },
                       "id": 164,
@@ -13121,7 +13121,7 @@
                           "referencedDeclaration": 141,
                           "src": "1896:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13132,10 +13132,10 @@
                         "lValueRequested": false,
                         "memberName": "entityType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1212,
+                        "referencedDeclaration": 1225,
                         "src": "1896:27:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_EntityType_$1207",
+                          "typeIdentifier": "t_enum$_EntityType_$1220",
                           "typeString": "enum EtherEmpireTypes.EntityType"
                         }
                       },
@@ -13148,10 +13148,10 @@
                             "name": "EtherEmpireTypes",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1222,
+                            "referencedDeclaration": 1235,
                             "src": "1927:16:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                              "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                               "typeString": "type(contract EtherEmpireTypes)"
                             }
                           },
@@ -13162,10 +13162,10 @@
                           "lValueRequested": false,
                           "memberName": "EntityType",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1207,
+                          "referencedDeclaration": 1220,
                           "src": "1927:27:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                            "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                             "typeString": "type(enum EtherEmpireTypes.EntityType)"
                           }
                         },
@@ -13176,10 +13176,10 @@
                         "lValueRequested": false,
                         "memberName": "ARMY",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1205,
+                        "referencedDeclaration": 1218,
                         "src": "1927:32:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_EntityType_$1207",
+                          "typeIdentifier": "t_enum$_EntityType_$1220",
                           "typeString": "enum EtherEmpireTypes.EntityType"
                         }
                       },
@@ -13282,7 +13282,7 @@
                           "referencedDeclaration": 141,
                           "src": "2153:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13293,7 +13293,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2153:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13311,7 +13311,7 @@
                           "referencedDeclaration": 150,
                           "src": "2178:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13322,7 +13322,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2178:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13354,7 +13354,7 @@
                           "referencedDeclaration": 150,
                           "src": "2248:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13365,7 +13365,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2248:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13383,7 +13383,7 @@
                           "referencedDeclaration": 141,
                           "src": "2271:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13394,7 +13394,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2271:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13433,7 +13433,7 @@
                           "referencedDeclaration": 141,
                           "src": "2201:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13444,7 +13444,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2201:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13462,7 +13462,7 @@
                           "referencedDeclaration": 150,
                           "src": "2225:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13473,7 +13473,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "2225:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13548,7 +13548,7 @@
                           "referencedDeclaration": 141,
                           "src": "2317:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13559,7 +13559,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2317:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13577,7 +13577,7 @@
                           "referencedDeclaration": 150,
                           "src": "2342:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13588,7 +13588,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2342:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13620,7 +13620,7 @@
                           "referencedDeclaration": 150,
                           "src": "2412:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13631,7 +13631,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2412:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13649,7 +13649,7 @@
                           "referencedDeclaration": 141,
                           "src": "2435:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13660,7 +13660,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2435:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13699,7 +13699,7 @@
                           "referencedDeclaration": 141,
                           "src": "2365:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13710,7 +13710,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2365:21:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13728,7 +13728,7 @@
                           "referencedDeclaration": 150,
                           "src": "2389:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13739,7 +13739,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "2389:20:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -13866,7 +13866,7 @@
                 {
                   "condition": {
                     "commonType": {
-                      "typeIdentifier": "t_enum$_EntityType_$1207",
+                      "typeIdentifier": "t_enum$_EntityType_$1220",
                       "typeString": "enum EtherEmpireTypes.EntityType"
                     },
                     "id": 221,
@@ -13883,7 +13883,7 @@
                         "referencedDeclaration": 150,
                         "src": "2577:15:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                         }
                       },
@@ -13894,10 +13894,10 @@
                       "lValueRequested": false,
                       "memberName": "entityType",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1212,
+                      "referencedDeclaration": 1225,
                       "src": "2577:26:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
@@ -13910,10 +13910,10 @@
                           "name": "EtherEmpireTypes",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1222,
+                          "referencedDeclaration": 1235,
                           "src": "2607:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                             "typeString": "type(contract EtherEmpireTypes)"
                           }
                         },
@@ -13924,10 +13924,10 @@
                         "lValueRequested": false,
                         "memberName": "EntityType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1207,
+                        "referencedDeclaration": 1220,
                         "src": "2607:27:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                           "typeString": "type(enum EtherEmpireTypes.EntityType)"
                         }
                       },
@@ -13938,10 +13938,10 @@
                       "lValueRequested": false,
                       "memberName": "WALL",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1204,
+                      "referencedDeclaration": 1217,
                       "src": "2607:32:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
@@ -13954,7 +13954,7 @@
                   "falseBody": {
                     "condition": {
                       "commonType": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       },
                       "id": 250,
@@ -13971,7 +13971,7 @@
                           "referencedDeclaration": 150,
                           "src": "2957:15:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -13982,10 +13982,10 @@
                         "lValueRequested": false,
                         "memberName": "entityType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1212,
+                        "referencedDeclaration": 1225,
                         "src": "2957:26:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_EntityType_$1207",
+                          "typeIdentifier": "t_enum$_EntityType_$1220",
                           "typeString": "enum EtherEmpireTypes.EntityType"
                         }
                       },
@@ -13998,10 +13998,10 @@
                             "name": "EtherEmpireTypes",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1222,
+                            "referencedDeclaration": 1235,
                             "src": "2987:16:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                              "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                               "typeString": "type(contract EtherEmpireTypes)"
                             }
                           },
@@ -14012,10 +14012,10 @@
                           "lValueRequested": false,
                           "memberName": "EntityType",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1207,
+                          "referencedDeclaration": 1220,
                           "src": "2987:27:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                            "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                             "typeString": "type(enum EtherEmpireTypes.EntityType)"
                           }
                         },
@@ -14026,10 +14026,10 @@
                         "lValueRequested": false,
                         "memberName": "ARMY",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1205,
+                        "referencedDeclaration": 1218,
                         "src": "2987:32:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_EntityType_$1207",
+                          "typeIdentifier": "t_enum$_EntityType_$1220",
                           "typeString": "enum EtherEmpireTypes.EntityType"
                         }
                       },
@@ -14042,7 +14042,7 @@
                     "falseBody": {
                       "condition": {
                         "commonType": {
-                          "typeIdentifier": "t_enum$_EntityType_$1207",
+                          "typeIdentifier": "t_enum$_EntityType_$1220",
                           "typeString": "enum EtherEmpireTypes.EntityType"
                         },
                         "id": 279,
@@ -14059,7 +14059,7 @@
                             "referencedDeclaration": 150,
                             "src": "3337:15:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                              "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                               "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                             }
                           },
@@ -14070,10 +14070,10 @@
                           "lValueRequested": false,
                           "memberName": "entityType",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1212,
+                          "referencedDeclaration": 1225,
                           "src": "3337:26:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_enum$_EntityType_$1207",
+                            "typeIdentifier": "t_enum$_EntityType_$1220",
                             "typeString": "enum EtherEmpireTypes.EntityType"
                           }
                         },
@@ -14086,10 +14086,10 @@
                               "name": "EtherEmpireTypes",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1222,
+                              "referencedDeclaration": 1235,
                               "src": "3367:16:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                                "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                                 "typeString": "type(contract EtherEmpireTypes)"
                               }
                             },
@@ -14100,10 +14100,10 @@
                             "lValueRequested": false,
                             "memberName": "EntityType",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 1207,
+                            "referencedDeclaration": 1220,
                             "src": "3367:27:0",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                              "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                               "typeString": "type(enum EtherEmpireTypes.EntityType)"
                             }
                           },
@@ -14114,10 +14114,10 @@
                           "lValueRequested": false,
                           "memberName": "FARM",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 1206,
+                          "referencedDeclaration": 1219,
                           "src": "3367:32:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_enum$_EntityType_$1207",
+                            "typeIdentifier": "t_enum$_EntityType_$1220",
                             "typeString": "enum EtherEmpireTypes.EntityType"
                           }
                         },
@@ -14219,7 +14219,7 @@
                                   "referencedDeclaration": 150,
                                   "src": "3474:15:0",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                    "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                     "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                                   }
                                 },
@@ -14230,7 +14230,7 @@
                                 "lValueRequested": true,
                                 "memberName": "qualifier2_32x32",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 1216,
+                                "referencedDeclaration": 1229,
                                 "src": "3474:32:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint64",
@@ -14252,7 +14252,7 @@
                                           "referencedDeclaration": 150,
                                           "src": "3536:15:0",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                                           }
                                         },
@@ -14263,7 +14263,7 @@
                                         "lValueRequested": false,
                                         "memberName": "qualifier2_32x32",
                                         "nodeType": "MemberAccess",
-                                        "referencedDeclaration": 1216,
+                                        "referencedDeclaration": 1229,
                                         "src": "3536:32:0",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_uint64",
@@ -14491,10 +14491,10 @@
                                         "name": "FixedPoint",
                                         "nodeType": "Identifier",
                                         "overloadedDeclarations": [],
-                                        "referencedDeclaration": 3590,
+                                        "referencedDeclaration": 3594,
                                         "src": "3516:10:0",
                                         "typeDescriptions": {
-                                          "typeIdentifier": "t_type$_t_contract$_FixedPoint_$3590_$",
+                                          "typeIdentifier": "t_type$_t_contract$_FixedPoint_$3594_$",
                                           "typeString": "type(library FixedPoint)"
                                         }
                                       },
@@ -14505,7 +14505,7 @@
                                       "lValueRequested": false,
                                       "memberName": "multiply",
                                       "nodeType": "MemberAccess",
-                                      "referencedDeclaration": 3152,
+                                      "referencedDeclaration": 3156,
                                       "src": "3516:19:0",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
@@ -14695,7 +14695,7 @@
                                 "referencedDeclaration": 141,
                                 "src": "3050:16:0",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                   "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                                 }
                               },
@@ -14706,7 +14706,7 @@
                               "lValueRequested": false,
                               "memberName": "qualifier2_32x32",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 1216,
+                              "referencedDeclaration": 1229,
                               "src": "3050:33:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint64",
@@ -14724,7 +14724,7 @@
                                 "referencedDeclaration": 150,
                                 "src": "3086:15:0",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                   "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                                 }
                               },
@@ -14735,7 +14735,7 @@
                               "lValueRequested": false,
                               "memberName": "qualifier2_32x32",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 1216,
+                              "referencedDeclaration": 1229,
                               "src": "3086:32:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint64",
@@ -14788,7 +14788,7 @@
                                       "referencedDeclaration": 108,
                                       "src": "3273:11:0",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                       }
                                     },
@@ -14816,7 +14816,7 @@
                                         "typeString": "address"
                                       },
                                       {
-                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                       },
                                       {
@@ -14831,7 +14831,7 @@
                                     "referencedDeclaration": 99,
                                     "src": "3248:7:0",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
+                                      "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
                                       "typeString": "function (uint32,address,mapping(uint32 => struct EtherEmpireTypes.Entity storage ref),mapping(uint32 => address))"
                                     }
                                   },
@@ -14899,7 +14899,7 @@
                                       "referencedDeclaration": 108,
                                       "src": "3166:11:0",
                                       "typeDescriptions": {
-                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                       }
                                     },
@@ -14927,7 +14927,7 @@
                                         "typeString": "address"
                                       },
                                       {
-                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                       },
                                       {
@@ -14942,7 +14942,7 @@
                                     "referencedDeclaration": 99,
                                     "src": "3139:7:0",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
+                                      "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
                                       "typeString": "function (uint32,address,mapping(uint32 => struct EtherEmpireTypes.Entity storage ref),mapping(uint32 => address))"
                                     }
                                   },
@@ -14999,7 +14999,7 @@
                               "referencedDeclaration": 141,
                               "src": "2670:16:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                 "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                               }
                             },
@@ -15010,7 +15010,7 @@
                             "lValueRequested": false,
                             "memberName": "qualifier2_32x32",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 1216,
+                            "referencedDeclaration": 1229,
                             "src": "2670:33:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint64",
@@ -15028,7 +15028,7 @@
                               "referencedDeclaration": 150,
                               "src": "2706:15:0",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                                "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                                 "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                               }
                             },
@@ -15039,7 +15039,7 @@
                             "lValueRequested": false,
                             "memberName": "qualifier2_32x32",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 1216,
+                            "referencedDeclaration": 1229,
                             "src": "2706:32:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint64",
@@ -15092,7 +15092,7 @@
                                     "referencedDeclaration": 108,
                                     "src": "2893:11:0",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                     }
                                   },
@@ -15120,7 +15120,7 @@
                                       "typeString": "address"
                                     },
                                     {
-                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                     },
                                     {
@@ -15135,7 +15135,7 @@
                                   "referencedDeclaration": 99,
                                   "src": "2868:7:0",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
+                                    "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
                                     "typeString": "function (uint32,address,mapping(uint32 => struct EtherEmpireTypes.Entity storage ref),mapping(uint32 => address))"
                                   }
                                 },
@@ -15203,7 +15203,7 @@
                                     "referencedDeclaration": 108,
                                     "src": "2786:11:0",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                     }
                                   },
@@ -15231,7 +15231,7 @@
                                       "typeString": "address"
                                     },
                                     {
-                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                                     },
                                     {
@@ -15246,7 +15246,7 @@
                                   "referencedDeclaration": 99,
                                   "src": "2759:7:0",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
+                                    "typeIdentifier": "t_function_internal_nonpayable$_t_uint32_$_t_address_$_t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$_$_t_mapping$_t_uint32_$_t_address_$_$returns$__$",
                                     "typeString": "function (uint32,address,mapping(uint32 => struct EtherEmpireTypes.Entity storage ref),mapping(uint32 => address))"
                                   }
                                 },
@@ -15377,7 +15377,7 @@
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                     "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                   },
                   "typeName": {
@@ -15395,7 +15395,7 @@
                     "nodeType": "Mapping",
                     "src": "1160:43:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                     },
                     "valueType": {
@@ -15405,13 +15405,13 @@
                         "id": 105,
                         "name": "EtherEmpireTypes.Entity",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "1179:23:0"
                       },
-                      "referencedDeclaration": 1221,
+                      "referencedDeclaration": 1234,
                       "src": "1179:23:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       }
                     }
@@ -15698,7 +15698,7 @@
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       },
                       "typeName": {
@@ -15708,13 +15708,13 @@
                           "id": 358,
                           "name": "EtherEmpireTypes.Entity",
                           "nodeType": "IdentifierPath",
-                          "referencedDeclaration": 1221,
+                          "referencedDeclaration": 1234,
                           "src": "4186:23:0"
                         },
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "4186:23:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity"
                         }
                       },
@@ -15731,7 +15731,7 @@
                       "referencedDeclaration": 335,
                       "src": "4227:11:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                        "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                         "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity storage ref)"
                       }
                     },
@@ -15755,7 +15755,7 @@
                     "nodeType": "IndexAccess",
                     "src": "4227:18:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Entity_$1221_storage",
+                      "typeIdentifier": "t_struct$_Entity_$1234_storage",
                       "typeString": "struct EtherEmpireTypes.Entity storage ref"
                     }
                   },
@@ -15765,7 +15765,7 @@
                 {
                   "condition": {
                     "commonType": {
-                      "typeIdentifier": "t_enum$_EntityType_$1207",
+                      "typeIdentifier": "t_enum$_EntityType_$1220",
                       "typeString": "enum EtherEmpireTypes.EntityType"
                     },
                     "id": 370,
@@ -15782,7 +15782,7 @@
                         "referencedDeclaration": 360,
                         "src": "4294:6:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                         }
                       },
@@ -15793,10 +15793,10 @@
                       "lValueRequested": false,
                       "memberName": "entityType",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1212,
+                      "referencedDeclaration": 1225,
                       "src": "4294:17:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
@@ -15809,10 +15809,10 @@
                           "name": "EtherEmpireTypes",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1222,
+                          "referencedDeclaration": 1235,
                           "src": "4315:16:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1222_$",
+                            "typeIdentifier": "t_type$_t_contract$_EtherEmpireTypes_$1235_$",
                             "typeString": "type(contract EtherEmpireTypes)"
                           }
                         },
@@ -15823,10 +15823,10 @@
                         "lValueRequested": false,
                         "memberName": "EntityType",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1207,
+                        "referencedDeclaration": 1220,
                         "src": "4315:27:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1207_$",
+                          "typeIdentifier": "t_type$_t_enum$_EntityType_$1220_$",
                           "typeString": "type(enum EtherEmpireTypes.EntityType)"
                         }
                       },
@@ -15837,10 +15837,10 @@
                       "lValueRequested": false,
                       "memberName": "ARMY",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1205,
+                      "referencedDeclaration": 1218,
                       "src": "4315:32:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_enum$_EntityType_$1207",
+                        "typeIdentifier": "t_enum$_EntityType_$1220",
                         "typeString": "enum EtherEmpireTypes.EntityType"
                       }
                     },
@@ -15937,7 +15937,7 @@
                           "referencedDeclaration": 360,
                           "src": "4459:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -15948,7 +15948,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "4459:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -16008,7 +16008,7 @@
                           "referencedDeclaration": 360,
                           "src": "4512:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -16019,7 +16019,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "4512:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -16058,7 +16058,7 @@
                           "referencedDeclaration": 360,
                           "src": "4482:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -16069,7 +16069,7 @@
                         "lValueRequested": false,
                         "memberName": "locx",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1218,
+                        "referencedDeclaration": 1231,
                         "src": "4482:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -16158,7 +16158,7 @@
                           "referencedDeclaration": 360,
                           "src": "4548:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -16169,7 +16169,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "4548:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -16229,7 +16229,7 @@
                           "referencedDeclaration": 360,
                           "src": "4601:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -16240,7 +16240,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "4601:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -16279,7 +16279,7 @@
                           "referencedDeclaration": 360,
                           "src": "4571:6:0",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                            "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                             "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                           }
                         },
@@ -16290,7 +16290,7 @@
                         "lValueRequested": false,
                         "memberName": "locy",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 1220,
+                        "referencedDeclaration": 1233,
                         "src": "4571:11:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint16",
@@ -16444,7 +16444,7 @@
                         "referencedDeclaration": 360,
                         "src": "4675:6:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                         }
                       },
@@ -16455,7 +16455,7 @@
                       "lValueRequested": true,
                       "memberName": "locx",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1218,
+                      "referencedDeclaration": 1231,
                       "src": "4675:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -16502,7 +16502,7 @@
                         "referencedDeclaration": 360,
                         "src": "4705:6:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                          "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                           "typeString": "struct EtherEmpireTypes.Entity storage pointer"
                         }
                       },
@@ -16513,7 +16513,7 @@
                       "lValueRequested": true,
                       "memberName": "locy",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 1220,
+                      "referencedDeclaration": 1233,
                       "src": "4705:11:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint16",
@@ -16673,7 +16673,7 @@
                   "stateVariable": false,
                   "storageLocation": "storage",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                    "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                     "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                   },
                   "typeName": {
@@ -16691,7 +16691,7 @@
                     "nodeType": "Mapping",
                     "src": "3877:43:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1221_storage_$",
+                      "typeIdentifier": "t_mapping$_t_uint32_$_t_struct$_Entity_$1234_storage_$",
                       "typeString": "mapping(uint32 => struct EtherEmpireTypes.Entity)"
                     },
                     "valueType": {
@@ -16701,13 +16701,13 @@
                         "id": 332,
                         "name": "EtherEmpireTypes.Entity",
                         "nodeType": "IdentifierPath",
-                        "referencedDeclaration": 1221,
+                        "referencedDeclaration": 1234,
                         "src": "3896:23:0"
                       },
-                      "referencedDeclaration": 1221,
+                      "referencedDeclaration": 1234,
                       "src": "3896:23:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Entity_$1221_storage_ptr",
+                        "typeIdentifier": "t_struct$_Entity_$1234_storage_ptr",
                         "typeString": "struct EtherEmpireTypes.Entity"
                       }
                     }
@@ -16882,7 +16882,8 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-05-08T16:15:18.709Z",
+  "updatedAt": "2021-05-08T22:43:32.294Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
