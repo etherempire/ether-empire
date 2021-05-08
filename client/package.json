@@ -5,9 +5,11 @@
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
+    "@maticnetwork/walletconnect-provider": "0.0.1-beta.1",
     "@metamask/detect-provider": "^1.2.0",
     "bootstrap": "^4.6.0",
     "impetus": "^0.8.8",
+    "maticjs": "^1.0.1",
     "mouse-wheel": "^1.2.0",
     "react": "16.11.0",
     "react-bootstrap": "^0.32.4",
