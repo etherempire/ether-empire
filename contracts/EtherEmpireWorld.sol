@@ -6,6 +6,7 @@ import "./EtherEmpireTypes.sol";
 import "./EtherEmpireStorage.sol"; 
 import "./EtherEmpireDiplomacy.sol"; 
 import "./EtherEmpireCombat.sol"; 
+import "./smart_treaties/SmartTreaty.sol";
 
 // Handles entity creation and core features
 contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
@@ -15,17 +16,16 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
     event ArmyRecruited(address _owner, uint32 _id, uint16 _locx, uint16 _locy);
     event ArmyMoved(address _owner, uint32 _id, uint16 _locx, uint16 _locy);
 
-    constructor(uint64 _yieldMin_32x32, uint64 _yieldRange_32x32, uint64 _armyToWallTokenRatio_32x32, uint64 _farmOccupationBurnRate_32x32, address _tokenContractAddress) {
+    constructor(uint64 _yieldMin_32x32, uint64 _yieldRange_32x32, uint64 _armyToWallTokenRatio_32x32, uint64 _farmOccupationBurnRate_32x32, EtherEmpireToken _tokenContractAddress) {
         yieldMin_32x32 = _yieldMin_32x32;
         yieldRange_32x32 = _yieldRange_32x32; 
         armyToWallTokenRatio_32x32 = _armyToWallTokenRatio_32x32;
         farmOccupationBurnRate_32x32 = _farmOccupationBurnRate_32x32;
         globalLandValue_32x32 = 0;
         spawnedEntitiesCount = 0;
-        tokenContract = EtherEmpireToken(_tokenContractAddress);
+        tokenContract = _tokenContractAddress;
 
     }
-
 
     modifier onlyOwnerOf(uint32 _id, address owner) {
         require(entityToOwner[_id] == owner);
@@ -130,9 +130,39 @@ contract EtherEmpireWorld is Ownable, EtherEmpireStorage {
 
     }
 
+    function toString(bytes memory data) public pure returns(string memory) {
+        bytes memory alphabet = "0123456789abcdef";
+
+        bytes memory str = new bytes(2 + data.length * 2);
+        str[0] = "0";
+        str[1] = "x";
+        for (uint i = 0; i < data.length; i++) {
+            str[2+i*2] = alphabet[uint(uint8(data[i] >> 4))];
+            str[3+i*2] = alphabet[uint(uint8(data[i] & 0x0f))];
+        }
+        return string(str);
+    }
+
+
     function changeEntityOwner(uint32 _id, address _newOwner) public {
-        require(msg.sender == entityToOwner[_id] || msg.sender == address(this));
+        require(msg.sender == entityToOwner[_id] || authorizedTreaty[entityToOwner[_id]][msg.sender]);
         entityToOwner[_id] = _newOwner;
+    }
+
+    function getEntityOwner(uint32 _id) view external returns(address) {
+        return entityToOwner[_id];
+    }
+
+    // To be implemented
+    function createTreaty(address ref) external {
+        address newTreaty = SmartTreaty(ref).duplicate();
+        authorizedTreaty[msg.sender][newTreaty] = true;
+        SmartTreaty(newTreaty).sign(msg.sender);
+    }
+
+    function signTreaty(address ref) external {
+        authorizedTreaty[msg.sender][ref] = true;
+        SmartTreaty(ref).sign(msg.sender);
     }
 
     // Relay external calls to specific libraries 

@@ -7,25 +7,18 @@ abstract contract SmartTreaty {
 
     address[] public signed;
     uint public signed_count; 
-    bool public isActive;
     EtherEmpireToken tokenContract; 
     EtherEmpireWorld embeddedWorld; 
 
-    bool self_invoked; 
-
-    constructor(bool _self_invoked, address _tokenAddress, address _worldAddress) {
-        self_invoked = _self_invoked;
-        tokenContract = EtherEmpireToken(_tokenAddress);
-        embeddedWorld = EtherEmpireWorld(_worldAddress);
-        isActive = true; 
+    constructor(EtherEmpireToken _tokenAddress, EtherEmpireWorld _worldAddress) {
+        tokenContract = _tokenAddress;
+        embeddedWorld = _worldAddress;
     }
 
-    function sign() external {
-        _sign(msg.sender);
-    }
 
-    function _sign(address signatory) internal {
-
+    function sign(address signatory) public {
+        require(msg.sender == address(embeddedWorld));
+        
         bool already_signed = false; 
 
         for (uint i = 0; i < signed_count; i++)
@@ -41,11 +34,12 @@ abstract contract SmartTreaty {
         {
             signed.push(signatory); 
             signed_count++; 
-            if (self_invoked) invoke();
         }
         
     } 
 
-    function invoke() virtual public; 
+    function duplicate() virtual public returns(address);
+
+    // function invoke() virtual public; 
 
 }
