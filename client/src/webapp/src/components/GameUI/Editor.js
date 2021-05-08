@@ -125,32 +125,28 @@ class Editor extends Component {
   }
 
   moveArmy = (dir) => {   // if user selects the create Wall button, initialize the state
-    const posX = this.state.info.x
-    const posY = this.state.info.y
-    var newPosX = posX
-    var newPosY = posY
     console.log(dir)
+    var neighbor
     if(dir == direction.NORTH){
-      newPosY+=1
+      neighbor = this.state.neighbors.NORTH
     }if(dir == direction.SOUTH){
-      newPosY-=1
+      neighbor = this.state.neighbors.SOUTH
     }if(dir == direction.EAST){
-      newPosX+=1
+      neighbor = this.state.neighbors.EAST
     }if(dir == direction.WEST){
-      newPosX-=1
+      neighbor = this.state.neighbors.WEST
     }
 
-    for(var neighbor of this.state.neighbors){
-      if(neighbor != null && neighbor.x==newPosX && neighbor.y==newPosY && (neighbor.isEmpty || neighbor.isFarm) && !neighbor.containsArmy){
-        neighbor.containsArmy = true
-        neighbor.armyOwner = this.state.info.armyOwner
-        neighbor.armyValue = this.state.info.armyValue
-        this.state.info.containsArmy = false
-        this.state.info.armyOwner = null
-        this.state.info.armyValue = 0
-        this.updateParent()
-      }
+    if(this.canMove(dir)){
+      neighbor.containsArmy = true
+      neighbor.armyOwner = this.state.info.armyOwner
+      neighbor.armyValue = this.state.info.armyValue
+      this.state.info.containsArmy = false
+      this.state.info.armyOwner = null
+      this.state.info.armyValue = 0
+      this.updateParent()
     }
+    
 
     this.setState({ movingArmy: false, buttonSelected: null })
 
@@ -193,7 +189,134 @@ class Editor extends Component {
     this.setState({ userInputedStakeAmount: e.target.value });
   }
 
+  movableNeighbor = () => {
+    for(var i=0;i<4;i++){
+      if(this.canMove(i)){
+        return true
+      }
+    }
+    return false
+  }
 
+  attackableNeighbor = () => {
+    for(var i=0;i<4;i++){
+      if(this.canAttack(i)){
+        return true
+      }
+    }
+    return false
+  }
+
+  destroyableNeighbor = () => {
+    for(var i=0;i<4;i++){
+      if(this.canDestroy(i)){
+        return true
+      }
+    }
+    return false
+  }
+
+  pillageFarm = () => {
+    this.state.info.value = 0
+    this.state.info.isFarm = false
+    this.state.info.isEmpty = true
+    this.updateParent()
+  }
+
+  attack = () => {
+    console.log("Attack!")
+    this.setState({ isAttacking: true });
+  }
+
+  destroy = () => {
+    console.log("Destroy Wall")
+    this.setState({ isDestroying: true });
+  }
+
+  canMove = (dir) => {
+    var neighbor
+    if(dir == direction.NORTH){
+      neighbor = this.state.neighbors.NORTH
+    }if(dir == direction.SOUTH){
+      neighbor = this.state.neighbors.SOUTH
+    }if(dir == direction.EAST){
+      neighbor = this.state.neighbors.EAST
+    }if(dir == direction.WEST){
+      neighbor = this.state.neighbors.WEST
+    }
+    return neighbor != null && (neighbor.isEmpty || neighbor.isFarm) && !neighbor.containsArmy
+  }
+
+  canAttack = (dir) => {
+    var neighbor
+    if(dir == direction.NORTH){
+      neighbor = this.state.neighbors.NORTH
+    }if(dir == direction.SOUTH){
+      neighbor = this.state.neighbors.SOUTH
+    }if(dir == direction.EAST){
+      neighbor = this.state.neighbors.EAST
+    }if(dir == direction.WEST){
+      neighbor = this.state.neighbors.WEST
+    }
+    return neighbor != null && neighbor.containsArmy
+  }
+
+  canDestroy = (dir) => {
+    var neighbor
+    if(dir == direction.NORTH){
+      neighbor = this.state.neighbors.NORTH
+    }if(dir == direction.SOUTH){
+      neighbor = this.state.neighbors.SOUTH
+    }if(dir == direction.EAST){
+      neighbor = this.state.neighbors.EAST
+    }if(dir == direction.WEST){
+      neighbor = this.state.neighbors.WEST
+    }
+    return neighbor != null && neighbor.isWall
+  }
+
+  attackDirection = (dir) => {
+    var neighbor
+    if(dir == direction.NORTH){
+      neighbor = this.state.neighbors.NORTH
+    }if(dir == direction.SOUTH){
+      neighbor = this.state.neighbors.SOUTH
+    }if(dir == direction.EAST){
+      neighbor = this.state.neighbors.EAST
+    }if(dir == direction.WEST){
+      neighbor = this.state.neighbors.WEST
+    }
+
+      if(this.canAttack(dir)){
+        neighbor.containsArmy = false
+        neighbor.armyOwner = null
+        neighbor.armyValue = 0
+        this.updateParent()
+      }
+    
+    this.setState({ isAttacking: false });
+  }
+
+  destroyDirection = (dir) => {
+    var neighbor
+    if(dir == direction.NORTH){
+      neighbor = this.state.neighbors.NORTH
+    }if(dir == direction.SOUTH){
+      neighbor = this.state.neighbors.SOUTH
+    }if(dir == direction.EAST){
+      neighbor = this.state.neighbors.EAST
+    }if(dir == direction.WEST){
+      neighbor = this.state.neighbors.WEST
+    }
+
+      if(this.canDestroy(dir)){
+        neighbor.containsWall = false
+        neighbor.value = 0
+        this.updateParent()
+      }
+    
+    this.setState({ isDestroying: false });
+  }
 
   confirmStake = async () => {
     if (this.state.userInputedStakeAmount == "" || this.state.userInputedStakeAmount <= 0) {  //invalid user input
@@ -237,31 +360,97 @@ class Editor extends Component {
           Divest Farm
         </Button>
         <Button variant="contained"
-          disabled={!this.state.info.containsArmy}
+          disabled={!this.state.info.containsArmy || !this.movableNeighbor()}
           onClick={this.selectedMoveArmy}>
           Move Army
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.info.containsArmy || !this.state.info.isFarm}
+          onClick={this.pillageFarm}>
+          Pillage Farm
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.info.containsArmy || !this.attackableNeighbor()}
+          onClick={this.attack}>
+          Attack!
+        </Button>
+
+        <Button variant="contained"
+          disabled={!this.state.info.containsArmy || !this.destroyableNeighbor()}
+          onClick={this.destroy}>
+          Destroy Wall
         </Button>
 
         { this.state.movingArmy ? 
         <div className="rowC">
           <Button variant="contained"
-          disabled={!this.state.movingArmy}
+          disabled={!this.state.movingArmy || !this.canMove(direction.NORTH)}
           onClick={() => {this.moveArmy(direction.NORTH)}}>
           North
         </Button>
         <Button variant="contained"
-          disabled={!this.state.movingArmy}
+          disabled={!this.state.movingArmy || !this.canMove(direction.SOUTH)}
           onClick={() => {this.moveArmy(direction.SOUTH)}}>
           South
         </Button>
         <Button variant="contained"
-          disabled={!this.state.movingArmy}
+          disabled={!this.state.movingArmy || !this.canMove(direction.EAST)}
           onClick={() => {this.moveArmy(direction.EAST)}}>
           East
         </Button>
         <Button variant="contained"
-          disabled={!this.state.movingArmy}
+          disabled={!this.state.movingArmy || !this.canMove(direction.WEST)}
           onClick={() => {this.moveArmy(direction.WEST)}}>
+          West
+        </Button>
+        </div>
+          : <div></div>}
+
+        { this.state.isAttacking ? 
+        <div className="rowC">
+          <Button variant="contained"
+          disabled={!this.state.isAttacking || !this.canAttack(direction.NORTH)}
+          onClick={() => {this.attackDirection(direction.NORTH)}}>
+          North
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.isAttacking || !this.canAttack(direction.SOUTH)}
+          onClick={() => {this.attackDirection(direction.SOUTH)}}>
+          South
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.isAttacking || !this.canAttack(direction.EAST)}
+          onClick={() => {this.attackDirection(direction.EAST)}}>
+          East
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.isAttacking || !this.canAttack(direction.WEST)}
+          onClick={() => {this.attackDirection(direction.WEST)}}>
+          West
+        </Button>
+        </div>
+          : <div></div>}
+
+        { this.state.isDestroying ? 
+        <div className="rowC">
+          <Button variant="contained"
+          disabled={!this.state.isDestroying || !this.canDestroy(direction.NORTH)}
+          onClick={() => {this.destroyDirection(direction.NORTH)}}>
+          North
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.isDestroying || !this.canDestroy(direction.SOUTH)}
+          onClick={() => {this.destroyDirection(direction.SOUTH)}}>
+          South
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.isDestroying || !this.canDestroy(direction.EAST)}
+          onClick={() => {this.destroyDirection(direction.EAST)}}>
+          East
+        </Button>
+        <Button variant="contained"
+          disabled={!this.state.isDestroying || !this.canDestroy(direction.WEST)}
+          onClick={() => {this.destroyDirection(direction.WEST)}}>
           West
         </Button>
         </div>

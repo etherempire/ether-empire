@@ -39,11 +39,11 @@ class GameMap extends Component {
       
 
 
-      this.updateInfo(this.state.atlas.info(posX,posY), [
-        this.state.atlas.info(posX+1,posY),
-        this.state.atlas.info(posX-1,posY),
-        this.state.atlas.info(posX,posY+1),
-        this.state.atlas.info(posX,posY-1)])
+      this.updateInfo(this.state.atlas.info(posX,posY), 
+      { NORTH: this.state.atlas.info(posX,posY+1),
+        SOUTH: this.state.atlas.info(posX,posY-1),
+        EAST: this.state.atlas.info(posX+1,posY),
+        WEST: this.state.atlas.info(posX-1,posY)})
     }
   }
 
