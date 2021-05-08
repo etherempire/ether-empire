@@ -19,10 +19,8 @@ function Home() {
 
   return (
     <div className="home">
-      <p className="test">Current account: { }</p>
-
       <center><h1 className="title">Ether Empire</h1></center>
-      <video className="logoAnimation" autoPlay muted>
+      <video className="logoAnimation" loop autoPlay muted>
         <source src={logoAnimation} type="video/mp4" />
       </video>
       <div >

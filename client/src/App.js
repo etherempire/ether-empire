@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import getWeb3 from "./getWeb3";
+import {getWeb3, isMetaMaskInstalled, isMetaMaskConnected, isAddressConnected, getExistingWeb3} from "./getWeb3";
 import Main from "./webapp/src/components/Pages/Main";
 import EtherEmpireContract from "./contracts/EtherEmpireWorld.json"
 
@@ -8,57 +8,48 @@ import "./App.css";
 class App extends Component {
   state = { web3: null, accounts: null, instance: null };
 
-  componentDidMount = async () => {
+  connectWeb3 = async () => {
     try {
-      // Get network provider and web3 instance.
       const web3 = await getWeb3();
-      console.log(web3)
-      // Use web3 to get the user's accounts.
-      const accounts = await web3.eth.getAccounts();
+      await this.setWeb3(web3)
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
-      // Get the contract instance.
+  setWeb3 = async (web3) => {
+    try {
+      const accounts = await web3.eth.getAccounts();
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = EtherEmpireContract.networks[networkId];
       const instance = new web3.eth.Contract(
         EtherEmpireContract.abi,
          deployedNetwork && deployedNetwork.address,
       );
-
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, instance}, this.runExample);
+      this.setState({ web3, accounts, instance});
     } catch (error) {
-      // Catch any errors for any of the above operations.
-      alert(
-        `Failed to load web3, accounts, or contract. Check console for details.`,
-      );
       console.error(error);
     }
-  };
+  }
 
-  runExample = async () => {
-    const { accounts, contract } = this.state;
+  homeConnected(){
+    return this.state.accounts && this.state.accounts.length != 0
+  }
 
-    // Sample code for invoking (send) and receiving (call) from a contract 
-    // // Stores a given value, 5 by default.
-    // await contract.methods.set(5).send({ from: accounts[0] });
-
-    // // Get the value from the contract to prove it worked.
-    // const response = await contract.methods.get().call();
-
-    // // Update state with the result.
-    // this.setState({ storageValue: response });
-  };
+  componentDidMount = async () => {
+    await this.setWeb3(getExistingWeb3())
+  }
 
   render() {
-    if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
-    }
     return (
       <div className="App">
-        <Main web3={this.state}/>
+        <Main 
+          connected={this.state.accounts && this.state.accounts.length != 0} 
+          installed={isMetaMaskInstalled} 
+          web3={this.state} 
+          connectWeb3={this.connectWeb3}/>
       </div>
-    );
+    )
   }
 }
 
