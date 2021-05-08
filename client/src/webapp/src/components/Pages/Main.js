@@ -25,6 +25,9 @@ import Game from "./Game";
 import HowToPlay from "./HowToPlay";
 import logo from "../Images/ether-empire-logo.png";
 import navLogo from "../Images/logo_64x64.png"
+import redditLogo from "../Images/reddit-icon.png"
+import githubLogo from "../Images/github-icon.png"
+import discordLogo from "../Images/discord-icon.png"
 import "../CSS/Main.css";
 import CheckIcon from '@material-ui/icons/Check';
 import getWeb3 from "../../../../getWeb3";
@@ -55,15 +58,19 @@ const Main = (props) => {
                 </NavItem>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret>
-                    CONTACT
+                    COMMUNITY
                   </DropdownToggle>
                   <DropdownMenu right>
                     <DropdownItem>
-                      <NavLink href="https://github.com/jinhongkuan/ether-empire" target="_blank">GitHub</NavLink>
+                      <NavLink href="https://discord.com" target="_blank">Join Our Discord</NavLink>
                     </DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem>
-                      <NavLink href="https://discord.com">Discord</NavLink>
+                      <NavLink href="https://www.reddit.com/r/etherempireofficial/" target="_blank">The Official Reddit</NavLink>
+                    </DropdownItem>
+                    <DropdownItem divider />
+                    <DropdownItem>
+                      <NavLink href="https://github.com/jinhongkuan/ether-empire" target="_blank">Contribute on Github</NavLink>
                     </DropdownItem>
                   </DropdownMenu>
                 </UncontrolledDropdown>
