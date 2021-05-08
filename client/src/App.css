@@ -1,21 +1,46 @@
-.App{  
-  height: 100vh;  
+.App{
+  height: 100vh;
   background-color: black;
 }
-.rowC {
-  display:flex; flex-direction:row; 
-}
-.colC {
-  display:flex; flex-direction:column;
-}
-.item {
-  flex-grow: 1;
-}
+
+
 .content {
   padding: 0px;
   color: white;
+
+  background-color: black;
 }
+
+.rowC {
+  display:flex; 
+  flex-direction:row; 
+  width: 100%;
+  margin:30px;
+
+}
+.colC {
+  display:flex; 
+  flex-direction:column;
+  width: 40vh;
+}
+.item {
+  flex-grow: 1;
+  width: 10vh;
+  margin: 30px;
+}
+
+.item2{
+  margin-right: 10vh;
+}
+
+
+.Tilemap{
+  display: block;
+}
+
+
 .infoText {
   word-wrap: break-word;
-  white-space: normal
+  white-space: normal;
+  position:sticky;
 }
