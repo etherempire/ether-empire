@@ -1,113 +1,296 @@
-import React, { useCallback, useState} from 'react'
+import React from 'react'
 
 import { TileMap } from '../TileMap/TileMap'
-import { Layer } from '../../lib/common'
+
 import { Component } from 'react'
-import { color, typeIntToTypeColor, gameSize} from "../../../webapp/src/constants/Constants"
 
-const selected = []
+import { Atlas } from "../../../webapp/src/components/TileInfo/Atlas"
 
-function isSelected(x, y) {
-  return selected.some(coord => coord.x === x && coord.y === y)
-}
-
-function isInBounds(x, y) {
-  return (x >= -(gameSize/2) && x<(gameSize/2) && y >= -(gameSize/2) && y<(gameSize/2))
-}
-
-function select(x, y) {
-  if (isInBounds(x,y)){
-    selected.push({ x, y })
-  }
-}
-
-function unselectAll() {
-  selected.length = 0
-}
-
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
+var selected = new Set([]) // set of coords
+const selectedColor = "#FFFF00" //yellow
+const unloadedColor = "#FF00FF" //magneta
+const outOfBoundsColor = "#000000" //black
 
 class GameMap extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.getWorldMapData();
+    this.state = {}
+
+    console.log("constructing game map")
+    const { web3, accounts, instance } = props.web3
+    this.web3 = web3
+    this.accounts = accounts
+    this.instance = instance //EtherEmpireWorld contract instance
+
+    this.updateInfo = this.props.updateInfo
+    if (this.accounts.length != 0) {
+      this.getWorldMapData();
+    }
+
+    this.tileMap = React.createRef();
+
+  }
+
+  select = (x, y) => {
+    if (this.isInBounds(x, y)) {
+      selected.add(`${x}_${y}`);
+      const posX = x + this.gameWidth / 2
+      const posY = y + this.gameHeight / 2
+      
+
+
+      this.updateInfo(this.state.atlas.info(posX,posY), 
+      { NORTH: this.state.atlas.info(posX,posY+1),
+        SOUTH: this.state.atlas.info(posX,posY-1),
+        EAST: this.state.atlas.info(posX+1,posY),
+        WEST: this.state.atlas.info(posX-1,posY)})
+    }
+  }
+
+  unselect = (x, y) => {
+    selected.delete(`${x}_${y}`)
+  }
+
+  unselectAll = () => {
+    selected.clear()
+  }
+
+  isSelected = (x, y) => {
+    return selected.has(`${x}_${y}`)
+  }
+
+  isInBounds = (x, y) => {
+    return (x >= -(this.gameWidth / 2) && x < (this.gameWidth / 2) && y >= -(this.gameHeight / 2) && y < (this.gameHeight / 2))
+  }
+
+  toggleSelection = (x, y) => {
+    if (this.isSelected(x, y)) {
+      this.unselect(x, y)
+    } else {
+      this.select(x, y)
+    }
+  }
+
+  selectRange = (x1, y1, x2, y2) => {
+    if (this.isInBounds(x1, y1) && this.isInBounds(x2, y2)) {
+
+      var x
+      var y
+      for (x = Math.min(x1, x2); x <= Math.max(x1, x2); x++) {
+        for (y = Math.min(y1, y2); y <= Math.max(y1, y2); y++) {
+          this.select(x, y)
+        }
+      }
+    }
   }
 
   selectedLayer = (x, y) => {
-    if (isSelected(x,y)){
-      return  {color: color.SELECTED, scale: 1.2}
-    }else{
-      return null
+    const isSelected = this.isSelected(x, y)
+    return {
+      color: isSelected ? "#ffffff30" : "#00000000", //transparent
+      outlineLeft: isSelected && !this.isSelected(x - 1, y),
+      outlineTop: isSelected && !this.isSelected(x, y + 1),
+      outlineRight: isSelected && !this.isSelected(x + 1, y),
+      outlineBottom: isSelected && !this.isSelected(x, y - 1),
+      outlineTopLeft: isSelected && !this.isSelected(x - 1, y + 1),
+      outlineBottomLeft: isSelected && !this.isSelected(x - 1, y - 1),
+      outlineTopRight: isSelected && !this.isSelected(x + 1, y + 1),
+      outlineBottomRight: isSelected && !this.isSelected(x + 1, y - 1),
+
+      outlineColor: selectedColor,
+      outlineWidth: .1 // 1/10 of tile size
+    }
+
+  }
+
+  handleClick(x, y, ctrlKey, shiftKey) {
+    if (shiftKey) {
+
+    } else if (ctrlKey) {
+      this.toggleSelection(x, y);
+    } else {
+      this.unselectAll();
+      this.select(x, y);
+    }
+  }
+
+  handleDrag(x1, y1, x2, y2, ctrlKey, shiftKey) {
+    if (shiftKey) {
+      if (!ctrlKey) {
+        this.unselectAll()
+      }
+      this.selectRange(x1, y1, x2, y2)
     }
   }
 
   simpleLayer = (x, y) => {
-    if (isInBounds(x,y)){
-      return {
-        color: typeIntToTypeColor[this.props.atlas[x + (gameSize/2)][y + (gameSize/2)][0]]
+    if (this.isInBounds(x, y)) {
+
+      const posX = x + (this.gameWidth / 2)
+      const posY = y + (this.gameHeight / 2)
+
+      if (this.state.atlas) {
+
+        const info = this.state.atlas.info(posX, posY)
+
+        if (info) {
+
+          return {
+            color: info.tileColor(),
+          }
+
+        } else {
+
+          return {
+            color: unloadedColor,
+          }
+
+        }
+
+      } else {
+        // should not be here
       }
-    }else{
+
+    } else {
       return {
-        color: color.OUT_OF_BOUNDS
+        color: outOfBoundsColor
       }
     }
   }
 
-  /* //construction
-  localLayer = (x, y) => {
-    if (isInBounds(x,y)){
-      return {
-        color: typeIntToTypeColor[this.props.atlas[x + (gameSize/2)][y + (gameSize/2)]]
-      }
-    }else{
-      return {
-        color: color.OUT_OF_BOUNDS
+  armyLayer = (x, y) => {
+    if (this.isInBounds(x, y)) {
+      const posX = x + (this.gameWidth / 2)
+      const posY = y + (this.gameHeight / 2)
+
+      if (this.state.atlas) {
+
+        const info = this.state.atlas.info(posX, posY)
+
+        if (info) {
+          if (info.containsArmy) {
+            return {
+              color: info.armyColor(),
+              scale: .75
+            }
+          }
+
+        } else {
+
+          return {
+            color: unloadedColor,
+          }
+
+        }
+
+      } else {
+        // should not be here
       }
     }
-  }*/
+  }
+
+  componentDidMount() {
+    console.log("Game map mounted")
+  }
 
   async getWorldMapData() {
+    console.log("getting world map data")
     var i
     var j
-    for (i=0;i<gameSize;i++){
-      for (j=0;j<gameSize;j++){
-        this.props.atlas[i][j] = [getRandomInt(6),0];
+    var curIndex = 0
+    var curTile
+
+    this.gameWidth = await this.instance.methods.map_width().call({ from: this.accounts[0], gasLimit: 1000000 })
+    this.gameHeight = await this.instance.methods.map_height().call({ from: this.accounts[0], gasLimit: 1000000 })
+
+    this.props.updateGameSize(this.gameWidth, this.gameHeight)
+
+    console.log("game width: " + this.gameWidth)
+    console.log("game height: " + this.gameHeight)
+
+    const atlasInProgress = new Atlas(this.gameWidth, this.gameHeight)
+
+    this.setState({ atlas: atlasInProgress });
+
+    const mapArea = this.gameHeight * this.gameWidth
+
+    for (i = 0; i < this.gameHeight; i++) {
+      for (j = 0; j < this.gameWidth; j++) {
+        const isTile = await this.instance.methods.allEntities(curIndex).call({ from: this.accounts[0] })
+        const tileType = await this.instance.methods.allEntities(mapArea + curIndex).call({ from: this.accounts[0] })
+
+        curTile = atlasInProgress.info(j, i)
+        curTile.isTile = isTile.entityType != 0
+
+        if (curTile.isTile) {
+          curTile.modifier = Math.round( (isTile.qualifier2_32x32/(2**32)) * 1000)/1000
+          curTile.value = Math.round( (tileType.qualifier2_32x32/(2**32)) * 1000)/1000
+          if (tileType.entityType == 2) {
+            //wall
+            curTile.isWall = true
+            curTile.isEmpty = false
+            //curTile.value = tileType.qualifier2
+          } else if (tileType.entityType == 4) {
+            //farm
+            curTile.isFarm = true
+            curTile.isEmpty = false
+            //curTile.value = tileType.qualifier2
+          }
+        }
+        this.setState({ atlas: atlasInProgress });
+        //this.tileMap.current.setState({})
+        //this.props.updateParent()
+        curIndex += 1
+
       }
     }
-  }
 
-  handleClick(x,y,ctrlKey,shiftKey){
-    if (shiftKey){
+    var moreEntities = false // will change upon looking for more entities
+    while (moreEntities) {
 
-    }else if(ctrlKey){
-      select(x,y);
-    }else{
-      unselectAll();
-      select(x,y);
+      const curEntity = await this.instance.methods.allEntities(curIndex).call({ from: this.accounts[0] })
+
+      if (!curEntity) {
+        moreEntities = false
+        break
+      }
+      //record entity data in atlas
+
+      var armyTile = atlasInProgress.info(curEntity.locx, curEntity.locy)
+      armyTile.containsArmy = true
+
+
+      curIndex += 1
     }
+    this.setState({ atlas: atlasInProgress });
+    console.log("finished getting world map data")
+
   }
 
-  render(
-    ) {
+  render() {
+    if (this.state.atlas) {
       return (
         <div>
           <TileMap
-            layers={[this.simpleLayer,this.selectedLayer]} 
-            onClick={(x,y,ctrlKey,shiftKey) => {this.props.onClick(x,y); this.handleClick(x,y,ctrlKey,shiftKey) } }
-            minX={-1.5*gameSize}
-            maxX={1.5*gameSize}
-            minY={-1.5*gameSize}
-            maxY={1.5*gameSize}
-            width ={this.props.width}
-            height = {this.props.height}
-              />
+            ref={this.tileMap}
+            layers={[this.simpleLayer, this.armyLayer, this.selectedLayer]}
+            onClick={(x, y, ctrlKey, shiftKey) => { this.handleClick(x, y, ctrlKey, shiftKey) }}
+            onMouseDrag={(x1, y1, x2, y2, ctrlKey, shiftKey) => { this.handleDrag(x1, y1, x2, y2, ctrlKey, shiftKey) }}
+            minX={-1.5 * this.gameWidth}
+            maxX={1.5 * this.gameWidth}
+            minY={-1.5 * this.gameHeight}
+            maxY={1.5 * this.gameHeight}
+            gameWidth={this.gameWidth}
+            gameHeight={this.gameHeight}
+            width={this.props.width}
+            height={this.props.height}
+          />
         </div>
       );
+    } else {
+      return (<div><p>Loading empires from blockchain...</p></div>)
     }
+  }
 }
-  
+
 export default GameMap

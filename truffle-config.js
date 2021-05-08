@@ -8,6 +8,10 @@ module.exports = {
   // to customize your Truffle configuration!
   compilers: {
     solc: {
+      optimizer: {
+        enabled: true,
+        runs: 200
+      },
       version: "0.8.3"
     }
   }, 
@@ -16,6 +20,7 @@ module.exports = {
 
     // Corresponds with blockchain hosted by Ganache 
     development: {
+      gasPrice:1,
       host: "127.0.0.1",     // Localhost (default: none)
       port: 8545,            // Standard Ethereum port (default: none)
       network_id: "*",       // Any network (default: none)
