@@ -1,5 +1,6 @@
 import Web3 from "web3";
 
+
 export const getWeb3 = () =>
   new Promise(async (resolve, reject) => {
     // Wait for loading completion to avoid race conditions with web3 injection timing.
@@ -56,3 +57,35 @@ export const isAddressConnected = () => {
 export const getExistingWeb3 = () => {
   return new Web3(window.ethereum);
 }
+
+// SWITCH TO MATIC TESTNET
+export const switchToMatic = async () => {
+  let switchToMatic = [{
+    "chainId": "0x13881",
+    "chainName": "Mumbai Testnet",
+    "rpcUrls": ["https://rpc-mumbai.matic.today"],
+    "nativeCurrency": {
+      "name": "MATIC",
+      "symbol": "MATIC",
+      "decimals": 18
+    }
+  }]
+  // Modern dapp browsers...
+  if (window.ethereum) {
+    try {
+      //switch to MATIC (POLYGON)
+      console.log("switch to DAI blockchain");
+      window.ethereum
+        .request({
+          method: "wallet_addEthereumChain",
+          params: switchToMatic
+        })
+        .catch((error) => console.log(error.message));
+      console.log("finished switching to MATIC (POLYGON)");
+    } catch (error) {
+      alert("Failed to switch to MATIC");
+    }
+  }
+}
+
+
