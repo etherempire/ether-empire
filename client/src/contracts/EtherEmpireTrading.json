@@ -35,15 +35,15 @@
     "absolutePath": "/C/Users/Kuan/Documents/GitHub/ether-empire/contracts/EtherEmpireTrading.sol",
     "exportedSymbols": {
       "EtherEmpireTrading": [
-        1212
+        1221
       ]
     },
-    "id": 1213,
+    "id": 1222,
     "license": "Unlicensed",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1205,
+        "id": 1214,
         "literals": [
           "solidity",
           "^",
@@ -59,9 +59,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1212,
+        "id": 1221,
         "linearizedBaseContracts": [
-          1212
+          1221
         ],
         "name": "EtherEmpireTrading",
         "nameLocation": "75:18:4",
@@ -69,23 +69,23 @@
         "nodes": [
           {
             "anonymous": false,
-            "id": 1211,
+            "id": 1220,
             "name": "LandForSale",
             "nameLocation": "107:11:4",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1210,
+              "id": 1219,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1207,
+                  "id": 1216,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_id",
                   "nameLocation": "126:3:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1211,
+                  "scope": 1220,
                   "src": "119:10:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -94,7 +94,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 1206,
+                    "id": 1215,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "119:6:4",
@@ -107,13 +107,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 1209,
+                  "id": 1218,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_currentOwner",
                   "nameLocation": "139:13:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1211,
+                  "scope": 1220,
                   "src": "131:21:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -122,7 +122,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1208,
+                    "id": 1217,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "131:7:4",
@@ -140,7 +140,7 @@
             "src": "101:53:4"
           }
         ],
-        "scope": 1213,
+        "scope": 1222,
         "src": "67:96:4"
       }
     ],
@@ -150,15 +150,15 @@
     "absolutePath": "/C/Users/Kuan/Documents/GitHub/ether-empire/contracts/EtherEmpireTrading.sol",
     "exportedSymbols": {
       "EtherEmpireTrading": [
-        1212
+        1221
       ]
     },
-    "id": 1213,
+    "id": 1222,
     "license": "Unlicensed",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1205,
+        "id": 1214,
         "literals": [
           "solidity",
           "^",
@@ -174,9 +174,9 @@
         "contractDependencies": [],
         "contractKind": "library",
         "fullyImplemented": true,
-        "id": 1212,
+        "id": 1221,
         "linearizedBaseContracts": [
-          1212
+          1221
         ],
         "name": "EtherEmpireTrading",
         "nameLocation": "75:18:4",
@@ -184,23 +184,23 @@
         "nodes": [
           {
             "anonymous": false,
-            "id": 1211,
+            "id": 1220,
             "name": "LandForSale",
             "nameLocation": "107:11:4",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1210,
+              "id": 1219,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1207,
+                  "id": 1216,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_id",
                   "nameLocation": "126:3:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1211,
+                  "scope": 1220,
                   "src": "119:10:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -209,7 +209,7 @@
                     "typeString": "uint32"
                   },
                   "typeName": {
-                    "id": 1206,
+                    "id": 1215,
                     "name": "uint32",
                     "nodeType": "ElementaryTypeName",
                     "src": "119:6:4",
@@ -222,13 +222,13 @@
                 },
                 {
                   "constant": false,
-                  "id": 1209,
+                  "id": 1218,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "_currentOwner",
                   "nameLocation": "139:13:4",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1211,
+                  "scope": 1220,
                   "src": "131:21:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -237,7 +237,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1208,
+                    "id": 1217,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "131:7:4",
@@ -255,7 +255,7 @@
             "src": "101:53:4"
           }
         ],
-        "scope": 1213,
+        "scope": 1222,
         "src": "67:96:4"
       }
     ],
@@ -267,7 +267,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-05-08T20:15:42.934Z",
+  "updatedAt": "2021-05-09T03:45:19.286Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

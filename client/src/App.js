@@ -22,15 +22,15 @@ class App extends Component {
     try {
       const accounts = await web3.eth.getAccounts();
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = EtherEmpireContract.networks[networkId];
       const instance = new web3.eth.Contract(
         EtherEmpireContract.abi,
-         deployedNetwork && deployedNetwork.address,
+        EtherEmpireContract.networks[networkId] && EtherEmpireContract.networks[networkId].address,
       );
       const tokenInstance = new web3.eth.Contract(
         EtherEmpireToken.abi,
-         deployedNetwork && deployedNetwork.address,
+        EtherEmpireToken.networks[networkId] && EtherEmpireToken.networks[networkId].address,
       );
+
       this.setState({ web3, accounts, instance, tokenInstance});
     } catch (error) {
       console.error(error);

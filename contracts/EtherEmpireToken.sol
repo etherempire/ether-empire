@@ -21,7 +21,7 @@ contract EtherEmpireToken is ERC20, AccessControlEnumerable  {
     string private _symbol;
 
 
-    constructor () ERC20("Empire Token", "EMP") AccessControlEnumerable() {
+    constructor ()  ERC20("Empire Token", "EMP") AccessControlEnumerable() {
         _totalSupply = 1000000000; // 32 bits 
 
         _balances[msg.sender] = _totalSupply;

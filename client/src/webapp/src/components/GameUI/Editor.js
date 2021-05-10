@@ -26,6 +26,8 @@ class Editor extends Component {
 
     this.updateParent = props.updateParent
 
+    // get user funds 
+    this.checkSufficientBalance(0);
 
   }
 
@@ -59,17 +61,44 @@ class Editor extends Component {
       this.state.info.isWall = true
       this.state.info.value = this.state.userInputedStakeAmount
       this.state.info.isEmpty = false
-
+      
       this.updateParent()
 
   }
 
-  approveTransaction = (amount, callback) => {
-    console.log(this.instance.options.address, amount)
-    this.tokenInstance.methods.approve(this.instance.options.address, amount)
+  depositeERC20 = () => {
+    this.tokenInstance.methods.approve(this.instance.options.address, this.state.userInputedStakeAmount) 
       .send({ from: this.accounts[0] })
-      .on('error', (error) => { console.log('Error Submitting Task: ', error) }) //error should be indicated to user
-      .then(callback)
+      .on('error', (error) => { 
+        console.log('Error depositing ERC20 tokens: ', error) 
+        return false 
+      }) //error should be indicated to user
+      .then(() => {return true})
+  }
+
+
+  // verify user has approved sufficient funds to main contract, then continue with callback 
+  checkSufficientBalance = async (amount) => {
+    try {
+        let allowance =  await this.tokenInstance.methods.allowance(this.accounts[0], this.instance.options.address).call({ from: this.accounts[0] })
+        let balance = await this.tokenInstance.methods.balanceOf(this.accounts[0]).call({ from: this.accounts[0] })
+        balance = Math.min(allowance, balance) // Ignore allowance that exceeds user balance 
+        // update global variable 
+        this.ERC20balance = balance
+
+        if (balance < amount) 
+        {
+          // insufficient approved funds
+          console.log(balance, amount);
+          console.log('User has insufficient ERC20 balance'); 
+          return false;
+        }
+
+        return true; 
+    } catch(error) {
+      console.log('Error checking for user ERC20 balance: ', error);
+      return false;
+    }
   }
 
 createFarm = () => {
@@ -77,11 +106,10 @@ createFarm = () => {
   const posX = this.state.info.x
   const posY = this.state.info.y
 
-  /*
-  const callback = () => {
-    console.log("Transaction Approved");
-    this.instance.methods.buildFarm(posX, posY, this.state.userInputedStakeAmount)
-      .send({ from: this.accounts[0], gasLimit: 1000000 })
+
+  const callback = (amount) => {
+    this.instance.methods.buildFarm(posX, posY, amount)
+      .send({ from: this.accounts[0]})
       .on('error', (error) => { console.log('Error Submitting Task: ', error) }) //error should be indicated to user
       .then(() => {
         console.log("Transaction successful");
@@ -95,14 +123,10 @@ createFarm = () => {
       })
   }
 
-  this.approveTransaction(this.state.userInputedStakeAmount, callback)
-  */
-  this.state.info.isFarm = true
-  this.state.info.value = this.state.userInputedStakeAmount
-  this.state.info.owner = this.accounts[0]
-  this.state.info.isEmpty = false
-
-  this.updateParent()
+  const amount = this.state.userInputedStakeAmount; // necessary to lock the value so it doesnt get changed while the asynchronous function below is occuring  
+  // this.checkSufficientBalance(amount).then( success => { console.log(success); if (success) callback(amount);});
+  callback(amount);
+  
 
 }
 
@@ -228,6 +252,11 @@ selectedMoveArmy = () => {   // if user selects the create Wall button, initiali
   }
 }
 
+selectedDeposit = () => {   
+    this.setState({ buttonSelected: "depositERC20" });
+  
+}
+
 selectedWall = () => {   // if user selects the create Wall button, initialize the state
   const posX = this.state.info.x
   const posY = this.state.info.y
@@ -262,7 +291,7 @@ selectedArmy = () => {    // if user selects the create Army button, initialize 
 }
 
 setUserStakeAmount = (e) => {
-  this.setState({ userInputedStakeAmount: e.target.value });
+  this.setState({ userInputedStakeAmount: e.target.value == "" ? 0 : parseFloat(e.target.value) });
 }
 
 movableNeighbor = () => {
@@ -347,6 +376,7 @@ canDestroy = (dir) => {
 
 
 confirmStake = async () => {
+  console.log(this.state.userInputedStakeAmount);
   if (this.state.userInputedStakeAmount == "" || this.state.userInputedStakeAmount <= 0) {  //invalid user input
     alert("invalid amount!");
   }
@@ -361,6 +391,9 @@ confirmStake = async () => {
   else if (this.state.buttonSelected === "createArmy") {
     await this.createArmy();
     await this.setState({ buttonSelected: null });  //gets rid of user input section
+  } else if (this.state.buttonSelected === "depositERC20") {
+    await this.depositeERC20();
+    await this.setState({ buttonSelected: null });  //gets rid of user input section
   }
   else {
     alert("error confirming stake");
@@ -373,6 +406,9 @@ confirmStake = async () => {
 render() {
   return (
     <div className="colC">
+      <Button variant="contained" onClick={this.selectedDeposit}>
+        Deposit Tokens ({this.ERC20balance} EMP)
+        </Button>
       <Button variant="contained" disabled={!this.state.info.isEmpty || !this.state.info.isTile} onClick={this.selectedWall}>
         Create Wall
         </Button>

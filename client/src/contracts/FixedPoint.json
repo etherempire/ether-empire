@@ -30,37 +30,37 @@
     {
       "ast": {
         "nodeType": "YulBlock",
-        "src": "0:1410:24",
+        "src": "0:1410:23",
         "statements": [
           {
             "body": {
               "nodeType": "YulBlock",
-              "src": "58:86:24",
+              "src": "58:86:23",
               "statements": [
                 {
                   "nodeType": "YulAssignment",
-                  "src": "68:29:24",
+                  "src": "68:29:23",
                   "value": {
                     "arguments": [
                       {
                         "name": "offset",
                         "nodeType": "YulIdentifier",
-                        "src": "90:6:24"
+                        "src": "90:6:23"
                       }
                     ],
                     "functionName": {
                       "name": "calldataload",
                       "nodeType": "YulIdentifier",
-                      "src": "77:12:24"
+                      "src": "77:12:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "77:20:24"
+                    "src": "77:20:23"
                   },
                   "variableNames": [
                     {
                       "name": "value",
                       "nodeType": "YulIdentifier",
-                      "src": "68:5:24"
+                      "src": "68:5:23"
                     }
                   ]
                 },
@@ -70,19 +70,19 @@
                       {
                         "name": "value",
                         "nodeType": "YulIdentifier",
-                        "src": "132:5:24"
+                        "src": "132:5:23"
                       }
                     ],
                     "functionName": {
                       "name": "validator_revert_t_int256",
                       "nodeType": "YulIdentifier",
-                      "src": "106:25:24"
+                      "src": "106:25:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "106:32:24"
+                    "src": "106:32:23"
                   },
                   "nodeType": "YulExpressionStatement",
-                  "src": "106:32:24"
+                  "src": "106:32:23"
                 }
               ]
             },
@@ -92,13 +92,13 @@
               {
                 "name": "offset",
                 "nodeType": "YulTypedName",
-                "src": "36:6:24",
+                "src": "36:6:23",
                 "type": ""
               },
               {
                 "name": "end",
                 "nodeType": "YulTypedName",
-                "src": "44:3:24",
+                "src": "44:3:23",
                 "type": ""
               }
             ],
@@ -106,21 +106,21 @@
               {
                 "name": "value",
                 "nodeType": "YulTypedName",
-                "src": "52:5:24",
+                "src": "52:5:23",
                 "type": ""
               }
             ],
-            "src": "7:137:24"
+            "src": "7:137:23"
           },
           {
             "body": {
               "nodeType": "YulBlock",
-              "src": "215:195:24",
+              "src": "215:195:23",
               "statements": [
                 {
                   "body": {
                     "nodeType": "YulBlock",
-                    "src": "261:16:24",
+                    "src": "261:16:23",
                     "statements": [
                       {
                         "expression": {
@@ -128,14 +128,14 @@
                             {
                               "kind": "number",
                               "nodeType": "YulLiteral",
-                              "src": "270:1:24",
+                              "src": "270:1:23",
                               "type": "",
                               "value": "0"
                             },
                             {
                               "kind": "number",
                               "nodeType": "YulLiteral",
-                              "src": "273:1:24",
+                              "src": "273:1:23",
                               "type": "",
                               "value": "0"
                             }
@@ -143,13 +143,13 @@
                           "functionName": {
                             "name": "revert",
                             "nodeType": "YulIdentifier",
-                            "src": "263:6:24"
+                            "src": "263:6:23"
                           },
                           "nodeType": "YulFunctionCall",
-                          "src": "263:12:24"
+                          "src": "263:12:23"
                         },
                         "nodeType": "YulExpressionStatement",
-                        "src": "263:12:24"
+                        "src": "263:12:23"
                       }
                     ]
                   },
@@ -160,26 +160,26 @@
                           {
                             "name": "dataEnd",
                             "nodeType": "YulIdentifier",
-                            "src": "236:7:24"
+                            "src": "236:7:23"
                           },
                           {
                             "name": "headStart",
                             "nodeType": "YulIdentifier",
-                            "src": "245:9:24"
+                            "src": "245:9:23"
                           }
                         ],
                         "functionName": {
                           "name": "sub",
                           "nodeType": "YulIdentifier",
-                          "src": "232:3:24"
+                          "src": "232:3:23"
                         },
                         "nodeType": "YulFunctionCall",
-                        "src": "232:23:24"
+                        "src": "232:23:23"
                       },
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "257:2:24",
+                        "src": "257:2:23",
                         "type": "",
                         "value": "32"
                       }
@@ -187,25 +187,25 @@
                     "functionName": {
                       "name": "slt",
                       "nodeType": "YulIdentifier",
-                      "src": "228:3:24"
+                      "src": "228:3:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "228:32:24"
+                    "src": "228:32:23"
                   },
                   "nodeType": "YulIf",
-                  "src": "225:2:24"
+                  "src": "225:2:23"
                 },
                 {
                   "nodeType": "YulBlock",
-                  "src": "287:116:24",
+                  "src": "287:116:23",
                   "statements": [
                     {
                       "nodeType": "YulVariableDeclaration",
-                      "src": "302:15:24",
+                      "src": "302:15:23",
                       "value": {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "316:1:24",
+                        "src": "316:1:23",
                         "type": "",
                         "value": "0"
                       },
@@ -213,14 +213,14 @@
                         {
                           "name": "offset",
                           "nodeType": "YulTypedName",
-                          "src": "306:6:24",
+                          "src": "306:6:23",
                           "type": ""
                         }
                       ]
                     },
                     {
                       "nodeType": "YulAssignment",
-                      "src": "331:62:24",
+                      "src": "331:62:23",
                       "value": {
                         "arguments": [
                           {
@@ -228,41 +228,41 @@
                               {
                                 "name": "headStart",
                                 "nodeType": "YulIdentifier",
-                                "src": "365:9:24"
+                                "src": "365:9:23"
                               },
                               {
                                 "name": "offset",
                                 "nodeType": "YulIdentifier",
-                                "src": "376:6:24"
+                                "src": "376:6:23"
                               }
                             ],
                             "functionName": {
                               "name": "add",
                               "nodeType": "YulIdentifier",
-                              "src": "361:3:24"
+                              "src": "361:3:23"
                             },
                             "nodeType": "YulFunctionCall",
-                            "src": "361:22:24"
+                            "src": "361:22:23"
                           },
                           {
                             "name": "dataEnd",
                             "nodeType": "YulIdentifier",
-                            "src": "385:7:24"
+                            "src": "385:7:23"
                           }
                         ],
                         "functionName": {
                           "name": "abi_decode_t_int256",
                           "nodeType": "YulIdentifier",
-                          "src": "341:19:24"
+                          "src": "341:19:23"
                         },
                         "nodeType": "YulFunctionCall",
-                        "src": "341:52:24"
+                        "src": "341:52:23"
                       },
                       "variableNames": [
                         {
                           "name": "value0",
                           "nodeType": "YulIdentifier",
-                          "src": "331:6:24"
+                          "src": "331:6:23"
                         }
                       ]
                     }
@@ -276,13 +276,13 @@
               {
                 "name": "headStart",
                 "nodeType": "YulTypedName",
-                "src": "185:9:24",
+                "src": "185:9:23",
                 "type": ""
               },
               {
                 "name": "dataEnd",
                 "nodeType": "YulTypedName",
-                "src": "196:7:24",
+                "src": "196:7:23",
                 "type": ""
               }
             ],
@@ -290,16 +290,16 @@
               {
                 "name": "value0",
                 "nodeType": "YulTypedName",
-                "src": "208:6:24",
+                "src": "208:6:23",
                 "type": ""
               }
             ],
-            "src": "150:260:24"
+            "src": "150:260:23"
           },
           {
             "body": {
               "nodeType": "YulBlock",
-              "src": "487:52:24",
+              "src": "487:52:23",
               "statements": [
                 {
                   "expression": {
@@ -307,35 +307,35 @@
                       {
                         "name": "pos",
                         "nodeType": "YulIdentifier",
-                        "src": "504:3:24"
+                        "src": "504:3:23"
                       },
                       {
                         "arguments": [
                           {
                             "name": "value",
                             "nodeType": "YulIdentifier",
-                            "src": "526:5:24"
+                            "src": "526:5:23"
                           }
                         ],
                         "functionName": {
                           "name": "cleanup_t_int256",
                           "nodeType": "YulIdentifier",
-                          "src": "509:16:24"
+                          "src": "509:16:23"
                         },
                         "nodeType": "YulFunctionCall",
-                        "src": "509:23:24"
+                        "src": "509:23:23"
                       }
                     ],
                     "functionName": {
                       "name": "mstore",
                       "nodeType": "YulIdentifier",
-                      "src": "497:6:24"
+                      "src": "497:6:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "497:36:24"
+                    "src": "497:36:23"
                   },
                   "nodeType": "YulExpressionStatement",
-                  "src": "497:36:24"
+                  "src": "497:36:23"
                 }
               ]
             },
@@ -345,37 +345,37 @@
               {
                 "name": "value",
                 "nodeType": "YulTypedName",
-                "src": "475:5:24",
+                "src": "475:5:23",
                 "type": ""
               },
               {
                 "name": "pos",
                 "nodeType": "YulTypedName",
-                "src": "482:3:24",
+                "src": "482:3:23",
                 "type": ""
               }
             ],
-            "src": "416:123:24"
+            "src": "416:123:23"
           },
           {
             "body": {
               "nodeType": "YulBlock",
-              "src": "649:130:24",
+              "src": "649:130:23",
               "statements": [
                 {
                   "nodeType": "YulAssignment",
-                  "src": "659:26:24",
+                  "src": "659:26:23",
                   "value": {
                     "arguments": [
                       {
                         "name": "headStart",
                         "nodeType": "YulIdentifier",
-                        "src": "671:9:24"
+                        "src": "671:9:23"
                       },
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "682:2:24",
+                        "src": "682:2:23",
                         "type": "",
                         "value": "32"
                       }
@@ -383,16 +383,16 @@
                     "functionName": {
                       "name": "add",
                       "nodeType": "YulIdentifier",
-                      "src": "667:3:24"
+                      "src": "667:3:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "667:18:24"
+                    "src": "667:18:23"
                   },
                   "variableNames": [
                     {
                       "name": "tail",
                       "nodeType": "YulIdentifier",
-                      "src": "659:4:24"
+                      "src": "659:4:23"
                     }
                   ]
                 },
@@ -402,19 +402,19 @@
                       {
                         "name": "value0",
                         "nodeType": "YulIdentifier",
-                        "src": "745:6:24"
+                        "src": "745:6:23"
                       },
                       {
                         "arguments": [
                           {
                             "name": "headStart",
                             "nodeType": "YulIdentifier",
-                            "src": "758:9:24"
+                            "src": "758:9:23"
                           },
                           {
                             "kind": "number",
                             "nodeType": "YulLiteral",
-                            "src": "769:1:24",
+                            "src": "769:1:23",
                             "type": "",
                             "value": "0"
                           }
@@ -422,22 +422,22 @@
                         "functionName": {
                           "name": "add",
                           "nodeType": "YulIdentifier",
-                          "src": "754:3:24"
+                          "src": "754:3:23"
                         },
                         "nodeType": "YulFunctionCall",
-                        "src": "754:17:24"
+                        "src": "754:17:23"
                       }
                     ],
                     "functionName": {
                       "name": "abi_encode_t_int256_to_t_int256_fromStack_library",
                       "nodeType": "YulIdentifier",
-                      "src": "695:49:24"
+                      "src": "695:49:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "695:77:24"
+                    "src": "695:77:23"
                   },
                   "nodeType": "YulExpressionStatement",
-                  "src": "695:77:24"
+                  "src": "695:77:23"
                 }
               ]
             },
@@ -447,13 +447,13 @@
               {
                 "name": "headStart",
                 "nodeType": "YulTypedName",
-                "src": "621:9:24",
+                "src": "621:9:23",
                 "type": ""
               },
               {
                 "name": "value0",
                 "nodeType": "YulTypedName",
-                "src": "633:6:24",
+                "src": "633:6:23",
                 "type": ""
               }
             ],
@@ -461,30 +461,30 @@
               {
                 "name": "tail",
                 "nodeType": "YulTypedName",
-                "src": "644:4:24",
+                "src": "644:4:23",
                 "type": ""
               }
             ],
-            "src": "545:234:24"
+            "src": "545:234:23"
           },
           {
             "body": {
               "nodeType": "YulBlock",
-              "src": "829:32:24",
+              "src": "829:32:23",
               "statements": [
                 {
                   "nodeType": "YulAssignment",
-                  "src": "839:16:24",
+                  "src": "839:16:23",
                   "value": {
                     "name": "value",
                     "nodeType": "YulIdentifier",
-                    "src": "850:5:24"
+                    "src": "850:5:23"
                   },
                   "variableNames": [
                     {
                       "name": "cleaned",
                       "nodeType": "YulIdentifier",
-                      "src": "839:7:24"
+                      "src": "839:7:23"
                     }
                   ]
                 }
@@ -496,7 +496,7 @@
               {
                 "name": "value",
                 "nodeType": "YulTypedName",
-                "src": "811:5:24",
+                "src": "811:5:23",
                 "type": ""
               }
             ],
@@ -504,48 +504,48 @@
               {
                 "name": "cleaned",
                 "nodeType": "YulTypedName",
-                "src": "821:7:24",
+                "src": "821:7:23",
                 "type": ""
               }
             ],
-            "src": "785:76:24"
+            "src": "785:76:23"
           },
           {
             "body": {
               "nodeType": "YulBlock",
-              "src": "906:189:24",
+              "src": "906:189:23",
               "statements": [
                 {
                   "nodeType": "YulAssignment",
-                  "src": "916:32:24",
+                  "src": "916:32:23",
                   "value": {
                     "arguments": [
                       {
                         "name": "value",
                         "nodeType": "YulIdentifier",
-                        "src": "942:5:24"
+                        "src": "942:5:23"
                       }
                     ],
                     "functionName": {
                       "name": "cleanup_t_int256",
                       "nodeType": "YulIdentifier",
-                      "src": "925:16:24"
+                      "src": "925:16:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "925:23:24"
+                    "src": "925:23:23"
                   },
                   "variableNames": [
                     {
                       "name": "value",
                       "nodeType": "YulIdentifier",
-                      "src": "916:5:24"
+                      "src": "916:5:23"
                     }
                   ]
                 },
                 {
                   "body": {
                     "nodeType": "YulBlock",
-                    "src": "1038:22:24",
+                    "src": "1038:22:23",
                     "statements": [
                       {
                         "expression": {
@@ -553,13 +553,13 @@
                           "functionName": {
                             "name": "panic_error_0x11",
                             "nodeType": "YulIdentifier",
-                            "src": "1040:16:24"
+                            "src": "1040:16:23"
                           },
                           "nodeType": "YulFunctionCall",
-                          "src": "1040:18:24"
+                          "src": "1040:18:23"
                         },
                         "nodeType": "YulExpressionStatement",
-                        "src": "1040:18:24"
+                        "src": "1040:18:23"
                       }
                     ]
                   },
@@ -568,12 +568,12 @@
                       {
                         "name": "value",
                         "nodeType": "YulIdentifier",
-                        "src": "963:5:24"
+                        "src": "963:5:23"
                       },
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "970:66:24",
+                        "src": "970:66:23",
                         "type": "",
                         "value": "0x8000000000000000000000000000000000000000000000000000000000000000"
                       }
@@ -581,45 +581,45 @@
                     "functionName": {
                       "name": "eq",
                       "nodeType": "YulIdentifier",
-                      "src": "960:2:24"
+                      "src": "960:2:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "960:77:24"
+                    "src": "960:77:23"
                   },
                   "nodeType": "YulIf",
-                  "src": "957:2:24"
+                  "src": "957:2:23"
                 },
                 {
                   "nodeType": "YulAssignment",
-                  "src": "1069:20:24",
+                  "src": "1069:20:23",
                   "value": {
                     "arguments": [
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "1080:1:24",
+                        "src": "1080:1:23",
                         "type": "",
                         "value": "0"
                       },
                       {
                         "name": "value",
                         "nodeType": "YulIdentifier",
-                        "src": "1083:5:24"
+                        "src": "1083:5:23"
                       }
                     ],
                     "functionName": {
                       "name": "sub",
                       "nodeType": "YulIdentifier",
-                      "src": "1076:3:24"
+                      "src": "1076:3:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "1076:13:24"
+                    "src": "1076:13:23"
                   },
                   "variableNames": [
                     {
                       "name": "ret",
                       "nodeType": "YulIdentifier",
-                      "src": "1069:3:24"
+                      "src": "1069:3:23"
                     }
                   ]
                 }
@@ -631,7 +631,7 @@
               {
                 "name": "value",
                 "nodeType": "YulTypedName",
-                "src": "892:5:24",
+                "src": "892:5:23",
                 "type": ""
               }
             ],
@@ -639,16 +639,16 @@
               {
                 "name": "ret",
                 "nodeType": "YulTypedName",
-                "src": "902:3:24",
+                "src": "902:3:23",
                 "type": ""
               }
             ],
-            "src": "867:228:24"
+            "src": "867:228:23"
           },
           {
             "body": {
               "nodeType": "YulBlock",
-              "src": "1129:152:24",
+              "src": "1129:152:23",
               "statements": [
                 {
                   "expression": {
@@ -656,14 +656,14 @@
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "1146:1:24",
+                        "src": "1146:1:23",
                         "type": "",
                         "value": "0"
                       },
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "1149:77:24",
+                        "src": "1149:77:23",
                         "type": "",
                         "value": "35408467139433450592217433187231851964531694900788300625387963629091585785856"
                       }
@@ -671,13 +671,13 @@
                     "functionName": {
                       "name": "mstore",
                       "nodeType": "YulIdentifier",
-                      "src": "1139:6:24"
+                      "src": "1139:6:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "1139:88:24"
+                    "src": "1139:88:23"
                   },
                   "nodeType": "YulExpressionStatement",
-                  "src": "1139:88:24"
+                  "src": "1139:88:23"
                 },
                 {
                   "expression": {
@@ -685,14 +685,14 @@
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "1243:1:24",
+                        "src": "1243:1:23",
                         "type": "",
                         "value": "4"
                       },
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "1246:4:24",
+                        "src": "1246:4:23",
                         "type": "",
                         "value": "0x11"
                       }
@@ -700,13 +700,13 @@
                     "functionName": {
                       "name": "mstore",
                       "nodeType": "YulIdentifier",
-                      "src": "1236:6:24"
+                      "src": "1236:6:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "1236:15:24"
+                    "src": "1236:15:23"
                   },
                   "nodeType": "YulExpressionStatement",
-                  "src": "1236:15:24"
+                  "src": "1236:15:23"
                 },
                 {
                   "expression": {
@@ -714,14 +714,14 @@
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "1267:1:24",
+                        "src": "1267:1:23",
                         "type": "",
                         "value": "0"
                       },
                       {
                         "kind": "number",
                         "nodeType": "YulLiteral",
-                        "src": "1270:4:24",
+                        "src": "1270:4:23",
                         "type": "",
                         "value": "0x24"
                       }
@@ -729,29 +729,29 @@
                     "functionName": {
                       "name": "revert",
                       "nodeType": "YulIdentifier",
-                      "src": "1260:6:24"
+                      "src": "1260:6:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "1260:15:24"
+                    "src": "1260:15:23"
                   },
                   "nodeType": "YulExpressionStatement",
-                  "src": "1260:15:24"
+                  "src": "1260:15:23"
                 }
               ]
             },
             "name": "panic_error_0x11",
             "nodeType": "YulFunctionDefinition",
-            "src": "1101:180:24"
+            "src": "1101:180:23"
           },
           {
             "body": {
               "nodeType": "YulBlock",
-              "src": "1329:78:24",
+              "src": "1329:78:23",
               "statements": [
                 {
                   "body": {
                     "nodeType": "YulBlock",
-                    "src": "1385:16:24",
+                    "src": "1385:16:23",
                     "statements": [
                       {
                         "expression": {
@@ -759,14 +759,14 @@
                             {
                               "kind": "number",
                               "nodeType": "YulLiteral",
-                              "src": "1394:1:24",
+                              "src": "1394:1:23",
                               "type": "",
                               "value": "0"
                             },
                             {
                               "kind": "number",
                               "nodeType": "YulLiteral",
-                              "src": "1397:1:24",
+                              "src": "1397:1:23",
                               "type": "",
                               "value": "0"
                             }
@@ -774,13 +774,13 @@
                           "functionName": {
                             "name": "revert",
                             "nodeType": "YulIdentifier",
-                            "src": "1387:6:24"
+                            "src": "1387:6:23"
                           },
                           "nodeType": "YulFunctionCall",
-                          "src": "1387:12:24"
+                          "src": "1387:12:23"
                         },
                         "nodeType": "YulExpressionStatement",
-                        "src": "1387:12:24"
+                        "src": "1387:12:23"
                       }
                     ]
                   },
@@ -791,44 +791,44 @@
                           {
                             "name": "value",
                             "nodeType": "YulIdentifier",
-                            "src": "1352:5:24"
+                            "src": "1352:5:23"
                           },
                           {
                             "arguments": [
                               {
                                 "name": "value",
                                 "nodeType": "YulIdentifier",
-                                "src": "1376:5:24"
+                                "src": "1376:5:23"
                               }
                             ],
                             "functionName": {
                               "name": "cleanup_t_int256",
                               "nodeType": "YulIdentifier",
-                              "src": "1359:16:24"
+                              "src": "1359:16:23"
                             },
                             "nodeType": "YulFunctionCall",
-                            "src": "1359:23:24"
+                            "src": "1359:23:23"
                           }
                         ],
                         "functionName": {
                           "name": "eq",
                           "nodeType": "YulIdentifier",
-                          "src": "1349:2:24"
+                          "src": "1349:2:23"
                         },
                         "nodeType": "YulFunctionCall",
-                        "src": "1349:34:24"
+                        "src": "1349:34:23"
                       }
                     ],
                     "functionName": {
                       "name": "iszero",
                       "nodeType": "YulIdentifier",
-                      "src": "1342:6:24"
+                      "src": "1342:6:23"
                     },
                     "nodeType": "YulFunctionCall",
-                    "src": "1342:42:24"
+                    "src": "1342:42:23"
                   },
                   "nodeType": "YulIf",
-                  "src": "1339:2:24"
+                  "src": "1339:2:23"
                 }
               ]
             },
@@ -838,22 +838,22 @@
               {
                 "name": "value",
                 "nodeType": "YulTypedName",
-                "src": "1322:5:24",
+                "src": "1322:5:23",
                 "type": ""
               }
             ],
-            "src": "1287:120:24"
+            "src": "1287:120:23"
           }
         ]
       },
       "contents": "{\n\n    function abi_decode_t_int256(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_int256(value)\n    }\n\n    function abi_decode_tuple_t_int256(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_int256(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_encode_t_int256_to_t_int256_fromStack_library(value, pos) {\n        mstore(pos, cleanup_t_int256(value))\n    }\n\n    function abi_encode_tuple_t_int256__to_t_int256__fromStack_library_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_int256_to_t_int256_fromStack_library(value0,  add(headStart, 0))\n\n    }\n\n    function cleanup_t_int256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function negate_t_int256(value) -> ret {\n        value := cleanup_t_int256(value)\n        if eq(value, 0x8000000000000000000000000000000000000000000000000000000000000000) { panic_error_0x11() }\n        ret := sub(0, value)\n    }\n\n    function panic_error_0x11() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n\n    function validator_revert_t_int256(value) {\n        if iszero(eq(value, cleanup_t_int256(value))) { revert(0, 0) }\n    }\n\n}\n",
-      "id": 24,
+      "id": 23,
       "language": "Yul",
       "name": "#utility.yul"
     }
   ],
   "sourceMap": "220:4848:8:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "220:4848:8:-:0;;;;;;;;;;;;;;;;;;;;;;;;248:87;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;289:3;317:1;312;:6;;:15;;326:1;325:2;;;:::i;:::-;312:15;;;321:1;312:15;305:22;;248:87;;;:::o;7:137:24:-;;90:6;77:20;68:29;;106:32;132:5;106:32;:::i;:::-;58:86;;;;:::o;150:260::-;;257:2;245:9;236:7;232:23;228:32;225:2;;;273:1;270;263:12;225:2;316:1;341:52;385:7;376:6;365:9;361:22;341:52;:::i;:::-;331:62;;287:116;215:195;;;;:::o;416:123::-;509:23;526:5;509:23;:::i;:::-;504:3;497:36;487:52;;:::o;545:234::-;;682:2;671:9;667:18;659:26;;695:77;769:1;758:9;754:17;745:6;695:77;:::i;:::-;649:130;;;;:::o;785:76::-;;850:5;839:16;;829:32;;;:::o;867:228::-;;925:23;942:5;925:23;:::i;:::-;916:32;;970:66;963:5;960:77;957:2;;;1040:18;;:::i;:::-;957:2;1083:5;1080:1;1076:13;1069:20;;906:189;;;:::o;1101:180::-;1149:77;1146:1;1139:88;1246:4;1243:1;1236:15;1270:4;1267:1;1260:15;1287:120;1359:23;1376:5;1359:23;:::i;:::-;1352:5;1349:34;1339:2;;1397:1;1394;1387:12;1339:2;1329:78;:::o",
+  "deployedSourceMap": "220:4848:8:-:0;;;;;;;;;;;;;;;;;;;;;;;;248:87;;;;;;;;;;;;;:::i;:::-;;:::i;:::-;;;;;;;:::i;:::-;;;;;;;;;289:3;317:1;312;:6;;:15;;326:1;325:2;;;:::i;:::-;312:15;;;321:1;312:15;305:22;;248:87;;;:::o;7:137:23:-;;90:6;77:20;68:29;;106:32;132:5;106:32;:::i;:::-;58:86;;;;:::o;150:260::-;;257:2;245:9;236:7;232:23;228:32;225:2;;;273:1;270;263:12;225:2;316:1;341:52;385:7;376:6;365:9;361:22;341:52;:::i;:::-;331:62;;287:116;215:195;;;;:::o;416:123::-;509:23;526:5;509:23;:::i;:::-;504:3;497:36;487:52;;:::o;545:234::-;;682:2;671:9;667:18;659:26;;695:77;769:1;758:9;754:17;745:6;695:77;:::i;:::-;649:130;;;;:::o;785:76::-;;850:5;839:16;;829:32;;;:::o;867:228::-;;925:23;942:5;925:23;:::i;:::-;916:32;;970:66;963:5;960:77;957:2;;;1040:18;;:::i;:::-;957:2;1083:5;1080:1;1076:13;1069:20;;906:189;;;:::o;1101:180::-;1149:77;1146:1;1139:88;1246:4;1243:1;1236:15;1270:4;1267:1;1260:15;1287:120;1359:23;1376:5;1359:23;:::i;:::-;1352:5;1349:34;1339:2;;1397:1;1394;1387:12;1339:2;1329:78;:::o",
   "source": "// SPDX-License-Identifier: GPL-3.0-or-later\r\npragma solidity >=0.4.0;\r\n\r\nimport './BitMath.sol';\r\nimport './SafeMath.sol';\r\nimport './Babylonian.sol'; \r\n\r\n// Library to allow for fixed point numbers of variable sizes \r\nlibrary FixedPoint {\r\n\r\n    function abs(int x) public pure returns (int) {\r\n        return x >= 0 ? x : -x;\r\n    }\r\n    // [0, 2**range - 1],  for stepsize of 1 / 2**resolution. total size = range+resolution. Lossy, permits cutting off lower digit, but throws error if upper digit overflows \r\n    // require range1 + range2 <= 255\r\n    function multiply(uint num1, uint num2, uint res1, uint res2, uint range_out, uint res_out) internal pure returns(uint) {\r\n        if (num1 == 0 || num2 == 0) {\r\n            return 0;\r\n        }\r\n        uint upper_self = num1 >> res1; // * 2^0\r\n        uint lower_self = num1 - (upper_self << res1); // * 2^-res1\r\n        uint upper_other = num2 >> res2; // * 2^0\r\n        uint lower_other = num2 - (upper_other << res2); // * 2^-res2\r\n\r\n        // partial products\r\n        uint upper = upper_self * upper_other; // * 2^0\r\n        uint lower = lower_self * lower_other; // * 2^-(res1+res2)\r\n        uint uppers_lowero = upper_self * lower_other; // * 2^-res2\r\n        uint uppero_lowers = upper_other * lower_self; // * 2^-res1\r\n\r\n        // so the bit shift does not overflow\r\n        require(upper <= 2**range_out - 1, 'FixedPoint::muluq: upper overflow');\r\n\r\n        // lowest unit is 2**-res_out\r\n        uint sum = upper << res_out;\r\n        \r\n        if (res_out >= res1 + res2) {\r\n            sum += (uppers_lowero << res_out - res2) + (uppero_lowers << res_out - res1) + (lower << res_out - res1 - res2);\r\n        } else {\r\n            sum += lower >> res1 + res2 - res_out;\r\n\r\n            if (res_out >= res1) {\r\n                sum += uppero_lowers << res_out - res1;\r\n            } else {\r\n                sum += uppero_lowers >> res1 - res_out;\r\n            }\r\n\r\n            if (res_out >= res2) {\r\n                sum += uppers_lowero << res_out - res2;\r\n            } else {\r\n                sum += uppers_lowero >> res2 - res_out;\r\n            }\r\n        }\r\n\r\n        return sum;\r\n    }\r\n\r\n    function divide(uint num1, uint num2, uint res1, uint res2, uint range_out, uint res_out) internal pure returns (uint) {\r\n        require(num2 > 0, 'FixedPoint::divuq: division by zero');\r\n        uint max_shift = 255 - BitMath.mostSignificantBit(num1);\r\n        uint value = (num1 << max_shift) / num2; // 2**-(res1 + max_shift - res2)\r\n        int left_shifts = int(res_out + res2) - int(res1 + max_shift);\r\n    \r\n        \r\n        if (left_shifts < 0) {\r\n            return value >> uint(-left_shifts);\r\n        } else {\r\n            uint z = 0;\r\n            require((z = value << uint(left_shifts)) >> uint(left_shifts) == value, 'FixedPoint::divide: overflow');\r\n            require(z <= uint(2**(range_out+res_out)-1), 'FixedPoint::divide: overflow');\r\n            return z;\r\n        }\r\n\r\n    }\r\n\r\n    function encode(uint num, uint res_in, uint res_out) internal pure returns (uint) {\r\n        if (res_out <= res_in) {\r\n            return num >> res_in - res_out;\r\n        }\r\n\r\n        uint z = 0;\r\n        require((z = num << res_out - res_in) >> res_out - res_in == num, 'FixedPoint::encode: overflow');\r\n        return z;\r\n    }\r\n\r\n    function add(uint num1, uint num2, uint res1, uint res2, uint range_out) internal pure returns (uint) {\r\n        return SafeMath.safeAdd(num1, encode(num2, res1, res2), res1+range_out);\r\n    }\r\n\r\n    function addSigned(int num1, int num2, uint res1, uint res2, uint range_out) internal pure returns (int) {\r\n        uint abs_num1 = uint(abs(num1));\r\n        uint abs_num2 = uint(abs(num2));\r\n\r\n        if (num1 >= 0 && num2 >= 0)\r\n        {\r\n            return int(SafeMath.safeAdd(abs_num1, encode(abs_num2, res1, res2), res1+range_out));\r\n        } else if ((num1 >= 0 && num2 <= 0) || (num1 <= 0 && num2 >= 0))\r\n        {\r\n            if (abs_num1 >= abs_num2) \r\n            return int(SafeMath.safeSub(abs_num1, encode(abs_num2, res1, res2), res1+range_out));\r\n            else \r\n            return -1 *  int(SafeMath.safeSub(abs_num2, encode(abs_num1, res1, res2), res1+range_out));\r\n        } else {\r\n            return -1 * int(SafeMath.safeAdd(abs_num1, encode(abs_num2, res1, res2), res1+range_out));\r\n        }\r\n        \r\n    }\r\n\r\n    function sub(uint num1, uint num2, uint res1, uint res2, uint range_out) internal pure returns (uint) {\r\n        return SafeMath.safeSub(num1, encode(num2, res1, res2), res1+range_out);\r\n    }\r\n\r\n    function sqrt(uint num, uint res_in, uint res_out) internal pure returns (uint) {\r\n        uint max_shift = 255 - BitMath.mostSignificantBit(num);\r\n        max_shift = max_shift - (max_shift+res_in) % 2;\r\n        int unshift = int(max_shift + res_in)/2 - int(res_out);\r\n        if (unshift >= 0)\r\n        {\r\n            return Babylonian.sqrt(num << max_shift) >> uint(unshift);\r\n        } else {\r\n            return Babylonian.sqrt(num << max_shift) << uint(-unshift);\r\n        }\r\n        \r\n    }\r\n    \r\n \r\n}\r\n\r\n// library FixedPoint {\r\n//     // range: [0, 2**112 - 1]\r\n//     // resolution: 1 / 2**112\r\n//     struct uq112x112 {\r\n//         uint224 _x;\r\n//     }\r\n\r\n//     // range: [0, 2**144 - 1]\r\n//     // resolution: 1 / 2**112\r\n//     struct uq144x112 {\r\n//         uint256 _x;\r\n//     }\r\n\r\n//     uint8 public constant RESOLUTION = 112;\r\n//     uint256 public constant Q112 = 0x10000000000000000000000000000; // 2**112\r\n//     uint256 private constant Q224 = 0x100000000000000000000000000000000000000000000000000000000; // 2**224\r\n//     uint256 private constant LOWER_MASK = 0xffffffffffffffffffffffffffff; // decimal of UQ*x112 (lower 112 bits)\r\n\r\n//     // encode a uint112 as a UQ112x112\r\n//     function encode(uint112 x) internal pure returns (uq112x112 memory) {\r\n//         return uq112x112(uint224(x) << RESOLUTION);\r\n//     }\r\n\r\n//     // encodes a uint144 as a UQ144x112\r\n//     function encode144(uint144 x) internal pure returns (uq144x112 memory) {\r\n//         return uq144x112(uint256(x) << RESOLUTION);\r\n//     }\r\n\r\n//     // decode a UQ112x112 into a uint112 by truncating after the radix point\r\n//     function decode(uq112x112 memory self) internal pure returns (uint112) {\r\n//         return uint112(self._x >> RESOLUTION);\r\n//     }\r\n\r\n//     // decode a UQ144x112 into a uint144 by truncating after the radix point\r\n//     function decode144(uq144x112 memory self) internal pure returns (uint144) {\r\n//         return uint144(self._x >> RESOLUTION);\r\n//     }\r\n\r\n//     function add(uq112x112 memory self, uq112x112 memory y) internal pure returns (uq112x112 memory) {\r\n//         return uq112x112(self._x + y._x);\r\n//     }\r\n\r\n//     function sub(uq112x112 memory self, uq112x112 memory y) internal pure returns (uq112x112 memory) {\r\n//         return uq112x112(self._x - y._x);\r\n//     }\r\n\r\n//     function add144(uq144x112 memory self, uq144x112 memory y) internal pure returns (uq144x112 memory) {\r\n//         return uq144x112(self._x + y._x);\r\n//     }\r\n\r\n//     function sub144(uq144x112 memory self, uq144x112 memory y) internal pure returns (uq144x112 memory) {\r\n//         return uq144x112(self._x - y._x);\r\n//     }\r\n\r\n//     // multiply a UQ112x112 by a uint, returning a UQ144x112\r\n//     // reverts on overflow\r\n//     function mul(uq112x112 memory self, uint256 y) internal pure returns (uq144x112 memory) {\r\n//         uint256 z = 0;\r\n//         require(y == 0 || (z = self._x * y) / y == self._x, 'FixedPoint::mul: overflow');\r\n//         return uq144x112(z);\r\n//     }\r\n\r\n//     // multiply a UQ112x112 by an int and decode, returning an int\r\n//     // reverts on overflow\r\n//     function muli(uq112x112 memory self, int256 y) internal pure returns (int256) {\r\n//         uint256 z = FullMath.mulDiv(self._x, uint256(y < 0 ? -y : y), Q112);\r\n//         require(z < 2**255, 'FixedPoint::muli: overflow');\r\n//         return y < 0 ? -int256(z) : int256(z);\r\n//     }\r\n\r\n//     // multiply a UQ112x112 by a UQ112x112, returning a UQ112x112\r\n//     // lossy\r\n//     function muluq(uq112x112 memory self, uq112x112 memory other) internal pure returns (uq112x112 memory) {\r\n//         if (self._x == 0 || other._x == 0) {\r\n//             return uq112x112(0);\r\n//         }\r\n//         uint112 upper_self = uint112(self._x >> RESOLUTION); // * 2^0\r\n//         uint112 lower_self = uint112(self._x & LOWER_MASK); // * 2^-112\r\n//         uint112 upper_other = uint112(other._x >> RESOLUTION); // * 2^0\r\n//         uint112 lower_other = uint112(other._x & LOWER_MASK); // * 2^-112\r\n\r\n//         // partial products\r\n//         uint224 upper = uint224(upper_self) * upper_other; // * 2^0\r\n//         uint224 lower = uint224(lower_self) * lower_other; // * 2^-224\r\n//         uint224 uppers_lowero = uint224(upper_self) * lower_other; // * 2^-112\r\n//         uint224 uppero_lowers = uint224(upper_other) * lower_self; // * 2^-112\r\n\r\n//         // so the bit shift does not overflow\r\n//         require(upper <= uint112(2**112-1), 'FixedPoint::muluq: upper overflow');\r\n\r\n//         // this cannot exceed 256 bits, all values are 224 bits\r\n//         uint256 sum = uint256(upper << RESOLUTION) + uppers_lowero + uppero_lowers + (lower >> RESOLUTION);\r\n\r\n//         // so the cast does not overflow\r\n//         require(sum <= uint224(2**224-1), 'FixedPoint::muluq: sum overflow');\r\n\r\n//         return uq112x112(uint224(sum));\r\n//     }\r\n\r\n//     // divide a UQ112x112 by a UQ112x112, returning a UQ112x112\r\n//     function divuq(uq112x112 memory self, uq112x112 memory other) internal pure returns (uq112x112 memory) {\r\n//         require(other._x > 0, 'FixedPoint::divuq: division by zero');\r\n//         if (self._x == other._x) {\r\n//             return uq112x112(uint224(Q112));\r\n//         }\r\n//         if (self._x <= uint144(2**144-1)) {\r\n//             uint256 value = (uint256(self._x) << RESOLUTION) / other._x;\r\n//             require(value <= uint224(2**224-1), 'FixedPoint::divuq: overflow');\r\n//             return uq112x112(uint224(value));\r\n//         }\r\n\r\n//         uint256 result = FullMath.mulDiv(Q112, self._x, other._x);\r\n//         require(result <= uint224(2**224-1), 'FixedPoint::divuq: overflow');\r\n//         return uq112x112(uint224(result));\r\n//     }\r\n\r\n//     // returns a UQ112x112 which represents the ratio of the numerator to the denominator\r\n//     // can be lossy\r\n//     function fraction(uint256 numerator, uint256 denominator) internal pure returns (uq112x112 memory) {\r\n//         require(denominator > 0, 'FixedPoint::fraction: division by zero');\r\n//         if (numerator == 0) return FixedPoint.uq112x112(0);\r\n\r\n//         if (numerator <= uint144(2**144-1)) {\r\n//             uint256 result = (numerator << RESOLUTION) / denominator;\r\n//             require(result <= uint224(2**224-1), 'FixedPoint::fraction: overflow');\r\n//             return uq112x112(uint224(result));\r\n//         } else {\r\n//             uint256 result = FullMath.mulDiv(numerator, Q112, denominator);\r\n//             require(result <= uint224(2**224-1), 'FixedPoint::fraction: overflow');\r\n//             return uq112x112(uint224(result));\r\n//         }\r\n//     }\r\n\r\n//     // take the reciprocal of a UQ112x112\r\n//     // reverts on overflow\r\n//     // lossy\r\n//     function reciprocal(uq112x112 memory self) internal pure returns (uq112x112 memory) {\r\n//         require(self._x != 0, 'FixedPoint::reciprocal: reciprocal of zero');\r\n//         require(self._x != 1, 'FixedPoint::reciprocal: overflow');\r\n//         return uq112x112(uint224(Q224 / self._x));\r\n//     }\r\n\r\n//     // square root of a UQ112x112\r\n//     // lossy between 0/1 and 40 bits\r\n//     function sqrt(uq112x112 memory self) internal pure returns (uq112x112 memory) {\r\n//         if (self._x <= uint144(2**144-1)) {\r\n//             return uq112x112(uint224(Babylonian.sqrt(uint256(self._x) << 112)));\r\n//         }\r\n\r\n//         uint8 safeShiftBits = 255 - BitMath.mostSignificantBit(self._x);\r\n//         safeShiftBits -= safeShiftBits % 2;\r\n//         return uq112x112(uint224(Babylonian.sqrt(uint256(self._x) << safeShiftBits) << ((112 - safeShiftBits) / 2)));\r\n//     }\r\n// }",
   "sourcePath": "C:\\Users\\Kuan\\Documents\\GitHub\\ether-empire\\contracts\\libraries\\FixedPoint.sol",
   "ast": {
@@ -18588,7 +18588,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-05-08T22:42:41.265Z",
+  "updatedAt": "2021-05-10T03:48:28.412Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

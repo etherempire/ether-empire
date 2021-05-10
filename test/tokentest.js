@@ -1,17 +1,25 @@
-// const Token = artifacts.require("./EtherEmpireToken.sol");
-// const CrowdSale = artifacts.require("./TokenCrowdSale.sol");
+const Token = artifacts.require("./EtherEmpireToken.sol");
+const World = artifacts.require("./EtherEmpireWorld.sol");
+const Types = artifacts.require("./EtherEmpireTypes.sol");
 
-// contract("EtherEmpireToken", async (accounts) => {
+contract("Token", async (accounts) => {
     
-//     before(async() => {
-//         token = await Token.deployed();
-//         crowdsale = await CrowdSale.deployed();
-//         await token.approve(crowdsale.address, 100000);
-//     });
+    before(async() => {
+        contract = await World.deployed();
+        contract.web3Instance = new web3.eth.Contract(contract.abi, contract.address);
+        token = await Token.deployed();
+        token.web3Instance = new web3.eth.Contract(token.abi, token.address); 
+        await contract.populateLand(3,3,1);
+        map_size = 3 * 3;
+    });
 
+    
 
-//     it("crowdsale is working", async() => {
-//         await crowdsale.buy.sendTransaction({from: accounts[1], value: web3.utils.toWei('0.1', 'ether')});
-        
-//     })
-// })
+    it("approveAndCall is working", async() => {   
+        let buildFarmAbi = contract.web3Instance.methods.buildFarm(0,0,100).encodeABI();
+        await token.approveAndCall(contract.address, 100, buildFarmAbi);
+        let tileType = await contract.allEntities(map_size); 
+        console.log(tileType.entityType);
+        // assert.equal(Types.EntityTypes.Farm);
+    });
+});
