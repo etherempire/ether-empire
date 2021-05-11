@@ -62,7 +62,7 @@ const Main = (props) => {
                   </DropdownToggle>
                   <DropdownMenu right>
                     <DropdownItem>
-                      <NavLink href="https://discord.com" target="_blank">Join Our Discord</NavLink>
+                      <NavLink href="https://discord.gg/X9p9gXPCc7​" target="_blank">Join Our Discord</NavLink>
                     </DropdownItem>
                     <DropdownItem divider />
                     <DropdownItem>
