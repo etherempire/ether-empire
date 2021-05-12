@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { getWeb3, isMetaMaskInstalled, isMetaMaskConnected, isAddressConnected, getExistingWeb3, getMaticWeb3, switchToMatic } from "./getWeb3";
 import Main from "./webapp/src/components/Pages/Main";
 import EtherEmpireContract from "./contracts/EtherEmpireWorld.json"
+import EtherEmpireToken from "./contracts/EtherEmpireToken.json"
+import TokenAirDrop from "./contracts/TokenAirDrop.json"
 
 import "./App.css";
 
@@ -30,8 +32,11 @@ class App extends Component {
         EtherEmpireToken.abi,
         EtherEmpireToken.networks[networkId] && EtherEmpireToken.networks[networkId].address,
       );
-      gi
-      this.setState({ web3, accounts, instance, tokenInstance });
+      const airDropInstance = new web3.eth.Contract(
+        TokenAirDrop.abi,
+        TokenAirDrop.networks[networkId] && TokenAirDrop.networks[networkId].address,
+      );
+      this.setState({ web3, accounts, instance, tokenInstance, airDropInstance });
     } catch (error) {
       console.error(error);
     }
