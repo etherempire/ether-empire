@@ -55363,10 +55363,249 @@
       },
       "address": "0xA3908eB40c03DDE8ed486252612b7B40a9Ce38Ee",
       "transactionHash": "0x81710a534509b47002fa1c9c4fa4b25cd82291fa8103fd760a725f818c0fd865"
+    },
+    "1694619747849938": {
+      "events": {
+        "0x2bb23083392c38dde5df982d5b95489a0b96017d9e113d5a264c15869b164110": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint32",
+              "name": "_id",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_destroyer",
+              "type": "address"
+            }
+          ],
+          "name": "EntityDestroyed",
+          "type": "event"
+        },
+        "0x5a2e0a896ef0d83abf963e120ead3f7f641851d044bb6e47a25d230dae850d8b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint32",
+              "name": "_id",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_occupier",
+              "type": "address"
+            }
+          ],
+          "name": "FarmOccupied",
+          "type": "event"
+        },
+        "0xc9c7219e12f0b5ddc828e2e1479d53e8e5416665400152bd5fe1c021efbb3220": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint32",
+              "name": "_id",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "_locx",
+              "type": "uint16"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "_locy",
+              "type": "uint16"
+            }
+          ],
+          "name": "ArmyMoved",
+          "type": "event"
+        },
+        "0xf6d687f7b1506dd0afa44fe5ca3ba6e87c4943689d87cba8eabacf9debe4ca24": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint32",
+              "name": "_id",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "_locx",
+              "type": "uint16"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "_locy",
+              "type": "uint16"
+            }
+          ],
+          "name": "ArmyRecruited",
+          "type": "event"
+        },
+        "0x55976d8e78c6bf477a2ce62d3c1ecdb4a7d8c4415ed039624f32664add77c064": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint32",
+              "name": "_id",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "_locx",
+              "type": "uint16"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "_locy",
+              "type": "uint16"
+            }
+          ],
+          "name": "FarmBuilt",
+          "type": "event"
+        },
+        "0x9f7fcb213b8386bddd453ea273fa6bd97515bffdaec3a593bd6ebfbc92d2fbb8": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint32",
+              "name": "_id",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "_locx",
+              "type": "uint16"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "_locy",
+              "type": "uint16"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint64",
+              "name": "_completionBlock",
+              "type": "uint64"
+            }
+          ],
+          "name": "HarvestInitiated",
+          "type": "event"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        "0xeccb62409f7c15694f95b0febf07fe47b3ee14bbb921e7d80032cad5d7e9e16a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "_owner",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint32",
+              "name": "_id",
+              "type": "uint32"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "_locx",
+              "type": "uint16"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "_locy",
+              "type": "uint16"
+            }
+          ],
+          "name": "WallBuilt",
+          "type": "event"
+        }
+      },
+      "links": {
+        "EtherEmpireCombat": "0x981611Bd13B3D607ee8377B903821aCd1633e0be"
+      },
+      "address": "0x14aBb5384Cd39935c1cfF241faf22122CC5041eA",
+      "transactionHash": "0x3000f7ddd67ddb2e9229d06bcbbef4c146a6b085d41aba4c4893346ac15c5321"
     }
   },
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-05-13T17:06:17.501Z",
+  "updatedAt": "2021-05-13T22:07:52.614Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

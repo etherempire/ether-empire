@@ -74,7 +74,7 @@ export const switchToMatic = async () => {
   if (window.ethereum) {
     try {
       //switch to MATIC (POLYGON)
-      console.log("switch to DAI blockchain");
+      console.log("switch to MATIC blockchain");
       window.ethereum
         .request({
           method: "wallet_addEthereumChain",
@@ -84,6 +84,40 @@ export const switchToMatic = async () => {
       console.log("finished switching to MATIC (POLYGON)");
     } catch (error) {
       alert("Failed to switch to MATIC");
+    }
+  }
+}
+
+// SWITCH TO SKALE Chain
+export const switchToSKALE = async () => {
+  const endpoint = "https://eth-global-11.skalenodes.com:10072";
+  const chainId = "0x6053f681996d2";
+  let switchToSKALEparams = [{
+    chainId: chainId,
+    chainName: "SKALE Network | Ether Empire",
+    rpcUrls: [endpoint],
+    nativeCurrency: {
+      name: "SKALE ETH",
+      symbol: "skETH",
+      decimals: 18
+    },
+    blockExplorerUrls: [
+      "https://expedition.dev/?network=SKALE&rpcUrl=" + endpoint
+    ]
+  }];
+  // Modern dapp browsers...
+  if (window.ethereum) {
+    try {
+      console.log("switch to SKALE chain");
+      window.ethereum
+        .request({
+          method: "wallet_addEthereumChain",
+          params: switchToSKALEparams
+        })
+        .catch((error) => console.log(error.message));
+      console.log("finished switching to SKALE");
+    } catch (error) {
+      alert("Failed to switch to SKALE");
     }
   }
 }

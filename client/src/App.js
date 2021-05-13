@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getWeb3, isMetaMaskInstalled, isMetaMaskConnected, isAddressConnected, getExistingWeb3, getMaticWeb3, switchToMatic } from "./getWeb3";
+import { getWeb3, isMetaMaskInstalled, isMetaMaskConnected, isAddressConnected, getExistingWeb3, getMaticWeb3, switchToMatic, switchToSKALE } from "./getWeb3";
 import Main from "./webapp/src/components/Pages/Main";
 import EtherEmpireContract from "./contracts/EtherEmpireWorld.json"
 import EtherEmpireToken from "./contracts/EtherEmpireToken.json"
@@ -21,7 +21,7 @@ class App extends Component {
 
   setWeb3 = async (web3) => {
     try {
-      // await switchToMatic();                          // <-- UNCOMMENT TO SWITCH TO MATIC TESTNET
+      await switchToSKALE();                          // <-- UNCOMMENT TO SWITCH TO MATIC TESTNET
       const accounts = await web3.eth.getAccounts();
       const networkId = await web3.eth.net.getId();
       const instance = new web3.eth.Contract(
