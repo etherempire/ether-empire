@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Web3 from "web3";
 import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
 import "./Crowdsale.css"
 
@@ -9,13 +8,14 @@ function Crowdsale(props) {
   const [secretKey, setSecretKey] = useState("");
   const [discordUsername, setDiscordUsername] = useState("");
 
+  let state = props.web3; 
+
   //0xebf0f629324a18a9c609ce91d2b11431dde2b42967f046d02360942ee0b96b62
   function confirmKey() {
     const key = secretKey.substring(2);
-    console.log(discordUsername);
-    console.log(new Web3.utils.BN(key).toString());
-    props.web3.airDropInstance.methods.claim(new Web3.utils.BN(key, 16).toString(), discordUsername)
-      .send({ from: props.web3.accounts[0] })
+    let key_rebased = state.web3.utils.toBN(key, 16);
+    props.web3.airDropInstance.methods.claim(key_rebased.toString(), discordUsername)
+      .send({ from: state.accounts[0] })
       .on('error', (error) => {
         console.log("Error confirming secret key: ", error)
 

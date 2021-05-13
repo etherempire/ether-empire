@@ -23,8 +23,10 @@ module.exports = function (deployer) {
         0 // takes 0 blocks to divest farm 
       );
 
-      //await deployer.deploy(TokenAirDrop, instance.address, 100);
-
+      let airdrop = await deployer.deploy(TokenAirDrop, instance.address, 100);
+      await instance.approve(airdrop.address, 100000); 
+      await airdrop.setSecret('103683354932'); // ONLY FOR TESTING, THIS SHOULD BE HIDDEN WHEN DEPLOYED PUBLICLY
+      
       // For testing 
       let contract = await World.deployed();
       await contract.populateLand(6, 6, 1);
