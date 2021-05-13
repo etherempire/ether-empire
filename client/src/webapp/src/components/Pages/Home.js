@@ -4,11 +4,11 @@ import logoAnimation from "../Images/ether-empire-logo.mp4";
 import { Button } from 'reactstrap';
 import Web3 from "web3";
 import CheckIcon from '@material-ui/icons/Check';
-//import detectEthereumProvider from '@metamask/detect-provider';
-//import getWeb3 from "../../../../getWeb3";
 import { useHistory } from "react-router-dom";
+import CrowdSale from "../Crowdsale/Crowdsale";
 
-function Home() {
+
+function Home(props) {
 
   const history = useHistory();
 
@@ -17,16 +17,29 @@ function Home() {
     history.push(path);
   }
 
+  console.log(props);
+
+
   return (
     <div className="home">
-      <center><h1 className="title">Ether Empire</h1></center>
-      <video className="logoAnimation" loop autoPlay muted>
-        <source src={logoAnimation} type="video/mp4" />
-      </video>
-      <div >
-        <center>
-          <Button color="success" onClick={routeChange}>Get Started</Button>{' '}
-        </center>
+      <div className="logoSection__container">
+        <div className="logoSection">
+          <center><h1 className="title">Ether Empire</h1></center>
+          <video className="logoAnimation" loop autoPlay muted>
+            <source src={logoAnimation} type="video/mp4" />
+          </video>
+          <div className="getStarted__container">
+            <center>
+              <Button color="success" onClick={routeChange}>Get Started</Button>{' '}
+            </center>
+          </div>
+        </div>
+      </div>
+
+      <div className="crowdsaleSection__container">
+        <CrowdSale
+          web3={props.web3}
+        />
       </div>
     </div>
   );

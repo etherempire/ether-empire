@@ -20,11 +20,14 @@ class Editor extends Component {
     this.web3 = props.web3.web3
     this.accounts = props.web3.accounts
     this.instance = props.web3.instance
+    this.tokenInstance = props.web3.tokenInstance
 
     this.atlas = props.atlas
 
     this.updateParent = props.updateParent
 
+    // get user funds 
+    this.checkSufficientBalance(0);
 
   }
 
@@ -33,7 +36,7 @@ class Editor extends Component {
   }
 
   setTileInfo = (info, neighbors) => { //info is a current tile to be focused on + up to 4 neighboors
-    this.setState({ info: info, neighbors: neighbors, buttonSelected: null, movingArmy: false})
+    this.setState({ info: info, neighbors: neighbors, buttonSelected: null, movingArmy: false })
   }
 
   createWall = () => {
@@ -42,6 +45,7 @@ class Editor extends Component {
     const posY = this.state.info.y
     console.log("creating wall at " + posX + "," + posY)
 
+    /*
     this.instance.methods.buildWall(posX, posY, this.state.userInputedStakeAmount).send({ from: this.accounts[0], gasLimit: 100000 })
       .on('error', (error) => { console.log('Error Submitting Task: ', error) }) //error should be indicated to user
       .then(() => {
@@ -53,7 +57,47 @@ class Editor extends Component {
 
         this.updateParent()
       })
+      */
+    this.state.info.isWall = true
+    this.state.info.value = this.state.userInputedStakeAmount
+    this.state.info.isEmpty = false
 
+    this.updateParent()
+
+  }
+
+  depositeERC20 = () => {
+    this.tokenInstance.methods.approve(this.instance.options.address, this.state.userInputedStakeAmount)
+      .send({ from: this.accounts[0] })
+      .on('error', (error) => {
+        console.log('Error depositing ERC20 tokens: ', error)
+        return false
+      }) //error should be indicated to user
+      .then(() => { return true })
+  }
+
+
+  // verify user has approved sufficient funds to main contract, then continue with callback 
+  checkSufficientBalance = async (amount) => {
+    try {
+      let allowance = await this.tokenInstance.methods.allowance(this.accounts[0], this.instance.options.address).call({ from: this.accounts[0] })
+      let balance = await this.tokenInstance.methods.balanceOf(this.accounts[0]).call({ from: this.accounts[0] })
+      balance = Math.min(allowance, balance) // Ignore allowance that exceeds user balance 
+      // update global variable 
+      this.ERC20balance = balance
+
+      if (balance < amount) {
+        // insufficient approved funds
+        console.log(balance, amount);
+        console.log('User has insufficient ERC20 balance');
+        return false;
+      }
+
+      return true;
+    } catch (error) {
+      console.log('Error checking for user ERC20 balance: ', error);
+      return false;
+    }
   }
 
   createFarm = () => {
@@ -61,18 +105,27 @@ class Editor extends Component {
     const posX = this.state.info.x
     const posY = this.state.info.y
 
-    this.instance.methods.buildFarm(posX, posY, this.state.userInputedStakeAmount).send({ from: this.accounts[0], gasLimit: 100000 })
-      .on('error', (error) => { console.log('Error Submitting Task: ', error) }) //error should be indicated to user
-      .then(() => {
-        console.log("Transaction successful");
 
-        this.state.info.isFarm = true
-        this.state.info.value = this.state.userInputedStakeAmount
-        this.state.info.owner = this.accounts[0]
-        this.state.info.isEmpty = false
+    const callback = (amount) => {
+      this.instance.methods.buildFarm(posX, posY, amount)
+        .send({ from: this.accounts[0] })
+        .on('error', (error) => { console.log('Error Submitting Task: ', error) }) //error should be indicated to user
+        .then(() => {
+          console.log("Transaction successful");
 
-        this.updateParent()
-      })
+          this.state.info.isFarm = true
+          this.state.info.value = this.state.userInputedStakeAmount
+          this.state.info.owner = this.accounts[0]
+          this.state.info.isEmpty = false
+
+          this.updateParent()
+        })
+    }
+
+    const amount = this.state.userInputedStakeAmount; // necessary to lock the value so it doesnt get changed while the asynchronous function below is occuring  
+    // this.checkSufficientBalance(amount).then( success => { console.log(success); if (success) callback(amount);});
+    callback(amount);
+
 
   }
 
@@ -92,8 +145,8 @@ class Editor extends Component {
   }
 
   divestFarm = () => {
-    const posX = this.state.info.x + this.gameWidth / 2
-    const posY = this.state.info.y + this.gameHeight / 2
+    const posX = this.state.info.x
+    const posY = this.state.info.y
 
     // TODO: access backend
 
@@ -104,7 +157,7 @@ class Editor extends Component {
 
     this.updateParent()
   }
-  
+
   pillageFarm = () => {
     // TODO: access backend
     this.state.info.value = 0
@@ -115,63 +168,65 @@ class Editor extends Component {
 
   attackDirection = (dir) => {
     var neighbor
-    if(dir == direction.NORTH){
+    if (dir == direction.NORTH) {
       neighbor = this.state.neighbors.NORTH
-    }if(dir == direction.SOUTH){
+    } if (dir == direction.SOUTH) {
       neighbor = this.state.neighbors.SOUTH
-    }if(dir == direction.EAST){
+    } if (dir == direction.EAST) {
       neighbor = this.state.neighbors.EAST
-    }if(dir == direction.WEST){
+    } if (dir == direction.WEST) {
       neighbor = this.state.neighbors.WEST
     }
 
-      if(this.canAttack(dir)){
-        // TODO: access backend
-        neighbor.containsArmy = false
-        neighbor.armyOwner = null
-        neighbor.armyValue = 0
-        this.updateParent()
-      }
-    
+    if (this.canAttack(dir)) {
+      // TODO: access backend
+      neighbor.containsArmy = false
+      neighbor.armyOwner = null
+      neighbor.armyValue = 0
+      this.updateParent()
+    }
+
     this.setState({ isAttacking: false });
   }
 
   destroyDirection = (dir) => {
     var neighbor
-    if(dir == direction.NORTH){
+    if (dir == direction.NORTH) {
       neighbor = this.state.neighbors.NORTH
-    }if(dir == direction.SOUTH){
+    } if (dir == direction.SOUTH) {
       neighbor = this.state.neighbors.SOUTH
-    }if(dir == direction.EAST){
+    } if (dir == direction.EAST) {
       neighbor = this.state.neighbors.EAST
-    }if(dir == direction.WEST){
+    } if (dir == direction.WEST) {
       neighbor = this.state.neighbors.WEST
     }
 
-      if(this.canDestroy(dir)){
-        neighbor.containsWall = false
-        neighbor.value = 0
-        this.updateParent()
-      }
-    
+    if (this.canDestroy(dir)) {
+      neighbor.isWall = false
+      neighbor.isEmpty = true
+      neighbor.value = 0
+      this.updateParent()
+    }
+
     this.setState({ isDestroying: false });
   }
 
   moveArmy = (dir) => {   // if user selects the create Wall button, initialize the state
     console.log(dir)
     var neighbor
-    if(dir == direction.NORTH){
+    if (dir == direction.NORTH) {
       neighbor = this.state.neighbors.NORTH
-    }if(dir == direction.SOUTH){
+    } if (dir == direction.SOUTH) {
       neighbor = this.state.neighbors.SOUTH
-    }if(dir == direction.EAST){
+    } if (dir == direction.EAST) {
       neighbor = this.state.neighbors.EAST
-    }if(dir == direction.WEST){
+    } if (dir == direction.WEST) {
       neighbor = this.state.neighbors.WEST
     }
 
-    if(this.canMove(dir)){
+    if (this.canMove(dir)) {
       // TODO: access backend
+      // move to neighbor.x, neighbor.y
       neighbor.containsArmy = true
       neighbor.armyOwner = this.state.info.armyOwner
       neighbor.armyValue = this.state.info.armyValue
@@ -180,7 +235,7 @@ class Editor extends Component {
       this.state.info.armyValue = 0
       this.updateParent()
     }
-    
+
     this.setState({ movingArmy: false, buttonSelected: null })
 
   }
@@ -194,6 +249,11 @@ class Editor extends Component {
     else {
       this.setState({ movingArmy: true, buttonSelected: null });
     }
+  }
+
+  selectedDeposit = () => {
+    this.setState({ buttonSelected: "depositERC20" });
+
   }
 
   selectedWall = () => {   // if user selects the create Wall button, initialize the state
@@ -230,12 +290,12 @@ class Editor extends Component {
   }
 
   setUserStakeAmount = (e) => {
-    this.setState({ userInputedStakeAmount: e.target.value });
+    this.setState({ userInputedStakeAmount: e.target.value == "" ? 0 : parseFloat(e.target.value) });
   }
 
   movableNeighbor = () => {
-    for(var i=0;i<4;i++){
-      if(this.canMove(i)){
+    for (var i = 0; i < 4; i++) {
+      if (this.canMove(i)) {
         return true
       }
     }
@@ -243,8 +303,8 @@ class Editor extends Component {
   }
 
   attackableNeighbor = () => {
-    for(var i=0;i<4;i++){
-      if(this.canAttack(i)){
+    for (var i = 0; i < 4; i++) {
+      if (this.canAttack(i)) {
         return true
       }
     }
@@ -252,8 +312,8 @@ class Editor extends Component {
   }
 
   destroyableNeighbor = () => {
-    for(var i=0;i<4;i++){
-      if(this.canDestroy(i)){
+    for (var i = 0; i < 4; i++) {
+      if (this.canDestroy(i)) {
         return true
       }
     }
@@ -272,13 +332,13 @@ class Editor extends Component {
 
   canMove = (dir) => {
     var neighbor
-    if(dir == direction.NORTH){
+    if (dir == direction.NORTH) {
       neighbor = this.state.neighbors.NORTH
-    }if(dir == direction.SOUTH){
+    } if (dir == direction.SOUTH) {
       neighbor = this.state.neighbors.SOUTH
-    }if(dir == direction.EAST){
+    } if (dir == direction.EAST) {
       neighbor = this.state.neighbors.EAST
-    }if(dir == direction.WEST){
+    } if (dir == direction.WEST) {
       neighbor = this.state.neighbors.WEST
     }
     return neighbor != null && (neighbor.isEmpty || neighbor.isFarm) && !neighbor.containsArmy
@@ -286,13 +346,13 @@ class Editor extends Component {
 
   canAttack = (dir) => {
     var neighbor
-    if(dir == direction.NORTH){
+    if (dir == direction.NORTH) {
       neighbor = this.state.neighbors.NORTH
-    }if(dir == direction.SOUTH){
+    } if (dir == direction.SOUTH) {
       neighbor = this.state.neighbors.SOUTH
-    }if(dir == direction.EAST){
+    } if (dir == direction.EAST) {
       neighbor = this.state.neighbors.EAST
-    }if(dir == direction.WEST){
+    } if (dir == direction.WEST) {
       neighbor = this.state.neighbors.WEST
     }
     return neighbor != null && neighbor.containsArmy
@@ -300,21 +360,22 @@ class Editor extends Component {
 
   canDestroy = (dir) => {
     var neighbor
-    if(dir == direction.NORTH){
+    if (dir == direction.NORTH) {
       neighbor = this.state.neighbors.NORTH
-    }if(dir == direction.SOUTH){
+    } if (dir == direction.SOUTH) {
       neighbor = this.state.neighbors.SOUTH
-    }if(dir == direction.EAST){
+    } if (dir == direction.EAST) {
       neighbor = this.state.neighbors.EAST
-    }if(dir == direction.WEST){
+    } if (dir == direction.WEST) {
       neighbor = this.state.neighbors.WEST
     }
     return neighbor != null && neighbor.isWall
   }
 
-  
+
 
   confirmStake = async () => {
+    console.log(this.state.userInputedStakeAmount);
     if (this.state.userInputedStakeAmount == "" || this.state.userInputedStakeAmount <= 0) {  //invalid user input
       alert("invalid amount!");
     }
@@ -329,6 +390,9 @@ class Editor extends Component {
     else if (this.state.buttonSelected === "createArmy") {
       await this.createArmy();
       await this.setState({ buttonSelected: null });  //gets rid of user input section
+    } else if (this.state.buttonSelected === "depositERC20") {
+      await this.depositeERC20();
+      await this.setState({ buttonSelected: null });  //gets rid of user input section
     }
     else {
       alert("error confirming stake");
@@ -341,6 +405,9 @@ class Editor extends Component {
   render() {
     return (
       <div className="colC">
+        <Button variant="contained" onClick={this.selectedDeposit}>
+          Deposit Tokens ({this.ERC20balance} EMP)
+        </Button>
         <Button variant="contained" disabled={!this.state.info.isEmpty || !this.state.info.isTile} onClick={this.selectedWall}>
           Create Wall
         </Button>
@@ -377,82 +444,82 @@ class Editor extends Component {
           Destroy Wall
         </Button>
 
-        { this.state.movingArmy ? 
-        <div className="rowC">
-          <Button variant="contained"
-          disabled={!this.state.movingArmy || !this.canMove(direction.NORTH)}
-          onClick={() => {this.moveArmy(direction.NORTH)}}>
-          North
+        { this.state.movingArmy ?
+          <div className="rowC">
+            <Button variant="contained"
+              disabled={!this.state.movingArmy || !this.canMove(direction.NORTH)}
+              onClick={() => { this.moveArmy(direction.NORTH) }}>
+              North
         </Button>
-        <Button variant="contained"
-          disabled={!this.state.movingArmy || !this.canMove(direction.SOUTH)}
-          onClick={() => {this.moveArmy(direction.SOUTH)}}>
-          South
+            <Button variant="contained"
+              disabled={!this.state.movingArmy || !this.canMove(direction.SOUTH)}
+              onClick={() => { this.moveArmy(direction.SOUTH) }}>
+              South
         </Button>
-        <Button variant="contained"
-          disabled={!this.state.movingArmy || !this.canMove(direction.EAST)}
-          onClick={() => {this.moveArmy(direction.EAST)}}>
-          East
+            <Button variant="contained"
+              disabled={!this.state.movingArmy || !this.canMove(direction.EAST)}
+              onClick={() => { this.moveArmy(direction.EAST) }}>
+              East
         </Button>
-        <Button variant="contained"
-          disabled={!this.state.movingArmy || !this.canMove(direction.WEST)}
-          onClick={() => {this.moveArmy(direction.WEST)}}>
-          West
+            <Button variant="contained"
+              disabled={!this.state.movingArmy || !this.canMove(direction.WEST)}
+              onClick={() => { this.moveArmy(direction.WEST) }}>
+              West
         </Button>
-        </div>
+          </div>
           : <div></div>}
 
-        { this.state.isAttacking ? 
-        <div className="rowC">
-          <Button variant="contained"
-          disabled={!this.state.isAttacking || !this.canAttack(direction.NORTH)}
-          onClick={() => {this.attackDirection(direction.NORTH)}}>
-          North
+        { this.state.isAttacking ?
+          <div className="rowC">
+            <Button variant="contained"
+              disabled={!this.state.isAttacking || !this.canAttack(direction.NORTH)}
+              onClick={() => { this.attackDirection(direction.NORTH) }}>
+              North
         </Button>
-        <Button variant="contained"
-          disabled={!this.state.isAttacking || !this.canAttack(direction.SOUTH)}
-          onClick={() => {this.attackDirection(direction.SOUTH)}}>
-          South
+            <Button variant="contained"
+              disabled={!this.state.isAttacking || !this.canAttack(direction.SOUTH)}
+              onClick={() => { this.attackDirection(direction.SOUTH) }}>
+              South
         </Button>
-        <Button variant="contained"
-          disabled={!this.state.isAttacking || !this.canAttack(direction.EAST)}
-          onClick={() => {this.attackDirection(direction.EAST)}}>
-          East
+            <Button variant="contained"
+              disabled={!this.state.isAttacking || !this.canAttack(direction.EAST)}
+              onClick={() => { this.attackDirection(direction.EAST) }}>
+              East
         </Button>
-        <Button variant="contained"
-          disabled={!this.state.isAttacking || !this.canAttack(direction.WEST)}
-          onClick={() => {this.attackDirection(direction.WEST)}}>
-          West
+            <Button variant="contained"
+              disabled={!this.state.isAttacking || !this.canAttack(direction.WEST)}
+              onClick={() => { this.attackDirection(direction.WEST) }}>
+              West
         </Button>
-        </div>
+          </div>
           : <div></div>}
 
-        { this.state.isDestroying ? 
-        <div className="rowC">
-          <Button variant="contained"
-          disabled={!this.state.isDestroying || !this.canDestroy(direction.NORTH)}
-          onClick={() => {this.destroyDirection(direction.NORTH)}}>
-          North
+        { this.state.isDestroying ?
+          <div className="rowC">
+            <Button variant="contained"
+              disabled={!this.state.isDestroying || !this.canDestroy(direction.NORTH)}
+              onClick={() => { this.destroyDirection(direction.NORTH) }}>
+              North
         </Button>
-        <Button variant="contained"
-          disabled={!this.state.isDestroying || !this.canDestroy(direction.SOUTH)}
-          onClick={() => {this.destroyDirection(direction.SOUTH)}}>
-          South
+            <Button variant="contained"
+              disabled={!this.state.isDestroying || !this.canDestroy(direction.SOUTH)}
+              onClick={() => { this.destroyDirection(direction.SOUTH) }}>
+              South
         </Button>
-        <Button variant="contained"
-          disabled={!this.state.isDestroying || !this.canDestroy(direction.EAST)}
-          onClick={() => {this.destroyDirection(direction.EAST)}}>
-          East
+            <Button variant="contained"
+              disabled={!this.state.isDestroying || !this.canDestroy(direction.EAST)}
+              onClick={() => { this.destroyDirection(direction.EAST) }}>
+              East
         </Button>
-        <Button variant="contained"
-          disabled={!this.state.isDestroying || !this.canDestroy(direction.WEST)}
-          onClick={() => {this.destroyDirection(direction.WEST)}}>
-          West
+            <Button variant="contained"
+              disabled={!this.state.isDestroying || !this.canDestroy(direction.WEST)}
+              onClick={() => { this.destroyDirection(direction.WEST) }}>
+              West
         </Button>
-        </div>
+          </div>
           : <div></div>}
-        
-        
+
+
 
         {
           this.state.buttonSelected ? (
@@ -468,30 +535,27 @@ class Editor extends Component {
             <div></div>
         }
 
-{
-        }
-
         <div className="infoText">
-          <h1>{this.state.info.isTile ? "Tile "+ this.state.info.x+","+this.state.info.y : "Select a Tile"}</h1>
-          <p> {this.state.info.isTile ? "Yeild Modifier: x"+this.state.info.modifier : ""} </p>
+          <h1>{this.state.info.isTile ? "Tile " + this.state.info.x + "," + this.state.info.y : "Select a Tile"}</h1>
+          <p> {this.state.info.isTile ? "Yeild Modifier: x" + this.state.info.modifier : ""} </p>
 
           {!this.state.info.isEmpty ? <div>
             <h2> {this.state.info.tileType()}</h2>
 
-              {this.state.info.isFarm ? 
-                <ul><li>Value: {this.state.info.value}</li>
+            {this.state.info.isFarm ?
+              <ul><li>Value: {this.state.info.value}</li>
                 <li>Owner: {this.state.info.owner}</li></ul>
-                : 
-                <ul><li>Value: {this.state.info.value}</li></ul>}
-            </div> : <div/>
-          } 
+              :
+              <ul><li>Value: {this.state.info.value}</li></ul>}
+          </div> : <div />
+          }
 
           {
             this.state.info.containsArmy ?
-            <div><h2>Army</h2>
-            <ul><li>Value: {this.state.info.armyValue}</li>
-                <li>Owner: {this.state.info.armyOwner}</li></ul></div>
-                 : <div/>
+              <div><h2>Army</h2>
+                <ul><li>Value: {this.state.info.armyValue}</li>
+                  <li>Owner: {this.state.info.armyOwner}</li></ul></div>
+              : <div />
           }
 
           <p align="left">{this.state.info.owner ? "Tile Owner: " + this.state.info.owner : null}</p>
@@ -501,6 +565,7 @@ class Editor extends Component {
     )
   }
 }
+
 
 
 export default Editor;

@@ -17,13 +17,14 @@ class GameMap extends Component {
     this.state = {}
 
     console.log("constructing game map")
-    const { web3, accounts, instance } = props.web3
+    const { web3, accounts, instance, tokenInstance } = props.web3
     this.web3 = web3
     this.accounts = accounts
-    this.instance = instance //EtherEmpireWorld contract instance
+    this.instance = instance // EtherEmpireWorld contract instance
+    this.tokenInstance = tokenInstance // EtherEmpireToken contract instance
 
     this.updateInfo = this.props.updateInfo
-    if (this.accounts.length != 0) {
+    if (this.accounts.length != 0 && this.instance) {
       this.getWorldMapData();
     }
 
@@ -222,6 +223,8 @@ class GameMap extends Component {
         curTile = atlasInProgress.info(j, i)
         curTile.isTile = isTile.entityType != 0
 
+        var id = tileType.id
+
         if (curTile.isTile) {
           curTile.modifier = Math.round( (isTile.qualifier2_32x32/(2**32)) * 1000)/1000
           curTile.value = Math.round( (tileType.qualifier2_32x32/(2**32)) * 1000)/1000
@@ -234,34 +237,37 @@ class GameMap extends Component {
             //farm
             curTile.isFarm = true
             curTile.isEmpty = false
+            curTile.owner = await this.instance.methods.getEntityOwner(id).call({ from: this.accounts[0] })
             //curTile.value = tileType.qualifier2
           }
         }
-        this.setState({ atlas: atlasInProgress });
-        //this.tileMap.current.setState({})
-        //this.props.updateParent()
         curIndex += 1
 
       }
     }
 
-    var moreEntities = false // will change upon looking for more entities
+    //TODO: get armies
+    /*
+    var moreEntities = true // will change upon looking for more entities
     while (moreEntities) {
-
+      
       const curEntity = await this.instance.methods.allEntities(curIndex).call({ from: this.accounts[0] })
 
-      if (!curEntity) {
-        moreEntities = false
-        break
+      if (curEntity.entityType === 3){
+        //record entity data in atlas
+        //must complete this code to get army data
+        var armyTile = atlasInProgress.info(curEntity.locx, curEntity.locy)
+        armyTile.containsArmy = true
+
+
+        curIndex += 1
+      }else  {
+        console.log(curEntity.entityType)
+        moreEntities = false;
+        break;
       }
-      //record entity data in atlas
-
-      var armyTile = atlasInProgress.info(curEntity.locx, curEntity.locy)
-      armyTile.containsArmy = true
-
-
-      curIndex += 1
     }
+    */
     this.setState({ atlas: atlasInProgress });
     console.log("finished getting world map data")
 

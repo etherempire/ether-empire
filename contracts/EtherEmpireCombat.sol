@@ -8,6 +8,7 @@ import "./EtherEmpireTypes.sol";
 library EtherEmpireCombat {
 
     event EntityDestroyed(uint32 _id, address _owner, address _destroyer);
+    event FarmOccupied(uint32 _id, address _owner, address _occupier);
 
     function destroy(uint32 _id, 
                      address _destroyer,
@@ -27,7 +28,8 @@ library EtherEmpireCombat {
                         uint32 _other,
                         mapping (uint32 => EtherEmpireTypes.Entity) storage allEntities, 
                         mapping (uint32 => address) storage entityToOwner, 
-                        mapping (address => mapping(address => bool)) storage nonAggression) public returns(bool) {
+                        mapping (address => mapping(address => bool)) storage nonAggression,
+                        uint64 farmOccupationBurnRate_32x32) public returns(bool) {
 
         address aggressor = entityToOwner[_self]; 
         address defender = entityToOwner[_other]; 
@@ -64,6 +66,11 @@ library EtherEmpireCombat {
             {
                 destroy(_self, defender, allEntities, entityToOwner);
             }
+        } else if (defender_entity.entityType == EtherEmpireTypes.EntityType.FARM)
+        {
+            entityToOwner[_other] = aggressor; 
+            defender_entity.qualifier2_32x32 = uint64(FixedPoint.multiply(defender_entity.qualifier2_32x32, uint64(1 << 32) - farmOccupationBurnRate_32x32, 32, 32, 32, 32));
+            emit FarmOccupied(_other, defender, aggressor);
         }
 
         return true; 

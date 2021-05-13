@@ -1,0 +1,569 @@
+{
+  "contractName": "EtherEmpireTypes",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.3+commit.8d00100c\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/jacky/Personal-Projects/ether-empire/contracts/EtherEmpireTypes.sol\":\"EtherEmpireTypes\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/jacky/Personal-Projects/ether-empire/contracts/EtherEmpireTypes.sol\":{\"keccak256\":\"0xf1f63642e6ca7e6ce0dbc2d392143f0af8c82bd59feca417d9d6b0a254283d87\",\"license\":\"Unlicensed\",\"urls\":[\"bzz-raw://c5a7d5b6b50500f52439d5ae357e7bad658be88104504caefe0d0af0314870f7\",\"dweb:/ipfs/QmV8RgSEpNgTSCmsgjKp4oWq6GRvP9mj7RuKq4vnZfaz4A\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122026e6816b2b3ed2e64949f6cb758fb732328972728bd22aa354267d700bba00bd64736f6c63430008030033",
+  "deployedBytecode": "0x6080604052600080fdfea264697066735822122026e6816b2b3ed2e64949f6cb758fb732328972728bd22aa354267d700bba00bd64736f6c63430008030033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "64:468:5:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "64:468:5:-:0;;;;;",
+  "source": "// SPDX-License-Identifier: Unlicensed\npragma solidity ^0.8.3;\n\ncontract EtherEmpireTypes {\n    \n    enum EntityType { \n        EMPTY,\n        TILE,       // q1: TileType     q2: Modifier\n        WALL, \n        ARMY, \n        FARM        // q1: BlockNumber  q2: FarmValue\n        }\n\n    struct Entity {\n        uint32 id;\n        EntityType entityType;\n        uint64 qualifier1_32x32; // overloaded, different use cases for different entity types \n        uint64 qualifier2_32x32; \n        uint16 locx;\n        uint16 locy;\n    }\n}",
+  "sourcePath": "/Users/jacky/Personal-Projects/ether-empire/contracts/EtherEmpireTypes.sol",
+  "ast": {
+    "absolutePath": "/Users/jacky/Personal-Projects/ether-empire/contracts/EtherEmpireTypes.sol",
+    "exportedSymbols": {
+      "EtherEmpireTypes": [
+        1244
+      ]
+    },
+    "id": 1245,
+    "license": "Unlicensed",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1223,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".3"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:23:5"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 1244,
+        "linearizedBaseContracts": [
+          1244
+        ],
+        "name": "EtherEmpireTypes",
+        "nameLocation": "73:16:5",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "EtherEmpireTypes.EntityType",
+            "id": 1229,
+            "members": [
+              {
+                "id": 1224,
+                "name": "EMPTY",
+                "nameLocation": "128:5:5",
+                "nodeType": "EnumValue",
+                "src": "128:5:5"
+              },
+              {
+                "id": 1225,
+                "name": "TILE",
+                "nameLocation": "143:4:5",
+                "nodeType": "EnumValue",
+                "src": "143:4:5"
+              },
+              {
+                "id": 1226,
+                "name": "WALL",
+                "nameLocation": "196:4:5",
+                "nodeType": "EnumValue",
+                "src": "196:4:5"
+              },
+              {
+                "id": 1227,
+                "name": "ARMY",
+                "nameLocation": "211:4:5",
+                "nodeType": "EnumValue",
+                "src": "211:4:5"
+              },
+              {
+                "id": 1228,
+                "name": "FARM",
+                "nameLocation": "226:4:5",
+                "nodeType": "EnumValue",
+                "src": "226:4:5"
+              }
+            ],
+            "name": "EntityType",
+            "nameLocation": "106:10:5",
+            "nodeType": "EnumDefinition",
+            "src": "101:180:5"
+          },
+          {
+            "canonicalName": "EtherEmpireTypes.Entity",
+            "id": 1243,
+            "members": [
+              {
+                "constant": false,
+                "id": 1231,
+                "mutability": "mutable",
+                "name": "id",
+                "nameLocation": "318:2:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "311:9:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 1230,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "311:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1234,
+                "mutability": "mutable",
+                "name": "entityType",
+                "nameLocation": "341:10:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "330:21:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_EntityType_$1229",
+                  "typeString": "enum EtherEmpireTypes.EntityType"
+                },
+                "typeName": {
+                  "id": 1233,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1232,
+                    "name": "EntityType",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1229,
+                    "src": "330:10:5"
+                  },
+                  "referencedDeclaration": 1229,
+                  "src": "330:10:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_EntityType_$1229",
+                    "typeString": "enum EtherEmpireTypes.EntityType"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1236,
+                "mutability": "mutable",
+                "name": "qualifier1_32x32",
+                "nameLocation": "368:16:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "361:23:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 1235,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "361:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1238,
+                "mutability": "mutable",
+                "name": "qualifier2_32x32",
+                "nameLocation": "464:16:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "457:23:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 1237,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "457:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1240,
+                "mutability": "mutable",
+                "name": "locx",
+                "nameLocation": "498:4:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "491:11:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 1239,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "491:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1242,
+                "mutability": "mutable",
+                "name": "locy",
+                "nameLocation": "519:4:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "512:11:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 1241,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "512:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Entity",
+            "nameLocation": "294:6:5",
+            "nodeType": "StructDefinition",
+            "scope": 1244,
+            "src": "287:243:5",
+            "visibility": "public"
+          }
+        ],
+        "scope": 1245,
+        "src": "64:468:5"
+      }
+    ],
+    "src": "39:493:5"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/jacky/Personal-Projects/ether-empire/contracts/EtherEmpireTypes.sol",
+    "exportedSymbols": {
+      "EtherEmpireTypes": [
+        1244
+      ]
+    },
+    "id": 1245,
+    "license": "Unlicensed",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1223,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".3"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "39:23:5"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 1244,
+        "linearizedBaseContracts": [
+          1244
+        ],
+        "name": "EtherEmpireTypes",
+        "nameLocation": "73:16:5",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "EtherEmpireTypes.EntityType",
+            "id": 1229,
+            "members": [
+              {
+                "id": 1224,
+                "name": "EMPTY",
+                "nameLocation": "128:5:5",
+                "nodeType": "EnumValue",
+                "src": "128:5:5"
+              },
+              {
+                "id": 1225,
+                "name": "TILE",
+                "nameLocation": "143:4:5",
+                "nodeType": "EnumValue",
+                "src": "143:4:5"
+              },
+              {
+                "id": 1226,
+                "name": "WALL",
+                "nameLocation": "196:4:5",
+                "nodeType": "EnumValue",
+                "src": "196:4:5"
+              },
+              {
+                "id": 1227,
+                "name": "ARMY",
+                "nameLocation": "211:4:5",
+                "nodeType": "EnumValue",
+                "src": "211:4:5"
+              },
+              {
+                "id": 1228,
+                "name": "FARM",
+                "nameLocation": "226:4:5",
+                "nodeType": "EnumValue",
+                "src": "226:4:5"
+              }
+            ],
+            "name": "EntityType",
+            "nameLocation": "106:10:5",
+            "nodeType": "EnumDefinition",
+            "src": "101:180:5"
+          },
+          {
+            "canonicalName": "EtherEmpireTypes.Entity",
+            "id": 1243,
+            "members": [
+              {
+                "constant": false,
+                "id": 1231,
+                "mutability": "mutable",
+                "name": "id",
+                "nameLocation": "318:2:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "311:9:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint32",
+                  "typeString": "uint32"
+                },
+                "typeName": {
+                  "id": 1230,
+                  "name": "uint32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "311:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1234,
+                "mutability": "mutable",
+                "name": "entityType",
+                "nameLocation": "341:10:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "330:21:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_EntityType_$1229",
+                  "typeString": "enum EtherEmpireTypes.EntityType"
+                },
+                "typeName": {
+                  "id": 1233,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 1232,
+                    "name": "EntityType",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 1229,
+                    "src": "330:10:5"
+                  },
+                  "referencedDeclaration": 1229,
+                  "src": "330:10:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_EntityType_$1229",
+                    "typeString": "enum EtherEmpireTypes.EntityType"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1236,
+                "mutability": "mutable",
+                "name": "qualifier1_32x32",
+                "nameLocation": "368:16:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "361:23:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 1235,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "361:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1238,
+                "mutability": "mutable",
+                "name": "qualifier2_32x32",
+                "nameLocation": "464:16:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "457:23:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint64",
+                  "typeString": "uint64"
+                },
+                "typeName": {
+                  "id": 1237,
+                  "name": "uint64",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "457:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1240,
+                "mutability": "mutable",
+                "name": "locx",
+                "nameLocation": "498:4:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "491:11:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 1239,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "491:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1242,
+                "mutability": "mutable",
+                "name": "locy",
+                "nameLocation": "519:4:5",
+                "nodeType": "VariableDeclaration",
+                "scope": 1243,
+                "src": "512:11:5",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 1241,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "512:6:5",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Entity",
+            "nameLocation": "294:6:5",
+            "nodeType": "StructDefinition",
+            "scope": 1244,
+            "src": "287:243:5",
+            "visibility": "public"
+          }
+        ],
+        "scope": 1245,
+        "src": "64:468:5"
+      }
+    ],
+    "src": "39:493:5"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.3+commit.8d00100c.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.4",
+  "updatedAt": "2021-05-11T19:27:52.145Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

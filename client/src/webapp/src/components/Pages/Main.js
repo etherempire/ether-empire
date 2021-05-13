@@ -44,51 +44,50 @@ const Main = (props) => {
   return (
     <div className="main">
       <HashRouter>
-        <div className="navigation-bar-container">
-          <Navbar color="light" light expand="xl">
-            <NavLink exact to="/" activeClassName="active" tag={RRNavLink}><img className="navigation-logo" src={navLogo}></img></NavLink>
-            <NavbarToggler onClick={toggle} />
-            <Collapse isOpen={isOpen} navbar>
-              <Nav className="mr-auto" navbar>
-                <NavItem>
-                  <NavLink to="/game" activeClassName="active" tag={RRNavLink}>GAME</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink to="/how-to-play" activeClassName="active" tag={RRNavLink}>TUTORIAL</NavLink>
-                </NavItem>
-                <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav caret>
-                    COMMUNITY
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem>
-                      <NavLink href="https://discord.com" target="_blank">Join Our Discord</NavLink>
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>
-                      <NavLink href="https://www.reddit.com/r/etherempireofficial/" target="_blank">The Official Reddit</NavLink>
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>
-                      <NavLink href="https://github.com/jinhongkuan/ether-empire" target="_blank">Contribute on Github</NavLink>
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              </Nav>
-              {
-                !connected ?
-                  <Button color="warning" className="connectAccountButton" onClick={props.connectWeb3}>Connect MetaMask</Button>
-                  : <Button color="warning" className="connectAccountButton"><span className="connected"><span>Connected</span> <CheckIcon className="checkmark" /></span> </Button>
-              }
-            </Collapse>
-          </Navbar>
-
-        </div>
         <div className="content">
+          <div className="navigation-bar-container">
+            <Navbar color="light" light expand="xl">
+              <NavLink exact to="/" activeClassName="active" tag={RRNavLink}><img className="navigation-logo" src={navLogo}></img></NavLink>
+              <NavbarToggler onClick={toggle} />
+              <Collapse isOpen={isOpen} navbar>
+                <Nav className="mr-auto" navbar>
+                  <NavItem>
+                    <NavLink to="/game" activeClassName="active" tag={RRNavLink}>GAME</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink to="/how-to-play" activeClassName="active" tag={RRNavLink}>TUTORIAL</NavLink>
+                  </NavItem>
+                  <UncontrolledDropdown nav inNavbar>
+                    <DropdownToggle nav caret>
+                      COMMUNITY
+                  </DropdownToggle>
+                    <DropdownMenu right>
+                      <DropdownItem>
+                        <NavLink href="https://discord.gg/X9p9gXPCc7​" target="_blank">Join Our Discord</NavLink>
+                      </DropdownItem>
+                      <DropdownItem divider />
+                      <DropdownItem>
+                        <NavLink href="https://www.reddit.com/r/etherempireofficial/" target="_blank">The Official Reddit</NavLink>
+                      </DropdownItem>
+                      <DropdownItem divider />
+                      <DropdownItem>
+                        <NavLink href="https://github.com/jinhongkuan/ether-empire" target="_blank">Contribute on Github</NavLink>
+                      </DropdownItem>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </Nav>
+                {
+                  !connected ?
+                    <Button color="warning" className="connectAccountButton" onClick={props.connectWeb3}>Connect MetaMask</Button>
+                    : <Button color="warning" className="connectAccountButton"><span className="connected"><span>Connected</span> <CheckIcon className="checkmark" /></span> </Button>
+                }
+              </Collapse>
+            </Navbar>
+          </div>
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/game" component={() => !connected ? <div><p>looks like you still need to connect metamask</p></div> : <Game web3={props.web3}/>} />
-            <Route path="/how-to-play" component={() => <HowToPlay installed={props.installed} connected={props.connected}/>} />
+            <Route exact path="/" component={() => <Home web3={props.web3} />} />
+            <Route path="/game" component={() => !connected ? <div><p>looks like you still need to connect metamask</p></div> : <Game web3={props.web3} />} />
+            <Route path="/how-to-play" component={() => <HowToPlay installed={props.installed} connected={props.connected} />} />
           </Switch>
         </div>
       </HashRouter>
