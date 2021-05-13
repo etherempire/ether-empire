@@ -21,7 +21,7 @@ class Editor extends Component {
     this.accounts = props.web3.accounts
     this.instance = props.web3.instance
     this.tokenInstance = props.web3.tokenInstance
-
+  
     this.atlas = props.atlas
 
     this.updateParent = props.updateParent
@@ -67,7 +67,7 @@ class Editor extends Component {
   }
 
   depositeERC20 = () => {
-    this.tokenInstance.methods.approve(this.instance.options.address, this.state.userInputedStakeAmount)
+    this.tokenInstance.methods.approve(this.instance.options.address, parseFloat(this.state.userInputedStakeAmount) * Math.pow(10, this.decimals))
       .send({ from: this.accounts[0] })
       .on('error', (error) => {
         console.log('Error depositing ERC20 tokens: ', error)
@@ -84,7 +84,13 @@ class Editor extends Component {
       let balance = await this.tokenInstance.methods.balanceOf(this.accounts[0]).call({ from: this.accounts[0] })
       balance = Math.min(allowance, balance) // Ignore allowance that exceeds user balance 
       // update global variable 
-      this.ERC20balance = balance
+      
+      if (!this.decimals) 
+      {
+        this.decimals = await this.tokenInstance.methods.decimals().call({ from: this.accounts[0] }); 
+      }
+
+      this.ERC20balance = balance / Math.pow(10, this.decimals);
 
       if (balance < amount) {
         // insufficient approved funds
@@ -106,25 +112,26 @@ class Editor extends Component {
     const posY = this.state.info.y
 
 
-    const callback = (amount) => {
-      this.instance.methods.buildFarm(posX, posY, amount)
+    const callback = (amount, tile) => {
+      this.instance.methods.buildFarm(posX, posY, parseFloat(amount) * Math.pow(10, this.decimals))
         .send({ from: this.accounts[0] })
         .on('error', (error) => { console.log('Error Submitting Task: ', error) }) //error should be indicated to user
         .then(() => {
           console.log("Transaction successful");
 
-          this.state.info.isFarm = true
-          this.state.info.value = this.state.userInputedStakeAmount
-          this.state.info.owner = this.accounts[0]
-          this.state.info.isEmpty = false
+          tile.isFarm = true
+          tile.value = amount // fix: amount different from that of contract. Land value = sqrt(amount * 1000) * modifier 
+          tile.owner = this.accounts[0]
+          tile.isEmpty = false
 
           this.updateParent()
         })
     }
 
-    const amount = this.state.userInputedStakeAmount; // necessary to lock the value so it doesnt get changed while the asynchronous function below is occuring  
+    const amount = this.state.userInputedStakeAmount; // necessary to lock the value so it doesnt get changed while the asynchronous function below is occuring 
+    const tile = this.state.info;  
     // this.checkSufficientBalance(amount).then( success => { console.log(success); if (success) callback(amount);});
-    callback(amount);
+    callback(amount, tile);
 
 
   }
@@ -290,7 +297,9 @@ class Editor extends Component {
   }
 
   setUserStakeAmount = (e) => {
-    this.setState({ userInputedStakeAmount: e.target.value == "" ? 0 : parseFloat(e.target.value) });
+    const floatRegExp = new RegExp('([0-9]+([.][0-9]*)?|[.][0-9]+)$') // allow for decimals input 
+
+    if (floatRegExp.test(e.target.value)) this.setState({ userInputedStakeAmount: e.target.value  });
   }
 
   movableNeighbor = () => {
@@ -537,7 +546,7 @@ class Editor extends Component {
 
         <div className="infoText">
           <h1>{this.state.info.isTile ? "Tile " + this.state.info.x + "," + this.state.info.y : "Select a Tile"}</h1>
-          <p> {this.state.info.isTile ? "Yeild Modifier: x" + this.state.info.modifier : ""} </p>
+          <p> {this.state.info.isTile ? "Yield Modifier: x" + this.state.info.modifier : ""} </p>
 
           {!this.state.info.isEmpty ? <div>
             <h2> {this.state.info.tileType()}</h2>
