@@ -10,8 +10,10 @@ import "./App.css";
 class App extends Component {
   state = { web3: null, accounts: null, instance: null };
 
+  // safe to use metamask interaction, called upon clicking "Connect MetaMask"
   connectWeb3 = async () => {
     try {
+      await switchToSKALE();   // UNCOMMENT TO USE MATIC TESTNET?
       const web3 = await getWeb3();
       await this.setWeb3(web3)
     } catch (error) {
@@ -19,9 +21,9 @@ class App extends Component {
     }
   }
 
+  // not safe to use metaMask interaction, called upon loading
   setWeb3 = async (web3) => {
     try {
-      await switchToSKALE();                          // <-- UNCOMMENT TO SWITCH TO MATIC TESTNET
       const accounts = await web3.eth.getAccounts();
       const networkId = await web3.eth.net.getId();
       const instance = new web3.eth.Contract(
