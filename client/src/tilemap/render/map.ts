@@ -26,7 +26,7 @@ export function renderMap(args: {
   center: Coord
   layers: Layer[]
 }) {
-  const { ctx, width, height, gameWidth, gameHeight, size, pan, nw, se, center, layers } = args
+  const { ctx, width, height, size, pan, nw, se, center, layers } = args
 
   ctx.fillStyle = "#000000" //black background
   ctx.fillRect(0, 0, width, height)
@@ -34,11 +34,13 @@ export function renderMap(args: {
   const halfWidth = width / 2
   const halfHeight = height / 2
 
+  const gameWidth = se.x - nw.x
+  const gameHeight =  nw.y - se.y
   const miniMap = new Uint8ClampedArray(4*gameWidth*gameHeight);
 
   for (const layer of layers) {
-    for (let x = Math.max(nw.x,-gameWidth/2); x < Math.min(se.x,gameWidth/2); x++) {
-      for (let y = Math.max(se.y,-gameHeight/2); y < Math.min(nw.y,gameHeight/2); y++) {
+    for (let x = nw.x; x < se.x; x++) {
+      for (let y = se.y; y < nw.y; y++) {
         const offsetX = (center.x - x) * size + (pan ? pan.x : 0)
         const offsetY = (y - center.y) * size + (pan ? pan.y : 0)
 
@@ -61,7 +63,7 @@ export function renderMap(args: {
         //update miniMap
         const relX = x+gameWidth/2
         const relY = y+gameHeight/2
-        const startIndex = 4*(relY*gameWidth+relX)
+        const startIndex = 4*( gameWidth*(gameHeight - relY) + relX)
         const rgba = hexToRgba(color)
         for(let i = 0; i<4; i++){
           miniMap[startIndex+i]=rgba[i]

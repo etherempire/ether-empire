@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GameMap from "../../../../tilemap/components/GameMap/GameMap"
+import GameMap from "../GameMap/GameMap"
 import Editor from "../GameUI/Editor"
 
 class Game extends Component {
