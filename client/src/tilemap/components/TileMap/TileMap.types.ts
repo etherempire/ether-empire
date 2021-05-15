@@ -83,6 +83,10 @@ export type MapRenderer = (args: {
   pan: Coord
   nw: Coord
   se: Coord
+  minX: number
+  maxX: number
+  minY: number
+  maxY: number
   center: Coord
   layers: Layer[]
 }) => void
