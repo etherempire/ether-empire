@@ -357,7 +357,13 @@ function Home(props) {
         </div>
 
         <div className="section landing-section">
-          <CrowdSale web3={props.web3} />
+          <Container>
+            <Row>
+              <CrowdSale web3={props.web3} />
+            </Row>
+
+          </Container>
+
         </div>
       </div>
 
