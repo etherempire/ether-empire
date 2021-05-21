@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import GameMap from "../GameMap/GameMap"
 import Editor from "../GameUI/Editor"
+import AltNavbar from "../Navbars/AltNavbar";
+
 
 class Game extends Component {
 
@@ -16,7 +18,6 @@ class Game extends Component {
 
   constructor(props) {
     super(props);
-    console.log("props in game page", props);
     console.log("Starting game page construction")
 
     this.editorElement = React.createRef();
@@ -50,20 +51,23 @@ class Game extends Component {
     console.log("rendering game")
 
     return (
-      <div className='rowC'>
-        <div className="item" ref={el => (this.container = el)}>
-          <GameMap
-            updateInfo={this.updateInfo}
-            updateGameSize={this.updateGameSize}
-            atlas={this.atlas}
-            width={dimensions.width}
-            web3={this.props.web3}
-            height={725}
-            updateParent={() => { this.forceUpdate() }}
-          />
+      <>
+        <AltNavbar connectWeb3={this.props.connectWeb3} connected={this.props.connected} />
+        <div className='rowC'>
+          <div className="item" ref={el => (this.container = el)}>
+            <GameMap
+              updateInfo={this.updateInfo}
+              updateGameSize={this.updateGameSize}
+              atlas={this.atlas}
+              width={dimensions.width}
+              web3={this.props.web3}
+              height={725}
+              updateParent={() => { this.forceUpdate() }}
+            />
+          </div>
+          <Editor ref={this.editorElement} updateParent={() => { this.forceUpdate() }} web3={this.props.web3} />
         </div>
-        <Editor ref={this.editorElement} updateParent={() => { this.forceUpdate() }} web3={this.props.web3} />
-      </div>
+      </>
     );
   }
 }

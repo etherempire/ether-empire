@@ -1,11 +1,12 @@
+/*
 .App{
   height: 100vh;
-  /*background-color: black;*/
 }
+*/
 
 
 
-
+/*  Styling for the Game Page */
 .rowC {
   display:flex; 
   flex-direction:row; 
@@ -39,4 +40,8 @@
   word-wrap: break-word;
   white-space: normal;
   position:sticky;
+}
+
+.react-tile-map-canvas{
+  margin-top: 50px;
 }

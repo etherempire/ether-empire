@@ -1,19 +1,35 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+
 import { getWeb3, isMetaMaskInstalled, isMetaMaskConnected, isAddressConnected, getExistingWeb3, getMaticWeb3, switchToMatic, switchToSKALE } from "./getWeb3";
-import Main from "./webapp/src/components/Pages/Main";
+
+// Pages 
+import Home from "./webapp/src/components/Pages/Home";
+import Game from "./webapp/src/components/Pages/Game";
+import HowToPlay from "./webapp/src/components/Pages/HowToPlay";
+import Roadmap from "./webapp/src/components/Pages/Roadmap";
+
+// Smart Contracts
 import EtherEmpireContract from "./contracts/EtherEmpireWorld.json"
 import EtherEmpireToken from "./contracts/EtherEmpireToken.json"
 import TokenAirDrop from "./contracts/TokenAirDrop.json"
 
+// css style
 import "./App.css";
+
 
 class App extends Component {
   state = { web3: null, accounts: null, instance: null };
 
+  constructor(props) {
+    super(props);
+    this.setWeb3(getExistingWeb3())
+  }
+
   // safe to use metamask interaction, called upon clicking "Connect MetaMask"
   connectWeb3 = async () => {
     try {
-      await switchToSKALE();   // UNCOMMENT TO USE MATIC TESTNET?
+      await switchToSKALE();   // UNCOMMENT TO USE SKALE
       const web3 = await getWeb3();
       await this.setWeb3(web3)
     } catch (error) {
@@ -48,21 +64,67 @@ class App extends Component {
     return this.state.accounts && this.state.accounts.length != 0
   }
 
-  componentDidMount = async () => {
+  /*  MOVED TO CONSTRUCTOR 
+  componentWillMount = async () => {
     await this.setWeb3(getExistingWeb3())
   }
+  */
 
   render() {
-    return (
-      <div className="App">
-        <Main
-          connected={this.state.accounts && this.state.accounts.length != 0}
-          installed={isMetaMaskInstalled}
-          web3={this.state}
-          connectWeb3={this.connectWeb3} />
-      </div>
-    )
+    // TODO: BETTER VALIDATION?
+    if (this.state.accounts == null || this.state.web3 == null) {  // Wait for state(web3, accounts, etc...)  to set before rendering pages
+      return <div>Loading Page</div>  //  TODO: Loading Page 
+    }
+    else { // Safe to load pages after state is set
+      return (
+        <div className="App">
+          {/* React router for page navigation */}
+          <Switch>
+            <Route exact path="/" render={(props) =>
+              <Home
+                {...props}
+                web3={this.state}
+                connectWeb3={this.connectWeb3}
+                connected={this.state.accounts && this.state.accounts.length != 0}
+                installed={isMetaMaskInstalled}
+              />}
+            />
+            <Route path="/game" render={(props) =>
+              <Game
+                {...props}
+                web3={this.state}
+                connectWeb3={this.connectWeb3}
+                connected={this.state.accounts && this.state.accounts.length != 0}
+                installed={isMetaMaskInstalled}
+              />}
+            />
+            <Route path="/how-to-play" render={(props) =>
+              <HowToPlay
+                {...props}
+                web3={this.state}
+                connectWeb3={this.connectWeb3}
+                connected={this.state.accounts && this.state.accounts.length != 0}
+                installed={isMetaMaskInstalled}
+              />}
+            />
+            <Route path="/roadmap" render={(props) =>
+              <Roadmap
+                {...props}
+                web3={this.state}
+                connectWeb3={this.connectWeb3}
+                connected={this.state.accounts && this.state.accounts.length != 0}
+                installed={isMetaMaskInstalled}
+              />}
+            />
+            <Redirect to="/" />
+          </Switch>
+        </div>
+      )
+    }
   }
 }
 
 export default App;
+
+
+
