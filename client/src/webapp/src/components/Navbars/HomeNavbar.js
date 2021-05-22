@@ -110,7 +110,7 @@ function WebsiteNavbar(props) {
                 onClick={(e) => e.preventDefault()}
               >
                 <i className="fa fa-cogs d-lg-none d-xl-none" />
-                Getting started
+                Get started
               </DropdownToggle>
               <DropdownMenu className="dropdown-with-icons">
                 <DropdownItem tag={Link} to="/how-to-play">

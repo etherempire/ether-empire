@@ -25,7 +25,6 @@ import CrowdSale from "../Crowdsale/Crowdsale";
 import "../CSS/Home.css";
 
 
-
 function Home(props) {
   document.documentElement.classList.remove("nav-open");
   useEffect(() => {

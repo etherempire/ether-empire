@@ -50,6 +50,7 @@ class Game extends Component {
     const { dimensions } = this.state;
     console.log("rendering game")
 
+
     return (
       <>
         <AltNavbar connectWeb3={this.props.connectWeb3} connected={this.props.connected} />

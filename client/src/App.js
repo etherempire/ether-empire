@@ -1,13 +1,16 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
 
-import { getWeb3, isMetaMaskInstalled, isMetaMaskConnected, isAddressConnected, getExistingWeb3, getMaticWeb3, switchToMatic, switchToSKALE } from "./getWeb3";
-
-// Pages 
-import Home from "./webapp/src/components/Pages/Home";
-import Game from "./webapp/src/components/Pages/Game";
-import HowToPlay from "./webapp/src/components/Pages/HowToPlay";
-import Roadmap from "./webapp/src/components/Pages/Roadmap";
+// web3, MetaMask, SKALE, Matic
+import {
+  getWeb3,
+  isMetaMaskInstalled,
+  isMetaMaskConnected,
+  isAddressConnected,
+  getExistingWeb3,
+  getMaticWeb3,
+  switchToMatic,
+  switchToSKALE
+} from "./getWeb3";
 
 // Smart Contracts
 import EtherEmpireContract from "./contracts/EtherEmpireWorld.json"
@@ -17,14 +20,12 @@ import TokenAirDrop from "./contracts/TokenAirDrop.json"
 // css style
 import "./App.css";
 
+// Component
+import Routes from "./Routes";
+
 
 class App extends Component {
   state = { web3: null, accounts: null, instance: null };
-
-  constructor(props) {
-    super(props);
-    this.setWeb3(getExistingWeb3())
-  }
 
   // safe to use metamask interaction, called upon clicking "Connect MetaMask"
   connectWeb3 = async () => {
@@ -41,6 +42,7 @@ class App extends Component {
   setWeb3 = async (web3) => {
     try {
       const accounts = await web3.eth.getAccounts();
+      console.log(accounts);
       const networkId = await web3.eth.net.getId();
       const instance = new web3.eth.Contract(
         EtherEmpireContract.abi,
@@ -64,63 +66,23 @@ class App extends Component {
     return this.state.accounts && this.state.accounts.length != 0
   }
 
-  /*  MOVED TO CONSTRUCTOR 
-  componentWillMount = async () => {
+  componentDidMount = async () => {
     await this.setWeb3(getExistingWeb3())
   }
-  */
+
 
   render() {
-    // TODO: BETTER VALIDATION?
-    if (this.state.accounts == null || this.state.web3 == null) {  // Wait for state(web3, accounts, etc...)  to set before rendering pages
-      return <div>Loading Page</div>  //  TODO: Loading Page 
-    }
-    else { // Safe to load pages after state is set
-      return (
-        <div className="App">
-          {/* React router for page navigation */}
-          <Switch>
-            <Route exact path="/" render={(props) =>
-              <Home
-                {...props}
-                web3={this.state}
-                connectWeb3={this.connectWeb3}
-                connected={this.state.accounts && this.state.accounts.length != 0}
-                installed={isMetaMaskInstalled}
-              />}
-            />
-            <Route path="/game" render={(props) =>
-              <Game
-                {...props}
-                web3={this.state}
-                connectWeb3={this.connectWeb3}
-                connected={this.state.accounts && this.state.accounts.length != 0}
-                installed={isMetaMaskInstalled}
-              />}
-            />
-            <Route path="/how-to-play" render={(props) =>
-              <HowToPlay
-                {...props}
-                web3={this.state}
-                connectWeb3={this.connectWeb3}
-                connected={this.state.accounts && this.state.accounts.length != 0}
-                installed={isMetaMaskInstalled}
-              />}
-            />
-            <Route path="/roadmap" render={(props) =>
-              <Roadmap
-                {...props}
-                web3={this.state}
-                connectWeb3={this.connectWeb3}
-                connected={this.state.accounts && this.state.accounts.length != 0}
-                installed={isMetaMaskInstalled}
-              />}
-            />
-            <Redirect to="/" />
-          </Switch>
-        </div>
-      )
-    }
+
+    return (
+      <div className="App">
+        <Routes
+          web3={this.state}
+          connectWeb3={this.connectWeb3}
+          connected={this.state.accounts && this.state.accounts.length != 0}
+          installed={isMetaMaskInstalled}
+        />
+      </div>
+    )
   }
 }
 
