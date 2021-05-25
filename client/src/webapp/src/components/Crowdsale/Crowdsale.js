@@ -8,7 +8,7 @@ function Crowdsale(props) {
   const [secretKey, setSecretKey] = useState("");
   const [discordUsername, setDiscordUsername] = useState("");
 
-  let state = props.web3; 
+  let state = props.web3;
 
   //0xebf0f629324a18a9c609ce91d2b11431dde2b42967f046d02360942ee0b96b62
   function confirmKey() {
@@ -28,7 +28,7 @@ function Crowdsale(props) {
 
   return (
     <div className="Crowdsale">
-      <center><h1>Empire Crowdsale</h1></center>
+      <center><h1 className="title">Free Empire tokens</h1></center>
       <InputGroup >
         <Input placeholder="Secret key" value={secretKey} onChange={e => setSecretKey(e.target.value)} required />
         <Input placeholder="Discord Username" value={discordUsername} onChange={e => setDiscordUsername(e.target.value)} required />

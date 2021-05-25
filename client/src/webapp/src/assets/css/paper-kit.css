@@ -1,27 +1,37 @@
-/*!
+/* Personal CSS */
+.left-align {
+  text-align: left;
+}
 
- =========================================================
- * Paper Kit React - v1.3.0 based on Paper Kit - v2.2.0
- =========================================================
+.slight-margin-bottom{
+  margin-bottom: 3em;
+}
 
- * Product Page: https://www.creative-tim.com/product/paper-kit-2
- * Copyright 2021 Creative Tim (http://www.creative-tim.com)
+.description2{
+  font-weight: 500;
+}
 
- * Designed by www.invisionapp.com Coded by www.creative-tim.com
 
- =========================================================
 
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+.placeholder-pic {
+  height: 90%;
+  width: 80%;
+}
 
- */
-/*      light colors - used for select dropdown         */
-/* ========================================================================
- * bootstrap-switch - v3.3.2
- * http://www.bootstrap-switch.org
- * ========================================================================
- * Copyright 2012-2013 Mattia Larentis
- * http://www.apache.org/licenses/LICENSE-2.0
- */
+
+
+
+
+
+
+/*  DOCUMENTATION LINK
+    https://demos.creative-tim.com/paper-kit-pro-react/?_ga=2.151401209.1936376654.1621658926-1356608149.1621278237#/documentation/introduction
+
+    Bootstrap Doc
+    https://getbootstrap.com/docs/4.0/getting-started/introduction/
+*/
+
+
 .bootstrap-switch {
   display: inline-block;
   direction: ltr;
@@ -1930,9 +1940,10 @@ textarea.form-control {
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px; }
 
+  /* Not sure what this does, so I commented them out to see what happens
 .nav-pills-default .nav-item.show .nav-link,
 .nav-pills-default .nav-link.active {
-  background-color: #66615B !important; }
+  background-color: pink !important; }
 
 .nav-pills-primary .nav-item.show .nav-link,
 .nav-pills-primary .nav-link.active {
@@ -1953,6 +1964,7 @@ textarea.form-control {
 .nav-pills-danger .nav-item.show .nav-link,
 .nav-pills-danger .nav-link.active {
   background-color: #f5593d !important; }
+*/ 
 
 .pagination > li > a:hover,
 .pagination > li > a:focus,
@@ -2116,7 +2128,10 @@ blockquote small {
 .title {
   margin-top: 30px;
   margin-bottom: 25px;
-  min-height: 32px; }
+  min-height: 32px; 
+  font-weight: 500;
+
+}
 
 .title.text-center {
   margin-bottom: 50px; }
@@ -4551,7 +4566,10 @@ License - nucleoapp.com/license/
   text-align: left;
   z-index: 3;
   color: #fff;
-  position: relative; }
+  position: relative; 
+  font-size: 2em;
+  font-weight: bolder;
+}
 
 .landing-section {
   padding: 100px 0;
@@ -4743,7 +4761,7 @@ License - nucleoapp.com/license/
   height: 100%; }
 
 .section {
-  padding: 70px 0;
+  padding: 55px 0;
   position: relative;
   background-color: #FFFFFF; }
 
@@ -6461,3 +6479,28 @@ td.rdtYear:hover {
   border-bottom-color: #fff; }
 
 /*# sourceMappingURL=paper-kit.css.map */
+
+
+/*!
+ =========================================================
+ * Paper Kit React - v1.3.0 based on Paper Kit - v2.2.0
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/paper-kit-2
+ * Copyright 2021 Creative Tim (http://www.creative-tim.com)
+
+ * Designed by www.invisionapp.com Coded by www.creative-tim.com
+
+ =========================================================
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ */
+/*      light colors - used for select dropdown         */
+/* ========================================================================
+ * bootstrap-switch - v3.3.2
+ * http://www.bootstrap-switch.org
+ * ========================================================================
+ * Copyright 2012-2013 Mattia Larentis
+ * http://www.apache.org/licenses/LICENSE-2.0
+ */

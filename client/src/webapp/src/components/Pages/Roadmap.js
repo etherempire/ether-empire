@@ -25,6 +25,9 @@ function Roadmap(props) {
         <div className="section text-center">
           This is the roadmap page
         </div>
+        <div className="section section-dark text-center">
+
+        </div>
       </div>
 
     </>

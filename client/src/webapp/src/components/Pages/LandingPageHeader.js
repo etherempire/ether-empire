@@ -36,8 +36,8 @@ function LandingPageHeader() {
         <div className="filter" />
         <Container>
           <div className="motto text-center">
-            <h1>ETHER EMPIRE</h1>
-            <h3>A game of conquest hosted entirely on blockchain incorporating stategy, diplomacy, and an opportunity to earn real money</h3>
+            <h1>Ether Empire</h1>
+            <h4>Conquer. Defend. Unite</h4>
             <br />
             <Button
               href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
