@@ -27,7 +27,7 @@ This app can be hosted locally using Node.js, Truffle and Ganache. The installat
 4. Add Metamask extension to your browser of choice (Chrome, Brave, Edge, Firefox)
 
 ### Hosting a local server 
-1. Ensure that all npm packages are installed. 
+1. Ensure that all npm packages are installed. (* make sure you have Git installed! *) 
    navigate to [project folder]/, and run ```npm install``` 
    
    navigate to [project folder]/client, and run ```npm install``` 
