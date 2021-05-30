@@ -3,7 +3,7 @@
 
 # Highlights 
 > The Stack
-- Reactjs (Frontedn)
+- Reactjs (Frontend)
 - Web3js 
 - SKALE (Layer 2 solution) 
 - Truffle (Smart contract testing and deployment) 
