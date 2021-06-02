@@ -13,32 +13,24 @@ import EtherEmpireToken from "./contracts/EtherEmpireToken.json"
 import TokenAirDrop from "./contracts/TokenAirDrop.json"
 
 function Routes(props) {
-
+  console.log("REACHED", props)
   return (
-    <div >
+    <div className="Routes">
       {/* React router for page navigation */}
       <Switch>
         <Route exact path="/" render={() =>
-          <Home
-            {...props}
-          />}
+          <Home {...props} />}
         />
         <Route path="/game" render={() =>
-          <Game
-            {...props}
-
-          />}
+          props.connected == null ? <div>Looks like you still need to connect metamask</div>
+            :
+            <Game {...props} />}
         />
         <Route path="/how-to-play" render={() =>
-          <HowToPlay
-            {...props}
-
-          />}
+          <HowToPlay {...props} />}
         />
         <Route path="/roadmap" render={() =>
-          <Roadmap
-            {...props}
-          />}
+          <Roadmap {...props} />}
         />
         <Redirect to="/" />
       </Switch>

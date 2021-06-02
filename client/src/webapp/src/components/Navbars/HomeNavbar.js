@@ -153,6 +153,8 @@ function WebsiteNavbar(props) {
               </DropdownMenu>
             </UncontrolledDropdown>
 
+
+
             {/* CONNECT WALLET BUTTON */}
             <NavItem>
               {
@@ -161,6 +163,7 @@ function WebsiteNavbar(props) {
                     className="btn-round"
                     color="danger"
                     onClick={props.connectWeb3}
+                    outline
                   >
                     CONNECT WALLET
                 </Button>

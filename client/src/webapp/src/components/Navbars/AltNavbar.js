@@ -129,6 +129,7 @@ function AltNavbar(props) {
                     className="btn-round"
                     color="danger"
                     onClick={props.connectWeb3}
+                    outline
                   >
                     CONNECT WALLET
                 </Button>

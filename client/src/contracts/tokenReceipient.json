@@ -44,43 +44,43 @@
     "absolutePath": "/Users/jacky/Personal-Projects/ether-empire/contracts/EtherEmpireToken.sol",
     "exportedSymbols": {
       "AccessControl": [
-        4610
+        4371
       ],
       "AccessControlEnumerable": [
-        4800
+        4561
       ],
       "Context": [
-        5543
+        5304
       ],
       "ERC165": [
-        5770
+        5531
       ],
       "ERC20": [
-        5417
+        5178
       ],
       "EnumerableSet": [
-        6295
+        6056
       ],
       "EtherEmpireToken": [
         1212
       ],
       "IAccessControl": [
-        4286
+        4047
       ],
       "IAccessControlEnumerable": [
-        4632
+        4393
       ],
       "IERC165": [
-        5782
+        5543
       ],
       "IERC20": [
-        5495
+        5256
       ],
       "IERC20Metadata": [
-        5520
+        5281
       ],
       "Strings": [
-        5746
+        5507
       ],
       "tokenReceipient": [
         670
@@ -107,7 +107,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1213,
-        "sourceUnit": 5418,
+        "sourceUnit": 5179,
         "src": "25:55:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -119,7 +119,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1213,
-        "sourceUnit": 5521,
+        "sourceUnit": 5282,
         "src": "81:75:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -131,7 +131,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1213,
-        "sourceUnit": 4801,
+        "sourceUnit": 4562,
         "src": "157:68:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -300,7 +300,7 @@
               "id": 671,
               "name": "ERC20",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 5417,
+              "referencedDeclaration": 5178,
               "src": "401:5:3"
             },
             "id": 672,
@@ -312,7 +312,7 @@
               "id": 673,
               "name": "AccessControlEnumerable",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 4800,
+              "referencedDeclaration": 4561,
               "src": "408:23:3"
             },
             "id": 674,
@@ -321,32 +321,32 @@
           }
         ],
         "contractDependencies": [
-          4286,
-          4610,
-          4632,
-          4800,
-          5417,
-          5495,
-          5520,
-          5543,
-          5770,
-          5782
+          4047,
+          4371,
+          4393,
+          4561,
+          5178,
+          5256,
+          5281,
+          5304,
+          5531,
+          5543
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 1212,
         "linearizedBaseContracts": [
           1212,
-          4800,
-          4610,
-          5770,
-          5782,
-          4286,
-          5417,
-          5520,
-          5495,
+          4561,
+          4371,
+          5531,
           5543,
-          4632
+          4047,
+          5178,
+          5281,
+          5256,
+          5304,
+          4393
         ],
         "name": "EtherEmpireToken",
         "nameLocation": "381:16:3",
@@ -816,9 +816,9 @@
                       "name": "_setupRole",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4799
+                        4560
                       ],
-                      "referencedDeclaration": 4799,
+                      "referencedDeclaration": 4560,
                       "src": "903:10:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -965,7 +965,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5485,
+                      "referencedDeclaration": 5246,
                       "src": "953:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -1037,7 +1037,7 @@
                   "id": 697,
                   "name": "ERC20",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 5417,
+                  "referencedDeclaration": 5178,
                   "src": "744:5:3"
                 },
                 "nodeType": "ModifierInvocation",
@@ -1050,7 +1050,7 @@
                   "id": 701,
                   "name": "AccessControlEnumerable",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 4800,
+                  "referencedDeclaration": 4561,
                   "src": "773:23:3"
                 },
                 "nodeType": "ModifierInvocation",
@@ -1080,7 +1080,7 @@
           },
           {
             "baseFunctions": [
-              4965
+              4726
             ],
             "body": {
               "id": 740,
@@ -1169,7 +1169,7 @@
           },
           {
             "baseFunctions": [
-              4975
+              4736
             ],
             "body": {
               "id": 749,
@@ -1258,7 +1258,7 @@
           },
           {
             "baseFunctions": [
-              4985
+              4746
             ],
             "body": {
               "id": 758,
@@ -1351,7 +1351,7 @@
           },
           {
             "baseFunctions": [
-              4995
+              4756
             ],
             "body": {
               "id": 767,
@@ -1440,7 +1440,7 @@
           },
           {
             "baseFunctions": [
-              5009
+              4770
             ],
             "body": {
               "id": 780,
@@ -1583,7 +1583,7 @@
           },
           {
             "baseFunctions": [
-              5030
+              4791
             ],
             "body": {
               "id": 800,
@@ -1833,7 +1833,7 @@
           },
           {
             "baseFunctions": [
-              5048
+              4809
             ],
             "body": {
               "id": 817,
@@ -2029,7 +2029,7 @@
           },
           {
             "baseFunctions": [
-              5069
+              4830
             ],
             "body": {
               "id": 837,
@@ -2279,7 +2279,7 @@
           },
           {
             "baseFunctions": [
-              5116
+              4877
             ],
             "body": {
               "id": 883,
@@ -2893,7 +2893,7 @@
           },
           {
             "baseFunctions": [
-              5143
+              4904
             ],
             "body": {
               "id": 910,
@@ -3237,7 +3237,7 @@
           },
           {
             "baseFunctions": [
-              5181
+              4942
             ],
             "body": {
               "id": 948,
@@ -3736,7 +3736,7 @@
           },
           {
             "baseFunctions": [
-              5251
+              5012
             ],
             "body": {
               "id": 1018,
@@ -4110,7 +4110,7 @@
                       "name": "_beforeTokenTransfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5416,
+                      "referencedDeclaration": 5177,
                       "src": "3330:20:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -4541,7 +4541,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5485,
+                      "referencedDeclaration": 5246,
                       "src": "3621:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -4686,7 +4686,7 @@
           },
           {
             "baseFunctions": [
-              5298
+              5059
             ],
             "body": {
               "id": 1074,
@@ -4752,7 +4752,7 @@
                           "name": "hasRole",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4389,
+                          "referencedDeclaration": 4150,
                           "src": "3753:7:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_bytes32_$_t_address_$returns$_t_bool_$",
@@ -5096,7 +5096,7 @@
                       "name": "_beforeTokenTransfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5416,
+                      "referencedDeclaration": 5177,
                       "src": "3912:20:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -5340,7 +5340,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5485,
+                      "referencedDeclaration": 5246,
                       "src": "4047:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -5457,7 +5457,7 @@
           },
           {
             "baseFunctions": [
-              5360
+              5121
             ],
             "body": {
               "id": 1145,
@@ -5523,7 +5523,7 @@
                           "name": "hasRole",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4389,
+                          "referencedDeclaration": 4150,
                           "src": "4181:7:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_bytes32_$_t_address_$returns$_t_bool_$",
@@ -5867,7 +5867,7 @@
                       "name": "_beforeTokenTransfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5416,
+                      "referencedDeclaration": 5177,
                       "src": "4342:20:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -6321,7 +6321,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5485,
+                      "referencedDeclaration": 5246,
                       "src": "4628:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -6438,7 +6438,7 @@
           },
           {
             "baseFunctions": [
-              5405
+              5166
             ],
             "body": {
               "id": 1190,
@@ -6905,7 +6905,7 @@
                       "name": "Approval",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5494,
+                      "referencedDeclaration": 5255,
                       "src": "4980:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -7113,7 +7113,7 @@
                           "name": "hasRole",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4389,
+                          "referencedDeclaration": 4150,
                           "src": "5086:7:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_bytes32_$_t_address_$returns$_t_bool_$",
@@ -7239,9 +7239,9 @@
                       "name": "grantRole",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4727
+                        4488
                       ],
-                      "referencedDeclaration": 4727,
+                      "referencedDeclaration": 4488,
                       "src": "5183:9:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -7335,43 +7335,43 @@
     "absolutePath": "/Users/jacky/Personal-Projects/ether-empire/contracts/EtherEmpireToken.sol",
     "exportedSymbols": {
       "AccessControl": [
-        4610
+        4371
       ],
       "AccessControlEnumerable": [
-        4800
+        4561
       ],
       "Context": [
-        5543
+        5304
       ],
       "ERC165": [
-        5770
+        5531
       ],
       "ERC20": [
-        5417
+        5178
       ],
       "EnumerableSet": [
-        6295
+        6056
       ],
       "EtherEmpireToken": [
         1212
       ],
       "IAccessControl": [
-        4286
+        4047
       ],
       "IAccessControlEnumerable": [
-        4632
+        4393
       ],
       "IERC165": [
-        5782
+        5543
       ],
       "IERC20": [
-        5495
+        5256
       ],
       "IERC20Metadata": [
-        5520
+        5281
       ],
       "Strings": [
-        5746
+        5507
       ],
       "tokenReceipient": [
         670
@@ -7398,7 +7398,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1213,
-        "sourceUnit": 5418,
+        "sourceUnit": 5179,
         "src": "25:55:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -7410,7 +7410,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1213,
-        "sourceUnit": 5521,
+        "sourceUnit": 5282,
         "src": "81:75:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -7422,7 +7422,7 @@
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
         "scope": 1213,
-        "sourceUnit": 4801,
+        "sourceUnit": 4562,
         "src": "157:68:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -7591,7 +7591,7 @@
               "id": 671,
               "name": "ERC20",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 5417,
+              "referencedDeclaration": 5178,
               "src": "401:5:3"
             },
             "id": 672,
@@ -7603,7 +7603,7 @@
               "id": 673,
               "name": "AccessControlEnumerable",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 4800,
+              "referencedDeclaration": 4561,
               "src": "408:23:3"
             },
             "id": 674,
@@ -7612,32 +7612,32 @@
           }
         ],
         "contractDependencies": [
-          4286,
-          4610,
-          4632,
-          4800,
-          5417,
-          5495,
-          5520,
-          5543,
-          5770,
-          5782
+          4047,
+          4371,
+          4393,
+          4561,
+          5178,
+          5256,
+          5281,
+          5304,
+          5531,
+          5543
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 1212,
         "linearizedBaseContracts": [
           1212,
-          4800,
-          4610,
-          5770,
-          5782,
-          4286,
-          5417,
-          5520,
-          5495,
+          4561,
+          4371,
+          5531,
           5543,
-          4632
+          4047,
+          5178,
+          5281,
+          5256,
+          5304,
+          4393
         ],
         "name": "EtherEmpireToken",
         "nameLocation": "381:16:3",
@@ -8107,9 +8107,9 @@
                       "name": "_setupRole",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4799
+                        4560
                       ],
-                      "referencedDeclaration": 4799,
+                      "referencedDeclaration": 4560,
                       "src": "903:10:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -8256,7 +8256,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5485,
+                      "referencedDeclaration": 5246,
                       "src": "953:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -8328,7 +8328,7 @@
                   "id": 697,
                   "name": "ERC20",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 5417,
+                  "referencedDeclaration": 5178,
                   "src": "744:5:3"
                 },
                 "nodeType": "ModifierInvocation",
@@ -8341,7 +8341,7 @@
                   "id": 701,
                   "name": "AccessControlEnumerable",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 4800,
+                  "referencedDeclaration": 4561,
                   "src": "773:23:3"
                 },
                 "nodeType": "ModifierInvocation",
@@ -8371,7 +8371,7 @@
           },
           {
             "baseFunctions": [
-              4965
+              4726
             ],
             "body": {
               "id": 740,
@@ -8460,7 +8460,7 @@
           },
           {
             "baseFunctions": [
-              4975
+              4736
             ],
             "body": {
               "id": 749,
@@ -8549,7 +8549,7 @@
           },
           {
             "baseFunctions": [
-              4985
+              4746
             ],
             "body": {
               "id": 758,
@@ -8642,7 +8642,7 @@
           },
           {
             "baseFunctions": [
-              4995
+              4756
             ],
             "body": {
               "id": 767,
@@ -8731,7 +8731,7 @@
           },
           {
             "baseFunctions": [
-              5009
+              4770
             ],
             "body": {
               "id": 780,
@@ -8874,7 +8874,7 @@
           },
           {
             "baseFunctions": [
-              5030
+              4791
             ],
             "body": {
               "id": 800,
@@ -9124,7 +9124,7 @@
           },
           {
             "baseFunctions": [
-              5048
+              4809
             ],
             "body": {
               "id": 817,
@@ -9320,7 +9320,7 @@
           },
           {
             "baseFunctions": [
-              5069
+              4830
             ],
             "body": {
               "id": 837,
@@ -9570,7 +9570,7 @@
           },
           {
             "baseFunctions": [
-              5116
+              4877
             ],
             "body": {
               "id": 883,
@@ -10184,7 +10184,7 @@
           },
           {
             "baseFunctions": [
-              5143
+              4904
             ],
             "body": {
               "id": 910,
@@ -10528,7 +10528,7 @@
           },
           {
             "baseFunctions": [
-              5181
+              4942
             ],
             "body": {
               "id": 948,
@@ -11027,7 +11027,7 @@
           },
           {
             "baseFunctions": [
-              5251
+              5012
             ],
             "body": {
               "id": 1018,
@@ -11401,7 +11401,7 @@
                       "name": "_beforeTokenTransfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5416,
+                      "referencedDeclaration": 5177,
                       "src": "3330:20:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -11832,7 +11832,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5485,
+                      "referencedDeclaration": 5246,
                       "src": "3621:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -11977,7 +11977,7 @@
           },
           {
             "baseFunctions": [
-              5298
+              5059
             ],
             "body": {
               "id": 1074,
@@ -12043,7 +12043,7 @@
                           "name": "hasRole",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4389,
+                          "referencedDeclaration": 4150,
                           "src": "3753:7:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_bytes32_$_t_address_$returns$_t_bool_$",
@@ -12387,7 +12387,7 @@
                       "name": "_beforeTokenTransfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5416,
+                      "referencedDeclaration": 5177,
                       "src": "3912:20:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -12631,7 +12631,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5485,
+                      "referencedDeclaration": 5246,
                       "src": "4047:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -12748,7 +12748,7 @@
           },
           {
             "baseFunctions": [
-              5360
+              5121
             ],
             "body": {
               "id": 1145,
@@ -12814,7 +12814,7 @@
                           "name": "hasRole",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4389,
+                          "referencedDeclaration": 4150,
                           "src": "4181:7:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_bytes32_$_t_address_$returns$_t_bool_$",
@@ -13158,7 +13158,7 @@
                       "name": "_beforeTokenTransfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5416,
+                      "referencedDeclaration": 5177,
                       "src": "4342:20:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -13612,7 +13612,7 @@
                       "name": "Transfer",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5485,
+                      "referencedDeclaration": 5246,
                       "src": "4628:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -13729,7 +13729,7 @@
           },
           {
             "baseFunctions": [
-              5405
+              5166
             ],
             "body": {
               "id": 1190,
@@ -14196,7 +14196,7 @@
                       "name": "Approval",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 5494,
+                      "referencedDeclaration": 5255,
                       "src": "4980:8:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$_t_uint256_$returns$__$",
@@ -14404,7 +14404,7 @@
                           "name": "hasRole",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 4389,
+                          "referencedDeclaration": 4150,
                           "src": "5086:7:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_view$_t_bytes32_$_t_address_$returns$_t_bool_$",
@@ -14530,9 +14530,9 @@
                       "name": "grantRole",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        4727
+                        4488
                       ],
-                      "referencedDeclaration": 4727,
+                      "referencedDeclaration": 4488,
                       "src": "5183:9:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_bytes32_$_t_address_$returns$__$",
@@ -14628,7 +14628,7 @@
   },
   "networks": {},
   "schemaVersion": "3.3.4",
-  "updatedAt": "2021-05-20T05:47:55.415Z",
+  "updatedAt": "2021-05-25T18:35:51.711Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

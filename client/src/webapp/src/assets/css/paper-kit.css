@@ -1,27 +1,4 @@
-/* Personal CSS */
-.left-align {
-  text-align: left;
-}
-
-.slight-margin-bottom{
-  margin-bottom: 3em;
-}
-
-.description2{
-  font-weight: 500;
-}
-
-
-
-.placeholder-pic {
-  height: 90%;
-  width: 80%;
-}
-
-
-
-
-
+/* PERSONAL CSS AT THE BOTTOM OF THIS FILE */
 
 
 /*  DOCUMENTATION LINK
@@ -456,6 +433,7 @@
   padding: 4px;
   width: 16em; }
 
+  /*
 @media (min-width: 768px) {
   .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
     width: 38em; } }
@@ -467,6 +445,7 @@
 @media (min-width: 1200px) {
   .bootstrap-datetimepicker-widget.dropdown-menu.timepicker-sbs {
     width: 38em; } }
+*/ 
 
 .bootstrap-datetimepicker-widget.dropdown-menu.bottom:before {
   border-bottom: 11px solid #F1EAE0;
@@ -794,7 +773,7 @@
 .btn {
   box-sizing: border-box;
   border-width: 2px;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 600;
   padding: 0.5rem 18px;
   line-height: 1.75;
@@ -1991,29 +1970,37 @@ textarea.form-control {
   box-shadow: none; }
 
 /*           Font Smoothing      */
-h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td-name, td, button, input, select, textarea {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .navbar, .brand, a, .td-name, td, button, input, select, textarea {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  font-family: "Montserrat", "Helvetica", Arial, sans-serif;
-  font-weight: 300; }
+  font-family: Aeonik,-apple-system,Arial,sans-serif; 
+  font-weight: 400; }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   margin: 30px 0 0; }
 
 h1, .h1 {
-  font-size: 3.6em; }
+  font-size: 3.8em; 
+  background: -webkit-linear-gradient(#eee, rgb(230, 227, 227));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 h2, .h2 {
-  font-size: 2.8em; }
+  font-size: 5em; }
 
 h3, .h3 {
   font-size: 1.825em;
   line-height: 1.4;
-  margin: 20px 0 0px; }
+  margin: 20px 0 0px; 
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 h4, .h4 {
-  font-size: 1.6em;
-  line-height: 1.2em; }
+  font-size: 3.3em;
+  line-height: 1.4; }
 
 h5, .h5 {
   font-size: 1.35em;
@@ -2026,7 +2013,8 @@ h6, .h6 {
   line-height: 1.5em; }
 
 p {
-  font-size: 15px;
+  font-family: Aeonik,-apple-system,Arial,sans-serif; 
+  font-size: 1.5em;
   line-height: 1.5em;
   margin-bottom: 5px; }
 
@@ -2044,7 +2032,7 @@ h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small {
 .footer-big h5,
 .footer-big h4,
 .media .media-heading {
-  font-family: "Montserrat", "Helvetica", Arial, sans-serif; }
+  font-family: Aeonik,-apple-system,Arial,sans-serif; }
   .title,
   .title a,
   .card-title,
@@ -2066,7 +2054,9 @@ h1 small, h2 small, h3 small, h1 .small, h2 .small, h3 .small {
   text-transform: uppercase; }
 
 .description {
-  color: #9A9A9A; }
+  color: #FFF;
+  font-weight: 300;
+}
 
 blockquote small {
   font-style: normal; }
@@ -2138,10 +2128,10 @@ blockquote small {
 
 /*     General overwrite     */
 body {
-  color: #66615b;
+  color: #FFFFFF;
   font-size: 14px;
   font-weight: 300;
-  font-family: 'Montserrat', "Helvetica", Arial, sans-serif; }
+  font-family: Aeonik,-apple-system,Arial,sans-serif }
 
 a {
   color: #51bcda; }
@@ -3038,7 +3028,7 @@ License - nucleoapp.com/license/
     font-weight: 600;
     margin: 5px 0px;
     padding: 20px 15px;
-    font-size: 14px;
+    font-size: 20px;
     color: #66615B;
     text-transform: uppercase; }
   .navbar .navbar-toggler:focus {
@@ -3052,7 +3042,7 @@ License - nucleoapp.com/license/
     margin: 15px 3px;
     padding: 10px 15px;
     opacity: .8;
-    font-size: 12px;
+    font-size: 15px;
     text-transform: uppercase;
     font-weight: 600;
     color: #66615B; }
@@ -3096,7 +3086,7 @@ License - nucleoapp.com/license/
     right: -2px; }
   .navbar .btn {
     margin: 14px 3px;
-    font-size: 12px; }
+    font-size: 14px; }
     .navbar .btn i {
       font-size: 14px;
       position: relative;
@@ -3461,16 +3451,16 @@ License - nucleoapp.com/license/
 
 .profile-picture {
   margin: 0 auto; }
-  .profile-picture .fileinput-new img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-bottom: 10px; }
-  .profile-picture .fileinput-exists img {
-    max-width: 150px;
-    max-height: 150px;
-    border-radius: 50%;
-    margin-bottom: 10px; }
+.profile-picture .fileinput-new img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px; }
+.profile-picture .fileinput-exists img {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px; }
 
 .tooltip {
   font-size: 12px;
@@ -3842,83 +3832,83 @@ License - nucleoapp.com/license/
 
 .section-nucleo-icons {
   padding: 100px 0; }
-  .section-nucleo-icons .icons-container {
-    position: relative;
-    max-width: 450px;
-    height: 300px;
-    max-height: 300px;
-    margin: 0 auto; }
-    .section-nucleo-icons .icons-container i {
-      font-size: 34px;
-      position: absolute;
-      top: 0;
-      left: 0; }
-      .section-nucleo-icons .icons-container i:nth-child(1) {
-        top: 5%;
-        left: 7%; }
-      .section-nucleo-icons .icons-container i:nth-child(2) {
-        top: 28%;
-        left: 24%; }
-      .section-nucleo-icons .icons-container i:nth-child(3) {
-        top: 40%; }
-      .section-nucleo-icons .icons-container i:nth-child(4) {
-        top: 18%;
-        left: 62%; }
-      .section-nucleo-icons .icons-container i:nth-child(5) {
-        top: 74%;
-        left: 3%; }
-      .section-nucleo-icons .icons-container i:nth-child(6) {
-        top: 36%;
-        left: 44%;
-        font-size: 65px;
-        color: #f5593d;
-        padding: 1px; }
-      .section-nucleo-icons .icons-container i:nth-child(7) {
-        top: 59%;
-        left: 26%; }
-      .section-nucleo-icons .icons-container i:nth-child(8) {
-        top: 60%;
-        left: 69%; }
-      .section-nucleo-icons .icons-container i:nth-child(9) {
-        top: 72%;
-        left: 47%; }
-      .section-nucleo-icons .icons-container i:nth-child(10) {
-        top: 88%;
-        left: 27%; }
-      .section-nucleo-icons .icons-container i:nth-child(11) {
-        top: 31%;
-        left: 80%; }
-      .section-nucleo-icons .icons-container i:nth-child(12) {
-        top: 88%;
-        left: 68%; }
-      .section-nucleo-icons .icons-container i:nth-child(13) {
-        top: 5%;
-        left: 81%; }
-      .section-nucleo-icons .icons-container i:nth-child(14) {
-        top: 58%;
-        left: 90%; }
-      .section-nucleo-icons .icons-container i:nth-child(15) {
-        top: 6%;
-        left: 40%; }
+.section-nucleo-icons .icons-container {
+position: relative;
+max-width: 450px;
+height: 300px;
+max-height: 300px;
+margin: 0 auto; }
+.section-nucleo-icons .icons-container i {
+font-size: 34px;
+position: absolute;
+top: 0;
+left: 0; }
+.section-nucleo-icons .icons-container i:nth-child(1) {
+  top: 5%;
+  left: 7%; }
+.section-nucleo-icons .icons-container i:nth-child(2) {
+  top: 28%;
+  left: 24%; }
+.section-nucleo-icons .icons-container i:nth-child(3) {
+  top: 40%; }
+.section-nucleo-icons .icons-container i:nth-child(4) {
+  top: 18%;
+  left: 62%; }
+.section-nucleo-icons .icons-container i:nth-child(5) {
+  top: 74%;
+  left: 3%; }
+.section-nucleo-icons .icons-container i:nth-child(6) {
+  top: 36%;
+  left: 44%;
+  font-size: 65px;
+  color: #f5593d;
+  padding: 1px; }
+.section-nucleo-icons .icons-container i:nth-child(7) {
+  top: 59%;
+  left: 26%; }
+.section-nucleo-icons .icons-container i:nth-child(8) {
+  top: 60%;
+  left: 69%; }
+.section-nucleo-icons .icons-container i:nth-child(9) {
+  top: 72%;
+  left: 47%; }
+.section-nucleo-icons .icons-container i:nth-child(10) {
+  top: 88%;
+  left: 27%; }
+.section-nucleo-icons .icons-container i:nth-child(11) {
+  top: 31%;
+  left: 80%; }
+.section-nucleo-icons .icons-container i:nth-child(12) {
+  top: 88%;
+  left: 68%; }
+.section-nucleo-icons .icons-container i:nth-child(13) {
+  top: 5%;
+  left: 81%; }
+.section-nucleo-icons .icons-container i:nth-child(14) {
+  top: 58%;
+  left: 90%; }
+.section-nucleo-icons .icons-container i:nth-child(15) {
+  top: 6%;
+  left: 40%; }
 
 .section-dark .icons-container {
-  color: #FFFFFF; }
+color: #FFFFFF; }
 
 .info .icon {
-  margin-top: 0;
-  font-size: 3.4em; }
+margin-top: 0;
+font-size: 3.4em; }
 
 .icon-primary {
-  color: #51cbce; }
+color: #51cbce; }
 
 .icon-info {
-  color: #51bcda; }
+color: #51bcda; }
 
 .icon-success {
-  color: #6bd098; }
+color: #6bd098; }
 
 .icon-warning {
-  color: #fbc658; }
+color: #fbc658; }
 
 .icon-danger {
   color: #f5593d; }
@@ -4044,7 +4034,7 @@ License - nucleoapp.com/license/
   color: #EB5E28; }
 
 .footer {
-  background-color: #FFFFFF;
+  background-color: #0f1516;
   line-height: 36px; }
   .footer.footer-black h4 {
     color: #FFFFFF; }
@@ -4761,7 +4751,7 @@ License - nucleoapp.com/license/
   height: 100%; }
 
 .section {
-  padding: 55px 0;
+  padding: 75px 0;
   position: relative;
   background-color: #FFFFFF; }
 
@@ -4793,37 +4783,43 @@ License - nucleoapp.com/license/
 .section-dark {
   background-color: #0b1011; }
 
+.section-light-dark {
+  background-color: #0f1516; 
+  color: #FFFFFF;
+}
+
 .section-image,
 .section-gold,
 .section-dark {
   position: relative; }
-  .section-image .title,
-  .section-image .info-title,
-  .section-image .card-plain .card-title,
-  .section-gold .title,
-  .section-gold .info-title,
-  .section-gold .card-plain .card-title,
-  .section-dark .title,
-  .section-dark .info-title,
-  .section-dark .card-plain .card-title {
-    color: #FFFFFF !important; }
-  .section-image .category,
-  .section-image .description,
-  .section-image .card-plain .card-description,
-  .section-image .card-plain .card-category,
-  .section-gold .category,
-  .section-gold .description,
-  .section-gold .card-plain .card-description,
-  .section-gold .card-plain .card-category,
-  .section-dark .category,
-  .section-dark .description,
-  .section-dark .card-plain .card-description,
-  .section-dark .card-plain .card-category {
-    color: rgba(255, 255, 255, 0.7); }
-  .section-image hr,
-  .section-gold hr,
-  .section-dark hr {
-    border-color: rgba(255, 255, 255, 0.19); }
+.section-image .title,
+.section-image .info-title,
+.section-image .card-plain .card-title,
+.section-gold .title,
+.section-gold .info-title,
+.section-gold .card-plain .card-title,
+.section-dark .title,
+.section-dark .info-title,
+.section-dark .card-plain .card-title {
+  color: #FFFFFF !important; }
+.section-image .category,
+.section-image .description,
+.section-image .card-plain .card-description,
+.section-image .card-plain .card-category,
+.section-gold .category,
+.section-gold .description,
+.section-gold .card-plain .card-description,
+.section-gold .card-plain .card-category,
+.section-dark .category,
+.section-dark .description,
+.section-dark .card-plain .card-description,
+/*
+.section-dark .card-plain .card-category {
+  color: rgba(255, 255, 255, 0.7); } */
+.section-image hr,
+.section-gold hr,
+.section-dark hr {
+  border-color: rgba(255, 255, 255, 0.19); }
 
 .page-header .title,
 .page-header .info-title,
@@ -4880,19 +4876,19 @@ License - nucleoapp.com/license/
 .section-image {
   background-position: center center;
   background-size: cover; }
-  .section-image:before {
-    background-color: rgba(0, 0, 0, 0.5);
-    content: "";
-    display: block;
-    height: 100%;
-    left: 0;
-    top: 0;
-    position: absolute;
-    width: 100%;
-    z-index: 1; }
-  .section-image .container {
-    position: relative;
-    z-index: 2; }
+.section-image:before {
+  background-color: rgba(0, 0, 0, 0.5);
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 1; }
+.section-image .container {
+  position: relative;
+  z-index: 2; }
 
 /*          Changes for small display      */
 @media (max-width: 767px) {
@@ -5690,27 +5686,27 @@ License - nucleoapp.com/license/
   .section-sections .section-cols {
     position: relative;
     z-index: 1; }
-    .section-sections .section-cols .row:first-of-type {
-      margin-top: 50px;
-      margin-right: -120px;
-      margin-left: -15px;
-      -webkit-transform: translateX(-80px);
-      -moz-transform: translateX(-80px);
-      -o-transform: translateX(-80px);
-      -ms-transform: translateX(-80px);
-      transform: translateX(-80px); }
-    .section-sections .section-cols .row:nth-of-type(2) {
-      margin-left: -100px;
-      margin-right: -15px;
-      transform: translateX(80px); }
-    .section-sections .section-cols .row:nth-of-type(3) {
-      margin-right: -120px;
-      margin-left: 0px;
-      transform: translateX(-120px); }
-    .section-sections .section-cols .row:nth-of-type(4) {
-      margin-right: -100px;
-      margin-left: -15px;
-      transform: translateX(-50px); } }
+  .section-sections .section-cols .row:first-of-type {
+    margin-top: 50px;
+    margin-right: -120px;
+    margin-left: -15px;
+    -webkit-transform: translateX(-80px);
+    -moz-transform: translateX(-80px);
+    -o-transform: translateX(-80px);
+    -ms-transform: translateX(-80px);
+    transform: translateX(-80px); }
+  .section-sections .section-cols .row:nth-of-type(2) {
+    margin-left: -100px;
+    margin-right: -15px;
+    transform: translateX(80px); }
+  .section-sections .section-cols .row:nth-of-type(3) {
+    margin-right: -120px;
+    margin-left: 0px;
+    transform: translateX(-120px); }
+  .section-sections .section-cols .row:nth-of-type(4) {
+    margin-right: -100px;
+    margin-left: -15px;
+    transform: translateX(-50px); } }
 
 @media only screen and (min-width: 1024px) {
   .demo-icons ul li {
@@ -6478,7 +6474,88 @@ td.rdtYear:hover {
   border-width: 0 .4rem .4rem .4rem;
   border-bottom-color: #fff; }
 
+
 /*# sourceMappingURL=paper-kit.css.map */
+
+
+/* PERSONAL CSS */
+
+.text-left-align {
+  text-align: left !important;
+}
+
+.float-left{
+  float:left !important;
+}
+
+.slight-margin-bottom{
+  margin-bottom: 3em;
+}
+
+.description2{
+  font-weight: 400;
+  text-align: left;
+}
+
+.placeholder-pic {
+  height: 100%;
+  width: 80%;
+}
+
+.font-size{
+  font-size: 1em;
+}
+
+.play-button{
+  width: 200px;
+  height: 50px;
+  margin-right: 1.5vw;
+}
+
+.combat-section-image {
+    /*width: 20vw;
+    height: 28vh;*/
+    width: 100%;
+    height: 100%;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+.combat-section-text {
+  /*padding-left: 20vw;*/
+}
+
+
+.placeholder-pic {
+  width: 100%;
+    height: 100%;
+    max-height: 600px;
+    object-fit: contain;
+}
+
+/* CSS FOR THE PARTNER SECTION OF LANDING PAGE */
+.partner-title{
+  color: #FFFFFF;
+}
+.partner-logos-container{
+  margin-left:auto;
+  margin-right:auto;
+}
+img.partner-logo{
+    margin-left: 40px;
+    width: 125px;
+    height: 125px;
+    object-fit: contain;
+}
+
+/* Used to overwrite website margin */
+@media (min-width: 1200px) {
+  .container{
+    /*max-width: 110em;*/
+    max-width: 90vw;
+  }
+}
+
 
 
 /*!

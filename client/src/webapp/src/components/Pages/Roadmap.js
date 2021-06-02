@@ -23,16 +23,16 @@ function Roadmap(props) {
       <AltNavbar connectWeb3={props.connectWeb3} connected={props.connected} />
       <div className="main">
         <div className="section text-center">
-          This is the roadmap page
-        </div>
-        <div className="section section-dark text-center">
-
+          <Container>
+            <Row>
+              <h1>This is the roadmap page</h1>
+            </Row>
+          </Container>
         </div>
       </div>
-
     </>
   );
-
 }
+
 export default Roadmap;
 

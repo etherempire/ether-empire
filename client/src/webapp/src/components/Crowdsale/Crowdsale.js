@@ -28,7 +28,7 @@ function Crowdsale(props) {
 
   return (
     <div className="Crowdsale">
-      <center><h1 className="title">Free Empire tokens</h1></center>
+      <center><h2 className="title">Free Empire tokens</h2></center>
       <InputGroup >
         <Input placeholder="Secret key" value={secretKey} onChange={e => setSecretKey(e.target.value)} required />
         <Input placeholder="Discord Username" value={discordUsername} onChange={e => setDiscordUsername(e.target.value)} required />

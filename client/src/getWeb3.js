@@ -90,8 +90,8 @@ export const switchToMatic = async () => {
 
 // SWITCH TO SKALE Chain
 export const switchToSKALE = async () => {
-  const endpoint = "https://eth-global-11.skalenodes.com:10072";
-  const chainId = "0x6053f681996d2";
+  const endpoint = "https://dev-testnet-v1-0.skalelabs.com/";
+  const chainId = "0x54173";
   let switchToSKALEparams = [{
     chainId: chainId,
     chainName: "SKALE Network | Ether Empire",
