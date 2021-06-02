@@ -8,8 +8,9 @@ interface tokenReceipient {
     function receiveApproval(address _from, uint256 _value, address _token, bytes calldata _extraData) external; 
 }
 
-contract EtherEmpireToken is ERC20, AccessControlEnumerable  {
+contract EtherEmpireTokenMain is ERC20, AccessControlEnumerable  {
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
+    bytes32 public constant MINTER_ROLE_ADMIN = keccak256("MINTER_ROLE_ADMIN");
 
     mapping (address => uint256) private _balances;
 
@@ -22,10 +23,15 @@ contract EtherEmpireToken is ERC20, AccessControlEnumerable  {
 
 
     constructor ()  ERC20("Empire Token", "EMP") AccessControlEnumerable() {
-        _totalSupply = 1000000000; // 32 bits 
-
-        _balances[msg.sender] = _totalSupply;
+        // This allows contract deployer to grant minting access to SKALE's IMA 
         _setupRole(MINTER_ROLE, msg.sender);
+        _setupRole(MINTER_ROLE_ADMIN, msg.sender);
+        _setRoleAdmin(MINTER_ROLE, MINTER_ROLE_ADMIN); 
+
+        // Initial supply only minted on mainnet contract 
+        _totalSupply = 1000000000; // 32 bits 
+        _mint(msg.sender, _totalSupply);
+
         emit Transfer(address(0), msg.sender, _totalSupply);
     }
 
@@ -134,9 +140,12 @@ contract EtherEmpireToken is ERC20, AccessControlEnumerable  {
         emit Approval(owner, spender, amount);
     }
 
+    // Addition to integrate with SKALE 
+
     function addMinter(address account) public {
         require(hasRole(MINTER_ROLE, msg.sender), "ERC20: only minter can add other users to the role");
         grantRole(MINTER_ROLE, account);
     }
+
 
 }

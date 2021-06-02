@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: Unlicensed
 pragma solidity ^0.8.3;
-import "./../EtherEmpireToken.sol"; 
+import "./../EtherEmpireToken_schain.sol"; 
 import "./../EtherEmpireWorld.sol"; 
 
 abstract contract SmartTreaty {

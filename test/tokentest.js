@@ -1,4 +1,4 @@
-const Token = artifacts.require("./EtherEmpireToken.sol");
+const Token = artifacts.require("./EtherEmpireToken_schain.sol");
 const World = artifacts.require("./EtherEmpireWorld.sol");
 const Types = artifacts.require("./EtherEmpireTypes.sol");
 

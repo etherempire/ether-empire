@@ -1,5 +1,6 @@
 import Web3 from "web3";
 
+let secret = require('./secret.json');
 
 export const getWeb3 = () =>
   new Promise(async (resolve, reject) => {
@@ -90,8 +91,8 @@ export const switchToMatic = async () => {
 
 // SWITCH TO SKALE Chain
 export const switchToSKALE = async () => {
-  const endpoint = "https://eth-global-11.skalenodes.com:10072";
-  const chainId = "0x6053f681996d2";
+  const endpoint = secret.skale_endpoint;
+  const chainId = secret.skale_chainId;
   let switchToSKALEparams = [{
     chainId: chainId,
     chainName: "SKALE Network | Ether Empire",

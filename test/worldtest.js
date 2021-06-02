@@ -2,7 +2,7 @@ const World = artifacts.require("./EtherEmpireWorld.sol");
 const Combat = artifacts.require("./EtherEmpireCombat.sol");
 const Diplomacy = artifacts.require("./EtherEmpireDiplomacy.sol");
 const Trading = artifacts.require("./EtherEmpireTrading.sol");
-const Token = artifacts.require("./EtherEmpireToken.sol");
+const Token = artifacts.require("./EtherEmpireToken_schain.sol");
 
 contract("World and Trading", async (accounts) => {
     
