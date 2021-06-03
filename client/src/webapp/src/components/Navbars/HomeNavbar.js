@@ -150,6 +150,18 @@ function WebsiteNavbar(props) {
                   <i className="tim-icons icon-paper" />
                   Contribute on GitHub
                 </DropdownItem>
+                <DropdownItem href="https://www.linkedin.com/company/ether-empire" target="_blank">
+                  <i className="tim-icons icon-paper" />
+                  Connect on LinkedIn
+                </DropdownItem>
+                <DropdownItem href="https://etherempireofficial.gitbook.io/ether-empire/" target="_blank">
+                  <i className="tim-icons icon-paper" />
+                  Read our Whitepaper
+                </DropdownItem>
+                <DropdownItem href="https://kuanjh123.medium.com/ether-empire-g-93b9f80acde2" target="_blank">
+                  <i className="tim-icons icon-paper" />
+                  Read up on Medium
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
 

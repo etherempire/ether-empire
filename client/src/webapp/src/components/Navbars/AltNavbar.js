@@ -107,7 +107,6 @@ function AltNavbar(props) {
               <DropdownMenu className="dropdown-with-icons">
                 <DropdownItem href="https://discord.gg/X9p9gXPCc7​" target="_blank">
                   <i className="tim-icons icon-paper" />
-
                   Join Our Discord
                 </DropdownItem>
                 <DropdownItem href="https://www.reddit.com/r/etherempireofficial/" target="_blank">
@@ -117,6 +116,18 @@ function AltNavbar(props) {
                 <DropdownItem href="https://github.com/jinhongkuan/ether-empire" target="_blank">
                   <i className="tim-icons icon-paper" />
                   Contribute on GitHub
+                </DropdownItem>
+                <DropdownItem href="https://www.linkedin.com/company/ether-empire" target="_blank">
+                  <i className="tim-icons icon-paper" />
+                  Connect on LinkedIn
+                </DropdownItem>
+                <DropdownItem href="https://etherempireofficial.gitbook.io/ether-empire/" target="_blank">
+                  <i className="tim-icons icon-paper" />
+                  Read our Whitepaper
+                </DropdownItem>
+                <DropdownItem href="https://kuanjh123.medium.com/ether-empire-g-93b9f80acde2" target="_blank">
+                  <i className="tim-icons icon-paper" />
+                  Read up on Medium
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
