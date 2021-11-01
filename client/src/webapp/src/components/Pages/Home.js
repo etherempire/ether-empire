@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+//import QrReader from 'react-qr-reader'
 
 // reactstrap components
 import {
@@ -7,6 +8,9 @@ import {
   CardBody,
   CardFooter,
   CardTitle,
+  CardSubtitle,
+  CardText,
+  CardLink,
   Form,
   Input,
   InputGroupAddon,
@@ -16,6 +20,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
+
 
 import { Link } from "react-router-dom";
 
@@ -42,24 +47,90 @@ function Home(props) {
       document.body.classList.remove("profile-page");
     };
   });
+
+
+
   return (
     <>
       <HomeNavbar connectWeb3={props.connectWeb3} connected={props.connected} />
       <LandingPageHeader />
 
+
+
       <div className="main">
+
+
+        <div className="section section-dark text-center">
+          <Container>
+            <Row>
+              <Col>
+                <h2 className="title">A new genre made possible by blockchain</h2>
+              </Col>
+            </Row>
+            <div className="row-test">
+              <Row>
+
+
+                <Col md="4" className="col-test">
+                  <div>
+                    <Card className="background">
+                      <CardBody>
+                        <h2>⚔️</h2>
+                        <h4>Real stakes</h4>
+                      </CardBody>
+                    </Card>
+                  </div>
+                </Col>
+                <Col md="4" className="col-test">
+                  <div>
+                    <Card className="background">
+                      <CardBody>
+                        <h2>👐</h2>
+                        <h4>Deep diplomacy</h4>
+                      </CardBody>
+                    </Card>
+                  </div>
+                </Col>
+                <Col md="4" className="col-test">
+                  <div>
+                    <Card className="background">
+                      <CardBody>
+                        <h2>🌾</h2>
+                        <h4>Player-driven economy</h4>
+                      </CardBody>
+                    </Card>
+                  </div>
+                </Col>
+              </Row>
+            </div>
+          </Container>
+        </div>
 
         <div className="section section-dark text-center">
           <Container>
             <Row>
               <Col className="float-left combat-section-text" md="6">
-                <h2 className="title text-left-align">Combat</h2>
+                <h5 className="text-left-align section-name">Real Stakes</h5>
+                <hr />
+                <h4 className="text-left-align">Cultivate lands</h4>
                 <p className="description text-left-align">
-                  Battle for control over profitable territories that regularly generates Empire token.
-                  When your army encounters a hostile army or wall,
-                  a battle takes place where the probability of victory
-                  is dependent upon the relative strength of the two sides.
+                  Stake Empire Tokens (EMP) into farm plots to earn real profits.
+                  The amount you generate is proportional to the amount of EMP staked.
+                  All tokens can be unstaked without loss.
                 </p>
+
+                <h4 className="text-left-align">Expand</h4>
+                <p className="description text-left-align">
+                  Farm plots can be conquered, so make sure to defend them with walls!
+                  You can also expand your empire through recruiting
+                  armies and conquering other players’ land.
+                </p>
+
+                <h4 className="text-left-align">Strategize</h4>
+                <p className="description text-left-align">
+                  As you expand your empire, the profit you generate increases, but so does the risk of losing property to invaders! Develop a strategy that allows you to thrive in this dynamic world.
+                </p>
+
                 <br />
                 <br />
               </Col>
@@ -125,19 +196,22 @@ function Home(props) {
           <Container>
             <Row>
               <Col md="6">
-                <img className="placeholder-pic" src={placeholder} />
+                <Card>
+                  <CardBody>
+                    <img className="placeholder-pic" src={placeholder} />
+                  </CardBody>
+                </Card>
               </Col>
               <Col md="6">
-                <h2 className="title text-left-align">Diplomacy</h2>
+                <h2 className="title text-left-align">Deep Diplomacy</h2>
                 <p className="description slight-margin-bottom text-left-align">
-                  Not every conflict needs to be resolved with violence.
                   Utilizing smart contract technology on the Ethereum blockchain,
-                  Players can craft customized treaties with other players to
-                  secure peace and lucrative deals.
+                  players can craft customizable treaties with other players to secure peace and lucrative deals.
                 </p>
-                <p className="description description2">Create a coalition with multiple neighbors</p>
-                <p className="description description2">Mandate a regular contribution of Empire tokens towards maintaining a common army</p>
-                <p className="description description2">Fund allies</p>
+
+                <h4 className="description text-left-align background-diplomacy">🏰  Create a coalition with multiple neighbors</h4>
+                <h4 className="description text-left-align background-diplomacy">🗡 Maintain a common army</h4>
+                <h4 className="description text-left-align background-diplomacy">💰 Fund allies</h4>
               </Col>
             </Row>
           </Container>
@@ -147,102 +221,71 @@ function Home(props) {
           <Container>
             <Row>
               <Col md="6">
-                <h2 className="title text-left-align">Player Drive Economy</h2>
-                <p className="description slight-margin-bottom text-left-align">
-                  The economy in this game is entirely driven by the actions of the players.
-                  We maintain the value of Empire tokens by enforcing the following set of tokenomics measures
-                </p>
-                <p className="description description2">For every farmland that is pillaged, half the amount is transferred to the pillager while the rest of the land value is burnt (deflationary)</p>
-                <p className="description description2">Tokens spent on wall construction and army recruitment are burnt (deflationary)</p>
-                <p className="description description2">The amount of burnt tokens are re-distributed into the world through increased farm yields (inflationary) </p>
-              </Col>
-              <Col md="6">
-                <img className="placeholder-pic" src={placeholder} />
-              </Col>
-            </Row>
-          </Container>
-        </div>
+                <h5 className="text-left-align section-name">Player Driven Economy</h5>
+                <hr />
+                <h4 className="text-left-align">The token cycle</h4>
+                <p className="description text-left-align"> Whenever an army is created or a wall is built, EMPs are burnt</p>
+                <p className="description text-left-align">At regular intervals, an equal of EMPs is minted and redistributed to all farm owners in the form of ‘rain’ </p>
+                <p className="description text-left-align">The total supply of EMP is thus maintained. </p>
 
-        <div className="section section-dark text-center">
-          <Container>
-            <Row>
-              <Col md="6">
-                <img className="placeholder-pic" src={placeholder} />
-              </Col>
-              <Col md="6">
-                <h2 className="title text-left-align">NFTs</h2>
-                <p className="description slight-margin-bottom text-left-align">
-                  Token will be minted and burnt in a manner that directly affects gameplay.
-                  Whenever an army is created or a wall is built, the spent tokens are burnt,
-                  and at regular intervals the same amount is minted and redistributed to all farm owners in the form of ‘rain’ to maintain a stable token supply.
-                  The more conflicts that occur in a particular world, the higher the reward in building farms,
-                  driving up total land value and thus creating potential for more conflicts...
-                  the cycle repeats itself, creating endless opportunities for conflicts and exciting gameplay.
-                </p>
-                <p className="description description2">Create a coalition with multiple neighbors</p>
-                <p className="description description2">Mandate a regular contribution of Empire tokens towards maintaining a common army</p>
-                <p className="description description2">Fund allies</p>
-              </Col>
-            </Row>
-          </Container>
-        </div>
+                <h4 className="text-left-align">NFT items</h4>
+                <p className="description text-left-align">
+                  Special items in the game (e.g. weapons, runes) directly affect
+                  gameplay through increasing army strength or farm yield,
+                and are tracked by NFTs on the blockchain allowing them to be securely traded between players.</p>
 
-        <div className="section section-dark text-center">
-          <Container>
-            <Row>
-              <Col md="6">
-                <h2 className="title text-left-align">Empire Token</h2>
-                <p className="description slight-margin-bottom text-left-align">
-                  Token will be minted and burnt in a manner that directly affects gameplay.
-                  Whenever an army is created or a wall is built, the spent tokens are burnt,
-                  and at regular intervals the same amount is minted and redistributed to all farm owners in the form of ‘rain’ to maintain a stable token supply.
-                  The more conflicts that occur in a particular world, the higher the reward in building farms,
-                  driving up total land value and thus creating potential for more conflicts...
-                  the cycle repeats itself, creating endless opportunities for conflicts and exciting gameplay.
-                </p>
-                <p className="description description2">To give complete control to the players over the economy of an Ether Empire realm,
-                each deployed realm has an independent currency.
-                This means that multiple variants of EMP will be created,
-                separate for each realm, and hold their own price valuations.</p>
-              </Col>
-              <Col md="6">
-                <img className="placeholder-pic" src={placeholder} />
-              </Col>
-            </Row>
-          </Container>
-        </div>
-
-        <div className="section section-dark text-center">
-          <Container>
-            <Row>
-              <Button
-                className="btn-round"
-                color="info"
-                href="https://etherempireofficial.gitbook.io/ether-empire/gameplay"
-                target="_blank"
-              >
-                LEARN MORE ABOUT THE GAMEPLAY
-                  <i className="fa fa-play" />
+                <br />
+                <br />
+                <br />
+                <Button
+                  className="btn-round float-left"
+                  color="info"
+                  href="https://app.gitbook.com/@etherempireofficial/s/ether-empire/"
+                  target="_blank"
+                >
+                  LEARN MORE →
               </Button>
-            </Row>
-          </Container>
-        </div>
-
-
-        <div className="section section-light-dark text-center">
-          <Container>
-            <Row>
-              <Col md="12">
-                <h2 className="title partner-title">Partners?</h2>
-                <div className="partner-logos-container">
-                  <img className="partner-logo" src={SKALELogo} />???
-                  <img className="partner-logo" src={MetaMaskLogo} />???
-                  <img className="partner-logo" src={BGALogo} />???
-                </div>
+              </Col>
+              <Col md="6">
+                <Card className="player-driver-economy-card-gradient">
+                  <CardBody>
+                    <img className="placeholder-pic" src={placeholder} />
+                  </CardBody>
+                </Card>
               </Col>
             </Row>
           </Container>
         </div>
+
+
+        <div className="section section-dark text-center">
+          <Container>
+            <Row>
+
+            </Row>
+          </Container>
+        </div>
+
+
+        { // !!!!!!PARTNERSHIP SECTION (COULD BE USED LATER)!!!!!!
+          /*
+            <div className="section section-light-dark text-center">
+            <Container>
+              <Row>
+                <Col md="12">
+                  <h2 className="title partner-title">Partners?</h2>
+                  <div className="partner-logos-container">
+                    <img className="partner-logo" src={SKALELogo} />???
+                    <img className="partner-logo" src={MetaMaskLogo} />???
+                    <img className="partner-logo" src={BGALogo} />???
+                  </div>
+                </Col>
+              </Row>
+            </Container>
+          </div>
+          */
+        }
+
 
 
         <div className="section section-light-dark">
@@ -334,11 +377,6 @@ function Home(props) {
                 </a></p>
               </Col>
             </Row>
-            <br />
-            <br />
-            <br />
-            <br />
-
           </Container>
         </div>
       </div>

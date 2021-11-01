@@ -4090,7 +4090,8 @@ color: #fbc658; }
 .card {
   border-radius: 12px;
   box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
-  background-color: #FFFFFF;
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
   color: #333333;
   margin-bottom: 20px;
   position: relative;
@@ -6480,60 +6481,54 @@ td.rdtYear:hover {
 
 /* PERSONAL CSS */
 
-.text-left-align {
+.text-left-align {   /* aligns text to the left */
   text-align: left !important;
 }
-
-.float-left{
+.float-left{        /* moves things to the leftmost position */
   float:left !important;
 }
-
-.slight-margin-bottom{
+.slight-margin-bottom{   
   margin-bottom: 3em;
-}
-
-.description2{
+} 
+.description2{          /* mostly used for text in the diplomacy and player driven economy section */
   font-weight: 400;
   text-align: left;
 }
-
 .placeholder-pic {
   height: 100%;
   width: 80%;
 }
-
 .font-size{
   font-size: 1em;
 }
-
 .play-button{
   width: 200px;
   height: 50px;
   margin-right: 1.5vw;
 }
 
+/* For the comabt section */
 .combat-section-image {
     /*width: 20vw;
     height: 28vh;*/
     width: 100%;
     height: 100%;
-    max-height: 400px;
+    max-height: 500px;
     object-fit: contain;
 }
-
 .combat-section-text {
   /*padding-left: 20vw;*/
 }
 
 
 .placeholder-pic {
-  width: 100%;
+    width: 100%;
     height: 100%;
     max-height: 600px;
     object-fit: contain;
 }
 
-/* CSS FOR THE PARTNER SECTION OF LANDING PAGE */
+/* FOR THE PARTNER SECTION OF LANDING PAGE */
 .partner-title{
   color: #FFFFFF;
 }
@@ -6547,6 +6542,51 @@ img.partner-logo{
     height: 125px;
     object-fit: contain;
 }
+
+/* Section 2 CSS (A new genre made possible by blockchain) */
+.section2-text {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+/*
+.row-test {
+  display: flex; 
+}
+.col-test {
+  flex: 1; 
+  padding: 1em;
+}
+*/
+
+/* gradient color for the card in the player driven economy section*/
+.player-driver-economy-card-gradient {
+  background-color: #00DBDE;
+  background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+}
+
+.background {
+  background-color: #8BC6EC;
+  background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+  border-radius: 30px;
+}
+
+.section-name{
+  font-size: 1.75em;
+  line-height: 1.4em; 
+  color: #fd5c63 !important;
+}
+
+.background-diplomacy{
+  background-color: #8BC6EC;
+background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
 
 /* Used to overwrite website margin */
 @media (min-width: 1200px) {

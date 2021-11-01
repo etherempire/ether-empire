@@ -70,8 +70,9 @@ function LandingPageHeader() {
             <Col md="8">
               <div className="motto text-center float-left">
                 <p className="text-left-align font-size">
-                  Ether Empire is a multiplayer blockchain territorial-conquest game
-                  incorporating yield farming, diplomacy, and an opportunity to earn real money
+                  Ether Empire is a territorial conquest game built on the blockchain.
+                  Own persistent lands, farm real profits
+                  and forge a lasting empire through combat and diplomacy!
                 </p>
                 <br />
                 <Button
