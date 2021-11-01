@@ -1,3 +1,9 @@
+
+.tutorial__container{
+  margin-top: 24px;
+  background-color: black;
+}
+
 .tutorial{
   color: white;
   width: 100vh;
@@ -6,3 +12,4 @@
   background-color: black;
 
 }
+

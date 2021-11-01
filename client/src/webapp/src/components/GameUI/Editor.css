@@ -1,12 +1,11 @@
 .userInput{
-    margin-bottom: 35px;
-  } 
+    /*margin-bottom: 35px;*/
+} 
   
-  .input-group-append:hover{
-    cursor: pointer;
-  
-  }
-  
-  .confirm:hover{
-    background-color: gray;
-  }
+.input-group-append:hover{
+  cursor: pointer;
+}
+
+.confirm:hover{
+  background-color: gray;
+}

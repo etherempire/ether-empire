@@ -1,13 +1,17 @@
+
 .react-tile-map {
     position: relative;
   }
+  
   
   .react-tile-map-canvas.clickable {
     cursor: pointer;
   }
   
   .react-tile-map-canvas.draggable {
-    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: move;   /* fallback if grab cursor is unsupported */
+
+   
     cursor: grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
@@ -45,3 +49,4 @@
   .react-tile-map-popup.visible {
     opacity: 1;
   }
+  

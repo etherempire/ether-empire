@@ -1,5 +1,6 @@
 import Web3 from "web3";
 
+
 export const getWeb3 = () =>
   new Promise(async (resolve, reject) => {
     // Wait for loading completion to avoid race conditions with web3 injection timing.
@@ -56,3 +57,69 @@ export const isAddressConnected = () => {
 export const getExistingWeb3 = () => {
   return new Web3(window.ethereum);
 }
+
+// SWITCH TO MATIC TESTNET
+export const switchToMatic = async () => {
+  let switchToMatic = [{
+    "chainId": "0x13881",
+    "chainName": "Mumbai Testnet",
+    "rpcUrls": ["https://rpc-mumbai.matic.today"],
+    "nativeCurrency": {
+      "name": "MATIC",
+      "symbol": "MATIC",
+      "decimals": 18
+    }
+  }]
+  // Modern dapp browsers...
+  if (window.ethereum) {
+    try {
+      //switch to MATIC (POLYGON)
+      console.log("switch to MATIC blockchain");
+      window.ethereum
+        .request({
+          method: "wallet_addEthereumChain",
+          params: switchToMatic
+        })
+        .catch((error) => console.log(error.message));
+      console.log("finished switching to MATIC (POLYGON)");
+    } catch (error) {
+      alert("Failed to switch to MATIC");
+    }
+  }
+}
+
+// SWITCH TO SKALE Chain
+export const switchToSKALE = async () => {
+  const endpoint = "https://dev-testnet-v1-0.skalelabs.com/";
+  const chainId = "0x54173";
+  let switchToSKALEparams = [{
+    chainId: chainId,
+    chainName: "SKALE Network | Ether Empire",
+    rpcUrls: [endpoint],
+    nativeCurrency: {
+      name: "SKALE ETH",
+      symbol: "skETH",
+      decimals: 18
+    },
+    blockExplorerUrls: [
+      "https://expedition.dev/?network=SKALE&rpcUrl=" + endpoint
+    ]
+  }];
+  // Modern dapp browsers...
+  if (window.ethereum) {
+    try {
+      console.log("switch to SKALE chain");
+      window.ethereum
+        .request({
+          method: "wallet_addEthereumChain",
+          params: switchToSKALEparams
+        })
+        .catch((error) => console.log(error.message));
+      console.log("finished switching to SKALE");
+    } catch (error) {
+      alert("Failed to switch to SKALE");
+    }
+  }
+}
+
+

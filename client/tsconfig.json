@@ -28,7 +28,8 @@
     "noUnusedLocals": true,
     "declaration": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": [
     "src"
